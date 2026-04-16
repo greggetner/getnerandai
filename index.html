@@ -1641,12 +1641,25 @@
       chatInput.style.pointerEvents = 'auto';
       chatInput.style.cursor = 'text';
       
-      // Show email modal on click (works with disabled inputs)
-      chatInput.addEventListener('click', function() {
-        console.log('Input clicked, userEmail:', userEmail);
+      // Make the entire input container clickable
+      const inputContainer = document.querySelector('.terminal-input-container');
+      
+      // Show email modal on click anywhere in the input area
+      inputContainer.addEventListener('click', function() {
+        console.log('Input container clicked, userEmail:', userEmail);
         if (!userEmail) {
           console.log('Showing email modal');
           showEmailModal();
+        }
+      });
+      
+      // Also handle clicks directly on the input field
+      chatInput.addEventListener('click', function(e) {
+        console.log('Input field clicked, userEmail:', userEmail);
+        if (!userEmail) {
+          console.log('Showing email modal from input');
+          showEmailModal();
+          e.stopPropagation(); // Prevent double modal
         }
       });
       
@@ -1744,6 +1757,13 @@
  
         const data = await response.json();
         
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error('404: Function not found - AI brain needs to be deployed first!');
+          }
+          throw new Error(data.error || `Server error: ${response.status}`);
+        }
+        
         if (data.error) {
           throw new Error(data.error);
         }
@@ -1764,8 +1784,15 @@
         
       } catch (error) {
         console.error('Error:', error);
-        addMessage('Sorry, I encountered an error. Please try again or contact me directly.', 'assistant');
-        updateStatus('Error occurred • Please try again');
+        
+        // Check if this is a 404 error (function not found)
+        if (error.message && error.message.includes('404')) {
+          addMessage('My AI brain is still booting up! The backend function needs to be deployed first. Contact me directly at greg@getgetner.com in the meantime.', 'assistant');
+          updateStatus('AI brain offline • Email greg@getgetner.com');
+        } else {
+          addMessage('Sorry, I encountered an error. Please try again or contact me directly at greg@getgetner.com', 'assistant');
+          updateStatus('Error occurred • Please try again');
+        }
       }
       
       setTyping(false);
