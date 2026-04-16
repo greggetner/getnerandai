@@ -339,6 +339,359 @@
     font-style: italic;
   }
  
+  /* ═══════════════ PROBE MY BRAIN ═══════════════ */
+  .probe-brain {
+    position: relative;
+    z-index: 2;
+    background: var(--paper-deep);
+    margin: 80px 0;
+    padding: 80px 0;
+    border-top: 3px solid var(--line-strong);
+    border-bottom: 3px solid var(--line-strong);
+  }
+ 
+  .probe-brain-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+ 
+  .probe-brain-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+ 
+  .probe-brain-header h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+ 
+  .terminal-container {
+    max-width: 900px;
+    margin: 0 auto 48px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(22,20,18,0.3);
+    border: 1px solid #333;
+  }
+ 
+  .terminal-header {
+    background: #2a2a2a;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+  }
+ 
+  .terminal-dots {
+    display: flex;
+    gap: 8px;
+  }
+ 
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+ 
+  .dot.red { background: #ff5f56; }
+  .dot.yellow { background: #ffbd2e; }
+  .dot.green { background: #27ca3f; }
+ 
+  .terminal-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #888;
+    font-weight: 500;
+  }
+ 
+  .terminal-content {
+    background: #1a1a1a;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .terminal-output {
+    flex: 1;
+    padding: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #00ff41;
+    overflow-y: auto;
+    max-height: 400px;
+  }
+ 
+  .boot-sequence .boot-line {
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: typewriter 0.5s ease-out forwards;
+  }
+ 
+  .boot-sequence .boot-line:nth-child(1) { animation-delay: 0.2s; }
+  .boot-sequence .boot-line:nth-child(2) { animation-delay: 0.8s; }
+  .boot-sequence .boot-line:nth-child(3) { animation-delay: 1.4s; }
+  .boot-sequence .boot-line:nth-child(4) { animation-delay: 2.0s; }
+  .boot-sequence .boot-line:nth-child(5) { animation-delay: 2.6s; }
+  .boot-sequence .boot-line:nth-child(6) { animation-delay: 3.2s; }
+  .boot-sequence .suggestions { animation-delay: 3.8s; }
+  .boot-sequence .ready { animation-delay: 4.6s; }
+ 
+  @keyframes typewriter {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+ 
+  .suggestions {
+    margin: 12px 0 12px 20px;
+    opacity: 0;
+    animation: typewriter 0.5s ease-out forwards;
+  }
+ 
+  .suggestion {
+    display: block;
+    margin-bottom: 4px;
+    color: #ffa500;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+ 
+  .suggestion:hover {
+    color: #00ff41;
+    text-decoration: underline;
+  }
+ 
+  .terminal-input-container {
+    padding: 16px 20px;
+    border-top: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #1a1a1a;
+  }
+ 
+  .prompt {
+    color: #00ff41;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+  }
+ 
+  #chat-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #00ff41;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    padding: 8px 0;
+    outline: none;
+  }
+ 
+  #chat-input::placeholder {
+    color: #666;
+  }
+ 
+  #chat-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+ 
+  #send-btn {
+    background: var(--rust);
+    color: var(--paper);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+ 
+  #send-btn:hover:not(:disabled) {
+    background: var(--rust-deep);
+    transform: translateY(-1px);
+  }
+ 
+  #send-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+ 
+  .terminal-footer {
+    padding: 12px 20px;
+    border-top: 1px solid #333;
+    background: #1a1a1a;
+  }
+ 
+  .terminal-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #888;
+  }
+ 
+  .typing-indicator {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+ 
+  .typing-indicator span {
+    width: 4px;
+    height: 4px;
+    background: #00ff41;
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out;
+  }
+ 
+  .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+ 
+  @keyframes typing {
+    0%, 80%, 100% { opacity: 0; }
+    40% { opacity: 1; }
+  }
+ 
+  .message {
+    margin-bottom: 16px;
+    padding: 8px 0;
+  }
+ 
+  .message.user {
+    color: #00aaff;
+  }
+ 
+  .message.user::before {
+    content: "$ ";
+    color: #00ff41;
+  }
+ 
+  .message.assistant {
+    color: #ffa500;
+    margin-left: 16px;
+    line-height: 1.8;
+  }
+ 
+  .probe-brain-cta {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+ 
+  .probe-brain-cta p {
+    font-size: 18px;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+ 
+  /* ═══════════════ EMAIL MODAL ═══════════════ */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(22,20,18,0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+ 
+  .modal-content {
+    background: var(--paper);
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(22,20,18,0.4);
+    border: 1px solid var(--line);
+    position: relative;
+  }
+ 
+  .modal-header {
+    padding: 24px 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+ 
+  .modal-header h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+  }
+ 
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+  }
+ 
+  .modal-close:hover {
+    color: var(--ink);
+  }
+ 
+  .modal-body {
+    padding: 24px;
+  }
+ 
+  .modal-body p {
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+ 
+  #email-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+ 
+  #user-email {
+    padding: 16px;
+    border: 2px solid var(--line);
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: 'Inter Tight', sans-serif;
+    transition: border-color 0.2s;
+  }
+ 
+  #user-email:focus {
+    outline: none;
+    border-color: var(--rust);
+  }
+ 
+  .privacy-note {
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 16px;
+    margin-bottom: 0;
+  }
+ 
   /* ═══════════════ TICKER ═══════════════ */
   .ticker-band {
     position: relative;
@@ -975,6 +1328,89 @@
     </div>
   </section>
  
+  <!-- PROBE MY BRAIN -->
+  <section class="probe-brain">
+    <div class="probe-brain-container">
+      <div class="probe-brain-header">
+        <h2>Probe My Brain 🧠</h2>
+        <p class="subtitle">My AI doppelganger is ready to serve you</p>
+      </div>
+      
+      <div class="terminal-container">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="terminal-title">greg@getner-ai: probe-my-brain</div>
+        </div>
+        
+        <div class="terminal-content">
+          <div class="terminal-output">
+            <div class="boot-sequence">
+              <div class="boot-line">$ probe my brain</div>
+              <div class="boot-line">> Initializing expertise...</div>
+              <div class="boot-line">> Contemplating tacos</div>
+              <div class="boot-line">> Loading ActiveCampaign knowledge</div>
+              <div class="boot-line">> 23 years of experience ready</div>
+              <div class="boot-line">> Ask me anything about:</div>
+              <div class="suggestions">
+                <span class="suggestion" onclick="askSuggestion('How do I improve email deliverability?')">• Email deliverability</span>
+                <span class="suggestion" onclick="askSuggestion('What\'s the best segmentation strategy?')">• List segmentation</span>
+                <span class="suggestion" onclick="askSuggestion('Help me design a welcome series')">• Welcome sequences</span>
+                <span class="suggestion" onclick="askSuggestion('How do I prevent emails going to spam?')">• Spam prevention</span>
+              </div>
+              <div class="boot-line ready">$ ready for your questions</div>
+            </div>
+            <div id="chat-messages"></div>
+          </div>
+          
+          <div class="terminal-input-container">
+            <span class="prompt">$</span>
+            <input type="text" id="chat-input" placeholder="Ask about ActiveCampaign..." disabled>
+            <button id="send-btn" disabled>Send</button>
+          </div>
+          
+          <div class="terminal-footer">
+            <div class="terminal-status">
+              <span id="status-text">Enter email to start probing...</span>
+              <div class="typing-indicator" id="typing" style="display: none;">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="probe-brain-cta">
+        <p>Like what you see? Let's solve your real challenges together.</p>
+        <a href="#apply" class="btn-primary">
+          <span>Apply to work with me</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- EMAIL CAPTURE MODAL -->
+  <div id="email-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Access Greg's AI Brain</h3>
+        <button class="modal-close" onclick="closeEmailModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Get instant access to 23 years of ActiveCampaign expertise. Ask up to 5 questions to see how I solve problems.</p>
+        <form id="email-form" onsubmit="submitEmail(event)">
+          <input type="email" id="user-email" placeholder="your@email.com" required>
+          <button type="submit" class="btn-primary">Start Probing</button>
+        </form>
+        <p class="privacy-note">No spam. Just AI-powered insights from a real expert.</p>
+      </div>
+    </div>
+  </div>
+ 
   <!-- TICKER BAND -->
   <div class="ticker-band">
     <div class="ticker-content">
@@ -1181,6 +1617,158 @@
     </div>
   </footer>
  
+  <script>
+    // Probe My Brain functionality
+    let messageCount = 0;
+    const maxMessages = 5;
+    let userEmail = null;
+    let isTyping = false;
+ 
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Show email modal on first interaction
+      document.getElementById('chat-input').addEventListener('focus', function() {
+        if (!userEmail) {
+          showEmailModal();
+          this.blur();
+        }
+      });
+ 
+      // Handle Enter key
+      document.getElementById('chat-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          sendMessage();
+        }
+      });
+ 
+      // Send button click
+      document.getElementById('send-btn').addEventListener('click', sendMessage);
+    });
+ 
+    function showEmailModal() {
+      document.getElementById('email-modal').style.display = 'flex';
+    }
+ 
+    function closeEmailModal() {
+      document.getElementById('email-modal').style.display = 'none';
+    }
+ 
+    function submitEmail(event) {
+      event.preventDefault();
+      const email = document.getElementById('user-email').value;
+      
+      if (email && isValidEmail(email)) {
+        userEmail = email;
+        closeEmailModal();
+        enableChat();
+        updateStatus(`Connected as ${email} • ${maxMessages - messageCount} questions remaining`);
+      }
+    }
+ 
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+ 
+    function enableChat() {
+      document.getElementById('chat-input').disabled = false;
+      document.getElementById('send-btn').disabled = false;
+      document.getElementById('chat-input').placeholder = 'Ask about ActiveCampaign...';
+      document.getElementById('chat-input').focus();
+    }
+ 
+    function askSuggestion(question) {
+      if (!userEmail) {
+        showEmailModal();
+        return;
+      }
+      
+      document.getElementById('chat-input').value = question;
+      sendMessage();
+    }
+ 
+    async function sendMessage() {
+      if (isTyping || messageCount >= maxMessages) return;
+      
+      const input = document.getElementById('chat-input');
+      const message = input.value.trim();
+      
+      if (!message) return;
+      
+      // Add user message
+      addMessage(message, 'user');
+      input.value = '';
+      messageCount++;
+      
+      // Update status
+      updateStatus(`Probing brain...`);
+      setTyping(true);
+      
+      try {
+        // Call your Netlify function (we'll create this)
+        const response = await fetch('/.netlify/functions/probe-brain', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: message,
+            email: userEmail,
+            messageCount: messageCount
+          })
+        });
+ 
+        const data = await response.json();
+        
+        if (data.error) {
+          throw new Error(data.error);
+        }
+        
+        // Add assistant response
+        addMessage(data.response, 'assistant');
+        
+        // Update status
+        const remaining = maxMessages - messageCount;
+        if (remaining > 0) {
+          updateStatus(`${remaining} questions remaining`);
+        } else {
+          updateStatus('Session complete • Ready to work together?');
+          document.getElementById('chat-input').disabled = true;
+          document.getElementById('send-btn').disabled = true;
+          document.getElementById('chat-input').placeholder = 'Session complete - contact me to continue!';
+        }
+        
+      } catch (error) {
+        console.error('Error:', error);
+        addMessage('Sorry, I encountered an error. Please try again or contact me directly.', 'assistant');
+        updateStatus('Error occurred • Please try again');
+      }
+      
+      setTyping(false);
+    }
+ 
+    function addMessage(text, type) {
+      const messagesDiv = document.getElementById('chat-messages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${type}`;
+      messageDiv.textContent = text;
+      messagesDiv.appendChild(messageDiv);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+ 
+    function updateStatus(text) {
+      document.getElementById('status-text').textContent = text;
+    }
+ 
+    function setTyping(typing) {
+      isTyping = typing;
+      const typingIndicator = document.getElementById('typing');
+      typingIndicator.style.display = typing ? 'flex' : 'none';
+      
+      if (typing) {
+        document.getElementById('status-text').textContent = 'Greg is thinking...';
+      }
+    }
+  </script>
 </body>
 </html>
- 
