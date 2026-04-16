@@ -48,7 +48,7 @@
     opacity: 0.5;
   }
  
-  /* ═══════════════ MASTHEAD ═══════════════ */
+  /* ═══════════════════════════ MASTHEAD ═══════════════════════════ */
   .masthead {
     position: relative;
     z-index: 2;
@@ -96,7 +96,7 @@
     font-weight: 500;
   }
  
-  /* ═══════════════ HERO ═══════════════ */
+  /* ═══════════════════════════ HERO ═══════════════════════════ */
   .hero {
     position: relative;
     z-index: 2;
@@ -202,7 +202,7 @@
     }
   }
  
-  /* ═══════════════ ACTIONS ═══════════════ */
+  /* ═══════════════════════════ ACTIONS ═══════════════════════════ */
   .hero-actions {
     display: flex;
     gap: 20px;
@@ -253,7 +253,7 @@
     color: var(--paper);
   }
  
-  /* ═══════════════ PARTIAL LIST ═══════════════ */
+  /* ═══════════════════════════ PARTIAL LIST ═══════════════════════════ */
   .partial-list {
     position: relative;
     z-index: 2;
@@ -342,7 +342,7 @@
     font-style: italic;
   }
  
-  /* ═══════════════ PROBE MY BRAIN ═══════════════ */
+  /* ═══════════════════════════ PROBE MY BRAIN ═══════════════════════════ */
   .probe-brain {
     position: relative;
     z-index: 2;
@@ -597,7 +597,7 @@
     margin-bottom: 24px;
   }
  
-  /* ═══════════════ EMAIL MODAL ═══════════════ */
+  /* ═══════════════════════════ EMAIL MODAL ═══════════════════════════ */
   .modal-overlay {
     position: fixed;
     top: 0;
@@ -695,7 +695,7 @@
     margin-bottom: 0;
   }
  
-  /* ═══════════════ TICKER ═══════════════ */
+  /* ═══════════════════════════ TICKER ═══════════════════════════ */
   .ticker-band {
     position: relative;
     z-index: 2;
@@ -739,7 +739,7 @@
     border-radius: 50%;
   }
  
-  /* ═══════════════ TESTIMONIALS ═══════════════ */
+  /* ═══════════════════════════ TESTIMONIALS ═══════════════════════════ */
   .testimonials {
     position: relative;
     z-index: 2;
@@ -845,7 +845,7 @@
     font-family: 'JetBrains Mono', monospace;
   }
  
-  /* ═══════════════ FEATURES ═══════════════ */
+  /* ═══════════════════════════ FEATURES ═══════════════════════════ */
   .features {
     position: relative;
     z-index: 2;
@@ -910,7 +910,7 @@
     color: var(--ink-soft);
   }
  
-  /* ═══════════════ PROCESS ═══════════════ */
+  /* ═══════════════════════════ PROCESS ═══════════════════════════ */
   .process {
     position: relative;
     z-index: 2;
@@ -989,7 +989,7 @@
     color: var(--ink-soft);
   }
  
-  /* ═══════════════ CTA ═══════════════ */
+  /* ═══════════════════════════ CTA ═══════════════════════════ */
   .cta-section {
     position: relative;
     z-index: 2;
@@ -1071,7 +1071,7 @@
     border-color: var(--paper);
   }
  
-  /* ═══════════════ FOOTER ═══════════════ */
+  /* ═══════════════════════════ FOOTER ═══════════════════════════ */
   .footer {
     position: relative;
     z-index: 2;
@@ -1148,7 +1148,7 @@
     font-family: 'JetBrains Mono', monospace;
   }
  
-  /* ═══════════════ RESPONSIVE ═══════════════ */
+  /* ═══════════════════════════ RESPONSIVE ═══════════════════════════ */
   @media (max-width: 768px) {
     .masthead {
       padding: 0 24px;
@@ -1245,8 +1245,8 @@
     </div>
     <div class="masthead-meta">
       <div class="volume-info">
-        <span style="color: var(--muted); font-size: 12px; font-style: italic;">Gotbot?</span>
-        <a href="https://botbuster.biz" style="color: var(--rust); text-decoration: none; font-size: 12px; font-weight: 500; margin-left: 8px;">BotBuster.biz →</a>
+        <span style="color: var(--muted); font-size: 12px; font-style: italic;">GotBot?</span>
+        <a href="https://botbuster.biz" style="color: var(--rust); text-decoration: none; font-size: 12px; font-weight: 500; margin-left: 8px;">BotBuster.biz ↗</a>
       </div>
     </div>
   </header>
@@ -1263,7 +1263,7 @@
       <div class="hero-actions">
         <a href="#apply" class="btn-primary">
           <span>Apply to work with me</span>
-          <span>→</span>
+          <span>↗</span>
         </a>
         <a href="https://www.activecampaign.com" class="btn-secondary">
           <span>Start with ActiveCampaign free</span>
@@ -1394,7 +1394,7 @@
         <p>Like what you see? Let's solve your real challenges together.</p>
         <a href="#apply" class="btn-primary">
           <span>Apply to work with me</span>
-          <span>→</span>
+          <span>↗</span>
         </a>
       </div>
     </div>
@@ -1589,7 +1589,7 @@
       <div class="cta-buttons">
         <a href="mailto:greg@getgetner.com" class="btn-white">
           <span>Apply to work with me</span>
-          <span>→</span>
+          <span>↗</span>
         </a>
         <a href="https://www.activecampaign.com" class="btn-ghost">
           <span>Start with ActiveCampaign free</span>
@@ -1633,8 +1633,25 @@
  
     // Initialize on page load
     document.addEventListener('DOMContentLoaded', function() {
-      // Show email modal on first interaction
-      document.getElementById('chat-input').addEventListener('focus', function() {
+      console.log('Terminal initializing...');
+      
+      const chatInput = document.getElementById('chat-input');
+      
+      // Make disabled input clickable
+      chatInput.style.pointerEvents = 'auto';
+      chatInput.style.cursor = 'text';
+      
+      // Show email modal on click (works with disabled inputs)
+      chatInput.addEventListener('click', function() {
+        console.log('Input clicked, userEmail:', userEmail);
+        if (!userEmail) {
+          console.log('Showing email modal');
+          showEmailModal();
+        }
+      });
+      
+      // Also handle focus as backup (for when input becomes enabled)
+      chatInput.addEventListener('focus', function() {
         if (!userEmail) {
           showEmailModal();
           this.blur();
@@ -1779,4 +1796,3 @@
   </script>
 </body>
 </html>
- 
