@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Greg Getner — ActiveCampaign Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=JetBrains+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3eee5;
+    --paper-deep: #ebe4d6;
+    --ink: #161412;
+    --ink-soft: #2a2622;
+    --rust: #b8431f;
+    --rust-deep: #8a2f13;
+    --ochre: #c68a3a;
+    --sage: #5b6b4f;
+    --muted: #7a7062;
+    --line: rgba(22,20,18,0.14);
+    --line-strong: rgba(22,20,18,0.28);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter Tight', -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Paper grain texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.086 0 0 0 0 0.078 0 0 0 0 0.070 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+    opacity: 0.5;
+  }
+
+  /* ═══════════════ MASTHEAD ═══════════════ */
+  .masthead {
+    position: relative;
+    z-index: 2;
+    background: var(--paper-deep);
+    border-bottom: 3px solid var(--line-strong);
+    padding: 0 48px;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Fraunces', serif;
+  }
+
+  .masthead-title {
+    font-size: 42px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  .masthead-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--muted);
+    font-style: normal;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .masthead-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .volume-info {
+    font-size: 13px;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.3;
+    font-weight: 500;
+  }
+
+  /* ═══════════════ HERO ═══════════════ */
+  .hero {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 48px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .hero-content h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(64px, 7vw, 92px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 32px;
+    font-style: normal;
+  }
+
+  .hero-content .lead {
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+    font-weight: 500;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+  }
+
+  .hero-image {
+    position: relative;
+  }
+
+  .portrait {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 12px 32px rgba(22,20,18,0.2);
+    border: 1px solid var(--line);
+  }
+
+  .portrait-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 12px;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* ═══════════════ ACTIONS ═══════════════ */
+  .hero-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .btn-primary {
+    background: var(--rust);
+    color: var(--paper);
+    padding: 16px 32px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 2px solid var(--rust);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover {
+    background: var(--rust-deep);
+    border-color: var(--rust-deep);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    padding: 14px 30px;
+    border: 2px solid var(--line-strong);
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  /* ═══════════════ PARTIAL LIST ═══════════════ */
+  .partial-list {
+    position: relative;
+    z-index: 2;
+    background: var(--ink);
+    color: var(--paper);
+    margin: 80px auto;
+    max-width: 1400px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(22,20,18,0.3);
+  }
+
+  .partial-list-container {
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .partial-list-intro {
+    padding-right: 40px;
+  }
+
+  .partial-list-intro h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 20px;
+    color: var(--paper);
+  }
+
+  .partial-list-intro .quote {
+    font-size: 18px;
+    line-height: 1.5;
+    color: rgba(243,238,229,0.9);
+    margin-bottom: 16px;
+  }
+
+  .partial-list-intro .attribution {
+    font-size: 14px;
+    color: rgba(243,238,229,0.7);
+    font-style: italic;
+  }
+
+  .client-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .client-category {
+    padding: 20px;
+    border: 1px solid rgba(243,238,229,0.15);
+    border-radius: 8px;
+    background: rgba(243,238,229,0.05);
+  }
+
+  .client-category h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--paper);
+  }
+
+  .client-category .category-type {
+    font-size: 14px;
+    color: var(--ochre);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .partial-list-footer {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(243,238,229,0.15);
+    font-size: 14px;
+    color: rgba(243,238,229,0.6);
+    font-style: italic;
+  }
+
+  /* ═══════════════ TICKER ═══════════════ */
+  .ticker-band {
+    position: relative;
+    z-index: 2;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 20px 0;
+    overflow: hidden;
+    border-top: 3px solid var(--line-strong);
+    border-bottom: 3px solid var(--line-strong);
+    margin: 80px 0;
+  }
+
+  .ticker-content {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    white-space: nowrap;
+    gap: 120px;
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    flex-shrink: 0;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .ticker-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--ochre);
+    border-radius: 50%;
+  }
+
+  /* ═══════════════ TESTIMONIALS ═══════════════ */
+  .testimonials {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-header h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(42px, 5vw, 56px);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-header .subtitle {
+    font-size: 20px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 40px;
+    margin-bottom: 64px;
+  }
+
+  .testimonial-card {
+    background: var(--paper-deep);
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    padding: 40px;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .testimonial-card:hover {
+    border-color: var(--rust);
+    transform: translateY(-2px);
+  }
+
+  .testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 12px;
+    left: 24px;
+    font-size: 72px;
+    color: var(--rust);
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.3;
+  }
+
+  .testimonial-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 24px;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .author-initial {
+    width: 48px;
+    height: 48px;
+    background: var(--rust);
+    color: var(--paper);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    font-family: 'Fraunces', serif;
+  }
+
+  .author-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .author-info p {
+    font-size: 14px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ═══════════════ FEATURES ═══════════════ */
+  .features {
+    position: relative;
+    z-index: 2;
+    background: var(--paper-deep);
+    border-top: 3px solid var(--line-strong);
+    padding: 80px 48px;
+    margin-top: 80px;
+  }
+
+  .features-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .features h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(42px, 5vw, 56px);
+    font-weight: 700;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 64px;
+    letter-spacing: -0.01em;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+  }
+
+  .feature-card {
+    background: var(--paper);
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    padding: 32px;
+    transition: all 0.3s;
+  }
+
+  .feature-card:hover {
+    border-color: var(--sage);
+    transform: translateY(-2px);
+  }
+
+  .feature-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .feature-title {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .feature-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ═══════════════ PROCESS ═══════════════ */
+  .process {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+
+  .process h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(42px, 5vw, 56px);
+    font-weight: 700;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .process-subtitle {
+    text-align: center;
+    font-size: 20px;
+    color: var(--muted);
+    margin-bottom: 64px;
+    font-style: italic;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+  }
+
+  .process-step {
+    background: var(--paper-deep);
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    padding: 40px;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .process-step:hover {
+    border-color: var(--ochre);
+    transform: translateY(-2px);
+  }
+
+  .step-number {
+    position: absolute;
+    top: -20px;
+    left: 32px;
+    background: var(--rust);
+    color: var(--paper);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .step-title {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .step-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ═══════════════ CTA ═══════════════ */
+  .cta-section {
+    position: relative;
+    z-index: 2;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 48px;
+    text-align: center;
+    border-top: 3px solid var(--line-strong);
+    margin-top: 80px;
+  }
+
+  .cta-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cta-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(42px, 6vw, 64px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .cta-section p {
+    font-size: 20px;
+    opacity: 0.9;
+    margin-bottom: 40px;
+    line-height: 1.5;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 16px 32px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--paper);
+    padding: 14px 30px;
+    border: 2px solid rgba(243,238,229,0.4);
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-ghost:hover {
+    background: var(--paper);
+    color: var(--ink);
+    border-color: var(--paper);
+  }
+
+  /* ═══════════════ FOOTER ═══════════════ */
+  .footer {
+    position: relative;
+    z-index: 2;
+    background: var(--paper-deep);
+    padding: 60px 48px 40px;
+    border-top: 3px solid var(--line-strong);
+  }
+
+  .footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .footer-info h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .footer-info p {
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .footer-contact {
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-contact:hover {
+    color: var(--rust-deep);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .footer-links a:hover {
+    color: var(--ink);
+  }
+
+  .footer-bottom {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 2px solid var(--line);
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ═══════════════ RESPONSIVE ═══════════════ */
+  @media (max-width: 768px) {
+    .masthead {
+      padding: 0 24px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      min-height: auto;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    .masthead-title {
+      font-size: 32px;
+    }
+
+    .hero {
+      padding: 60px 24px;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .hero-image {
+      order: -1;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .features,
+    .testimonials,
+    .process,
+    .cta-section,
+    .footer {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .testimonials-grid,
+    .features-grid,
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .partial-list-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 32px 24px;
+    }
+
+    .partial-list-intro {
+      padding-right: 0;
+    }
+
+    .client-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .partial-list {
+      margin: 40px 24px;
+    }
+
+    .footer-container {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      text-align: center;
+    }
+
+    .footer-links {
+      justify-content: center;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      text-align: center;
+      justify-content: center;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-brand">
+      <h1 class="masthead-title">Getner & Co</h1>
+      <p class="masthead-subtitle">ActiveCampaign Consulting</p>
+    </div>
+    <div class="masthead-meta">
+      <div class="volume-info">
+        <span style="color: var(--muted); font-size: 12px; font-style: italic;">Got bots?</span><br>
+        <a href="https://botbuster.biz" style="color: var(--rust); text-decoration: none; font-size: 12px; font-weight: 500;">BotBuster.biz →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="hero">
+    <div class="hero-content">
+      <h1>23 years doing retention marketing for the most recognized coaches, celebrities, and brands</h1>
+      
+      <p class="lead">I run a boutique, AI-powered operation that delivers better work faster — without the agency overhead.</p>
+      
+      <p>If your ActiveCampaign program needs an upgrade, let's talk.</p>
+      
+      <div class="hero-actions">
+        <a href="#apply" class="btn-primary">
+          <span>Apply to work with me</span>
+          <span>→</span>
+        </a>
+        <a href="https://www.activecampaign.com" class="btn-secondary">
+          <span>Start with ActiveCampaign free</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="assets/images/greg-getner-photo.png" alt="Greg Getner" class="portrait">
+      <p class="portrait-caption">Greg Getner, Principal</p>
+    </div>
+  </main>
+
+  <!-- PARTIAL LIST -->
+  <section class="partial-list">
+    <div class="partial-list-container">
+      <div class="partial-list-intro">
+        <h3>A PARTIAL LIST</h3>
+        <p class="quote">"Greg is the rare operator who understands both the craft of the copy and the machinery underneath it. He fixes things nobody else thought to look at."</p>
+        <p class="attribution">— A CLIENT, 8-FIGURE COACHING BRAND</p>
+      </div>
+      
+      <div class="client-grid">
+        <div class="client-category">
+          <h4>Best-selling</h4>
+          <span class="category-type">authors</span>
+        </div>
+        
+        <div class="client-category">
+          <h4>Grammy</h4>
+          <span class="category-type">winners</span>
+        </div>
+        
+        <div class="client-category">
+          <h4>NYT</h4>
+          <span class="category-type">columnists</span>
+        </div>
+        
+        <div class="client-category">
+          <h4>8-figure</h4>
+          <span class="category-type">coaches</span>
+        </div>
+        
+        <div class="client-category">
+          <h4>DTC</h4>
+          <span class="category-type">category leaders</span>
+        </div>
+        
+        <div class="client-category">
+          <h4>Celebrity</h4>
+          <span class="category-type">brands</span>
+        </div>
+        
+        <div class="client-category">
+          <h4>Wellness</h4>
+          <span class="category-type">empires</span>
+        </div>
+        
+        <div class="client-category">
+          <h4>SaaS</h4>
+          <span class="category-type">founders</span>
+        </div>
+        
+        <div class="partial-list-footer">
+          Names withheld by request — boutique means discreet.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER BAND -->
+  <div class="ticker-band">
+    <div class="ticker-content">
+      <div class="ticker-item">
+        <span class="ticker-dot"></span>
+        <span>1:1 Client Engagement</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-dot"></span>
+        <span>23 Years Experience</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-dot"></span>
+        <span>2-3 Clients at Once</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-dot"></span>
+        <span>Available Q2 2026</span>
+      </div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="ticker-item">
+        <span class="ticker-dot"></span>
+        <span>1:1 Client Engagement</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-dot"></span>
+        <span>23 Years Experience</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-dot"></span>
+        <span>2-3 Clients at Once</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-dot"></span>
+        <span>Available Q2 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-header">
+      <h2>What clients say</h2>
+      <p class="subtitle">Real results from real clients</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          Fixed deliverability issues and we regained all our lost revenue.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-initial">E</div>
+          <div class="author-info">
+            <h4>Email Marketing Client</h4>
+            <p>Major Brand Recovery</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          Greg is the Grand Poobah of email marketing. Stop reading this and contact him.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-initial">E</div>
+          <div class="author-info">
+            <h4>Email Marketing Client</h4>
+            <p>Industry Testimonial</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          Greg was fantastic. We got more than we bargained for... helped 2x-3x our revenue in a short amount of time.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-initial">M</div>
+          <div class="author-info">
+            <h4>Marketing Consultant Client</h4>
+            <p>500 hrs project</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="features-container">
+      <h2>Better work. Faster. No agency overhead.</h2>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">👤</span>
+          <h3 class="feature-title">You talk to me. Always.</h3>
+          <p class="feature-text">
+            No account coordinators, no junior staff, no layers. When you email, Greg replies. When something ships, Greg shipped it.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">🤖</span>
+          <h3 class="feature-title">AI does the grunt work</h3>
+          <p class="feature-text">
+            I use AI for drafting, QA, segmentation analysis, and pattern-finding — which means you get senior-level output on agency timelines.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">🎯</span>
+          <h3 class="feature-title">Selective client roster</h3>
+          <p class="feature-text">
+            Two to three clients at a time. If we're a fit, I show up. If we're not, I'll tell you who to call instead.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">📈</span>
+          <h3 class="feature-title">Retention > Acquisition</h3>
+          <p class="feature-text">
+            Every engagement optimizes for lifetime value, not vanity opens. The revenue is hiding in your existing list — I help you find it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <h2>Three ways to work together</h2>
+    <p class="process-subtitle">Strategy, build, and ongoing partnership — choose what your ActiveCampaign program needs most.</p>
+    
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-number">01</div>
+        <h3 class="step-title">The Teardown</h3>
+        <p class="step-text">
+          A ruthless audit of your current account — automations, segments, deliverability, list hygiene. You walk away knowing exactly what's leaking revenue.
+        </p>
+      </div>
+      
+      <div class="process-step">
+        <div class="step-number">02</div>
+        <h3 class="step-title">The Rebuild</h3>
+        <p class="step-text">
+          Full retention architecture: welcome flows, win-back sequences, behavioral triggers, and nurture paths built to your brand voice.
+        </p>
+      </div>
+      
+      <div class="process-step">
+        <div class="step-number">03</div>
+        <h3 class="step-title">The Partnership</h3>
+        <p class="step-text">
+          Ongoing fractional retention leadership. I become your behind-the-scenes ActiveCampaign brain — campaigns, launches, list strategy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="apply">
+    <div class="cta-container">
+      <h2>Ready to upgrade your ActiveCampaign program?</h2>
+      <p>
+        Next opening: Q2 2026. Limited to 2-3 clients for focused, high-quality work.
+      </p>
+      <div class="cta-buttons">
+        <a href="mailto:greg@getgetner.com" class="btn-white">
+          <span>Apply to work with me</span>
+          <span>→</span>
+        </a>
+        <a href="https://www.activecampaign.com" class="btn-ghost">
+          <span>Start with ActiveCampaign free</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3>Greg Getner</h3>
+        <p>ActiveCampaign Expert • Retention Marketing Specialist</p>
+        <a href="mailto:greg@getgetner.com" class="footer-contact">
+          <span>✉</span>
+          <span>greg@getgetner.com</span>
+        </a>
+      </div>
+      
+      <div class="footer-links">
+        <a href="#apply">Apply</a>
+        <a href="mailto:greg@getgetner.com">Contact</a>
+        <a href="https://www.activecampaign.com">ActiveCampaign</a>
+        <a href="https://botbuster.biz">BotBuster.biz</a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 Getner & Co. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
