@@ -2095,6 +2095,15 @@
     </div>
   </div>
 
+  <!-- Hidden form so Netlify can detect "ai-terminal-leads" at build time.
+       Live submissions happen via fetch in submitTerminalLead(). -->
+  <form name="ai-terminal-leads" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="email" name="email" />
+    <input type="text" name="question_count" />
+    <textarea name="transcript"></textarea>
+    <input type="text" name="bot-field" />
+  </form>
+
   <!-- EMAIL CAPTURE MODAL -->
   <div id="email-modal" class="modal-overlay" style="display: none;">
     <div class="modal-content">
@@ -2103,7 +2112,7 @@
         <button class="modal-close" onclick="closeEmailModal()">&times;</button>
       </div>
       <div class="modal-body">
-        <p>Get instant access to 23 years of ActiveCampaign expertise. Ask up to 5 questions to see how I solve problems.</p>
+        <p>Get instant access to 23 years of retention marketing expertise. Ask up to 5 questions to see how I solve problems.</p>
         <p id="pending-question-hint" style="display: none;">
           Enter email to ask: &ldquo;<span id="pending-question-text"></span>&rdquo;
         </p>
@@ -2328,7 +2337,8 @@
     </div>
     
     <div class="footer-bottom">
-      <p>&copy; 2026 Getner & AI. All rights reserved.</p>
+      <p>Built with ❤️ by Greg &amp; Claude. Deployed to Netlify.</p>
+      <p>&copy; 2026 Getner &amp; AI. All rights reserved.</p>
     </div>
   </footer>
  
@@ -2641,6 +2651,7 @@
         closeEmailModal();
         enableChat();
         updateStatus(`Connected as ${email} • ${maxMessages - messageCount} questions remaining`);
+        submitTerminalLead();
 
         if (pendingSuggestion) {
           const queued = pendingSuggestion;
@@ -2651,6 +2662,40 @@
             sendMessage();
           }
         }
+      }
+    }
+
+    // Fire-and-forget capture to Netlify Forms (ai-terminal-leads).
+    // Silently swallows errors so the chat UX never breaks if the POST fails.
+    function buildTranscript() {
+      const lines = [];
+      for (let i = 0; i < conversationHistory.length; i += 2) {
+        const q = conversationHistory[i];
+        const a = conversationHistory[i + 1];
+        const n = (i / 2) + 1;
+        if (q) lines.push(`Q${n}: ${q.content}`);
+        if (a) lines.push(`A${n}: ${a.content}`);
+        lines.push('');
+      }
+      return lines.join('\n').trim();
+    }
+
+    async function submitTerminalLead() {
+      if (!userEmail) return;
+      const payload = new URLSearchParams({
+        'form-name': 'ai-terminal-leads',
+        email: userEmail,
+        question_count: String(messageCount),
+        transcript: buildTranscript()
+      });
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: payload.toString()
+        });
+      } catch (err) {
+        console.warn('Terminal lead submit failed (non-blocking):', err);
       }
     }
  
@@ -2781,6 +2826,7 @@
               { role: 'user', content: message },
               { role: 'assistant', content: assistantText }
             );
+            submitTerminalLead();
 
             if (messageCount < maxMessages) {
               chatInputEl.disabled = false;
