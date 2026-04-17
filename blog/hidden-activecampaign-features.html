@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Hidden ActiveCampaign Features Most Consultants Miss — Greg Getner</title>
+<meta name="description" content="Six ActiveCampaign features I find turned off in almost every account I inherit — conditional content, site tracking, sub-automations, predictive sending, non-sales pipelines, and rolling date segments." />
+<link rel="canonical" href="https://getner.ai/blog/hidden-activecampaign-features.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<meta property="og:title" content="The Hidden ActiveCampaign Features Most Consultants Miss" />
+<meta property="og:description" content="Six ActiveCampaign features I find turned off in almost every account I inherit." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/hidden-activecampaign-features.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="ActiveCampaign" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Hidden ActiveCampaign Features Most Consultants Miss",
+  "description": "Six ActiveCampaign features I find turned off in almost every account I inherit — conditional content, site tracking, sub-automations, predictive sending, non-sales pipelines, and rolling date segments.",
+  "author": { "@type": "Person", "name": "Greg Getner", "url": "https://getner.ai" },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-04-18",
+  "mainEntityOfPage": "https://getner.ai/blog/hidden-activecampaign-features.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Consulting</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">April 18, 2026 · ActiveCampaign · 12 min read</div>
+      <h1 class="post-title">The Hidden ActiveCampaign Features Most Consultants Miss</h1>
+      <p class="post-lede">I've inherited accounts from dozens of other consultants. The same six features keep showing up on my "never enabled" list — and they're not obscure. They're sitting in the product, shipped, documented, free.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>Most ActiveCampaign accounts are running at maybe 40% of the platform's capability. Not because the operators are lazy, but because the features that separate a good program from a great one are one layer deeper than where tutorials stop.</p>
+
+      <p>Here are the six I most often find dormant when I take over an account. None of them require a higher plan tier for most of what I'll describe (I'll note where they do). All of them are the kind of thing that would take an afternoon to enable and months to build a substitute for.</p>
+
+      <h2>1. Conditional content blocks inside emails</h2>
+
+      <p>This one changes how you think about broadcasts. Inside AC's email designer, every content block has a <strong>"Show/Hide when…"</strong> condition. You can gate a block by tag, list, custom field, segment — anything you can describe in the normal segment builder.</p>
+
+      <p>What this means in practice: one monthly broadcast can contain three entirely different CTAs for three different customer tiers, and each contact only sees the block relevant to them. No duplicate broadcasts. No parallel automations. No "which version do I send to which segment" spreadsheet.</p>
+
+      <p>Real example: a client with three offer tiers — free subscribers, $99/month members, and $2,000 mastermind clients. The pre-audit newsletter was three separate broadcasts built in parallel, maintained by hand, and routinely out of sync. We collapsed it into one broadcast with three conditional content blocks. Each contact sees only the tier-appropriate CTA. Edit time per newsletter dropped from 90 minutes to 20.</p>
+
+      <p>The feature is sitting in the block settings panel. Most operators never open that panel because there's nothing obviously wrong with their current emails.</p>
+
+      <h2>2. Site tracking (beyond ecommerce)</h2>
+
+      <p>Site tracking is the script that ties anonymous browsing on your website to known AC contacts once they're identified (usually via a form submission or a link click from an email). Ecommerce setups turn it on because ActiveCampaign's documentation leads with ecommerce examples. Everyone else tends to skip it.</p>
+
+      <p>That's a mistake. Once site tracking is on, you can trigger automations on specific URL visits. Which means you can react to behavioral signals that would otherwise be invisible:</p>
+
+      <ul>
+        <li>A contact visits your pricing page twice in a week → tag them <code>beh-high-intent</code> and notify your team.</li>
+        <li>A contact visits your "Careers" page → exclude from sales automations, flag as not-a-buyer.</li>
+        <li>A contact reads three FAQ pages in a session → send a targeted "Questions I usually get" email the next day.</li>
+        <li>A contact opens your pricing page but never clicks "Start" → enter a low-key "reasons people hesitate" sequence.</li>
+      </ul>
+
+      <p>Setup is one script tag and enabling the feature in the account settings. The payoff is every automation you build from that day forward has a new dimension of triggers available.</p>
+
+      <h2>3. Sub-automations (Start Another Automation)</h2>
+
+      <p>Inside any automation, you can add a "<strong>Start another automation</strong>" action that kicks off a separate named automation for the same contact. This sounds boring until you see what it unlocks.</p>
+
+      <p>Most consultants build parallel automations that duplicate logic. Five welcome paths, each with its own "final tidy-up" sequence at the end: apply the "onboarded" tag, add to the monthly newsletter list, remove a temporary behavioral tag, fire an analytics event. When the tidy-up logic changes, they edit five automations.</p>
+
+      <p>The fix is one shared "end-of-onboarding-cleanup" sub-automation, called from each of the five parent flows. Change the logic once, every path inherits the change. This is the DRY principle from software engineering applied to automation design, and it scales beautifully as an account grows.</p>
+
+      <p>Corollary: if you find yourself copying the same four-step block between automations, it should almost certainly be a sub-automation.</p>
+
+      <h2>4. Predictive Sending (when your plan has it)</h2>
+
+      <p>If your plan includes <strong>Predictive Sending</strong>, AC looks at each individual contact's historical open behavior and delivers the email at that person's most-likely-to-open window. Not "Tuesday at 10am for everyone" — 10am for the 10am openers, 9pm for the night owls, Saturday morning for the weekend readers.</p>
+
+      <p>Two things consistently happen when I turn this on:</p>
+
+      <ul>
+        <li>Open rates on broadcasts move up 8-18%, depending on how clumped the list was before.</li>
+        <li>The subset of your list who only open on weekends, or only at 11pm, finally start engaging — because they were never seeing your emails at an opportune moment.</li>
+      </ul>
+
+      <p>The reason operators don't use it: most don't know it's there. It's a toggle in the broadcast/campaign send step, not a headline feature. Once you enable it on your primary newsletter, you'll see why broadcast-send-time A/B tests were always going to be noisy.</p>
+
+      <h2>5. Deal pipelines for workflows that aren't sales</h2>
+
+      <p>Deal pipelines are the "CRM" side of AC, and most operators use them only for sales: prospect → discovery → proposal → closed-won. That's half of what they can do.</p>
+
+      <p>A pipeline is just a named sequence of stages with automation hooks. You can build one for anything with discrete stages:</p>
+
+      <ul>
+        <li><strong>Application review for boutique services.</strong> Received → reviewed → short-listed → interviewing → accepted → declined. Stage changes trigger applicant-facing automations (acknowledgment, next-steps email, decision letter) and internal notifications.</li>
+        <li><strong>Course cohort progress.</strong> Enrolled → week 1 complete → week 4 complete → graduated → alumni. Segment your email content to people actually at that stage. Offer an alumni upsell only to people who reached "graduated."</li>
+        <li><strong>Service onboarding.</strong> Paid → kickoff scheduled → kickoff done → milestone 1 → milestone 2 → complete. Each stage change triggers an internal checklist and a client-facing progress email.</li>
+      </ul>
+
+      <p>The feature cost is zero — you already have the pipelines tool. The payoff is replacing messy tag-based stage tracking with a visual, report-friendly, automation-native representation of any multi-step process.</p>
+
+      <h2>6. Date-based custom fields with rolling segments</h2>
+
+      <p>Most consultants track "when did X happen" with a tag: <code>purchased_2025_03</code>, <code>webinar_2025_04_12</code>. That approach loses precision and ages badly.</p>
+
+      <p>The better pattern: a <strong>date-type custom field</strong> like <code>Last Purchase Date</code> or <code>Signup Date</code>, and segments that use it as a rolling anchor.</p>
+
+      <p>The magic is the segment conditions. AC lets you write segments like:</p>
+
+      <ul>
+        <li>"Last Purchase Date <em>was exactly</em> 30 days ago"</li>
+        <li>"Signup Date <em>is more than</em> 180 days ago AND fewer than 365"</li>
+        <li>"Subscription Renewal Date <em>is in the next</em> 14 days"</li>
+      </ul>
+
+      <p>Each of those segments can <em>trigger an automation on entry</em>. That means you get a perfectly timed touch — 30 days after purchase, 6 months after signup, two weeks before renewal — without building a "wait 30 days" step into every flow and hoping the contact doesn't exit early.</p>
+
+      <p>Why it matters: timing is the most undervalued lever in retention. A "happy one-month anniversary" email that goes out exactly 30 days after purchase outperforms a generic quarterly newsletter by a factor I've stopped being surprised by. The date-field-plus-rolling-segment pattern is how you make that timing automatic and durable.</p>
+
+      <h2>Pick one, enable it this week</h2>
+
+      <p>If you read through that list and thought "I'm doing half of these," congratulations — you're already in the top tier of AC operators I see. If you read through and realized you're doing none of them, that's not bad news. It's a runway.</p>
+
+      <p>Pick one. The fastest win for most accounts is <strong>conditional content blocks</strong>, because the payoff starts on the next broadcast you ship. The longest-term compounding win is <strong>site tracking</strong>, because every automation you build from that point forward gets smarter. The highest-leverage for sales teams is <strong>deal pipelines for non-sales workflows</strong>. The one operators are most embarrassed they missed, once they see it, is <strong>sub-automations</strong>.</p>
+
+      <p>I'd rather you enable one of these properly than four of them half-heartedly. The platform rewards deep implementations of a few features more than shallow adoption of many.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want a full audit of what's turned off in yours?</h3>
+      <p>A thorough account audit usually surfaces 15–25 features that are either misconfigured or never turned on. I work with a few boutique clients at a time.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+  </div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with a few select clients at a time. Let me know about your situation and I'll determine if we're a good fit.</p>
+      </div>
+      <form class="site-form" id="application-form" name="application" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-usage">ActiveCampaign Usage<span class="required">*</span></label>
+            <select class="form-control" id="app-usage" name="ac_usage" required>
+              <option value="">Select one…</option>
+              <option>Not using</option>
+              <option>Basic setup</option>
+              <option>Advanced</option>
+              <option>Complex multi-brand</option>
+            </select>
+            <span class="form-error" data-error-for="app-usage"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-volume">Monthly Email Volume<span class="required">*</span></label>
+            <select class="form-control" id="app-volume" name="email_volume" required>
+              <option value="">Select one…</option>
+              <option>Under 10K</option>
+              <option>10K-50K</option>
+              <option>50K-250K</option>
+              <option>250K-500K</option>
+              <option>500K-1M</option>
+              <option>1M-5M</option>
+              <option>5M-10M</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-volume"></span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget" data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F" style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+    function showModal(id) {
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.style.display = 'flex';
+      m.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const f = m.querySelector('.form-control');
+      if (f && f.offsetParent) setTimeout(() => f.focus(), 50);
+    }
+    function hideModal(id) {
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.style.display = 'none';
+      m.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true'); else field.removeAttribute('aria-invalid');
+    }
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const v = (field.value || '').trim();
+        if (!v) { setFieldError(field, 'Required'); if (!firstInvalid) firstInvalid = field; }
+        else if (field.type === 'email' && !EMAIL_RE.test(v)) { setFieldError(field, 'Enter a valid email'); if (!firstInvalid) firstInvalid = field; }
+        else setFieldError(field, '');
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+    function encodeFormData(form) {
+      const p = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) p.append(k, v);
+      return p.toString();
+    }
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: encodeFormData(form) });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(f => {
+        f.addEventListener('input', () => setFieldError(f, ''));
+        f.addEventListener('change', () => setFieldError(f, ''));
+      });
+    }
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) { e.preventDefault(); window.openApplyModal(); return; }
+      const m = document.getElementById('apply-modal');
+      if (m && e.target === m) hideModal('apply-modal');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const m = document.getElementById('apply-modal');
+      if (m && m.style.display === 'flex') hideModal('apply-modal');
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) { success.classList.add('visible'); loadCalendlyScript(); success.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

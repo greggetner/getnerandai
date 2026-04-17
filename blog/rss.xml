@@ -6,7 +6,25 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of ActiveCampaign consulting: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>The Hidden ActiveCampaign Features Most Consultants Miss</title>
+      <link>https://getner.ai/blog/hidden-activecampaign-features.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/hidden-activecampaign-features.html</guid>
+      <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Six ActiveCampaign features I find turned off in almost every account I inherit — conditional content blocks, site tracking, sub-automations, predictive sending, non-sales deal pipelines, and rolling date-field segments.]]></description>
+    </item>
+
+    <item>
+      <title>Why Your Email List Is Dying (And How to Fix It)</title>
+      <link>https://getner.ai/blog/why-your-email-list-is-dying.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/why-your-email-list-is-dying.html</guid>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[A retention marketer's diagnostic for when open rates slide, deliverability drifts, and replies go quiet — plus the four fixes that actually work.]]></description>
+    </item>
 
     <item>
       <title>5 ActiveCampaign Automation Mistakes That Kill Conversions</title>
@@ -14,7 +32,7 @@
       <guid isPermaLink="true">https://getner.ai/blog/activecampaign-automation-mistakes.html</guid>
       <pubDate>Wed, 16 Apr 2026 00:00:00 GMT</pubDate>
       <author>greg@getner.ai (Greg Getner)</author>
-      <description><![CDATA[The five ActiveCampaign automation mistakes I find in nearly every audit — goal exits, tag cancer, no-reply senders, dead contact blasts, and pacing problems — and the specific fixes that recover the conversions they quietly bleed.]]></description>
+      <description><![CDATA[The five ActiveCampaign automation mistakes I find in nearly every audit — goal exits, tag sprawl, no-reply senders, dead contact blasts, and pacing problems — and the specific fixes that recover the conversions they quietly bleed.]]></description>
     </item>
 
   </channel>

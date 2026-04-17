@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Why Your Email List Is Dying (And How to Fix It) — Greg Getner</title>
+<meta name="description" content="A retention marketer's diagnostic for when open rates slide, deliverability drifts, and replies go quiet — plus the four fixes that actually work." />
+<link rel="canonical" href="https://getner.ai/blog/why-your-email-list-is-dying.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<meta property="og:title" content="Why Your Email List Is Dying (And How to Fix It)" />
+<meta property="og:description" content="A retention marketer's diagnostic for when open rates slide, deliverability drifts, and replies go quiet — plus the four fixes that actually work." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/why-your-email-list-is-dying.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Retention Marketing" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why Your Email List Is Dying (And How to Fix It)",
+  "description": "A retention marketer's diagnostic for when open rates slide, deliverability drifts, and replies go quiet — plus the four fixes that actually work.",
+  "author": { "@type": "Person", "name": "Greg Getner", "url": "https://getner.ai" },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-04-17",
+  "mainEntityOfPage": "https://getner.ai/blog/why-your-email-list-is-dying.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Consulting</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">April 17, 2026 · Retention · 11 min read</div>
+      <h1 class="post-title">Why Your Email List Is Dying (And How to Fix It)</h1>
+      <p class="post-lede">It isn't a sudden collapse. It's been drifting for months, and the dashboard most operators look at is the last place the problem shows up.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>Your list isn't dead. It's been trying to tell you for six months and nobody was listening.</p>
+
+      <p>In my experience auditing ActiveCampaign programs, a "dying list" is almost never a sudden collapse. It's a slow drift that looks fine on Monday, fine on Tuesday, fine at the end of the month — and when someone finally pulls the six-month chart, the graph looks like a runway sloping into the dirt.</p>
+
+      <p>Retention marketing as a discipline exists because list health is easier to preserve than to rebuild. Once Gmail's trust in your sending falls below a certain threshold, clawing it back takes months. Same with Yahoo, Apple, Outlook. So the expensive answer is "rebuild." The cheap answer is "stop the slide now."</p>
+
+      <p>Here's what I actually look at when a client tells me the program feels off, what the metrics mean, and the four interventions that most reliably turn the numbers back up.</p>
+
+      <h2>The signals I actually watch</h2>
+
+      <p>Most dashboards surface open rate and click rate. Both useful. Both lagging indicators. By the time your open rate has dropped from 32% to 22%, you've been drifting for three months. Here's the earlier signal set I track for every retention client:</p>
+
+      <p><strong>Gmail's user-reported spam rate.</strong> If you aren't logged into <strong>Google Postmaster Tools</strong> with your sending domain verified, you're flying blind. The only number I obsess over there is "User-reported spam rate" — the percent of Gmail users who hit the spam button on your emails. Google wants this below <code>0.30%</code>. Below <code>0.10%</code> is excellent. Cross <code>0.30%</code> and Gmail starts quietly routing you to Promotions or Spam more often, and you don't see it in your open rates because spam-foldered email still gets "opened" by filter scanners — it just never reaches humans.</p>
+
+      <p><strong>Reply rate across the last 90 days.</strong> I pull reply counts from AC's reporting. On a healthy list, welcome sequences generate 0.5% to 3% replies on the first two emails, depending on how explicitly the content invites one. If reply rate falls below <code>0.2%</code> for a sequence that used to earn replies, engagement is thinning before the open rate shows it.</p>
+
+      <p><strong>Unsubscribe rate per broadcast, trend over 90 days.</strong> Normal on a healthy list: 0.2–0.5% per broadcast. When I see it drift to 0.8% or 1% on the same content style, the list is telling you something. Usually: you've been sending too often, or to too-cold a segment.</p>
+
+      <p><strong>Soft bounce drift.</strong> Hard bounces clean themselves up. I watch <em>soft</em> bounces. If soft bounces climb from 0.5% to 2% over three months, you're pushing through ISP throttling — which is a deliverability warning light flashing from the server side.</p>
+
+      <h2>The 20-minute diagnostic I run</h2>
+
+      <p>Before I recommend any fix, I run the same five checks. You can do this yourself in a single sitting:</p>
+
+      <ol>
+        <li><strong>Pull the engagement cohort chart.</strong> In AC, build segments for "opened or clicked in last 30 / 60 / 90 / 180 days." Graph the contact count per bucket. Healthy programs have a 30-day cohort at or above 25% of total list. Below 15% means you're carrying a majority of dead weight.</li>
+        <li><strong>Compare open rate across engagement cohorts.</strong> Send a test broadcast to the 30-day cohort versus the 90+ day cohort. The delta tells you how much dead weight is dragging the blended number. I routinely see 48% on the 30-day cohort and 6% on the 90+, averaging to a "21%" that doesn't describe either reality.</li>
+        <li><strong>Check your Postmaster numbers.</strong> User-reported spam rate, IP reputation (if you're on a dedicated IP), domain reputation. Any "Bad" or "Low" grade is a red flag.</li>
+        <li><strong>Audit your sender address.</strong> Is it a real mailbox a human checks daily? Bounces landing in a black hole is a slow-burn reputation tax.</li>
+        <li><strong>Review your top 3 broadcasts from the last 90 days.</strong> Targeted to engagement, or blasted to the full list? Coming out at a human cadence, or in bursts?</li>
+      </ol>
+
+      <p>That's the diagnostic. Now the fixes.</p>
+
+      <h2>Four fixes that actually move the numbers</h2>
+
+      <h3>1. Engagement-gate every broadcast</h3>
+
+      <p>Stop sending to people who haven't opened or clicked in 90 days. Period. I know this feels like shrinking the program — it isn't. You're giving Gmail, Apple, and Yahoo a clearer signal that the contacts still on your list actually want to be there. Open rate on the remaining list jumps 2-3x. Inbox placement improves. Revenue per email goes up, not down.</p>
+
+      <p>Build the segments once, maintain them forever:</p>
+
+      <ul>
+        <li><strong>Active</strong> — opened or clicked in the last 30 days. Send everything.</li>
+        <li><strong>Dormant</strong> — engaged 31–90 days ago. Send selectively; only your best content.</li>
+        <li><strong>Cold</strong> — 90+ days of silence. Do <em>not</em> include in broadcasts. Run one reactivation sequence. Prune the rest yourself.</li>
+      </ul>
+
+      <h3>2. Run a clean reactivation, then prune without guilt</h3>
+
+      <p>For the Cold cohort, build one reactivation sequence. Three emails over ten days, each materially different in subject and voice. Be honest: <em>"Last call before I stop emailing you."</em> <em>"Still want to be here?"</em> If they don't open or click any of the three, unsubscribe them yourself. Gmail rewards proactive list hygiene, and a list of 18,000 engaged contacts outperforms a list of 50,000 with 32,000 people who've forgotten you exist.</p>
+
+      <p>Most clients push back on this step because the raw count feels like a loss. It isn't. The revenue per email climbs, the unsubscribe rate steadies, and Postmaster grades improve within 4-8 weeks.</p>
+
+      <h3>3. Move to a real, monitored sender</h3>
+
+      <p>I've written about this elsewhere but it keeps showing up. <code>no-reply@</code> addresses are a deliverability tax you pay quietly every month. Switch to a real mailbox a human checks, or route replies into your support tool. Replies are the strongest positive signal an ISP sees from you. Every reply is a contact telling Gmail "I trust this sender." That compounds — slowly, then suddenly.</p>
+
+      <p>Worried about volume? Set a polite auto-responder with your expected response time. Link to your help center. The cost to your inbox reputation is much smaller than the cost of running <code>no-reply</code> for another year.</p>
+
+      <h3>4. Change the cadence, not the quantity</h3>
+
+      <p>The default pattern I see in every audit: weekly broadcast, same day, same time, delivered like clockwork until the week it isn't. When the clockwork breaks, most operators "catch up" by sending two broadcasts the next week. Now the list has been trained that your pattern is unpredictable, and engagement quietly steps down another rung.</p>
+
+      <p>The fix is steady, but slower. Every 10 days instead of every 7. Vary the day by one or two. Send at times that match when your cohort actually opens — use <strong>Predictive Sending</strong> if your plan has it, or pull the last 90 days of open-time data and pick manually. Cadence that matches human rhythm beats cadence that matches your calendar.</p>
+
+      <h2>What healthy looks like</h2>
+
+      <p>Six months after the fixes land, here's what I expect on a properly managed program:</p>
+
+      <ul>
+        <li>30-day engagement cohort at 35-45% of total list</li>
+        <li>Average open rate above 35% on the engaged segment</li>
+        <li>Reply rate 0.5-2% on relational content</li>
+        <li>Gmail user-reported spam rate well under 0.2%</li>
+        <li>Unsubscribe rate stable, not drifting up</li>
+        <li>Revenue per email up 40-80% versus the "pre-fix" baseline</li>
+      </ul>
+
+      <p>This is the boring answer to retention. There's no magic sequence. There's no replacement for sending good content to people who want it, at a pace they can handle, from an address that looks human.</p>
+
+      <p>The hard part isn't knowing what to do. It's having the discipline to prune a list that <em>feels</em> valuable because the number is big. The clients who do it recover every time. The ones who won't are still wondering why their campaigns don't hit the way they did in 2023.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Think yours is drifting?</h3>
+      <p>If these signals sound familiar, a proper audit usually finds the exact leaks in an afternoon. I work with a few boutique clients at a time.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+  </div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with a few select clients at a time. Let me know about your situation and I'll determine if we're a good fit.</p>
+      </div>
+      <form class="site-form" id="application-form" name="application" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-usage">ActiveCampaign Usage<span class="required">*</span></label>
+            <select class="form-control" id="app-usage" name="ac_usage" required>
+              <option value="">Select one…</option>
+              <option>Not using</option>
+              <option>Basic setup</option>
+              <option>Advanced</option>
+              <option>Complex multi-brand</option>
+            </select>
+            <span class="form-error" data-error-for="app-usage"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-volume">Monthly Email Volume<span class="required">*</span></label>
+            <select class="form-control" id="app-volume" name="email_volume" required>
+              <option value="">Select one…</option>
+              <option>Under 10K</option>
+              <option>10K-50K</option>
+              <option>50K-250K</option>
+              <option>250K-500K</option>
+              <option>500K-1M</option>
+              <option>1M-5M</option>
+              <option>5M-10M</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-volume"></span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget" data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F" style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+    function showModal(id) {
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.style.display = 'flex';
+      m.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const f = m.querySelector('.form-control');
+      if (f && f.offsetParent) setTimeout(() => f.focus(), 50);
+    }
+    function hideModal(id) {
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.style.display = 'none';
+      m.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true'); else field.removeAttribute('aria-invalid');
+    }
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const v = (field.value || '').trim();
+        if (!v) { setFieldError(field, 'Required'); if (!firstInvalid) firstInvalid = field; }
+        else if (field.type === 'email' && !EMAIL_RE.test(v)) { setFieldError(field, 'Enter a valid email'); if (!firstInvalid) firstInvalid = field; }
+        else setFieldError(field, '');
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+    function encodeFormData(form) {
+      const p = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) p.append(k, v);
+      return p.toString();
+    }
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: encodeFormData(form) });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(f => {
+        f.addEventListener('input', () => setFieldError(f, ''));
+        f.addEventListener('change', () => setFieldError(f, ''));
+      });
+    }
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) { e.preventDefault(); window.openApplyModal(); return; }
+      const m = document.getElementById('apply-modal');
+      if (m && e.target === m) hideModal('apply-modal');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const m = document.getElementById('apply-modal');
+      if (m && m.style.display === 'flex') hideModal('apply-modal');
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) { success.classList.add('visible'); loadCalendlyScript(); success.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
