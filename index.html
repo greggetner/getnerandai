@@ -84,8 +84,43 @@
   .masthead-meta {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     font-family: 'JetBrains Mono', monospace;
+  }
+
+  .header-cta {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 18px;
+    border: 2px solid var(--rust);
+    border-radius: 6px;
+    background: var(--rust);
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+    white-space: nowrap;
+  }
+
+  .header-cta:hover {
+    background: var(--rust-deep);
+    border-color: var(--rust-deep);
+    transform: translateY(-1px);
+  }
+
+  .header-cta-label {
+    color: var(--paper);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+
+  .header-cta-sub {
+    display: block;
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 11px;
+    font-style: italic;
+    letter-spacing: 0.1px;
+    text-align: center;
   }
  
   .volume-info {
@@ -149,6 +184,7 @@
  
   .hero-image {
     position: relative;
+    text-align: center;
   }
  
   .portrait {
@@ -166,6 +202,33 @@
     margin-top: 12px;
     text-align: center;
     font-style: italic;
+  }
+
+  .dance-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding: 6px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    background: transparent;
+    border: 1px dashed var(--line);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s, transform 0.2s;
+  }
+
+  .dance-btn:hover {
+    color: var(--rust);
+    border-color: var(--rust);
+    transform: rotate(-2deg);
+  }
+
+  .dance-btn:active {
+    transform: rotate(2deg) scale(0.98);
   }
  
   /* Desktop layout: side-by-side */
@@ -203,12 +266,52 @@
   }
  
   /* ═══════════════════════════ ACTIONS ═══════════════════════════ */
+  .hero-cta-group {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
   .hero-actions {
     display: flex;
     gap: 20px;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+  }
+
+  .hero-content .hero-microcopy {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+    text-align: left;
+    align-self: flex-start;
+    letter-spacing: 0.2px;
+    opacity: 0.75;
+  }
+
+  .hero-microcopy span {
+    font-style: italic;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-microcopy a {
+    color: rgba(180, 90, 35, 0.6);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 500;
+    margin-left: 4px;
+    transition: color 0.2s, opacity 0.2s;
+  }
+
+  .hero-microcopy a:hover {
+    color: var(--rust);
+  }
+
+  .hero-microcopy:hover {
+    opacity: 1;
   }
  
   .btn-primary {
@@ -303,32 +406,52 @@
   .client-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    gap: 20px;
   }
  
   .client-category {
-    padding: 20px;
+    padding: 28px 24px;
+    min-height: 96px;
     border: 1px solid rgba(243,238,229,0.15);
-    border-radius: 8px;
-    background: rgba(243,238,229,0.05);
+    border-radius: 10px;
+    background: rgba(243,238,229,0.04);
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    justify-content: center;
     gap: 8px;
+    white-space: nowrap;
+    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: default;
   }
+
+  .client-category:hover {
+    border-color: rgba(206,143,63,0.55);
+    background: rgba(243,238,229,0.07);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+  }
+
  
   .client-category h4 {
     font-family: 'Fraunces', serif;
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.2;
     margin: 0;
     color: var(--paper);
+    letter-spacing: -0.01em;
   }
  
   .client-category .category-type {
-    font-size: 16px;
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    line-height: 1.2;
     color: var(--ochre);
     font-style: italic;
     font-weight: 500;
+    letter-spacing: -0.01em;
   }
  
   .partial-list-footer {
@@ -657,6 +780,44 @@
     box-shadow: 0 20px 60px rgba(22,20,18,0.4);
     border: 1px solid var(--line);
     position: relative;
+  }
+
+  .modal-content.apply-modal-content {
+    max-width: 760px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px 40px 32px;
+  }
+
+  .modal-content.apply-modal-content .apply-intro {
+    margin-bottom: 28px;
+  }
+
+  .modal-content.apply-modal-content .apply-intro h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .modal-content.apply-modal-content .apply-intro p {
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .modal-content.apply-modal-content {
+      padding: 32px 20px 24px;
+      max-height: 95vh;
+    }
+
+    .modal-content.apply-modal-content .apply-intro h2 {
+      font-size: 26px;
+    }
   }
  
   .modal-header {
@@ -1131,6 +1292,229 @@
     border-color: var(--paper);
   }
  
+  /* ═══════════════════════════ FORMS ═══════════════════════════ */
+  .site-form {
+    display: grid;
+    gap: 18px;
+    text-align: left;
+  }
+
+  .site-form .bot-field {
+    position: absolute;
+    left: -5000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .form-row {
+    display: grid;
+    gap: 18px;
+  }
+
+  @media (min-width: 640px) {
+    .form-row.two-col {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .form-label .required {
+    opacity: 0.6;
+    margin-left: 4px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 12px 14px;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 1.5px solid;
+    background: transparent;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+  }
+
+  .form-control:focus {
+    outline: none;
+  }
+
+  textarea.form-control {
+    resize: vertical;
+    min-height: 96px;
+  }
+
+  select.form-control {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position: calc(100% - 18px) calc(50% - 2px), calc(100% - 13px) calc(50% - 2px);
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  .form-error {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2px;
+    color: #d94040;
+    min-height: 14px;
+  }
+
+  .form-submit {
+    justify-self: start;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s, opacity 0.2s;
+    font-family: 'Inter Tight', sans-serif;
+  }
+
+  .form-submit:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
+
+  .form-success {
+    display: none;
+    padding: 24px;
+    border-radius: 10px;
+    text-align: left;
+  }
+
+  .form-success.visible {
+    display: block;
+  }
+
+  .form-success h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin: 0 0 8px;
+    font-weight: 600;
+  }
+
+  .form-success p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .site-form.theme-dark .form-label { color: rgba(243, 238, 229, 0.7); }
+  .site-form.theme-dark .form-control {
+    color: var(--paper);
+    border-color: rgba(243, 238, 229, 0.25);
+  }
+  .site-form.theme-dark .form-control::placeholder { color: rgba(243, 238, 229, 0.35); }
+  .site-form.theme-dark .form-control:focus {
+    border-color: var(--ochre);
+    box-shadow: 0 0 0 3px rgba(206, 143, 63, 0.2);
+  }
+  .site-form.theme-dark .form-control[aria-invalid="true"] { border-color: #e25b5b; }
+  .site-form.theme-dark select.form-control option { background: var(--ink); color: var(--paper); }
+  .site-form.theme-dark .form-submit { background: var(--paper); color: var(--ink); }
+  .site-form.theme-dark .form-submit:hover:not(:disabled) {
+    background: var(--ochre);
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
+  .form-success.theme-dark {
+    background: rgba(206, 143, 63, 0.12);
+    border: 1px solid rgba(206, 143, 63, 0.35);
+    color: var(--paper);
+  }
+
+  .site-form.theme-light .form-label { color: var(--ink-soft); }
+  .site-form.theme-light .form-control {
+    color: var(--ink);
+    border-color: var(--line);
+    background: var(--paper);
+  }
+  .site-form.theme-light .form-control::placeholder { color: rgba(22, 20, 18, 0.35); }
+  .site-form.theme-light .form-control:focus {
+    border-color: var(--rust);
+    box-shadow: 0 0 0 3px rgba(180, 90, 35, 0.15);
+  }
+  .site-form.theme-light .form-control[aria-invalid="true"] { border-color: #c83535; }
+  .site-form.theme-light .form-submit {
+    background: var(--rust);
+    color: var(--paper);
+    border-color: var(--rust);
+  }
+  .site-form.theme-light .form-submit:hover:not(:disabled) {
+    background: var(--rust-deep);
+    border-color: var(--rust-deep);
+    transform: translateY(-1px);
+  }
+  .form-success.theme-light {
+    background: rgba(206, 143, 63, 0.1);
+    border: 1px solid rgba(180, 90, 35, 0.3);
+    color: var(--ink);
+  }
+
+  .apply-wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .apply-wrapper.is-success {
+    max-width: 900px;
+  }
+
+  .apply-intro {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .apply-intro p {
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+
+  .calendly-wrapper {
+    margin-top: 28px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--paper);
+  }
+
+  .footer-form-section {
+    max-width: 480px;
+  }
+
+  .footer-form-section h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 12px;
+  }
+
+  .footer-form-section p.lead {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 20px;
+  }
+
   /* ═══════════════════════════ FOOTER ═══════════════════════════ */
   .footer {
     position: relative;
@@ -1175,6 +1559,33 @@
  
   .footer-contact:hover {
     color: var(--rust-deep);
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  .footer-social a {
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+    transition: color 0.2s;
+  }
+
+  .footer-social a:hover {
+    color: var(--ink);
+  }
+
+  .footer-social svg {
+    width: 16px;
+    height: 16px;
   }
  
   .footer-links {
@@ -1223,6 +1634,18 @@
  
     .masthead-title {
       font-size: 32px;
+    }
+
+    .masthead-meta {
+      align-items: center;
+    }
+
+    .header-cta-sub {
+      text-align: center;
+    }
+
+    .hero-image .dance-btn {
+      align-self: center;
     }
  
     .hero {
@@ -1277,6 +1700,12 @@
       justify-content: center;
     }
  
+    .hero-cta-group {
+      display: flex;
+      width: 100%;
+      align-items: stretch;
+    }
+
     .hero-actions {
       flex-direction: column;
       align-items: stretch;
@@ -1301,40 +1730,46 @@
   <header class="masthead">
     <div class="masthead-brand">
       <h1 class="masthead-title">Getner & AI</h1>
-      <p class="masthead-subtitle">ActiveCampaign Consulting</p>
+      <p class="masthead-subtitle">Boutique ActiveCampaign Consulting</p>
     </div>
     <div class="masthead-meta">
-      <div class="volume-info">
-        <span style="color: var(--muted); font-size: 12px; font-style: italic;">GotBot?</span>
-        <a href="https://botbuster.biz" style="color: var(--rust); text-decoration: none; font-size: 12px; font-weight: 500; margin-left: 8px;">BotBuster.biz ↗</a>
-      </div>
+      <a href="#" class="header-cta" onclick="event.preventDefault(); alert('Coming soon! This OAuth-powered audit tool is under development.');">
+        <span class="header-cta-label">Free Account Audit</span>
+      </a>
+      <span class="header-cta-sub">Setup analysis in 60 seconds</span>
     </div>
   </header>
  
   <!-- HERO -->
   <main class="hero">
     <div class="hero-content">
-      <h1>23 years doing retention marketing for the most recognized coaches, celebrities, and brands</h1>
+      <h1>23 years of retention marketing for the most recognized coaches, celebrities, and brands</h1>
       
       <p class="lead">I run a boutique, AI-powered operation that delivers better work faster — without the agency overhead.</p>
       
       <p>If your ActiveCampaign program needs an upgrade, let's talk.</p>
       
-      <div class="hero-actions">
-        <a href="#apply" class="btn-primary">
-          <span>Apply to work with me</span>
-          <span>↗</span>
-        </a>
-        <a href="https://www.activecampaign.com" class="btn-secondary">
-          <span>Start with ActiveCampaign free</span>
-          <span>↗</span>
-        </a>
+      <div class="hero-cta-group">
+        <div class="hero-actions">
+          <a href="#apply" class="btn-primary">
+            <span>Apply to work with me</span>
+            <span>↗</span>
+          </a>
+          <a href="https://www.activecampaign.com/?_r=B3543K68" class="btn-secondary">
+            <span>Start with ActiveCampaign free</span>
+            <span>↗</span>
+          </a>
+        </div>
+        <p class="hero-microcopy">
+          <span>GotBot?</span>
+          <a href="https://botbuster.biz">BotBuster.biz</a>
+        </p>
       </div>
     </div>
  
     <div class="hero-image">
-      <img src="assets/images/greg-getner-photo.png" alt="Greg Getner" class="portrait">
-      <p class="portrait-caption">Greg Getner, Principal</p>
+      <img src="assets/images/greg-getner-photo.png" alt="Greg Getner" class="portrait" id="greg-portrait">
+      <button type="button" class="dance-btn">Make Me Dance! 🕺</button>
     </div>
   </main>
  
@@ -1342,7 +1777,7 @@
   <section class="partial-list">
     <div class="partial-list-container">
       <div class="partial-list-intro">
-        <h3>A PARTIAL LIST</h3>
+        <h3>CLIENT ROSTER</h3>
         <p class="quote">"Greg is the rare operator who understands both the craft of the copy and the machinery underneath it. He fixes things nobody else thought to look at."</p>
         <p class="attribution">— A CLIENT, 8-FIGURE COACHING BRAND</p>
       </div>
@@ -1352,7 +1787,7 @@
           <h4>Best-selling</h4>
           <span class="category-type">authors</span>
         </div>
-        
+
         <div class="client-category">
           <h4>Grammy</h4>
           <span class="category-type">winners</span>
@@ -1471,6 +1906,156 @@
     </div>
   </section>
  
+  <!-- APPLY TO WORK WITH ME MODAL -->
+  <div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+    <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+      <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+      <div class="apply-wrapper" id="apply-wrapper">
+        <div class="apply-intro">
+          <h2 id="apply-modal-title">Apply to Work With Me</h2>
+          <p>I work with a few select clients at a time. Let me know about your situation and I'll determine if we're a good fit.</p>
+        </div>
+
+        <form
+          class="site-form theme-light"
+          id="application-form"
+          name="application"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          novalidate
+        >
+          <input type="hidden" name="form-name" value="application" />
+          <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+          <div class="form-row two-col">
+            <div class="form-field">
+              <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+              <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+              <span class="form-error" data-error-for="app-name"></span>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+              <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+              <span class="form-error" data-error-for="app-email"></span>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+            <span class="form-error" data-error-for="app-company"></span>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-field">
+              <label class="form-label" for="app-usage">ActiveCampaign Usage<span class="required">*</span></label>
+              <select class="form-control" id="app-usage" name="ac_usage" required>
+                <option value="">Select one…</option>
+                <option>Not using</option>
+                <option>Basic setup</option>
+                <option>Advanced</option>
+                <option>Complex multi-brand</option>
+              </select>
+              <span class="form-error" data-error-for="app-usage"></span>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="app-volume">Monthly Email Volume<span class="required">*</span></label>
+              <select class="form-control" id="app-volume" name="email_volume" required>
+                <option value="">Select one…</option>
+                <option>Under 10K</option>
+                <option>10K-50K</option>
+                <option>50K-250K</option>
+                <option>250K-500K</option>
+                <option>500K-1M</option>
+                <option>1M-5M</option>
+                <option>5M-10M</option>
+                <option>10M+</option>
+              </select>
+              <span class="form-error" data-error-for="app-volume"></span>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="app-challenge">Biggest Challenge</label>
+            <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Submit Application</button>
+        </form>
+
+        <div class="form-success theme-light" id="application-success" aria-live="polite">
+          <h3>Application received!</h3>
+          <p>Schedule your 30-minute strategy session below:</p>
+          <div class="calendly-wrapper">
+            <div class="calendly-inline-widget"
+                 data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+                 style="min-width:320px;height:700px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT MODAL -->
+  <div id="contact-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+    <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+      <button class="modal-close" type="button" onclick="closeContactModal()" aria-label="Close">&times;</button>
+
+      <div class="apply-wrapper">
+        <div class="apply-intro">
+          <h2 id="contact-modal-title">Send a message</h2>
+          <p>Got a question or a project in mind? I read every note and reply personally.</p>
+        </div>
+
+        <form
+          class="site-form theme-light"
+          id="contact-form"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          novalidate
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+          <div class="form-row two-col">
+            <div class="form-field">
+              <label class="form-label" for="contact-name">Name<span class="required">*</span></label>
+              <input class="form-control" type="text" id="contact-name" name="name" required autocomplete="name" />
+              <span class="form-error" data-error-for="contact-name"></span>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="contact-email">Email<span class="required">*</span></label>
+              <input class="form-control" type="email" id="contact-email" name="email" required autocomplete="email" />
+              <span class="form-error" data-error-for="contact-email"></span>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="contact-company">Company</label>
+            <input class="form-control" type="text" id="contact-company" name="company" autocomplete="organization" />
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="contact-message">Message<span class="required">*</span></label>
+            <textarea class="form-control" id="contact-message" name="message" required></textarea>
+            <span class="form-error" data-error-for="contact-message"></span>
+          </div>
+
+          <button type="submit" class="form-submit">Send message</button>
+        </form>
+
+        <div class="form-success theme-light" id="contact-success" aria-live="polite">
+          <h3>Message sent.</h3>
+          <p>Thanks! I'll get back to you within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- EMAIL CAPTURE MODAL -->
   <div id="email-modal" class="modal-overlay" style="display: none;">
     <div class="modal-content">
@@ -1661,11 +2246,11 @@
         Next opening: Q2 2026. Limited to 2-3 clients for focused, high-quality work.
       </p>
       <div class="cta-buttons">
-        <a href="mailto:greg@getgetner.com" class="btn-white">
+        <a href="#apply" class="btn-white">
           <span>Apply to work with me</span>
           <span>↗</span>
         </a>
-        <a href="https://www.activecampaign.com" class="btn-ghost">
+        <a href="https://www.activecampaign.com/?_r=B3543K68" class="btn-ghost">
           <span>Start with ActiveCampaign free</span>
           <span>↗</span>
         </a>
@@ -1679,17 +2264,26 @@
       <div class="footer-info">
         <h3>Greg Getner</h3>
         <p>ActiveCampaign Expert • Retention Marketing Specialist</p>
-        <a href="mailto:greg@getgetner.com" class="footer-contact">
+        <a href="mailto:greg@getner.ai" class="footer-contact">
           <span>✉</span>
-          <span>greg@getgetner.com</span>
+          <span>greg@getner.ai</span>
         </a>
+        <div class="footer-social">
+          <a href="https://github.com/greggetner" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/gregorygetner/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
       </div>
       
       <div class="footer-links">
         <a href="#apply">Apply</a>
-        <a href="mailto:greg@getgetner.com">Contact</a>
-        <a href="https://www.activecampaign.com">ActiveCampaign</a>
-        <a href="https://botbuster.biz">BotBuster.biz</a>
+        <a href="#contact">Contact</a>
+        <a href="https://www.activecampaign.com/?_r=B3543K68">ActiveCampaign</a>
       </div>
     </div>
     
@@ -1699,6 +2293,171 @@
   </footer>
  
   <script>
+    // ───────── Modals (Apply + Contact) ─────────
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function openApplyModal()   { showModal('apply-modal'); }
+    function closeApplyModal()  { hideModal('apply-modal'); }
+    function openContactModal() { showModal('contact-modal'); }
+    function closeContactModal(){ hideModal('contact-modal'); }
+
+    document.addEventListener('click', (e) => {
+      const applyLink = e.target.closest('a[href="#apply"]');
+      if (applyLink) {
+        e.preventDefault();
+        openApplyModal();
+        return;
+      }
+      const contactLink = e.target.closest('a[href="#contact"]');
+      if (contactLink) {
+        e.preventDefault();
+        openContactModal();
+        return;
+      }
+      // Click on backdrop (not content) closes the modal
+      ['apply-modal', 'contact-modal'].forEach(id => {
+        const modal = document.getElementById(id);
+        if (modal && e.target === modal) hideModal(id);
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      ['apply-modal', 'contact-modal'].forEach(id => {
+        const modal = document.getElementById(id);
+        if (modal && modal.style.display === 'flex') hideModal(id);
+      });
+    });
+
+    // ───────── Form handling (Netlify Forms via fetch) ─────────
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function setFieldError(field, message) {
+      const id = field.id;
+      const slot = document.querySelector(`[data-error-for="${id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) {
+        field.setAttribute('aria-invalid', 'true');
+      } else {
+        field.removeAttribute('aria-invalid');
+      }
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      const required = form.querySelectorAll('[required]');
+      required.forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const data = new FormData(form);
+      const params = new URLSearchParams();
+      for (const [key, value] of data.entries()) {
+        params.append(key, value);
+      }
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+
+        const submitBtn = form.querySelector('.form-submit');
+        const originalLabel = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        try {
+          const response = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!response.ok) throw new Error('Server error: ' + response.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+
+      // Clear field error on user input
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        handleFormSubmit(contactForm, () => {
+          contactForm.style.display = 'none';
+          const success = document.getElementById('contact-success');
+          if (success) success.classList.add('visible');
+        });
+      }
+
+      const applicationForm = document.getElementById('application-form');
+      if (applicationForm) {
+        handleFormSubmit(applicationForm, () => {
+          applicationForm.style.display = 'none';
+          const wrapper = document.getElementById('apply-wrapper');
+          if (wrapper) wrapper.classList.add('is-success');
+          const success = document.getElementById('application-success');
+          if (success) {
+            success.classList.add('visible');
+            loadCalendlyScript();
+            success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      }
+    });
+
     // Probe My Brain functionality
     let messageCount = 0;
     const maxMessages = 5;
