@@ -1805,7 +1805,7 @@
       }
     }
  
-    // CORRECTED SENDMESSAGE FUNCTION
+    // ======= DEBUG VERSION OF SENDMESSAGE =======
     async function sendMessage() {
         console.log('🚀 sendMessage called');
         
@@ -1816,14 +1816,12 @@
         
         console.log('📝 Message to send:', message);
         
-        // Clear input
+        // Clear input and show user message
         input.value = '';
-        
-        // Show user message
         addMessage(message, 'user');
         messageCount++;
         
-        // Update status
+        // Update status and show typing
         updateStatus('Probing brain...');
         setTyping(true);
         
@@ -1843,50 +1841,79 @@
             });
             
             console.log('📡 Response status:', response.status);
+            console.log('📡 Response ok:', response.ok);
             
             if (!response.ok) {
-                if (response.status === 404) {
-                    throw new Error('404: Function not found - AI brain needs to be deployed first!');
-                }
                 throw new Error(`Server error: ${response.status}`);
             }
             
-            const data = await response.json();
-            console.log('📊 Response data:', data);
+            // Get the raw response text first
+            const responseText = await response.text();
+            console.log('📄 Raw response text:', responseText);
             
+            // Try to parse as JSON
+            let data;
+            try {
+                data = JSON.parse(responseText);
+                console.log('📊 Parsed JSON data:', data);
+            } catch (parseError) {
+                console.error('💥 JSON Parse error:', parseError);
+                console.log('📄 Failed to parse this text:', responseText);
+                throw new Error('Invalid JSON response from server');
+            }
+            
+            // Check for error in response
             if (data.error) {
                 console.log('❌ Error from function:', data.error);
                 throw new Error(data.error);
             }
             
-            // Add AI response - THIS IS THE KEY FIX
+            // DEBUG: Show all properties of the response
+            console.log('🔍 All response properties:', Object.keys(data));
+            console.log('🔍 data.response exists?', 'response' in data);
+            console.log('🔍 data.response value:', data.response);
+            console.log('🔍 typeof data.response:', typeof data.response);
+            
+            // Try to add the AI response
             if (data.response) {
-                console.log('🧠 Displaying AI response');
+                console.log('✅ data.response is truthy, calling addMessage');
                 addMessage(data.response, 'assistant');
+                console.log('✅ addMessage completed');
+            } else {
+                console.log('❌ data.response is falsy');
+                console.log('🔍 Attempting to find response in other fields...');
                 
-                // Update status
-                const remaining = maxMessages - messageCount;
-                if (remaining > 0) {
-                    updateStatus(`${remaining} questions remaining`);
+                // Check alternative response fields
+                if (data.text) {
+                    console.log('📝 Found data.text:', data.text);
+                    addMessage(data.text, 'assistant');
+                } else if (data.message) {
+                    console.log('📝 Found data.message:', data.message);
+                    addMessage(data.message, 'assistant');
+                } else if (data.content) {
+                    console.log('📝 Found data.content:', data.content);
+                    addMessage(data.content, 'assistant');
                 } else {
-                    updateStatus('Session complete • Ready to work together?');
-                    document.getElementById('chat-input').disabled = true;
-                    document.getElementById('send-btn').disabled = true;
-                    document.getElementById('chat-input').placeholder = 'Session complete - contact me to continue!';
+                    console.log('❌ No recognizable response field found');
+                    addMessage('Response received but could not extract text. Check console for details.', 'assistant');
                 }
+            }
+            
+            // Update status based on remaining questions
+            const remaining = maxMessages - messageCount;
+            if (remaining > 0) {
+                updateStatus(`${remaining} questions remaining`);
+            } else {
+                updateStatus('Session complete • Ready to work together?');
+                document.getElementById('chat-input').disabled = true;
+                document.getElementById('send-btn').disabled = true;
+                document.getElementById('chat-input').placeholder = 'Session complete - contact me to continue!';
             }
             
         } catch (error) {
             console.error('💥 Fetch error:', error);
-            
-            // Check if this is a 404 error (function not found)
-            if (error.message && error.message.includes('404')) {
-                addMessage('My AI brain is still booting up! The backend function needs to be deployed first. Contact me directly at greg@getgetner.com', 'assistant');
-                updateStatus('AI brain offline • Email greg@getgetner.com');
-            } else {
-                addMessage('Sorry, I encountered an error. Please try again or contact me directly at greg@getgetner.com', 'assistant');
-                updateStatus('Error occurred • Please try again');
-            }
+            addMessage(`Error: ${error.message}`, 'assistant');
+            updateStatus('Error occurred • Please try again');
         }
         
         setTyping(false);
