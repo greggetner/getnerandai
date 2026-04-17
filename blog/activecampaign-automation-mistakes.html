@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>5 ActiveCampaign Automation Mistakes That Kill Conversions — Greg Getner</title>
+<meta name="description" content="The five ActiveCampaign automation mistakes I find in nearly every audit — and the specific fixes that recover the conversions they quietly bleed." />
+<link rel="canonical" href="https://getner.ai/blog/activecampaign-automation-mistakes.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="5 ActiveCampaign Automation Mistakes That Kill Conversions" />
+<meta property="og:description" content="The five mistakes I find in nearly every ActiveCampaign audit — and the specific fixes that recover the conversions they quietly bleed." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/activecampaign-automation-mistakes.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="ActiveCampaign" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "5 ActiveCampaign Automation Mistakes That Kill Conversions",
+  "description": "The five ActiveCampaign automation mistakes I find in nearly every audit — and the specific fixes that recover the conversions they quietly bleed.",
+  "author": { "@type": "Person", "name": "Greg Getner", "url": "https://getner.ai" },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-04-16",
+  "mainEntityOfPage": "https://getner.ai/blog/activecampaign-automation-mistakes.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Consulting</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">April 16, 2026 · Automations · 12 min read</div>
+      <h1 class="post-title">5 ActiveCampaign Automation Mistakes That Kill Conversions</h1>
+      <p class="post-lede">The same five problems show up in nearly every account I audit. None of them are exotic. All of them are quietly bleeding revenue — and most operators don't see them because the automation "looks right" in the builder.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I've been in ActiveCampaign accounts for twenty-three years. Coaches doing $8M a year. Grammy winners. NYT columnists. DTC brands sending a million emails a week. The builder has changed. The mistakes haven't.</p>
+
+      <p>Almost every time I'm brought in to audit a stalled program, I find at least three of these five. Usually four. The automations look professional on the canvas. They still leak money.</p>
+
+      <p>Here's what I see, why it matters, and exactly how to fix it.</p>
+
+      <h2>1. No goal-based exits on conversion automations</h2>
+
+      <p>This one costs real dollars. You build a 7-email nurture sequence for a $2,000 offer. Someone buys on day 3. ActiveCampaign happily keeps sending them the remaining four emails — the pitch, the scarcity reminder, the "last chance" panic email — even though they're already a customer.</p>
+
+      <p>Best case: they feel like you're not paying attention. Worst case — and I've seen this four times in the last year — they reply asking why you're still selling them the thing they already bought, ask for a refund, and churn before they've even used the product.</p>
+
+      <p><strong>The fix:</strong> every revenue-oriented automation needs a <strong>goal</strong> configured, not just a tag at the end. Goals evaluate on every contact action. The moment the purchase-complete tag or list membership fires, the contact jumps directly to the goal step and skips the rest of the sequence.</p>
+
+      <p>I configure goals as the second or third step in the automation, not at the end. That way a single goal is reachable from anywhere in the flow. If you put the goal at the bottom and the contact converts midway, they still crawl through every intervening step before hitting it — which defeats the purpose.</p>
+
+      <p>Set the goal action to <code>Remove from this automation</code>. Check it. Run a test contact through with the goal condition met halfway. Confirm they exit cleanly. If you have ten revenue automations running, go through every one this week.</p>
+
+      <h2>2. Tag sprawl</h2>
+
+      <p>The second audit finding, and probably the most widespread: accounts with 800+ tags, most of them one-offs, most of them never used in any segment or trigger. "Blackfriday2023_opened". "Webinar_June12_attended". "ebook_download_v2". Tags get created in the heat of a launch and never retired.</p>
+
+      <p>Three problems this creates:</p>
+
+      <ul>
+        <li><strong>Segmentation becomes slow and fragile.</strong> When you want to pull "people engaged in the last 90 days," you can't — because engagement is scattered across 40 tags nobody maintains.</li>
+        <li><strong>Reporting becomes impossible.</strong> You can't answer "how many leads did the June webinar produce" six months later because the tag sits next to seventeen others that look similar.</li>
+        <li><strong>Automations break silently.</strong> Someone builds a new automation triggered on <code>webinar_attended</code> — but half your historical attendees have <code>Webinar_attended_2024</code> instead. The new automation misses a third of the audience and nobody notices for a month.</li>
+      </ul>
+
+      <p><strong>The fix</strong> is a tag taxonomy, written down, enforced. My convention:</p>
+
+      <ul>
+        <li><code>src-*</code> for acquisition source (<code>src-webinar</code>, <code>src-organic</code>, <code>src-paidsearch</code>).</li>
+        <li><code>beh-*</code> for behavior (<code>beh-opened-30d</code>, <code>beh-clicked-last-email</code>).</li>
+        <li><code>int-*</code> for declared interest (<code>int-retention</code>, <code>int-deliverability</code>).</li>
+        <li><code>cust-*</code> for customer status (<code>cust-paid</code>, <code>cust-churned</code>, <code>cust-refunded</code>).</li>
+      </ul>
+
+      <p>Anything dated (<code>webinar-2024-06-12</code>) goes in a custom field with a date, not a tag. Tags are for <em>state</em>, not history. Audit your tag list quarterly. Merge duplicates. Retire dead ones. If a tag hasn't driven a segment or a trigger in 90 days, delete it or archive to a custom field.</p>
+
+      <h2>3. Sending from a no-reply address you don't monitor</h2>
+
+      <p>I still see this in 2026 and it still stuns me. A $4M/year coaching business sending all their broadcasts from <code>no-reply@company.com</code>, then wondering why their deliverability is sliding.</p>
+
+      <p>Gmail and Apple Mail both factor reply-engagement into inbox placement. Contacts who reply to you — even short replies — signal to the ISP that you're a real sender. <code>no-reply</code> addresses get zero reply signal. Worse: when a real person hits "reply" out of habit, the bounce lands in a black hole. That bounce is a trust signal too, and you're not seeing it.</p>
+
+      <p>There's also a reputation angle most people miss: Google Postmaster Tools won't give you a high "user-reported spam rate" grade if a chunk of your list marks you as spam. <strong>Replies are the anti-spam-click.</strong> If a contact replies before they'd have clicked the spam button, you've converted a future complaint into a positive signal.</p>
+
+      <p><strong>The fix:</strong> send from a real, monitored mailbox. <code>greg@getner.ai</code>, not <code>hello@</code> or <code>no-reply@</code>. Check it daily — or route it into Help Scout, Front, whatever you use. Reply to the humans. That's it.</p>
+
+      <p>If you're worried about support volume: configure an auto-responder with expected response time, and put your actual support URL in the reply. Your deliverability will thank you in about two weeks.</p>
+
+      <h2>4. Blasting dead contacts and calling it "the whole list"</h2>
+
+      <p>You send a broadcast to 50,000 contacts. Open rate 14%. You shrug and move on. Here's what you're missing: of those 50,000, about 22,000 haven't opened anything in six months. Gmail sees you sending to 22,000 addresses that never engage, and quietly throttles your inbox placement for <em>the 28,000 who do care</em>.</p>
+
+      <p>ActiveCampaign makes this easy to fix and almost nobody does it.</p>
+
+      <p><strong>The fix</strong> is engagement-based sending as a default, not a special project. Build three segments and keep them maintained:</p>
+
+      <ul>
+        <li><strong>Active (0–30 days):</strong> opened or clicked in the last 30 days. These are your A-list — send everything here.</li>
+        <li><strong>Dormant (31–90 days):</strong> opened or clicked 31–90 days ago. Send selectively. Skip them on anything that isn't your best content.</li>
+        <li><strong>Cold (90+ days):</strong> no opens or clicks in 90 days. Do <em>not</em> include in broadcasts. Run one reactivation sequence. If they don't come back, unsubscribe them yourself before the ISPs do it for you.</li>
+      </ul>
+
+      <p>This isn't about list size. It's about sending reputation. Your open rate on the Active segment will jump 2–3x. Gmail will start putting you in the primary tab more often for people who actually want to hear from you. And your "dead weight" stops dragging down the contacts who matter.</p>
+
+      <p>Most clients resist this because removing 40% of the list <em>feels</em> like shrinking the business. It isn't. It's giving the healthy half of the list a clear runway.</p>
+
+      <h2>5. Automations with no wait steps</h2>
+
+      <p>The last one is about pacing. Someone fills out a form. You've built an automation that sends the lead magnet PDF, tags them with a source tag, adds them to the welcome series, applies a segment assignment based on their dropdown answer, kicks off the first welcome email, and sends an internal Slack notification — all in the same second.</p>
+
+      <p>From ActiveCampaign's side, this looks efficient. From the contact's side, two things happen.</p>
+
+      <p>First, the welcome email arrives before the lead magnet delivery email (because the welcome series was queued milliseconds before the PDF), and the contact wonders where their thing is. Second, the next scheduled email in the welcome sequence fires <em>five hours later</em>, which feels robotic — because no human sends a "nice to meet you" email and then a "here's a question for you" email five hours apart.</p>
+
+      <p><strong>The fix:</strong> wait steps are free, and they make automations feel like they were built by a person.</p>
+
+      <ul>
+        <li>Between the opt-in and the first welcome email: <strong>15 minutes</strong>. Enough time for the lead magnet delivery to land clearly first, and for the contact to have checked their inbox.</li>
+        <li>Between sequential welcome-series emails: <strong>1–2 days minimum</strong>, not hours. The only exception is a cart-abandon sequence, which is different physics.</li>
+        <li>Before any internal notification that requires a human to act: <strong>no wait</strong>, but route it to the right person, not a channel. A Slack notification that shows up in <code>#general</code> gets ignored. One that DMs the owner gets read.</li>
+      </ul>
+
+      <p>If you want to get fancier: add a conditional wait based on the time the contact opted in. If someone submits at 2am, don't fire the first human-voiced email until 9am local time. ActiveCampaign has <code>Wait until specific day/time</code> for exactly this.</p>
+
+      <h2>The audit in one paragraph</h2>
+
+      <p>Pull up your three highest-value automations right now. For each one: is there a goal step that exits conversions early? Do the tags follow a written taxonomy? Is the sender address a real mailbox? Is the list filtered to engaged contacts only? Are the wait steps human-paced?</p>
+
+      <p>If you got five yeses, you're in the top 5% of accounts I see. If you got two or fewer — and most people do — that's where your bleeding conversions are. None of these fixes require new tools, new integrations, or a replatforming. Just an afternoon of work on automations you've already built.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If your program has scale and the mistakes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+  </div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with a few select clients at a time. Let me know about your situation and I'll determine if we're a good fit.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-usage">ActiveCampaign Usage<span class="required">*</span></label>
+            <select class="form-control" id="app-usage" name="ac_usage" required>
+              <option value="">Select one…</option>
+              <option>Not using</option>
+              <option>Basic setup</option>
+              <option>Advanced</option>
+              <option>Complex multi-brand</option>
+            </select>
+            <span class="form-error" data-error-for="app-usage"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-volume">Monthly Email Volume<span class="required">*</span></label>
+            <select class="form-control" id="app-volume" name="email_volume" required>
+              <option value="">Select one…</option>
+              <option>Under 10K</option>
+              <option>10K-50K</option>
+              <option>50K-250K</option>
+              <option>250K-500K</option>
+              <option>500K-1M</option>
+              <option>1M-5M</option>
+              <option>5M-10M</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-volume"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
