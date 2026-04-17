@@ -177,7 +177,7 @@
     <div class="apply-wrapper" id="apply-wrapper">
       <div class="apply-intro">
         <h2 id="apply-modal-title">Apply to Work With Me</h2>
-        <p>I'll let you know if I think we might be a good fit.</p>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
       </div>
       <form class="site-form" id="application-form" name="application" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
         <input type="hidden" name="form-name" value="application" />
@@ -201,31 +201,41 @@
         </div>
         <div class="form-row two-col">
           <div class="form-field">
-            <label class="form-label" for="app-usage">ActiveCampaign Usage<span class="required">*</span></label>
-            <select class="form-control" id="app-usage" name="ac_usage" required>
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
               <option value="">Select one…</option>
-              <option>Not using</option>
-              <option>Basic setup</option>
-              <option>Advanced</option>
-              <option>Complex multi-brand</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
             </select>
-            <span class="form-error" data-error-for="app-usage"></span>
+            <span class="form-error" data-error-for="app-experience"></span>
           </div>
           <div class="form-field">
-            <label class="form-label" for="app-volume">Monthly Email Volume<span class="required">*</span></label>
-            <select class="form-control" id="app-volume" name="email_volume" required>
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
               <option value="">Select one…</option>
-              <option>Under 10K</option>
-              <option>10K-50K</option>
-              <option>50K-250K</option>
-              <option>250K-500K</option>
-              <option>500K-1M</option>
-              <option>1M-5M</option>
-              <option>5M-10M</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
               <option>10M+</option>
             </select>
-            <span class="form-error" data-error-for="app-volume"></span>
+            <span class="form-error" data-error-for="app-list-size"></span>
           </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
         </div>
         <div class="form-field">
           <label class="form-label" for="app-challenge">Biggest Challenge</label>
