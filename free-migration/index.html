@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Free ActiveCampaign Migration for Qualified Businesses | Greg Getner</title>
+<meta name="description" content="Professional ActiveCampaign migration service. Free for businesses with 25K+ contacts. Zero data loss, complete automation rebuild, expert setup." />
+<link rel="canonical" href="https://getner.ai/free-migration/" />
+
+<meta property="og:title" content="Free ActiveCampaign Migration for Qualified Businesses" />
+<meta property="og:description" content="Migrate from Mailchimp, Klaviyo, ConvertKit, or HubSpot to ActiveCampaign at no cost. Zero data loss, complete automation rebuild, professional setup." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://getner.ai/free-migration/" />
+
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<!-- Reuse blog.css for shared design tokens, typography, masthead, form styles, and modal CSS. -->
+<link rel="stylesheet" href="/blog/blog.css" />
+
+<style>
+  /* ── Page-specific layout ── */
+  .mig-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+
+  section.mig-section { margin: 0 0 80px; }
+  section.mig-section:last-of-type { margin-bottom: 0; }
+
+  /* Hero */
+  .mig-hero {
+    text-align: center;
+    padding-top: 24px;
+  }
+
+  .mig-hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+  }
+
+  .mig-hero .subhead {
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto 32px;
+  }
+
+  .hero-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 40px;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 820px;
+  }
+
+  .hero-bullets li {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--paper-deep);
+    border: 1px solid var(--line);
+    padding: 10px 18px;
+    border-radius: 999px;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: var(--rust);
+    color: var(--paper);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+
+  .hero-cta:hover {
+    background: var(--rust-deep);
+    color: var(--paper);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  .hero-sub-cta {
+    margin: 20px 0 0;
+    font-size: 14px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.2px;
+  }
+
+  .hero-sub-cta a {
+    color: var(--rust);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .hero-sub-cta a:hover {
+    color: var(--rust-deep);
+  }
+
+  /* Shared section header */
+  section.mig-section > h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin: 0 0 24px;
+    text-align: center;
+  }
+
+  section.mig-section > p.intro {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto 32px;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  /* Qualification checklist */
+  .qual-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 520px;
+    display: grid;
+    gap: 14px;
+  }
+
+  .qual-list li {
+    font-size: 17px;
+    color: var(--ink);
+    padding: 14px 18px;
+    border: 1.5px solid var(--line);
+    background: var(--paper-deep);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .qual-list li::before {
+    content: "✓";
+    color: var(--rust);
+    font-weight: 800;
+    font-size: 18px;
+  }
+
+  /* Why-migrate reasons */
+  .reason-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .reason-card {
+    background: var(--paper-deep);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 24px;
+  }
+
+  .reason-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: var(--ink);
+  }
+
+  .reason-card p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* Comparison table */
+  .comparison-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+
+  table.comparison {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 680px;
+    font-size: 14px;
+  }
+
+  table.comparison th,
+  table.comparison td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+  }
+
+  table.comparison thead th {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  table.comparison thead th:first-child { text-align: left; }
+
+  table.comparison tbody tr:nth-child(even) { background: var(--paper-deep); }
+
+  table.comparison td.ac-win {
+    color: var(--rust);
+    font-weight: 600;
+  }
+
+  table.comparison th.row-label {
+    font-weight: 600;
+    color: var(--ink);
+    background: transparent;
+    font-family: 'Inter Tight', sans-serif;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+  }
+
+  table.comparison tbody tr:last-child th,
+  table.comparison tbody tr:last-child td { border-bottom: none; }
+
+  /* Process steps */
+  .process-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .process-card {
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 28px;
+    position: relative;
+  }
+
+  .process-card .step-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--rust);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .process-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .process-card ul {
+    padding-left: 18px;
+    margin: 0;
+  }
+
+  .process-card li {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+
+  /* Testimonials */
+  .mig-testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .mig-testimonial {
+    background: var(--paper-deep);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mig-testimonial blockquote {
+    margin: 0 0 16px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .mig-testimonial cite {
+    margin-top: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    font-style: normal;
+    letter-spacing: 0.3px;
+  }
+
+  /* Assessment form */
+  .assessment-wrapper {
+    background: var(--paper-deep);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 40px;
+  }
+
+  @media (max-width: 640px) {
+    .assessment-wrapper { padding: 28px 20px; }
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .faq-list details {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 0;
+  }
+
+  .faq-list summary {
+    cursor: pointer;
+    padding: 18px 22px;
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    list-style: none;
+    position: relative;
+  }
+
+  .faq-list summary::-webkit-details-marker { display: none; }
+
+  .faq-list summary::after {
+    content: "+";
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--rust);
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+
+  .faq-list details[open] summary::after {
+    content: "−";
+  }
+
+  .faq-list details > p {
+    margin: 0;
+    padding: 0 22px 22px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+</style>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="mig-container">
+
+  <!-- HERO -->
+  <section class="mig-section mig-hero">
+    <h1>Free ActiveCampaign Migration for Qualified Businesses</h1>
+    <p class="subhead">Outgrown Mailchimp? Tired of HubSpot's complexity? I'll migrate your entire email system to ActiveCampaign at no cost — setup, automations, and all.</p>
+    <ul class="hero-bullets">
+      <li>✅ Zero data loss guarantee</li>
+      <li>✅ Complete automation rebuild</li>
+      <li>✅ Professional setup &amp; training</li>
+    </ul>
+    <a class="hero-cta" href="#assessment">Get Your Free Migration Assessment →</a>
+    <p class="hero-sub-cta">Rather explore on your own? <a href="https://www.activecampaign.com/?_r=B3543K68" target="_blank" rel="noopener">Start a free ActiveCampaign trial →</a></p>
+  </section>
+
+  <!-- QUALIFICATION -->
+  <section class="mig-section">
+    <h2>Is Free Migration Right for You?</h2>
+    <p class="intro">Free migration works when the relationship makes sense for both of us. This is what I look for:</p>
+    <ul class="qual-list">
+      <li>25,000+ email contacts on your current platform</li>
+      <li>Monthly email marketing spend of $200+</li>
+      <li>Ready to upgrade your automation and segmentation</li>
+      <li>Committed to fixing deliverability for the long run</li>
+    </ul>
+  </section>
+
+  <!-- WHY MIGRATE -->
+  <section class="mig-section">
+    <h2>Why Businesses Switch to ActiveCampaign</h2>
+    <p class="intro">Most migrations I run come from the same six frustrations. Sound familiar?</p>
+    <div class="reason-grid">
+      <div class="reason-card">
+        <h3>Better automation</h3>
+        <p>A visual builder you can actually read, instead of three disconnected "workflows" and a spreadsheet to track what triggers what.</p>
+      </div>
+      <div class="reason-card">
+        <h3>Superior deliverability</h3>
+        <p>Dedicated sending infrastructure and smarter reputation handling. Your emails reach inboxes instead of Promotions or Spam.</p>
+      </div>
+      <div class="reason-card">
+        <h3>Professional email design</h3>
+        <p>A mature drag-and-drop editor, conditional content blocks, and dynamic personalization that's survived a decade of refinement.</p>
+      </div>
+      <div class="reason-card">
+        <h3>Built-in CRM &amp; pipelines</h3>
+        <p>Sales pipelines, deal tracking, and contact scoring included — not bolted on via an extra subscription to a different tool.</p>
+      </div>
+      <div class="reason-card">
+        <h3>Cost-effective scaling</h3>
+        <p>Contact-based pricing that stays sane as you grow. Lists that would cost $1,500/mo on Klaviyo often cost a third on AC.</p>
+      </div>
+      <div class="reason-card">
+        <h3>Advanced segmentation</h3>
+        <p>Rolling date segments, behavioral triggers, site tracking, and conditional sends. Enough depth to keep up with any retention strategy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="mig-section">
+    <h2>ActiveCampaign vs. Your Current Platform</h2>
+    <p class="intro">Where ActiveCampaign usually wins — and why.</p>
+    <div class="comparison-wrapper">
+      <table class="comparison">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th>ActiveCampaign</th>
+            <th>Mailchimp</th>
+            <th>Klaviyo</th>
+            <th>ConvertKit</th>
+            <th>HubSpot Free</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="row-label">Automation depth</th>
+            <td class="ac-win">Advanced visual builder</td>
+            <td>Limited workflows</td>
+            <td>Ecom-centric</td>
+            <td>Basic sequences</td>
+            <td>Locked behind paid tier</td>
+          </tr>
+          <tr>
+            <th class="row-label">Pricing at scale</th>
+            <td class="ac-win">Contact-based, predictable</td>
+            <td>Expensive above 100K</td>
+            <td>Pricey without ecom payoff</td>
+            <td>Limited plan bands</td>
+            <td>Quick jump to paid</td>
+          </tr>
+          <tr>
+            <th class="row-label">Deliverability</th>
+            <td class="ac-win">Dedicated infrastructure</td>
+            <td>Shared, inconsistent</td>
+            <td>Strong for ecom, not general</td>
+            <td>Shared, adequate</td>
+            <td>Shared, adequate</td>
+          </tr>
+          <tr>
+            <th class="row-label">Learning curve</th>
+            <td class="ac-win">Intuitive visual flows</td>
+            <td>Simple but shallow</td>
+            <td>Steep, ecom-specific</td>
+            <td>Simple but limited</td>
+            <td>Part of broader HubSpot</td>
+          </tr>
+          <tr>
+            <th class="row-label">CRM &amp; pipelines</th>
+            <td class="ac-win">Built-in</td>
+            <td>Basic contacts</td>
+            <td>Ecom objects only</td>
+            <td>None</td>
+            <td>Full CRM (paid tiers)</td>
+          </tr>
+          <tr>
+            <th class="row-label">Support quality</th>
+            <td class="ac-win">Responsive, knowledgeable</td>
+            <td>Limited on lower plans</td>
+            <td>Tier-based access</td>
+            <td>Community-heavy</td>
+            <td>Chatbot-first</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="mig-section">
+    <h2>My 4-Step Free Migration Process</h2>
+    <p class="intro">Built over 23 years of moving accounts between platforms. No surprises, no data loss, no downtime.</p>
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="step-number">Step 01</div>
+        <h3>Platform audit &amp; assessment</h3>
+        <ul>
+          <li>Review current setup and automations</li>
+          <li>Identify improvement opportunities</li>
+          <li>Confirm migration scope and timeline</li>
+        </ul>
+      </div>
+      <div class="process-card">
+        <div class="step-number">Step 02</div>
+        <h3>Data export &amp; preparation</h3>
+        <ul>
+          <li>Safe contact export with full history</li>
+          <li>Automation mapping and optimization</li>
+          <li>Email template recreation</li>
+        </ul>
+      </div>
+      <div class="process-card">
+        <div class="step-number">Step 03</div>
+        <h3>ActiveCampaign setup</h3>
+        <ul>
+          <li>Account configuration and optimization</li>
+          <li>Automation rebuild (improved versions)</li>
+          <li>Integration setup and testing</li>
+        </ul>
+      </div>
+      <div class="process-card">
+        <div class="step-number">Step 04</div>
+        <h3>Training &amp; go-live</h3>
+        <ul>
+          <li>Team training on the new platform</li>
+          <li>Soft launch with close monitoring</li>
+          <li>Full cutover and post-launch optimization</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="mig-section">
+    <h2>What Clients Say About Their Migrations</h2>
+    <div class="mig-testimonial-grid">
+      <div class="mig-testimonial">
+        <blockquote>"Greg moved our entire program from Mailchimp to ActiveCampaign without a single subscriber lost. Our open rates were up 40% within the first month."</blockquote>
+        <cite>— 8-figure coaching brand, full migration</cite>
+      </div>
+      <div class="mig-testimonial">
+        <blockquote>"I'd put off migrating off Klaviyo for two years because the automation rebuild terrified me. Greg handled it end-to-end. Smooth launch, better automations than what we had."</blockquote>
+        <cite>— DTC supplement brand, 180K contacts</cite>
+      </div>
+      <div class="mig-testimonial">
+        <blockquote>"We switched from ConvertKit because we were outgrowing the feature set. Greg knew every edge case. Our deliverability and segmentation got a real upgrade."</blockquote>
+        <cite>— Course creator, 75K contacts</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSESSMENT FORM -->
+  <section class="mig-section" id="assessment">
+    <h2>Get Your Free Migration Assessment</h2>
+    <p class="intro">Tell me about your current setup. If you're a fit, I'll reach out within one business day to schedule a 15-minute assessment call.</p>
+
+    <div class="assessment-wrapper">
+      <form
+        class="site-form theme-light"
+        id="migration-form"
+        name="migration-assessment"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="migration-assessment" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="mig-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="mig-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="mig-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="mig-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="mig-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="mig-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="mig-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="mig-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="mig-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="mig-platform">Current Platform<span class="required">*</span></label>
+            <select class="form-control" id="mig-platform" name="current_platform" required>
+              <option value="">Select one…</option>
+              <option>Mailchimp</option>
+              <option>Klaviyo</option>
+              <option>ConvertKit</option>
+              <option>HubSpot</option>
+              <option>Other</option>
+            </select>
+            <span class="form-error" data-error-for="mig-platform"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="mig-list-size">Contact List Size<span class="required">*</span></label>
+            <select class="form-control" id="mig-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>25K–50K</option>
+              <option>50K–100K</option>
+              <option>100K–500K</option>
+              <option>500K–1M</option>
+              <option>1M–5M</option>
+              <option>5M–10M</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="mig-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="mig-concern">Biggest Migration Concern</label>
+          <textarea class="form-control" id="mig-concern" name="concern" placeholder="Data loss, timeline, disrupting live campaigns, automation rebuild, etc."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Get My Free Assessment</button>
+      </form>
+
+      <div class="form-success" id="migration-success" aria-live="polite">
+        <h3>Thanks — your free migration assessment is confirmed.</h3>
+        <p>Based on your current platform and list size, you're an excellent candidate for free migration. Book a 15-minute call below to discuss your specific situation and confirm your migration timeline.</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mig-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details>
+        <summary>How long does migration take?</summary>
+        <p>Typically 2–4 weeks end-to-end, depending on the complexity of your current setup. Simple Mailchimp-to-ActiveCampaign moves with straightforward automations run closer to 2. Complex Klaviyo setups with ecommerce integrations and 30+ flows run closer to 4. I'll give you a specific timeline during the assessment call.</p>
+      </details>
+      <details>
+        <summary>Will I lose email history, contacts, or tags?</summary>
+        <p>No. Complete data preservation is the baseline, not an upsell. Contacts, tags, custom fields, subscribe dates, source attribution — all moved with full fidelity. Engagement history transfers where the source platform exposes it. If a field can't map cleanly, I'll show you the options before we proceed.</p>
+      </details>
+      <details>
+        <summary>What happens to my automations?</summary>
+        <p>Rebuilt, not copied. One of the reasons migrations are worth doing is that your current automations were almost certainly shaped by the platform's limitations. In ActiveCampaign I rebuild them as they should be, with goal-based exits, human-paced wait steps, and a proper tag taxonomy. You get a better program out the other side, not just a transplanted one.</p>
+      </details>
+      <details>
+        <summary>Is it really free?</summary>
+        <p>Yes, for qualified businesses (25K+ contacts, $200+/mo email spend, a real commitment to upgrading). The cost is covered by my ActiveCampaign affiliate relationship — when you sign up for AC through me, I earn a referral fee, and the migration work is my investment in the relationship. No contingent retainer, no strings on the migration itself.</p>
+      </details>
+      <details>
+        <summary>What if I need ongoing help after the migration?</summary>
+        <p>Available as a separate service. Most migration clients want someone to run their program after the move — I offer month-to-month management in the $3–15K range depending on scope. It's a natural continuation, not a requirement. If you just want the migration and then to run it yourself with a trained team, that's a clean handoff and a great outcome too.</p>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- CONTACT MODAL (opens when footer "Contact" link is clicked) -->
+<div id="contact-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <button class="modal-close" type="button" onclick="closeContactModal()" aria-label="Close">&times;</button>
+    <div class="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="contact-modal-title">Send a message</h2>
+        <p>Got a question or a project in mind? I read every note and reply personally.</p>
+      </div>
+      <form class="site-form" id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="contact-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="contact-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="contact-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="contact-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="contact-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="contact-email"></span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="contact-company">Company</label>
+          <input class="form-control" type="text" id="contact-company" name="company" autocomplete="organization" />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="contact-message">Message<span class="required">*</span></label>
+          <textarea class="form-control" id="contact-message" name="message" required></textarea>
+          <span class="form-error" data-error-for="contact-message"></span>
+        </div>
+        <button type="submit" class="form-submit">Send message</button>
+      </form>
+      <div class="form-success" id="contact-success" aria-live="polite">
+        <h3>Message sent.</h3>
+        <p>Thanks! I'll get back to you within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden static form so Netlify detects "migration-assessment" at build time
+     even though we submit via fetch for the in-place success flow. -->
+<form name="migration-assessment" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="text" name="company" />
+  <input type="text" name="current_platform" />
+  <input type="text" name="list_size" />
+  <textarea name="concern"></textarea>
+  <input type="text" name="bot-field" />
+</form>
+
+<script>
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const v = (field.value || '').trim();
+        if (!v) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(v)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const p = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) p.append(k, v);
+      return p.toString();
+    }
+
+    // Contact modal open/close (mirrors homepage behavior so #contact opens here
+    // instead of navigating away).
+    function showModal(id) {
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.style.display = 'flex';
+      m.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const f = m.querySelector('.form-control');
+      if (f && f.offsetParent) setTimeout(() => f.focus(), 50);
+    }
+    function hideModal(id) {
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.style.display = 'none';
+      m.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    window.openContactModal  = () => showModal('contact-modal');
+    window.closeContactModal = () => hideModal('contact-modal');
+
+    document.addEventListener('click', (e) => {
+      const contactLink = e.target.closest('a[href="#contact"]');
+      if (contactLink) {
+        e.preventDefault();
+        window.openContactModal();
+        return;
+      }
+      const m = document.getElementById('contact-modal');
+      if (m && e.target === m) hideModal('contact-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const m = document.getElementById('contact-modal');
+      if (m && m.style.display === 'flex') hideModal('contact-modal');
+    });
+
+    function wireForm(form, onSuccess) {
+      if (!form) return;
+      form.querySelectorAll('.form-control').forEach(f => {
+        f.addEventListener('input', () => setFieldError(f, ''));
+        f.addEventListener('change', () => setFieldError(f, ''));
+      });
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const migrationForm = document.getElementById('migration-form');
+      wireForm(migrationForm, () => {
+        migrationForm.style.display = 'none';
+        const success = document.getElementById('migration-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+
+      const contactForm = document.getElementById('contact-form');
+      wireForm(contactForm, () => {
+        contactForm.style.display = 'none';
+        const success = document.getElementById('contact-success');
+        if (success) success.classList.add('visible');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
