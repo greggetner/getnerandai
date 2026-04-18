@@ -531,7 +531,25 @@
  
   .probe-brain-header {
     text-align: center;
-    margin-bottom: 64px;
+    margin-bottom: 32px;
+  }
+
+  .subtitle-arrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px;
+    color: var(--rust);
+    line-height: 1;
+    margin-top: 20px;
+    animation: arrow-bounce 1.6s ease-in-out infinite;
+  }
+
+  @keyframes arrow-bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.85; }
+    50% { transform: translateY(8px); opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .subtitle-arrow { animation: none; }
   }
  
   .probe-brain-header h2 {
@@ -1908,7 +1926,8 @@
     <div class="probe-brain-container">
       <div class="probe-brain-header">
         <h2>Probe My Brain 🧠</h2>
-        <p class="subtitle">My AI doppelganger is ready to serve you. Click on any button or type below to get started.</p>
+        <p class="subtitle">My AI doppelganger is ready to serve you.<br>Click on any button or type below to get started.</p>
+        <div class="subtitle-arrow" aria-hidden="true">↓</div>
       </div>
       
       <div class="terminal-container">
