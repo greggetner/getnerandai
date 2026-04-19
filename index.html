@@ -783,6 +783,14 @@
     color: #00ff41;
     font-family: 'JetBrains Mono', monospace;
     font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .prompt-cursor {
+    display: inline-block;
+    color: #00ff41;
+    margin-left: 2px;
+    animation: cursor-blink 1s step-end infinite;
   }
  
   #chat-input {
@@ -809,18 +817,22 @@
     background: var(--rust);
     color: var(--paper);
     border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 10px 20px;
+    border-radius: 5px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     cursor: pointer;
     transition: all 0.2s;
+    box-shadow: 0 2px 10px rgba(180, 90, 35, 0.35);
   }
  
   #send-btn:hover:not(:disabled) {
     background: var(--rust-deep);
     transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(180, 90, 35, 0.5);
   }
  
   #send-btn:disabled {
@@ -2078,9 +2090,9 @@
           </div>
           
           <div class="terminal-input-container" style="position: relative;">
-            <span class="prompt">$</span>
+            <span class="prompt">$<span class="prompt-cursor" aria-hidden="true">▌</span></span>
             <input type="text" id="chat-input" placeholder="Ask about ActiveCampaign..." disabled>
-            <button id="send-btn" disabled>Send</button>
+            <button id="send-btn" disabled>Send →</button>
             
             <!-- TRANSPARENT OVERLAY FOR CLICKS -->
             <div id="input-click-overlay" style="
