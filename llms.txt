@@ -1,0 +1,43 @@
+# Getner & AI
+
+> Boutique ActiveCampaign management for coaches, creators, and online businesses at scale — run by Greg Getner, a solo retention-marketing specialist with 23 years of experience.
+
+Greg Getner runs ActiveCampaign programs for 7-figure+ coaches, course creators,
+ecommerce brands, entertainment/music artists, and content creators. He works
+with a few select clients at a time. The site is his marketing front door and
+includes free tools (an ActiveCampaign audit, a migration service, an AI chat
+assistant) and a blog covering automations, retention, and deliverability.
+
+Core methodology: the **Hyper-Pareto Principle** — roughly 5–10% of a typical
+ActiveCampaign program drives 90% of results. The free audit identifies those
+concentration points so clients can double down on what works and stop carrying
+the dead weight.
+
+## Services & conversion paths
+
+- [Apply to work with me](https://getner.ai/#apply): Prequalification form for boutique consulting engagements (experience level, ActiveCampaign list size, implementation timeline). Successful applicants book a 30-minute strategy session.
+- [Free ActiveCampaign audit](https://getner.ai/audit/): Manual review of an existing ActiveCampaign account using the Hyper-Pareto methodology. 3-question intake form; Greg personally runs each audit and delivers a PDF report within 2–3 business days.
+- [Free ActiveCampaign migration](https://getner.ai/free-migration/): Full migration from Mailchimp, Klaviyo, ConvertKit, or HubSpot to ActiveCampaign — free for qualifying accounts (25K+ contacts). Zero data loss, complete automation rebuild, professional setup.
+- [Probe My Brain](https://getner.ai/): AI-powered chat on the homepage speaking in Greg's voice. Five questions per session about ActiveCampaign, retention, deliverability, automations. Gated by email to capture leads.
+- [Contact Greg directly](https://getner.ai/#contact): Short-message contact form for questions, project inquiries, or custom-audit asks for non-ActiveCampaign accounts.
+
+## Blog — ActiveCampaign field notes
+
+- [5 ActiveCampaign Automation Mistakes That Kill Conversions](https://getner.ai/blog/activecampaign-automation-mistakes.html): Five automation mistakes Greg finds in nearly every account he audits — missing goal-based exits, tag sprawl, no-reply sender addresses, dead-contact blasting, and no-wait automations — with specific fixes for each.
+- [Why Your Email List Is Dying (And How to Fix It)](https://getner.ai/blog/why-your-email-list-is-dying.html): A retention marketer's diagnostic for when open rates slide, deliverability drifts, and replies go quiet. Covers Gmail Postmaster signals, engagement cohort analysis, and four concrete fixes (engagement-gating, reactivation-then-prune, monitored sender address, human-paced cadence).
+- [The Hidden ActiveCampaign Features Most Consultants Miss](https://getner.ai/blog/hidden-activecampaign-features.html): Six underused AC features with real use cases — conditional content blocks, site tracking beyond ecommerce, sub-automations, Predictive Sending, deal pipelines for non-sales workflows, and rolling-date custom field segments.
+- [Blog index & RSS feed](https://getner.ai/blog/): All posts, newest-first. RSS at https://getner.ai/blog/rss.xml.
+
+## About & policies
+
+- [Privacy policy](https://getner.ai/privacy/): What data the site collects (five Netlify Forms + AI-terminal transcripts), third-party processors used (Netlify, Anthropic, Calendly, Google Fonts), retention, and user rights (GDPR / CCPA access, correction, deletion). No tracking cookies.
+- Direct email: greg@getner.ai
+- LinkedIn: https://www.linkedin.com/in/gregorygetner/
+- GitHub: https://github.com/greggetner
+
+## Positioning signals
+
+- Solo boutique — not an agency. Greg personally runs every engagement.
+- AI-augmented but human-led. The Probe My Brain chat uses Anthropic Claude; the actual consulting work is done by Greg.
+- Client roster: best-selling authors, Grammy winners, NYT columnists, 8-figure coaches, DTC category leaders, celebrity brands, wellness empires, SaaS founders. Names withheld by client request.
+- ActiveCampaign affiliate: Greg earns 30% lifetime commission on referred accounts. Free migration is funded by that affiliate relationship.

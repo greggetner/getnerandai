@@ -1,0 +1,296 @@
+# Getner & AI — Full Site Content
+
+> Boutique ActiveCampaign management for coaches, creators, and online businesses at scale, run by Greg Getner. Compiled for LLM ingestion in a single markdown document.
+
+---
+
+# Homepage — getner.ai
+
+**Eyebrow:** We live and breathe ActiveCampaign
+**Headline:** Scale Your Business With Profitable Retention Marketing
+**Lead:** I run a boutique, AI-powered operation that delivers better results faster — without the agency overhead.
+**Secondary:** If your ActiveCampaign program needs an upgrade, let's talk.
+
+## Client roster
+
+Greg has run retention marketing programs for (names withheld by client request, descriptor-only):
+
+- Best-selling authors
+- Grammy winners
+- NYT columnists
+- 8-figure coaches
+- DTC category leaders
+- Celebrity brands
+- Wellness empires
+- SaaS founders
+
+## Testimonials
+
+> "Fixed deliverability issues and we regained all our lost revenue."
+> — Email Marketing Client, 9-figure supplement brand, deliverability rescue
+
+> "Greg is the Grand Poobah of email marketing. Stop reading this and contact him."
+> — Email Marketing Client, Grammy-winning artist, audience monetization
+
+> "Greg was fantastic. We got more than we bargained for... helped 2x–3x our revenue in a short amount of time."
+> — Marketing Consultant Client, high-profile YouTube course creator, revenue acceleration
+
+## Probe My Brain (AI terminal on the homepage)
+
+An AI chat modeled on Greg's voice and experience. Users enter their email to unlock, then get five questions per session. Backed by the Anthropic Claude API via a Netlify Function. Example prompts exposed as one-click buttons:
+
+- How do I improve email deliverability?
+- What's the best segmentation strategy?
+- Help me design a welcome series
+- How do I prevent emails going to spam?
+
+On the fifth question, the session completes with a call-to-action to book a strategy session on Calendly.
+
+## Services (bottom-of-page CTA)
+
+- Apply to work with me (prequalification form → 30-min strategy call)
+- Start with ActiveCampaign free (affiliate signup link)
+
+---
+
+# Free ActiveCampaign Audit — getner.ai/audit/
+
+**Eyebrow:** Free ActiveCampaign Audit
+**Headline:** Discover What's Working and What's Not
+**Lead:** Most ActiveCampaign accounts waste 90% of their effort on activities that barely move the needle. I'll identify the 10% of your setup — automations, email types, and segments — that's actually driving your results.
+
+## The Hyper-Pareto Principle
+
+Every account Greg has ever audited reveals the same pattern: roughly 5–10% of ActiveCampaign activity drives 90% of results. Sometimes it's two emails in a welcome series. Sometimes it's a single segment. Sometimes it's three automations doing all the work while twelve others produce noise. The Hyper-Pareto audit finds those concentration points so the client can double down on what works and stop carrying the dead weight.
+
+## What clients find when they run this
+
+- "Greg found that 2 of my 7 welcome emails generated 95% of my revenue. We killed the other 5 and doubled down on the winners." — Course creator, ~$1.2M/yr. Result: +67% revenue, 71% less work.
+- "Only 3 of my 12 automations were driving 87% of conversions. We paused the other 9 and perfected the 3. Same revenue with a fraction of the moving parts." — Business coach. Result: same results, 75% less complexity.
+
+## What the free audit includes
+
+- **Overall health score (A–F)** — where the program sits against typical industry norms.
+- **Hyper-Pareto breakdown** — which automations, email types, and segments are driving the bulk of results, and which aren't pulling their weight.
+- **Industry-comparative analysis** — where the numbers sit relative to programs of similar size and audience type.
+- **Top 3 concentration opportunities** — the three highest-leverage moves to make right now, ranked by likely impact.
+- **Basic deliverability check** — authentication, bounce rates, list hygiene, send frequency.
+
+## How the audit works
+
+Personal analysis by Greg Getner — he personally reviews every account using the same Hyper-Pareto methodology he applies with enterprise consulting clients.
+
+1. **Tell me about your account** — fill out the form (3 short questions plus email). Takes 60 seconds.
+2. **I request access** — Greg emails within one business day requesting read-only access to the ActiveCampaign account.
+3. **I conduct the audit** — personal review of automations, segments, and email performance using proprietary Hyper-Pareto analysis. Usually 2–3 business days from access.
+4. **You get your report** — custom PDF delivered with health score, concentration analysis, and top 3 leverage opportunities.
+
+## Form fields
+
+Name, email, company/brand, business type (life/business coach, course creator, e-commerce, SaaS, content creator, B2B service, agency, entertainment/music, other), list size (Under 10K through 10M+), primary goal.
+
+Audit is for existing ActiveCampaign accounts. Non-AC accounts are routed to the migration service or a direct email for a custom audit.
+
+---
+
+# Free ActiveCampaign Migration — getner.ai/free-migration/
+
+**Headline:** Free ActiveCampaign Migration for Qualified Businesses
+**Subhead:** Outgrown Mailchimp? Tired of HubSpot's complexity? I'll migrate your entire email system to ActiveCampaign at no cost — setup, automations, and all.
+
+Value props: zero data loss guarantee · complete automation rebuild · professional setup & training.
+
+## Qualification
+
+Free migration works for businesses with:
+
+- 25,000+ email contacts
+- Monthly email-marketing spend of $200+
+- Ready to upgrade automation and segmentation
+- Committed to fixing deliverability long-term
+
+## Why businesses switch to ActiveCampaign
+
+- **Better automation** — visual builder vs. disconnected workflows.
+- **Superior deliverability** — dedicated sending infrastructure, smarter reputation handling.
+- **Professional email design** — mature drag-and-drop editor, conditional content blocks, dynamic personalization.
+- **Built-in CRM & pipelines** — sales pipelines, deal tracking, contact scoring included.
+- **Cost-effective scaling** — contact-based pricing that stays sane (lists that cost $1,500/mo on Klaviyo often cost a third on AC).
+- **Advanced segmentation** — rolling date segments, behavioral triggers, site tracking.
+
+## Platform comparison (AC wins)
+
+- Automation depth: advanced visual builder vs. limited workflows (Mailchimp), ecom-centric (Klaviyo), basic sequences (ConvertKit), paid-tier-gated (HubSpot).
+- Pricing at scale: contact-based and predictable vs. expensive above 100K.
+- Deliverability: dedicated infrastructure vs. shared.
+- Learning curve: intuitive visual flows.
+- CRM & pipelines: built-in.
+- Support: responsive and knowledgeable.
+
+## 4-step migration process
+
+1. **Platform audit & assessment** — review current setup, identify improvements, confirm scope.
+2. **Data export & preparation** — safe contact export with full history, automation mapping, email template recreation.
+3. **ActiveCampaign setup** — account configuration, automation rebuild (improved versions), integration setup.
+4. **Training & go-live** — team training, soft launch with monitoring, full cutover.
+
+Typical timeline: 2–4 weeks end-to-end.
+
+## Migration FAQ
+
+- **How long does migration take?** 2–4 weeks depending on complexity.
+- **Will I lose email history, contacts, or tags?** No. Complete data preservation including tags, custom fields, subscribe dates, and source attribution.
+- **What happens to my automations?** Rebuilt, not copied. Greg improves them in the rebuild (goal-based exits, human-paced wait steps, proper tag taxonomy).
+- **Is it really free?** Yes, for qualified businesses. Funded by Greg's ActiveCampaign affiliate relationship (referral fee).
+- **What if I need ongoing help after migration?** Available as a separate service at $3K–$15K/mo depending on scope.
+
+---
+
+# Blog Post: 5 ActiveCampaign Automation Mistakes That Kill Conversions
+
+The same five problems show up in nearly every account Greg audits. None of them are exotic. All of them are quietly bleeding revenue, and most operators don't see them because the automation "looks right" in the builder.
+
+## 1. No goal-based exits on conversion automations
+
+The issue: A 7-email nurture sequence for a $2,000 offer. Someone buys on day 3. ActiveCampaign happily keeps sending the remaining four emails — the pitch, the scarcity reminder, the "last chance" email — even though they're already a customer. Best case: they feel ignored. Worst case: they ask for a refund.
+
+The fix: Every revenue-oriented automation needs a **goal** configured, not just a tag at the end. Goals evaluate on every contact action. Configure goals as step 2 or 3 in the automation, not at the end. Set the goal action to "Remove from this automation." Run test contacts through with the goal condition met halfway to confirm clean exit.
+
+## 2. Tag sprawl
+
+The issue: Accounts with 800+ tags, most of them one-offs, most never used. "Blackfriday2023_opened," "Webinar_June12_attended," "ebook_download_v2." Tags get created in the heat of a launch and never retired. Problems: segmentation becomes slow and fragile, reporting impossible, automations break silently.
+
+The fix: A tag taxonomy, written down, enforced. Greg's convention:
+- `src-*` for acquisition source (src-webinar, src-organic)
+- `beh-*` for behavior (beh-opened-30d)
+- `int-*` for declared interest (int-retention)
+- `cust-*` for customer status (cust-paid, cust-churned)
+
+Anything dated goes in a custom field with a date, not a tag. Tags are for state, not history. Audit quarterly. Delete dead tags.
+
+## 3. Sending from a no-reply address you don't monitor
+
+Gmail and Apple Mail factor reply-engagement into inbox placement. no-reply addresses get zero reply signal. Real replies bounce into a black hole. Replies are the anti-spam-click — they convert future complaints into positive signals.
+
+The fix: Send from a real, monitored mailbox (greg@getner.ai, not no-reply@). Check daily or route into a support tool. Reply to humans.
+
+## 4. Blasting dead contacts
+
+A broadcast to 50,000 contacts with 14% open rate. Of those 50,000, ~22,000 haven't opened anything in six months. Gmail sees this as sending to dead weight and throttles inbox placement for the 28,000 who DO care.
+
+The fix: Engagement-based sending as default.
+- Active (0–30 days engaged): send everything
+- Dormant (31–90 days): send selectively
+- Cold (90+ days): exclude from broadcasts. Run one reactivation sequence. Unsubscribe non-responders.
+
+## 5. Automations with no wait steps
+
+Everything happening in the same second looks efficient to AC but robotic to the contact. Welcome email arrives before the lead magnet delivery email. Next email fires 5 hours later — no human sends "nice to meet you" and "here's a question" 5 hours apart.
+
+The fix: Wait steps are free. Between opt-in and first welcome email: 15 minutes. Between welcome-series emails: 1–2 days minimum. Conditional waits for time-of-day delivery (if submitted at 2am, fire human-voiced email at 9am local time — AC has "Wait until specific day/time").
+
+---
+
+# Blog Post: Why Your Email List Is Dying (And How to Fix It)
+
+A retention marketer's diagnostic. Lists don't die suddenly — they drift for months.
+
+## Signals to actually watch
+
+- **Gmail user-reported spam rate** (Google Postmaster Tools): Want below 0.30%. Excellent is below 0.10%. Cross 0.30% and Gmail routes to promotions/spam.
+- **Reply rate** (past 90 days, via AC reporting): Healthy welcome sequences generate 0.5–3% reply rates. Below 0.2% means engagement is thinning.
+- **Unsubscribe rate per broadcast trend**: Normal is 0.2–0.5%. Creeping to 0.8–1% means over-sending or cold-segment sending.
+- **Soft bounce drift**: Climbing from 0.5% to 2% over three months = pushing through ISP throttling.
+
+## 20-minute diagnostic
+
+1. Pull engagement cohort chart (30/60/90/180 days). Healthy = 30-day cohort at 25%+ of total list.
+2. Compare open rate across cohorts (routine delta: 48% on 30-day vs 6% on 90+).
+3. Check Postmaster Tools numbers.
+4. Audit sender address.
+5. Review last 90 days of broadcasts — targeted vs. blasted, human-paced vs. bursts.
+
+## Four fixes that move the numbers
+
+1. **Engagement-gate every broadcast**: Active / Dormant / Cold segments. Exclude Cold from broadcasts.
+2. **Clean reactivation, then prune**: One 3-email reactivation sequence over 10 days. Non-responders get unsubscribed. Gmail rewards proactive hygiene.
+3. **Real, monitored sender**: no-reply is a deliverability tax. Replies are the strongest positive signal.
+4. **Change cadence, not quantity**: Every 10 days instead of 7. Use Predictive Sending when available.
+
+## What healthy looks like (6 months post-fix)
+
+- 30-day cohort at 35–45% of total list
+- Average open rate 35%+ on engaged segment
+- Reply rate 0.5–2% on relational content
+- Gmail user-reported spam rate under 0.2%
+- Unsubscribe rate stable
+- Revenue per email up 40–80%
+
+---
+
+# Blog Post: The Hidden ActiveCampaign Features Most Consultants Miss
+
+Six features underused in inherited accounts:
+
+## 1. Conditional content blocks inside emails
+
+Every email content block has a "Show/Hide when…" condition. Gate blocks by tag, list, custom field, segment. One broadcast can contain three CTAs for three customer tiers — each contact sees only the tier-appropriate one. No duplicate broadcasts. Setting sits in the block settings panel.
+
+## 2. Site tracking (beyond ecommerce)
+
+Ties anonymous browsing to known contacts once identified. Triggers automations on URL visits. Examples: pricing page visits twice → tag beh-high-intent. Careers page → exclude from sales automations. Three FAQ pages in a session → send "Questions I usually get" email next day.
+
+## 3. Sub-automations (Start Another Automation)
+
+Inside any automation, "Start another automation" action kicks off a named sub-automation. Replaces duplicate cleanup logic across parallel flows. One shared "end-of-onboarding-cleanup" called from five welcome paths — change logic once, every path inherits.
+
+## 4. Predictive Sending
+
+If the plan includes it, AC picks each contact's most-likely-to-open window individually. Broadcasts see 8–18% open rate lift when this is turned on. Toggle in the broadcast/campaign send step.
+
+## 5. Deal pipelines for non-sales workflows
+
+Pipelines are any named sequence of stages. Uses: application review (received → reviewed → short-listed → accepted), course cohort progress (enrolled → week 1 complete → graduated), service onboarding (paid → kickoff → milestone 1 → complete). Stage changes trigger automations.
+
+## 6. Date-based custom fields with rolling segments
+
+Date-type custom field (Last Purchase Date) + segments like "Last Purchase Date was exactly 30 days ago" + automation triggered on segment entry = perfectly timed touch without complex tag scheduling.
+
+---
+
+# Privacy Policy — getner.ai/privacy/
+
+**Short version:** Minimum data collected, no sale or outside sharing, deletable on request.
+
+## What's collected
+
+- Form fields (contact, application, migration, audit): name, email, company, relevant qualifying answers
+- AI terminal: email + Q&A transcript after unlocking
+- Standard web server logs (IP, user agent, request paths) via Netlify
+
+No Google Analytics, Meta pixel, or third-party tracking scripts. No advertising cookies.
+
+## What it's used for
+
+Reply to inquiries, evaluate fit for engagement, follow up after AI-terminal engagement, debug and secure the site. Not sold. Not shared with advertisers, brokers, or marketing networks. Not used to train AI models.
+
+## Service providers
+
+- Netlify (hosting, forms, server logs)
+- Anthropic (Claude API for Probe My Brain)
+- Calendly (post-form booking)
+- Google Fonts (font CDN, sees IPs)
+
+## Retention and rights
+
+Form submissions retained indefinitely by default (to follow up). Deletion available on email request. Rights under GDPR (EU/UK) and CCPA (California) honored. Email greg@getner.ai for access/deletion/correction requests.
+
+---
+
+# Contact
+
+- Direct email: greg@getner.ai
+- LinkedIn: https://www.linkedin.com/in/gregorygetner/
+- GitHub: https://github.com/greggetner
+- Calendly (strategy session): https://calendly.com/getner/activecampaign-strategy-session
+- Calendly (migration assessment): https://calendly.com/getner/activecampaign-migration-assessment
