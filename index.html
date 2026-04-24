@@ -1993,7 +1993,18 @@
 <script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
+  plausible.init();
+
+  // Outbound link tracking — fires when a visitor clicks any link to an external domain
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
 </script>
 </head>
 <body>
@@ -2630,14 +2641,23 @@
       const applyLink = e.target.closest('a[href="#apply"]');
       if (applyLink) {
         e.preventDefault();
+        if (typeof plausible === 'function') plausible('Apply Modal Opened');
         openApplyModal();
         return;
       }
       const contactLink = e.target.closest('a[href="#contact"]');
       if (contactLink) {
         e.preventDefault();
+        if (typeof plausible === 'function') plausible('Contact Modal Opened');
         openContactModal();
         return;
+      }
+      // Audit CTA tracking (doesn't preventDefault — still navigates)
+      if (e.target.closest('.header-cta[href="/audit/"]')) {
+        if (typeof plausible === 'function') plausible('Masthead Audit CTA Clicked');
+      }
+      if (e.target.closest('.hero-actions .btn-secondary[href="/audit/"]')) {
+        if (typeof plausible === 'function') plausible('Hero Audit CTA Clicked');
       }
       // Click on backdrop (not content) closes the modal
       ['apply-modal', 'contact-modal'].forEach(id => {
@@ -2743,6 +2763,7 @@
       const contactForm = document.getElementById('contact-form');
       if (contactForm) {
         handleFormSubmit(contactForm, () => {
+          if (typeof plausible === 'function') plausible('Contact Form Submitted');
           contactForm.style.display = 'none';
           const success = document.getElementById('contact-success');
           if (success) success.classList.add('visible');
@@ -2752,6 +2773,15 @@
       const applicationForm = document.getElementById('application-form');
       if (applicationForm) {
         handleFormSubmit(applicationForm, () => {
+          if (typeof plausible === 'function') {
+            plausible('Apply Form Submitted', {
+              props: {
+                experience: (applicationForm.querySelector('[name="experience"]') || {}).value || '',
+                list_size:  (applicationForm.querySelector('[name="list_size"]') || {}).value || '',
+                timeline:   (applicationForm.querySelector('[name="timeline"]') || {}).value || '',
+              }
+            });
+          }
           applicationForm.style.display = 'none';
           const wrapper = document.getElementById('apply-wrapper');
           if (wrapper) wrapper.classList.add('is-success');
@@ -2790,6 +2820,7 @@
       }
 
       btn.addEventListener('click', async () => {
+        if (typeof plausible === 'function') plausible('Dance Button Clicked');
         btn.disabled = true;
         btn.textContent = 'Loading…';
         try {
@@ -2949,6 +2980,7 @@
         closeEmailModal();
         enableChat();
         updateStatus(`Connected as ${email} • ${maxMessages - messageCount} questions remaining`);
+        if (typeof plausible === 'function') plausible('AI Terminal Unlocked');
         submitTerminalLead();
 
         if (pendingSuggestion) {
@@ -3013,6 +3045,7 @@
  
     function askSuggestion(question) {
       console.log('Suggestion clicked:', question);
+      if (typeof plausible === 'function') plausible('Suggestion Button Clicked', { props: { question } });
 
       if (!userEmail) {
         pendingSuggestion = question;
@@ -3127,6 +3160,7 @@
             // Only re-submit after the first Q&A — subsequent questions just
             // add noise in the Netlify Forms dashboard.
             if (conversationHistory.length === 2) {
+              if (typeof plausible === 'function') plausible('AI Terminal Q&A Completed');
               submitTerminalLead();
             }
 
@@ -3177,6 +3211,7 @@
     }
 
     function endSessionWithCTA() {
+      if (typeof plausible === 'function') plausible('AI Terminal Session Completed');
       addSystemMessage(
         'Session complete. Ready to solve your real ActiveCampaign challenges? ' +
         '<a href="https://calendly.com/getner/activecampaign-strategy-session" target="_blank" rel="noopener noreferrer">Book a 30-minute strategy session</a> ' +

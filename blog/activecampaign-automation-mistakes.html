@@ -53,7 +53,18 @@
 <script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
 </script>
 </head>
 <body>
@@ -407,6 +418,7 @@
       const link = e.target.closest('a[href="#apply"]');
       if (link) {
         e.preventDefault();
+        if (typeof plausible === 'function') plausible('Apply Modal Opened');
         window.openApplyModal();
         return;
       }
@@ -424,6 +436,16 @@
       const form = document.getElementById('application-form');
       if (!form) return;
       handleFormSubmit(form, () => {
+        if (typeof plausible === 'function') {
+          plausible('Apply Form Submitted', {
+            props: {
+              experience: (form.querySelector('[name="experience"]') || {}).value || '',
+              list_size:  (form.querySelector('[name="list_size"]') || {}).value || '',
+              timeline:   (form.querySelector('[name="timeline"]') || {}).value || '',
+              source:     'blog',
+            }
+          });
+        }
         form.style.display = 'none';
         const wrapper = document.getElementById('apply-wrapper');
         if (wrapper) wrapper.classList.add('is-success');

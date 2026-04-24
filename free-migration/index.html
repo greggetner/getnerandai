@@ -445,7 +445,18 @@
 <script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
 </script>
 </head>
 <body>
@@ -905,6 +916,7 @@
       const contactLink = e.target.closest('a[href="#contact"]');
       if (contactLink) {
         e.preventDefault();
+        if (typeof plausible === 'function') plausible('Contact Modal Opened');
         window.openContactModal();
         return;
       }
@@ -951,6 +963,14 @@
     document.addEventListener('DOMContentLoaded', () => {
       const migrationForm = document.getElementById('migration-form');
       wireForm(migrationForm, () => {
+        if (typeof plausible === 'function') {
+          plausible('Migration Request Submitted', {
+            props: {
+              current_platform: (migrationForm.querySelector('[name="current_platform"]') || {}).value || '',
+              list_size:        (migrationForm.querySelector('[name="list_size"]') || {}).value || '',
+            }
+          });
+        }
         migrationForm.style.display = 'none';
         const success = document.getElementById('migration-success');
         if (success) {
@@ -962,6 +982,7 @@
 
       const contactForm = document.getElementById('contact-form');
       wireForm(contactForm, () => {
+        if (typeof plausible === 'function') plausible('Contact Form Submitted');
         contactForm.style.display = 'none';
         const success = document.getElementById('contact-success');
         if (success) success.classList.add('visible');
