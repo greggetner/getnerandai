@@ -1,0 +1,471 @@
+[
+  {
+    "id": "welcome-series-structure",
+    "title": "The Welcome Series Structure That Actually Converts",
+    "category": "Automations",
+    "angle": "Most welcome series are 7 generic emails. The ones that convert follow a specific land → check → qualify → offer structure. Walk through each step with specific examples of what 'land', 'check', 'qualify', and 'offer' emails actually contain. Include the cardinal sin: putting the sales pitch in email 1.",
+    "keywords": [
+      "welcome series",
+      "onboarding automation",
+      "email nurture",
+      "activecampaign welcome"
+    ],
+    "affiliate_opportunity": null,
+    "status": "drafted",
+    "drafted_at": "2026-04-24T02:47:28.798Z",
+    "published_at": null
+  },
+  {
+    "id": "abandon-cart-without-guilt",
+    "title": "How to Build an Abandon Cart Flow That Doesn't Feel Like a Guilt Trip",
+    "category": "Automations",
+    "angle": "Most abandon cart sequences read like the brand is hurt. The ones that convert lead with utility (shipping details, FAQs, review highlights) before the discount. Structure: 1hr soft nudge, 24hr value-add, 72hr ask. Why discount-first trains customers to abandon intentionally.",
+    "keywords": [
+      "abandon cart",
+      "cart recovery",
+      "ecommerce automation",
+      "activecampaign cart abandonment"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "reengagement-before-unsubscribe",
+    "title": "The 3-Email Re-Engagement Test I Run Before Unsubscribing Cold Contacts",
+    "category": "Retention",
+    "angle": "Most operators either blast cold contacts or quietly delete them. The better move is a clean 3-email test over 10 days, each with a different hook (utility, honesty, one-click). Non-responders get unsubscribed BY YOU, which improves sender reputation. Includes exact subject line patterns.",
+    "keywords": [
+      "re-engagement campaign",
+      "list hygiene",
+      "unsubscribe strategy",
+      "cold subscribers"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "post-purchase-sequence",
+    "title": "The Post-Purchase Sequence Most Ecommerce Brands Never Build",
+    "category": "Automations",
+    "angle": "Most ecom brands build welcome + abandon cart and stop. The post-purchase sequence (order confirm → shipping → delivery → review ask → reorder → VIP) is where retention actually lives. Describe the 6-email structure and what each one should do. The underused slot: the day-14 'how's it going' check-in.",
+    "keywords": [
+      "post-purchase sequence",
+      "ecommerce retention",
+      "order follow-up automation"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "deal-pipelines-for-courses",
+    "title": "Using ActiveCampaign Deal Pipelines for Course Cohorts (Not Just Sales)",
+    "category": "Platform",
+    "angle": "Deal pipelines are the 'CRM' side of AC and most operators use them only for sales. They're equally useful for any stage-based workflow: course cohort progress, application review, onboarding milestones. Show three non-sales pipeline templates with stage names and what automations each stage triggers.",
+    "keywords": [
+      "activecampaign deal pipelines",
+      "course cohort tracking",
+      "pipeline automation"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "winback-flow-structure",
+    "title": "The Win-Back Flow for Lapsed Customers (and When to Give Up)",
+    "category": "Retention",
+    "angle": "Lapsed customers (90+ days since last order) need a different approach than cold subscribers. Win-back flows should lead with acknowledgment, not discount. Describe the 4-email structure over 14 days and the hard rule: if they don't engage by email 4, they're unsubscribed. Preserves reputation and sanity.",
+    "keywords": [
+      "win-back campaign",
+      "lapsed customer re-engagement",
+      "ecommerce retention flow"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "customer-journey-mapping-ac",
+    "title": "How to Map a Customer Journey in ActiveCampaign From Scratch",
+    "category": "Platform",
+    "angle": "Most AC accounts are a mess of disconnected automations because no one sat down and mapped the journey first. Walk through the 5-stage journey framework (awareness → consideration → first purchase → retention → advocacy) and which AC objects (tags, custom fields, automations, pipelines) handle each stage. End with the single diagram most operators never build.",
+    "keywords": [
+      "customer journey mapping",
+      "activecampaign journey",
+      "lifecycle marketing"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "spf-dkim-dmarc-20-min",
+    "title": "SPF, DKIM, and DMARC: The 20-Minute Deliverability Setup Most Accounts Get Wrong",
+    "category": "Deliverability",
+    "angle": "Email authentication is the single biggest lever for deliverability and most accounts have at least one misconfigured. Walk through what each record does, why DMARC is the non-negotiable one now, the 3 most common setup mistakes, and how to verify all three are working. Framed as the 20-minute fix that pays for itself in deliverability for years.",
+    "keywords": [
+      "SPF DKIM DMARC",
+      "email authentication",
+      "deliverability setup"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "postmaster-4-metrics",
+    "title": "Google Postmaster Tools: The 4 Metrics That Actually Matter",
+    "category": "Deliverability",
+    "angle": "Postmaster Tools gives you 10+ charts. Most of them are noise. The four that actually tell you something: user-reported spam rate, domain reputation, IP reputation, and authentication. For each, describe the healthy threshold, the warning zone, and what to do when it slips. Includes Greg's rule: if user-reported spam rate crosses 0.30%, stop all sends to Gmail until you find the cause.",
+    "keywords": [
+      "google postmaster tools",
+      "email deliverability",
+      "sender reputation gmail"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "sender-reputation-diagnostic",
+    "title": "Why Your Sender Reputation Is Slipping (And How to Diagnose It in 10 Minutes)",
+    "category": "Deliverability",
+    "angle": "Sender reputation slides for identifiable reasons: too much volume too fast, engagement drop on the active segment, authentication gap, or a new content pattern triggering spam filters. Walk through a 10-minute diagnostic: pull Postmaster numbers, check engagement cohort chart, check recent broadcast subject lines against spam trigger patterns. End with the fix hierarchy.",
+    "keywords": [
+      "sender reputation",
+      "deliverability diagnostic",
+      "inbox placement"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "email-validation-when-how-often",
+    "title": "Email Validation: When to Use It, How Often, and Which Tool",
+    "category": "Deliverability",
+    "angle": "Email validation is a tax on bad lead sources. Most operators skip it until bounce rates wreck deliverability; by then they've already damaged reputation. Describe when validation is worth it (list imports, lead-gen with public forms, quarterly maintenance), when it isn't (clean opt-ins from your own site), and what a reasonable cadence looks like. Mention that bulk validation right before a big send can catch the surprise 5-10% of bad addresses.",
+    "keywords": [
+      "email validation",
+      "email verification",
+      "list hygiene tool"
+    ],
+    "affiliate_opportunity": {
+      "name": "Zerobounce",
+      "url": "https://www.zerobounce.net?ref=greggetner6",
+      "placement_hint": "near end, as a specific tool recommendation for bulk validation use cases"
+    },
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "warm-up-30-day-plan",
+    "title": "Warming a New IP or Sending Domain: The 30-Day Plan",
+    "category": "Deliverability",
+    "angle": "Spinning up a new sending domain or IP is high-stakes — get it wrong and you're burned for months. The 30-day plan: days 1-3 send to your most engaged 500, days 4-10 scale to 5K of top engagement cohort, days 11-21 ramp by 2x every 3 days, days 22-30 full volume. Include what to watch at each stage (soft bounce rate, user-reported spam rate) and when to pause.",
+    "keywords": [
+      "domain warm-up",
+      "IP warm-up",
+      "new sending domain deliverability"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "spam-trigger-patterns",
+    "title": "5 Spam Trigger Patterns Your Content Keeps Landing In (Without You Realizing)",
+    "category": "Deliverability",
+    "angle": "Spam filters aren't about trigger words anymore (mostly). They're about patterns. Describe the 5 patterns that flag modern filters: excessive images-to-text ratio, 'all promo' subject lines back-to-back, link-to-everything body copy, mismatched envelope-vs-header senders, and rapid-fire sends from new subdomains. For each, give the fix.",
+    "keywords": [
+      "spam filter triggers",
+      "email content spam score",
+      "inbox placement patterns"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "ac-reports-most-operators-skip",
+    "title": "The ActiveCampaign Reports Most Operators Never Open (and What They Reveal)",
+    "category": "Analytics",
+    "angle": "Campaign and automation reports are where most operators stop. The under-used reports: contact trends, list growth/decay, automation goal conversions, deal pipeline velocity. Describe each, what it shows you, and one decision you can make from it this week. Greg's take: if you've never opened the automation goal report, you're missing the biggest signal in the platform.",
+    "keywords": [
+      "activecampaign reports",
+      "email analytics",
+      "automation performance"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "utm-that-ties-back",
+    "title": "Setting Up UTM Tracking That Actually Ties Revenue Back to Email",
+    "category": "Analytics",
+    "angle": "Most operators set UTMs inconsistently — some emails have them, some don't, the values conflict across campaigns. Walk through a UTM taxonomy (source=email / medium={broadcast|automation|nurture} / campaign={name} / content={variant}) and the single rule that makes attribution work: the taxonomy is written down and reviewed before every send. Includes a mini-audit to find broken tracking in your current setup.",
+    "keywords": [
+      "UTM tracking email",
+      "email attribution",
+      "revenue attribution"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "email-revenue-without-native-revenue",
+    "title": "How to Measure Your Email Program's Revenue (When ActiveCampaign Doesn't Track It Natively)",
+    "category": "Analytics",
+    "angle": "AC doesn't track revenue out of the box unless you're on the ecommerce integration. For most operators, you cobble attribution from UTM links + your commerce platform / CRM. Walk through three approaches: UTM-based attribution via Google Analytics, deal-value-from-automation-goal, and a lightweight custom-field approach for digital products. For each, what it tells you and its blind spots.",
+    "keywords": [
+      "email revenue attribution",
+      "activecampaign revenue tracking",
+      "email marketing ROI"
+    ],
+    "affiliate_opportunity": {
+      "name": "Hyros",
+      "url": "http://hyros.com/affiliate-grow.html?fpr=greg55",
+      "placement_hint": "mention near end as a heavier-duty attribution tool for programs that have outgrown UTM-based tracking"
+    },
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "5-engagement-metrics-health",
+    "title": "The 5 Engagement Metrics That Tell You Your List Is Healthy",
+    "category": "Analytics",
+    "angle": "Open rate is misleading (Apple Mail Privacy Protection, bot opens). Click rate is lagging. The better early-signal metrics: reply rate on relational content, unsubscribe rate trend, soft bounce rate trend, cohort engagement distribution, and sends-per-engaged-contact. For each, the healthy range and what it looks like when something breaks.",
+    "keywords": [
+      "email engagement metrics",
+      "list health",
+      "email program KPIs"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "lead-scoring-in-ac",
+    "title": "Lead Scoring in ActiveCampaign: Building the Scoring Model",
+    "category": "Platform",
+    "angle": "AC's lead scoring is flexible but most operators don't set it up because they don't know what to score. Walk through a scoring framework: positive signals (opens in last 30d, clicks on high-intent pages, form submissions) and negative signals (no activity 60d, unsubscribe-adjacent behavior). Scoring decay matters — contacts lose points for inactivity. Include a sample 0-100 model with point values.",
+    "keywords": [
+      "activecampaign lead scoring",
+      "contact scoring model",
+      "lead qualification"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "ac-shopify-integration-gaps",
+    "title": "Connecting ActiveCampaign to Shopify: What Most Setups Miss",
+    "category": "Integrations",
+    "angle": "The AC-Shopify integration syncs orders and customers but most setups leave value on the table. What to actually configure: abandoned checkout trigger, post-purchase tag flow, RFM-based segmentation, product-specific review automations. Describe the 5 AC automations that should exist on day 1 of every Shopify store and how to wire each one.",
+    "keywords": [
+      "activecampaign shopify",
+      "ecommerce email integration",
+      "shopify automation"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "ac-crm-sync-strategy",
+    "title": "Syncing ActiveCampaign With a CRM: When It Helps and When It's Chaos",
+    "category": "Integrations",
+    "angle": "AC has built-in deals but many B2B operators also run a separate CRM (Pipedrive, HubSpot, Salesforce). The sync can be useful or destructive depending on which tool owns which object. Walk through the decision framework: which system is the source of truth for contacts, deals, and activity; what fields to sync vs. keep separate; and the three most common sync-loop failures.",
+    "keywords": [
+      "activecampaign CRM sync",
+      "B2B email automation",
+      "pipedrive activecampaign"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "webhooks-external-triggers",
+    "title": "Using Webhooks to Trigger ActiveCampaign Automations from External Events",
+    "category": "Platform",
+    "angle": "Most operators never touch webhooks because they sound technical. They don't have to be. Describe 3 practical webhook use cases: triggering an automation from a Calendly booking, from a Stripe charge, from a custom app event. For each, the exact AC setup (webhook URL in an automation trigger) and the 'gotcha' to watch for.",
+    "keywords": [
+      "activecampaign webhooks",
+      "zapier alternative",
+      "external automation triggers"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "ac-reviews-platform-loop",
+    "title": "Closing the Loop Between ActiveCampaign and Your Reviews Platform",
+    "category": "Integrations",
+    "angle": "Review requests are post-purchase gold but most setups send one ask and give up. The loop that works: AC triggers review ask → platform captures response → AC tags contact based on rating → positive reviewers flow into VIP/UGC-request automation, negative reviewers flow into customer-save automation. Walk through the field mapping and tag flow.",
+    "keywords": [
+      "activecampaign reviews integration",
+      "product review automation",
+      "ecommerce reviews"
+    ],
+    "affiliate_opportunity": {
+      "name": "Okendo",
+      "url": "https://partners.okendo.io/dashboard",
+      "placement_hint": "mention as one of the reviews platforms commonly seen in this setup, near the example walkthrough"
+    },
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "sms-plus-email-integration",
+    "title": "When to Add SMS to Your Email Program (and How to Integrate It Cleanly)",
+    "category": "Integrations",
+    "angle": "SMS is cheap to add and easy to abuse. Describe when SMS actually helps (time-sensitive transactional, re-engagement of already-lapsed, high-intent VIP alerts) vs. when it's noise (weekly newsletters, generic promos). Walk through the AC + SMS architecture: which events trigger SMS, which stay email-only, and the one rule most brands break (double-sending the same message across both channels within an hour).",
+    "keywords": [
+      "activecampaign SMS",
+      "email SMS integration",
+      "multi-channel automation"
+    ],
+    "affiliate_opportunity": {
+      "name": "SlickText",
+      "url": "https://www.slicktext.com/?linkId=lp_684791&sourceId=greg-getner&tenantId=slicktext",
+      "placement_hint": "mention as an SMS platform that integrates cleanly with AC, near the architecture walkthrough"
+    },
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "5-segments-every-program",
+    "title": "The 5 Segments Every ActiveCampaign Program Should Have",
+    "category": "Retention",
+    "angle": "Most accounts have 40+ one-off segments and still can't answer 'who should I send to this week?'. The 5 that actually matter: Active (30-day engagers), Dormant (31-90d), Cold (90+d), Customers (post-purchase), and VIP (top decile by revenue or engagement). For each, how to build it in AC's segment builder and what gets sent to which.",
+    "keywords": [
+      "activecampaign segments",
+      "email segmentation strategy",
+      "list segmentation"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "open-rate-misleading",
+    "title": "Your Open Rate Is Lying to You (and What to Watch Instead)",
+    "category": "Analytics",
+    "angle": "Apple Mail Privacy Protection pre-fetches most emails for Apple Mail users, inflating opens to near-100% for that cohort. Most 'open rate' metrics on dashboards are now noise. What to watch instead: click rate, reply rate, unsubscribe rate, and conversion from email-referral traffic. Describe what each tells you and how to triangulate when opens are useless.",
+    "keywords": [
+      "apple mail privacy protection",
+      "email open rate accuracy",
+      "email engagement metrics"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "list-pruning-math",
+    "title": "The Case for Pruning 30% of Your List (Running the Math)",
+    "category": "Retention",
+    "angle": "Most operators resist list pruning because the raw count feels valuable. The math says otherwise: sending to cold contacts drags inbox placement for your active segment, so deleting dead weight often INCREASES total inbox deliveries of meaningful messages. Walk through a worked example: 50K list with 22K cold — prune them and open rate on remaining 28K jumps 2-3x.",
+    "keywords": [
+      "list pruning math",
+      "email list hygiene",
+      "inactive subscribers"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "predictive-sending-when-skip",
+    "title": "ActiveCampaign Predictive Sending: When It's Worth It and When to Skip",
+    "category": "Platform",
+    "angle": "Predictive Sending picks each contact's best send time based on their history. It delivers 8-18% open rate lift on consistent programs but makes no sense for others. When to turn it on: mature programs with 90+ days of engagement history per contact. When to skip: brand-new lists, heavy ecom with time-locked promotions, broadcasts tied to live events. Include the one setup mistake that neutralizes its benefit.",
+    "keywords": [
+      "activecampaign predictive sending",
+      "best time to send email",
+      "email send optimization"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "first-30-min-audit-checklist",
+    "title": "The First-30-Minutes Audit I Run on Every New ActiveCampaign Account",
+    "category": "Platform",
+    "angle": "When a new client hands over their AC account, Greg runs the same 30-minute check before quoting any work. Walk through the checklist: engagement cohort chart, Postmaster Tools reputation, top 3 automations' goal completion rates, tag count and taxonomy health, sender address check. For each, the pass/fail threshold and what it tells you about the next 90 days of work.",
+    "keywords": [
+      "activecampaign audit checklist",
+      "email program audit",
+      "account review"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "ac-2025-updates",
+    "title": "ActiveCampaign Features That Got Quietly Better in 2025 (and What It Means for Your Setup)",
+    "category": "Platform",
+    "angle": "AC ships improvements without always announcing them prominently. In 2025 the notable ones were: conditional content block improvements, Predictive Sending coverage expansion, site tracking reliability, and automation debugging tools. For each, what changed, why it matters, and the one setup you should revisit in light of the change.",
+    "keywords": [
+      "activecampaign updates 2025",
+      "activecampaign new features",
+      "email platform updates"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  },
+  {
+    "id": "goals-vs-conditional-branches",
+    "title": "Goal Steps vs. Conditional Branches in ActiveCampaign: When to Use Each",
+    "category": "Platform",
+    "angle": "Both goals and conditional branches route contacts differently through automations, and operators routinely mix them up. Goals: evaluate on every contact action, exit the automation early when met. Conditional branches: evaluate at one point in the flow, contact keeps going down the chosen path. Describe three concrete scenarios where you'd use one vs. the other and why. The big mistake: using a conditional branch to check for a conversion that could happen at any point — that's a goal.",
+    "keywords": [
+      "activecampaign goals",
+      "conditional branches",
+      "automation logic"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued",
+    "drafted_at": null,
+    "published_at": null
+  }
+]

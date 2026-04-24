@@ -1,0 +1,12 @@
+{
+  "name": "getner-ai-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate-post": "node --env-file=.env scripts/generate-post.mjs",
+    "publish-draft": "node scripts/publish-draft.mjs"
+  },
+  "dependencies": {
+    "marked": "^14.0.0"
+  }
+}
