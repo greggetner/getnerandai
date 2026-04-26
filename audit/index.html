@@ -12,6 +12,83 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://getner.ai/audit/" />
 
+<!-- Schema: Service + FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://getner.ai/audit/#service",
+      "name": "Free ActiveCampaign Audit",
+      "description": "Manual review of an existing ActiveCampaign account using the Hyper-Pareto methodology — identifies the 10% of automations, emails, and segments driving 90% of results, plus a basic deliverability check and top three concentration opportunities. Personally run by Greg Getner.",
+      "url": "https://getner.ai/audit/",
+      "provider": { "@id": "https://getner.ai/#greg" },
+      "serviceType": "ActiveCampaign Account Audit",
+      "category": "Email Marketing Consulting",
+      "areaServed": { "@type": "Place", "name": "Worldwide" },
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Coaches, course creators, and online businesses with existing ActiveCampaign accounts"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://getner.ai/audit/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://getner.ai/audit/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What's included in the free ActiveCampaign audit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Overall health score (A–F), Hyper-Pareto breakdown showing which automations, email types, and segments are driving the bulk of results (and which aren't pulling their weight), industry-comparative analysis against programs of similar size and audience type, top 3 concentration opportunities ranked by likely impact, and a basic deliverability check covering authentication, bounce rates, list hygiene, and send frequency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does the audit take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Greg responds within one business day to request read-only access to your ActiveCampaign account. Once access is granted, the audit takes 2–3 business days to complete and the PDF report is delivered to your inbox."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who runs the audit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Greg Getner personally reviews every account using the same Hyper-Pareto methodology applied with enterprise consulting clients. No junior analysts, no outsourced review."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this audit free for any email platform?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The free audit is specifically for existing ActiveCampaign accounts. Businesses on Mailchimp, Klaviyo, ConvertKit, or HubSpot can use the free migration service or email greg@getner.ai about a custom audit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Hyper-Pareto Analysis actually mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Roughly 5–10% of activity in any ActiveCampaign program drives 90% of the results. The Hyper-Pareto audit identifies those concentration points — sometimes two emails in a welcome series, sometimes a single segment, sometimes three automations doing all the work — so you can double down on what works and stop carrying the dead weight."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
