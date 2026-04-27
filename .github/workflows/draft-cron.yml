@@ -1,0 +1,51 @@
+name: Auto-publish blog post
+
+# Twice a week, draft a new post via Claude and publish it.
+# 13:00 UTC = 9am EDT (Mar–Nov) / 8am EST (Nov–Mar).
+# GitHub cron may delay execution by a few minutes during peak load.
+on:
+  schedule:
+    - cron: '0 13 * * 2,4'   # Tue + Thu
+  workflow_dispatch:           # allow manual runs from the Actions tab
+
+permissions:
+  contents: write              # required to commit the new post back to main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          # Fetch the full history so we can commit & push back
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate draft from next queued topic
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-post.mjs
+
+      - name: Publish the freshly drafted post
+        run: node scripts/publish-draft.mjs
+
+      - name: Commit and push
+        run: |
+          git config user.name  "Getner Bot"
+          git config user.email "bot@getner.ai"
+          git add content/ blog/
+          # If nothing changed (e.g. queue exhausted), exit cleanly without erroring.
+          if git diff --cached --quiet; then
+            echo "No changes to commit — likely queue exhausted."
+            exit 0
+          fi
+          git commit -m "Auto-publish: $(date -u +'%Y-%m-%d') blog post"
+          git push origin main
