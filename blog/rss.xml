@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 28 Apr 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>The Welcome Series Structure That Actually Converts</title>
+      <link>https://getner.ai/blog/welcome-series-structure.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/welcome-series-structure.html</guid>
+      <pubDate>Tue, 28 Apr 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Most welcome series are seven generic emails that sound like everyone else's. The ones that convert follow a specific land → check → qualify → offer structure—and never pitch in email one.]]></description>
+    </item>
 
     <item>
       <title>The Hidden ActiveCampaign Features Most Consultants Miss</title>

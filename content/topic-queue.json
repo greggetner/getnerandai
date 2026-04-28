@@ -11,9 +11,9 @@
       "activecampaign welcome"
     ],
     "affiliate_opportunity": null,
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-04-24T02:47:28.798Z",
-    "published_at": null
+    "published_at": "2026-04-28T15:19:56.589Z"
   },
   {
     "id": "abandon-cart-without-guilt",
@@ -27,8 +27,8 @@
       "activecampaign cart abandonment"
     ],
     "affiliate_opportunity": null,
-    "status": "queued",
-    "drafted_at": null,
+    "status": "drafted",
+    "drafted_at": "2026-04-28T15:19:56.391Z",
     "published_at": null
   },
   {
