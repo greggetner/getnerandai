@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>How to Build an Abandon Cart Flow That Doesn't Feel Like a Guilt Trip</title>
+      <link>https://getner.ai/blog/abandon-cart-without-guilt.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/abandon-cart-without-guilt.html</guid>
+      <pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Most cart abandonment sequences read like the brand got their feelings hurt—but the ones that actually convert lead with utility before they ever mention a discount.]]></description>
+    </item>
 
     <item>
       <title>The Welcome Series Structure That Actually Converts</title>
