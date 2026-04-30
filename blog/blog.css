@@ -335,6 +335,9 @@ a:hover { color: var(--rust-deep); text-decoration: underline; }
 
 .blog-footer-links { margin-bottom: 12px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
 
+.footer-badge { margin-bottom: 20px; display: flex; justify-content: center; }
+.footer-badge img { width: 160px; height: auto; display: block; }
+
 /* ── Responsive ── */
 @media (max-width: 640px) {
   .blog-masthead { padding: 16px 20px; flex-direction: column; gap: 12px; align-items: flex-start; }
