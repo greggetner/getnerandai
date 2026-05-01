@@ -2,24 +2,27 @@
  * Webhook target for the /consult/ form submission.
  *
  * Trigger: Netlify Forms outgoing webhook (configured in Netlify dashboard
- * for the `consult-request` form). Optionally, other forms can trigger this
- * once their content/prompts are ready.
+ * for the `consult-request` form).
  *
- * Flow on success:
+ * The lead-facing email is sent by AC's Personal Sender (Gmail OAuth) via
+ * an automation step — not by Resend. This function's job is to:
+ *
  *   1. Parse Netlify Forms webhook payload
- *   2. Call Claude (Sonnet 4.6) for a personalized 2-4 sentence read of the form
- *   3. Wrap that paragraph in the disclosure email template
- *   4. Send via Resend
- *   5. Create or update AC contact, write all form fields, tag with
- *      `consult-form-submitted` + `ai-email-1-sent`
+ *   2. Call Claude (Sonnet 4.6) for a personalized 2-4 sentence read
+ *   3. Create or update AC contact, write all form fields + the AI paragraph
+ *   4. Add the trigger tag `consult-form-submitted` LAST (this fires the
+ *      AC automation, which sends the 1-on-1 email via Personal Sender)
+ *   5. Send an internal alert email to Greg (via Resend) with full context
  *
- * On Claude or Resend failure: AC contact still gets created and tagged with
- * `consult-form-submitted` (no `ai-email-1-sent` tag). The AC automation's
- * if/else branch then fires the standard template Email 1 as fallback.
+ * Order matters: the trigger tag MUST be last so the AC automation sees
+ * %AI_EMAIL_1_BODY% populated when it fires.
  *
- * Webhook security: shared-secret query param `?token=...` matched against
- * env var FORM_WEBHOOK_SECRET. Rotate by changing the env var + the URL
- * configured in Netlify Forms.
+ * Fallback for Claude failure: the contact is still created and tagged.
+ * AC's automation has an If/Else: if %AI_EMAIL_1_BODY% is empty, send
+ * the template Email 1 (a campaign send) instead of the AI 1-on-1.
+ *
+ * Webhook security: shared-secret query param `?token=...` matched
+ * against env var FORM_WEBHOOK_SECRET.
  */
 
 import type { Context } from '@netlify/functions'
@@ -85,12 +88,15 @@ export default async (req: Request, _ctx: Context) => {
   const firstName = (form.name || '').trim().split(/\s+/)[0] || 'there'
   const lastName = (form.name || '').trim().split(/\s+/).slice(1).join(' ')
 
-  // Always do AC contact create/update first — even if Claude/Resend fail,
-  // we still want the lead in AC for the standard nurture sequence to fire.
   const acCfg = {
     apiUrl: Netlify.env.get('AC_API_URL') || '',
     apiKey: Netlify.env.get('AC_API_KEY') || '',
   }
+
+  // Step 1: AC contact create/update + non-trigger tags + form-data fields.
+  // We hold off on the trigger tag (`consult-form-submitted`) until after
+  // Claude succeeds and the AI paragraph is written to the field — that way
+  // the AC automation always has the body populated when it fires.
   let acContactId = ''
   try {
     if (!acCfg.apiUrl || !acCfg.apiKey) {
@@ -102,10 +108,8 @@ export default async (req: Request, _ctx: Context) => {
       lastName,
     })
     await addContactToList(acCfg, acContactId, AC_LIST_ID_CERT_LEADS)
-    await addTagToContact(acCfg, acContactId, 'consult-form-submitted')
     await addTagToContact(acCfg, acContactId, 'form-consult')
 
-    // Write form-data fields (best-effort, silent if missing).
     await Promise.all([
       writeField(acCfg, acContactId, 'EXISTING_AC', form.existing_ac),
       writeField(acCfg, acContactId, 'LIST_SIZE', form.list_size),
@@ -122,88 +126,66 @@ export default async (req: Request, _ctx: Context) => {
     ])
   } catch (err) {
     console.error('AC contact create/update failed:', err)
-    // Don't fail the function — Claude+Resend can still proceed.
+    // Continue — we'll still try Claude + alert so Greg knows.
   }
 
-  // Claude generate + Resend send. If either fails, fall back silently
-  // (AC's standard Email 1 will fire from the automation).
+  // Step 2: Claude generation.
   const claudeStart = Date.now()
-  let aiParagraph: string
+  let aiParagraph: string | null = null
+  let claudeError: string | null = null
   try {
     aiParagraph = await callClaude(form)
   } catch (err) {
+    claudeError = String(err)
     console.error('Claude call failed:', err)
-    await alertGreg({
-      reason: 'claude-failed',
-      form,
-      acContactId,
-      err: String(err),
-    }).catch((e) => console.warn('Alert send failed:', e))
-    return json({ status: 'partial', sent: false, reason: 'claude-failed' }, 200)
   }
   const generationSeconds = (Date.now() - claudeStart) / 1000
 
-  const wrapped = wrapEmail({
-    firstName,
-    generatedParagraph: aiParagraph,
-    generationSeconds,
-    calendlyUrl: CALENDLY_URL,
-  })
-
-  try {
-    const resendKey = Netlify.env.get('RESEND_API_KEY')
-    if (!resendKey) throw new Error('RESEND_API_KEY not set')
-    await sendEmail({
-      apiKey: resendKey,
-      from: Netlify.env.get('EMAIL_FROM') || 'Greg Getner <greg@getner.ai>',
-      replyTo: 'greg@getner.ai',
-      to: form.email,
-      subject: wrapped.subject,
-      text: wrapped.body,
-      headers: { 'X-Entity-Source': 'getner-ai-consult-form' },
-    })
-  } catch (err) {
-    console.error('Resend send failed:', err)
-    await alertGreg({
-      reason: 'resend-failed',
-      form,
-      acContactId,
-      err: String(err),
-      generatedBody: wrapped.body,
-    }).catch((e) => console.warn('Alert send failed:', e))
-    return json({ status: 'partial', sent: false, reason: 'resend-failed' }, 200)
-  }
-
-  // Tag `ai-email-1-sent` so the AC automation skips the template Email 1
-  // and starts at the Day-1 wait → Email 2.
+  // Step 3: Write AI body to AC (if Claude succeeded), then fire trigger tag.
+  // Trigger tag is the LAST AC operation so the automation sees the body.
   if (acContactId) {
     try {
-      await addTagToContact(acCfg, acContactId, 'ai-email-1-sent')
-      await writeField(acCfg, acContactId, 'AI_EMAIL_1_BODY', wrapped.body)
-      await writeField(
-        acCfg,
-        acContactId,
-        'AI_EMAIL_1_SENT_AT',
-        new Date().toISOString()
-      )
+      if (aiParagraph) {
+        await writeField(acCfg, acContactId, 'AI_EMAIL_1_BODY', aiParagraph)
+        await writeField(
+          acCfg,
+          acContactId,
+          'AI_EMAIL_1_SENT_AT',
+          new Date().toISOString()
+        )
+      }
+      // Trigger tag fires the AC automation. If AI body is empty, AC's
+      // If/Else step routes to the template Email 1 fallback.
+      await addTagToContact(acCfg, acContactId, 'consult-form-submitted')
     } catch (err) {
-      console.error('AC tag/field after-send failed (non-fatal):', err)
+      console.error('AC final tag/field write failed:', err)
     }
   }
 
-  // Alert Greg with the form + what the AI sent. Non-fatal if it fails.
+  // Step 4: Alert Greg with full context. Non-fatal if it fails.
+  // The alert email shows the full wrapped preview so Greg can see what
+  // AC's Personal Sender will actually send (or fall back to).
+  const previewBody = aiParagraph
+    ? wrapEmail({
+        firstName,
+        generatedParagraph: aiParagraph,
+        calendlyUrl: CALENDLY_URL,
+      }).body
+    : undefined
+
   await alertGreg({
-    reason: 'sent',
+    reason: aiParagraph ? 'queued' : 'claude-failed',
     form,
     acContactId,
-    generatedBody: wrapped.body,
+    generatedBody: previewBody,
     generationSeconds,
+    err: claudeError || undefined,
   }).catch((e) => console.warn('Alert send failed:', e))
 
   return json(
     {
-      status: 'ok',
-      sent: true,
+      status: aiParagraph ? 'ok' : 'partial',
+      ai_generated: !!aiParagraph,
       generation_seconds: Number(generationSeconds.toFixed(2)),
       ac_contact_id: acContactId || null,
     },
@@ -212,7 +194,7 @@ export default async (req: Request, _ctx: Context) => {
 }
 
 async function alertGreg(opts: {
-  reason: 'sent' | 'claude-failed' | 'resend-failed'
+  reason: 'queued' | 'claude-failed'
   form: FormPayload
   acContactId: string
   generatedBody?: string
@@ -220,19 +202,17 @@ async function alertGreg(opts: {
   err?: string
 }): Promise<void> {
   const resendKey = Netlify.env.get('RESEND_API_KEY')
-  if (!resendKey) return // silently skip if not configured
+  if (!resendKey) return // silently skip if Resend not configured
 
   const alertTo = Netlify.env.get('ALERT_EMAIL') || 'greg@getner.ai'
   const f = opts.form
 
   const status =
-    opts.reason === 'sent'
-      ? `AI replied (${(opts.generationSeconds || 0).toFixed(1)}s)`
-      : opts.reason === 'claude-failed'
-        ? 'AI FAILED — manual reply needed'
-        : 'AI generated reply but SEND FAILED — manual reply needed'
+    opts.reason === 'queued'
+      ? `AI drafted (${(opts.generationSeconds || 0).toFixed(1)}s) — AC Personal Sender will send`
+      : 'AI FAILED — AC will fall back to template Email 1; consider a manual reply'
 
-  const subject = `[Lead] ${f.name || '(no name)'} · ${f.company || '(no co)'} · ${status}`
+  const subject = `[Lead] ${f.name || '(no name)'} · ${f.company || '(no co)'} · ${opts.reason === 'queued' ? 'AI queued' : 'AI failed'}`
 
   const acLink = opts.acContactId
     ? `${AC_UI_BASE}/app/contacts/${opts.acContactId}`
@@ -267,9 +247,9 @@ async function alertGreg(opts: {
   if (opts.generatedBody) {
     sections.push(
       '',
-      opts.reason === 'sent'
-        ? '─── What was sent to the lead ───'
-        : '─── What Claude generated (NOT sent — Resend failed) ───',
+      '─── Preview of what AC will send via Personal Sender ───',
+      '(Wrapper text in code; AC automation step has matching wrapper. The %AI_EMAIL_1_BODY% paragraph below has been written to the contact and the trigger tag is fired.)',
+      '',
       opts.generatedBody
     )
   }

@@ -2,9 +2,18 @@
  * Email 1 personalization prompt.
  *
  * Claude generates ONLY the middle paragraph of the email — the human-feeling
- * "what your AI assistant picked up from your form" read. The function wraps
- * that paragraph in a fixed disclosure intro + Greg's CTA + signature so the
- * frame stays consistent and only the situational read varies.
+ * "what your AI assistant picked up from your form" read. The wrapper text
+ * around that paragraph is fixed (disclosure + CTA + signature) so only the
+ * situational read varies.
+ *
+ * IMPORTANT — wrapper sync: the actual lead-facing send happens in AC's
+ * automation builder via "Send 1-on-1 email" (Personal Sender / Gmail).
+ * That AC step has the wrapper text hardcoded with a %AI_EMAIL_1_BODY%
+ * merge tag where the paragraph goes. The wrapEmail() function below
+ * builds the same email shape for internal alerts/previews so Greg sees
+ * exactly what AC will send. If you change the wrapper here, change it
+ * in AC's automation step too — see /docs/claude-email-1-setup.md for
+ * the canonical paste-ready text.
  */
 
 export type FormPayload = {
@@ -86,16 +95,18 @@ Write the paragraph now.`
 export function wrapEmail(opts: {
   firstName: string
   generatedParagraph: string
-  generationSeconds: number
   calendlyUrl: string
 }): { subject: string; preheader: string; body: string } {
-  const seconds = Math.max(0.5, opts.generationSeconds).toFixed(1)
+  // Match the AC automation step's wrapper text exactly. AC can't read
+  // generation duration into a 1-on-1 send, so we use "a few seconds" in
+  // both places. The precise time is shown in the internal alert status
+  // line for monitoring.
   const subject = 'Got your note — my AI read your form already'
-  const preheader = `Drafted by my AI assistant in ${seconds} seconds. I'll read it personally too.`
+  const preheader = `Drafted by my AI assistant in a few seconds. I'll read it personally too.`
 
   const body = `Hi ${opts.firstName},
 
-Quick note before I read your form myself — this email was drafted by my AI assistant in ${seconds} seconds, the moment you hit submit. Here's what it picked up from your answers:
+Quick note before I read your form myself — this email was drafted by my AI assistant in a few seconds, the moment you hit submit. Here's what it picked up from your answers:
 
 ${opts.generatedParagraph.trim()}
 
