@@ -54,6 +54,7 @@ Site settings → Environment variables → add (Production scope):
 | `AC_API_URL` | `https://accpgreggetner.api-us1.com` | AC → Settings → Developer (the "URL" field) |
 | `AC_API_KEY` | (long token) | AC → Settings → Developer (the "Key" field) |
 | `FORM_WEBHOOK_SECRET` | (your generated string, e.g. from `openssl rand -hex 24`) | self-generated; reused below |
+| `ALERT_EMAIL` | `greg@getner.ai` (optional) | where internal alert emails go on every send (or send-failure). Defaults to greg@getner.ai. |
 
 ### 2. Resend domain verification
 

@@ -40,6 +40,7 @@ import { sendEmail } from './lib/resend-client.mts'
 const CLAUDE_MODEL = 'claude-sonnet-4-6'
 const CALENDLY_URL = 'https://calendly.com/getner/activecampaign-strategy-session'
 const AC_LIST_ID_CERT_LEADS = 4 // ac-cert-leads list
+const AC_UI_BASE = 'https://accpgreggetner.activehosted.com'
 
 type NetlifyFormsPayload = {
   form_name?: string
@@ -132,6 +133,12 @@ export default async (req: Request, _ctx: Context) => {
     aiParagraph = await callClaude(form)
   } catch (err) {
     console.error('Claude call failed:', err)
+    await alertGreg({
+      reason: 'claude-failed',
+      form,
+      acContactId,
+      err: String(err),
+    }).catch((e) => console.warn('Alert send failed:', e))
     return json({ status: 'partial', sent: false, reason: 'claude-failed' }, 200)
   }
   const generationSeconds = (Date.now() - claudeStart) / 1000
@@ -157,6 +164,13 @@ export default async (req: Request, _ctx: Context) => {
     })
   } catch (err) {
     console.error('Resend send failed:', err)
+    await alertGreg({
+      reason: 'resend-failed',
+      form,
+      acContactId,
+      err: String(err),
+      generatedBody: wrapped.body,
+    }).catch((e) => console.warn('Alert send failed:', e))
     return json({ status: 'partial', sent: false, reason: 'resend-failed' }, 200)
   }
 
@@ -177,6 +191,15 @@ export default async (req: Request, _ctx: Context) => {
     }
   }
 
+  // Alert Greg with the form + what the AI sent. Non-fatal if it fails.
+  await alertGreg({
+    reason: 'sent',
+    form,
+    acContactId,
+    generatedBody: wrapped.body,
+    generationSeconds,
+  }).catch((e) => console.warn('Alert send failed:', e))
+
   return json(
     {
       status: 'ok',
@@ -186,6 +209,79 @@ export default async (req: Request, _ctx: Context) => {
     },
     200
   )
+}
+
+async function alertGreg(opts: {
+  reason: 'sent' | 'claude-failed' | 'resend-failed'
+  form: FormPayload
+  acContactId: string
+  generatedBody?: string
+  generationSeconds?: number
+  err?: string
+}): Promise<void> {
+  const resendKey = Netlify.env.get('RESEND_API_KEY')
+  if (!resendKey) return // silently skip if not configured
+
+  const alertTo = Netlify.env.get('ALERT_EMAIL') || 'greg@getner.ai'
+  const f = opts.form
+
+  const status =
+    opts.reason === 'sent'
+      ? `AI replied (${(opts.generationSeconds || 0).toFixed(1)}s)`
+      : opts.reason === 'claude-failed'
+        ? 'AI FAILED — manual reply needed'
+        : 'AI generated reply but SEND FAILED — manual reply needed'
+
+  const subject = `[Lead] ${f.name || '(no name)'} · ${f.company || '(no co)'} · ${status}`
+
+  const acLink = opts.acContactId
+    ? `${AC_UI_BASE}/app/contacts/${opts.acContactId}`
+    : '(AC contact create failed)'
+
+  const sections: string[] = [
+    `Status: ${status}`,
+    '',
+    `Lead: ${f.name || '(blank)'} <${f.email || '(no email)'}>`,
+    `Company: ${f.company || '(blank)'}`,
+    `AC contact: ${acLink}`,
+    '',
+    'Form answers:',
+    `  Existing AC: ${f.existing_ac || '(blank)'}`,
+    `  List size: ${f.list_size || '(blank)'}`,
+    `  Revenue band: ${f.revenue_band || '(blank)'}`,
+    `  Looking for: ${f.engagement_type || '(blank)'}`,
+    `  Timeline: ${f.timeline || '(blank)'}`,
+    `  Context: ${f.context || '(blank)'}`,
+    '',
+    'Capture data:',
+    `  UTM source: ${f.utm_source || '(blank)'}`,
+    `  UTM medium: ${f.utm_medium || '(blank)'}`,
+    `  UTM campaign: ${f.utm_campaign || '(blank)'}`,
+    `  Referrer: ${f.referrer || '(blank)'}`,
+    `  Landing page: ${f.landing_page || '(blank)'}`,
+  ]
+
+  if (opts.err) {
+    sections.push('', '─── ERROR ───', opts.err)
+  }
+  if (opts.generatedBody) {
+    sections.push(
+      '',
+      opts.reason === 'sent'
+        ? '─── What was sent to the lead ───'
+        : '─── What Claude generated (NOT sent — Resend failed) ───',
+      opts.generatedBody
+    )
+  }
+
+  await sendEmail({
+    apiKey: resendKey,
+    from: Netlify.env.get('EMAIL_FROM') || 'Greg Getner <greg@getner.ai>',
+    to: alertTo,
+    subject,
+    text: sections.join('\n'),
+    headers: { 'X-Entity-Source': 'getner-ai-internal-alert' },
+  })
 }
 
 async function callClaude(form: FormPayload): Promise<string> {
