@@ -1,0 +1,122 @@
+[
+  {
+    "id": "fast-growth-ecom",
+    "expected_tier": "Done-for-you",
+    "form": {
+      "name": "Sarah Jones",
+      "email": "sarah@example.com",
+      "company": "Hearth & Honey",
+      "existing_ac": "existing-ac",
+      "list_size": "100K–500K",
+      "revenue_band": "$100K–$500K/mo",
+      "engagement_type": "Done-for-you ($3K–$20K project)",
+      "timeline": "ASAP — this week",
+      "context": "Our welcome series is converting at 1.2% and I know it should be triple that. Black Friday is in 6 months and I cannot show up to a planning meeting without a working welcome flow. We have no in-house email person."
+    }
+  },
+  {
+    "id": "course-creator-audit",
+    "expected_tier": "Free audit",
+    "form": {
+      "name": "Marcus Webb",
+      "email": "marcus@example.com",
+      "company": "Marcus Webb Coaching",
+      "existing_ac": "existing-ac",
+      "list_size": "10K–50K",
+      "revenue_band": "$10K–$50K/mo",
+      "engagement_type": "Free audit",
+      "timeline": "Just exploring",
+      "context": "Inherited this AC account from a contractor who left in January. Not sure what's running, what's broken, what's just dead weight. Want to know what I'm sitting on before I spend any more money on it."
+    }
+  },
+  {
+    "id": "agency-dwy",
+    "expected_tier": "Done-with-you",
+    "form": {
+      "name": "Priya Patel",
+      "email": "priya@example.com",
+      "company": "Bright Atlas Agency",
+      "existing_ac": "existing-ac",
+      "list_size": "500K–1M",
+      "revenue_band": "Not tracking yet",
+      "engagement_type": "Done-with-you ($300/hr)",
+      "timeline": "Within 30 days",
+      "context": "We have two AC accounts for clients who aren't getting the results they were promised. I need someone senior to get on calls with our internal team weekly and tell us what we're missing. Don't need them to build — we have builders."
+    }
+  },
+  {
+    "id": "migration-from-mailchimp",
+    "expected_tier": "Done-for-you",
+    "form": {
+      "name": "Jamal Carter",
+      "email": "jamal@example.com",
+      "company": "Carter Outdoor Co.",
+      "existing_ac": "other-platform",
+      "list_size": "50K–100K",
+      "revenue_band": "$50K–$100K/mo",
+      "engagement_type": "Not sure — recommend",
+      "timeline": "60–90 days",
+      "context": "Mailchimp is killing us on segmentation and abandoned cart isn't really working the way we set it up. Heard AC is more flexible. Need someone to handle the migration end-to-end because if I screw up the customer data we're in trouble."
+    }
+  },
+  {
+    "id": "small-saas-paid-audit",
+    "expected_tier": "Paid audit",
+    "form": {
+      "name": "Alex Kim",
+      "email": "alex@example.com",
+      "company": "Pinepoint Software",
+      "existing_ac": "existing-ac",
+      "list_size": "Under 10K",
+      "revenue_band": "Under $10K/mo",
+      "engagement_type": "Paid audit ($147–$297)",
+      "timeline": "Within 30 days",
+      "context": "We've been on AC for 14 months. Open rates dropped from 38% to 21% over the last 3 months and I can't find the cause. Want a proper diagnostic, not a hour-long discovery call. Will pay for the structured output."
+    }
+  },
+  {
+    "id": "vague-explorer",
+    "expected_tier": "Free audit",
+    "form": {
+      "name": "Robin Lee",
+      "email": "robin@example.com",
+      "company": "Robin Lee LLC",
+      "existing_ac": "starting-new",
+      "list_size": "Not yet on AC",
+      "revenue_band": "Not tracking yet",
+      "engagement_type": "Not sure — recommend",
+      "timeline": "Just exploring",
+      "context": "Just heard about AC from a podcast. Not sure if I need a full ESP yet."
+    }
+  },
+  {
+    "id": "blank-context",
+    "expected_tier": "Paid audit",
+    "form": {
+      "name": "Jordan Stevens",
+      "email": "jordan@example.com",
+      "company": "Stevens Bakery Co",
+      "existing_ac": "existing-ac",
+      "list_size": "10K–50K",
+      "revenue_band": "$10K–$50K/mo",
+      "engagement_type": "Paid audit ($147–$297)",
+      "timeline": "Within 30 days",
+      "context": ""
+    }
+  },
+  {
+    "id": "huge-list-urgent",
+    "expected_tier": "Done-for-you",
+    "form": {
+      "name": "Diana Park",
+      "email": "diana@example.com",
+      "company": "WildBloom Beauty",
+      "existing_ac": "existing-ac",
+      "list_size": "1M–5M",
+      "revenue_band": "$500K+/mo",
+      "engagement_type": "Done-for-you ($3K–$20K project)",
+      "timeline": "ASAP — this week",
+      "context": "Black Friday revenue dropped 42% YoY. Win-back sequences haven't been touched since 2024. Engagement is in the basement. We have a team of 3 marketers but none of them know AC at this scale. Need this fixed before Q4 planning starts in 6 weeks."
+    }
+  }
+]

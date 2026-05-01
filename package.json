@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "generate-post": "node --env-file=.env scripts/generate-post.mjs",
-    "publish-draft": "node scripts/publish-draft.mjs"
+    "publish-draft": "node scripts/publish-draft.mjs",
+    "eval-email-1": "node --env-file=.env netlify/functions/eval/run-eval.mjs"
   },
   "dependencies": {
     "marked": "^14.0.0"
