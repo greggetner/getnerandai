@@ -523,6 +523,8 @@
     } catch (err) {}
   });
 </script>
+
+<script src="/scripts/utm-capture.js" defer></script>
 </head>
 <body>
 
@@ -746,6 +748,13 @@
         novalidate
       >
         <input type="hidden" name="form-name" value="migration-assessment" />
+        <input type="hidden" name="utm_source" />
+        <input type="hidden" name="utm_medium" />
+        <input type="hidden" name="utm_campaign" />
+        <input type="hidden" name="utm_term" />
+        <input type="hidden" name="utm_content" />
+        <input type="hidden" name="referrer" />
+        <input type="hidden" name="landing_page" />
         <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
 
         <div class="form-row two-col">
@@ -872,6 +881,13 @@
       </div>
       <form class="site-form" id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
         <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="utm_source" />
+        <input type="hidden" name="utm_medium" />
+        <input type="hidden" name="utm_campaign" />
+        <input type="hidden" name="utm_term" />
+        <input type="hidden" name="utm_content" />
+        <input type="hidden" name="referrer" />
+        <input type="hidden" name="landing_page" />
         <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
         <div class="form-row two-col">
           <div class="form-field">
@@ -913,6 +929,13 @@
   <input type="text" name="current_platform" />
   <input type="text" name="list_size" />
   <textarea name="concern"></textarea>
+  <input type="text" name="utm_source" />
+  <input type="text" name="utm_medium" />
+  <input type="text" name="utm_campaign" />
+  <input type="text" name="utm_term" />
+  <input type="text" name="utm_content" />
+  <input type="text" name="referrer" />
+  <input type="text" name="landing_page" />
   <input type="text" name="bot-field" />
 </form>
 
