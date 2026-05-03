@@ -229,7 +229,7 @@ export function wrapEmail(opts: {
 }): { subject: string; body: string } {
   const body = `Hi ${opts.firstName},
 
-Heads up — this email was AI-drafted the second you hit submit. The read below is real; I (Greg, the human) wrote the prompt and review every send, but the words came from the AI assistant I built into my pipeline so you'd get a useful response in 4 seconds instead of waiting two business days for me.
+Heads up — this email was AI-drafted the second you hit submit. I see every send, and any reply you write goes straight to my inbox — not the AI. The next message in this thread will be from me.
 
 ${opts.paragraph.trim()}
 

@@ -37,10 +37,17 @@ import { sendEmail } from './resend-client.mts'
 
 const CLAUDE_MODEL = 'claude-sonnet-4-6'
 const CALENDLY_URL = 'https://calendly.com/getner/activecampaign-strategy-session'
-const AC_LIST_ID_CERT_LEADS = 4
 const AC_UI_BASE = 'https://accpgreggetner.activehosted.com'
 
+// AC list IDs (per-source). ac-cert-leads is dedicated to AC directory leads
+// only; consult-leads catches consult/contact/application/ai-terminal.
+const AC_LIST_AC_CERT_LEADS = 4
+const AC_LIST_AUDIT_LEADS = 5
+const AC_LIST_MIGRATION_LEADS = 6
+const AC_LIST_CONSULT_LEADS = 8
+
 type SourceConfig = {
+  listId: number // AC list to subscribe the contact to
   sourceTag: string // form-X attribution tag
   triggerTag?: string // AC automation trigger (only for sources that have a nurture)
   extraTags?: string[] // additional tags to apply (e.g. source-cert-directory)
@@ -49,34 +56,41 @@ type SourceConfig = {
 
 const SOURCE_CONFIG: Record<LeadSource, SourceConfig> = {
   'consult-form': {
+    listId: AC_LIST_CONSULT_LEADS,
     sourceTag: 'form-consult',
     triggerTag: 'consult-form-submitted',
     description: '/consult/ form',
   },
   'ac-cert-directory': {
+    listId: AC_LIST_AC_CERT_LEADS,
     sourceTag: 'form-consult',
     triggerTag: 'consult-form-submitted',
     extraTags: ['source-cert-directory'],
     description: 'AC consultants directory',
   },
   'audit-form': {
+    listId: AC_LIST_AUDIT_LEADS,
     sourceTag: 'form-audit',
     triggerTag: 'audit-form-submitted',
     description: '/audit/ form',
   },
   'migration-form': {
+    listId: AC_LIST_MIGRATION_LEADS,
     sourceTag: 'form-migration',
     description: '/free-migration/ form',
   },
   'application-form': {
+    listId: AC_LIST_CONSULT_LEADS,
     sourceTag: 'form-application',
     description: 'Apply modal',
   },
   'contact-form': {
+    listId: AC_LIST_CONSULT_LEADS,
     sourceTag: 'form-contact',
     description: 'Contact form',
   },
   'ai-terminal': {
+    listId: AC_LIST_CONSULT_LEADS,
     sourceTag: 'form-ai-terminal',
     description: 'AI terminal',
   },
@@ -160,7 +174,7 @@ export async function processLead(payload: LeadPayload): Promise<ProcessLeadResu
       lastName,
       phone: payload.phone,
     })
-    await addContactToList(acCfg, acContactId, AC_LIST_ID_CERT_LEADS)
+    await addContactToList(acCfg, acContactId, cfg.listId)
     await addTagToContact(acCfg, acContactId, cfg.sourceTag)
     if (cfg.extraTags) {
       for (const t of cfg.extraTags) {
