@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The 3-Email Re-Engagement Test I Run Before Unsubscribing Cold Contacts — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Most operators either blast cold contacts until they complain or quietly delete them in batches—neither approach improves deliverability, and both leave money on the table." />
+<link rel="canonical" href="https://getner.ai/blog/reengagement-before-unsubscribe.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="The 3-Email Re-Engagement Test I Run Before Unsubscribing Cold Contacts" />
+<meta property="og:description" content="Most operators either blast cold contacts until they complain or quietly delete them in batches—neither approach improves deliverability, and both leave money on the table." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/reengagement-before-unsubscribe.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Retention" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The 3-Email Re-Engagement Test I Run Before Unsubscribing Cold Contacts",
+  "description": "Most operators either blast cold contacts until they complain or quietly delete them in batches—neither approach improves deliverability, and both leave money on the table.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-05-05",
+  "mainEntityOfPage": "https://getner.ai/blog/reengagement-before-unsubscribe.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">May 5, 2026 · Retention · 10 min read</div>
+      <h1 class="post-title">The 3-Email Re-Engagement Test I Run Before Unsubscribing Cold Contacts</h1>
+      <p class="post-lede">Most operators either blast cold contacts until they complain or quietly delete them in batches—neither approach improves deliverability, and both leave money on the table.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>You have contacts who haven&#39;t opened in ninety days. Maybe six months. They joined a webinar funnel, never showed, and ignored every email since. Or they downloaded a lead magnet two years ago and went dark.</p>
+      <p>The reflex is to either keep sending or bulk-delete them. Both are wrong. Cold contacts hurt your sender reputation every time you mail them, but deleting them without a re-engagement test means you&#39;re throwing away people who might still convert—they just needed a different hook.</p>
+      <h2>The Cost of Ignoring Cold Contacts</h2>
+      <p>Gmail, Outlook, and Yahoo watch engagement. When a large percentage of your list ignores your emails consistently, inbox providers interpret that as a signal that your mail isn&#39;t wanted. Your sender reputation drops. More of your emails—even to engaged subscribers—start landing in spam or the promotions tab.</p>
+      <p>The worst part: you don&#39;t see it happening in real time. There&#39;s no alert in ActiveCampaign that says &quot;your deliverability just dropped 18% because you&#39;re mailing 4,000 cold contacts.&quot; You just notice, six weeks later, that your open rates are softer and your revenue per send is down.</p>
+      <p>Cold contacts are dead weight on your sender reputation. But you can&#39;t know if they&#39;re truly cold until you test them with a message that doesn&#39;t look, sound, or feel like the last thirty emails they ignored.</p>
+      <h2>The 3-Email Test: Utility, Honesty, One-Click</h2>
+      <p>I run the same re-engagement pattern across every program I manage. Three emails over ten days. Each one uses a completely different approach. Non-responders get unsubscribed automatically at the end—by you, not by them—which is better for deliverability and list hygiene.</p>
+      <p>Here&#39;s the sequence.</p>
+      <h3>Email 1: Pure Utility (Day 0)</h3>
+      <p>The first email is not about you, your offer, or your business. It&#39;s a single useful thing they can use in the next ten minutes. A template, a checklist, a one-paragraph shortcut. No pitch. No &quot;by the way, we also offer…&quot; at the bottom.</p>
+      <p><strong>Subject line pattern:</strong> &quot;Quick thing for [specific use case]&quot;</p>
+      <p>Examples:</p>
+      <ul>
+      <li>&quot;Quick thing for cleaning up duplicate Stripe customers&quot;</li>
+      <li>&quot;Quick thing for onboarding new team members&quot;</li>
+      <li>&quot;Quick thing for segmenting by purchase behavior&quot;</li>
+      </ul>
+      <p>The body is four sentences and a link. That&#39;s it. You&#39;re testing whether they&#39;ll engage with <em>anything</em> from you if it&#39;s genuinely helpful and costs them nothing.</p>
+      <p>In the accounts I work in, this email produces the highest open rate of the three—because it doesn&#39;t feel like marketing.</p>
+      <h3>Email 2: Radical Honesty (Day 4)</h3>
+      <p>The second email is the one most operators are too scared to send. You tell them the truth: they haven&#39;t opened in a while, you&#39;re trying to figure out if they still want to hear from you, and if not, that&#39;s fine.</p>
+      <p><strong>Subject line pattern:</strong> &quot;[First name], still want these?&quot;</p>
+      <p>Examples:</p>
+      <ul>
+      <li>&quot;Sarah, still want these?&quot;</li>
+      <li>&quot;Quick check-in, Michael&quot;</li>
+      <li>&quot;Still relevant?&quot;</li>
+      </ul>
+      <p>The body acknowledges the silence directly. No corporate hedging. No &quot;we noticed you haven&#39;t engaged with our content recently&quot;—that&#39;s HR-speak. Write it like you&#39;re sending a text to a colleague you haven&#39;t heard from.</p>
+      <p>Example body:</p>
+      <blockquote>
+      <p>You haven&#39;t opened an email from me in four months. That&#39;s totally fine—inboxes are chaos.</p>
+      <p>I&#39;m cleaning up my list, and I wanted to check: are these emails still useful? If yes, just reply with &quot;yes&quot; or click here [link to any page on your site]. If not, no worries—I&#39;ll take you off in a few days.</p>
+      </blockquote>
+      <p>This email produces the second-highest engagement rate, and the replies are almost always positive. People appreciate being asked instead of assumed.</p>
+      <h3>Email 3: One-Click Preference (Day 10)</h3>
+      <p>The third email is a forced choice. Stay or go. One click for each option. No forms, no &quot;update your preferences&quot; maze with fourteen checkboxes.</p>
+      <p><strong>Subject line pattern:</strong> &quot;Last one—stay or go?&quot;</p>
+      <p>Examples:</p>
+      <ul>
+      <li>&quot;Last one—stay or go?&quot;</li>
+      <li>&quot;Quick decision needed&quot;</li>
+      <li>&quot;Keep these coming?&quot;</li>
+      </ul>
+      <p>The body gives them two links: one to confirm they want to stay (link to a page that triggers a <code>confirmed-reengaged</code> tag in ActiveCampaign via site tracking or a form submit), and one to unsubscribe immediately.</p>
+      <p>Example body:</p>
+      <blockquote>
+      <p>This is the last email I&#39;ll send unless you tell me to keep going.</p>
+      <p>[Click here to stay on the list] – I&#39;ll keep sending.</p>
+      <p>[Click here to unsubscribe] – No hard feelings.</p>
+      </blockquote>
+      <p>If they don&#39;t click either link by day 11, the automation unsubscribes them. Not deletes—unsubscribes. That way the record stays in ActiveCampaign, and if they ever re-enter your ecosystem (buy something, register for a webinar), you have the history.</p>
+      <h2>Build It in ActiveCampaign</h2>
+      <p>Here&#39;s the automation structure.</p>
+      <p><strong>Trigger:</strong> Segment-based. Create a segment in ActiveCampaign for contacts who have not opened any campaign or automation email in the last 90 days (or 180—your call). Set the automation to trigger when a contact enters that segment, and batch-add them once.</p>
+      <p><strong>Email 1 (Day 0):</strong> Utility email. No wait before this one—send immediately when they enter.</p>
+      <p><strong>Wait 4 days.</strong></p>
+      <p><strong>Email 2 (Day 4):</strong> Honesty email.</p>
+      <p><strong>Wait 6 days.</strong></p>
+      <p><strong>Email 3 (Day 10):</strong> One-click preference.</p>
+      <p><strong>Wait 24 hours.</strong></p>
+      <p><strong>If/Else conditional:</strong> Has the contact opened <em>any</em> email in this automation, clicked <em>any</em> link, or been tagged <code>confirmed-reengaged</code>?</p>
+      <ul>
+      <li><strong>Yes:</strong> End this automation. Optionally, add a tag like <code>re-engaged-2024</code> so you know they came back to life, and move them into a low-frequency nurture (one email every two weeks, not seven emails a week).</li>
+      <li><strong>No:</strong> Unsubscribe them from all lists, or just from your main broadcast list if you use multiple lists. Add a tag like <code>disengaged-removed-2024</code> for record-keeping.</li>
+      </ul>
+      <p>The entire automation runs for eleven days. Non-responders are gone by day twelve.</p>
+      <h2>Why You Unsubscribe Them (Not Wait for Them to Do It)</h2>
+      <p>When <em>you</em> unsubscribe a cold contact, you&#39;re cleaning your list proactively. That improves your sender reputation with inbox providers because your future sends go to a smaller, more engaged group. Your open rates go up, your spam complaint rates go down, and your deliverability improves.</p>
+      <p>When you keep mailing cold contacts and <em>wait</em> for them to unsubscribe or mark you as spam, you&#39;re hoping they&#39;ll do your list hygiene for you. Most won&#39;t. They&#39;ll just keep ignoring you, and Gmail will keep noticing.</p>
+      <p>The other benefit: you control the timing. You can run this test once a quarter and systematically prune dead weight before it becomes a deliverability problem.</p>
+      <h2>What Happens to the Re-Engaged Contacts</h2>
+      <p>If someone opens, clicks, or confirms during the 10-day window, they&#39;ve told you they&#39;re still interested—but probably not in the same frequency or content you were sending before they went cold.</p>
+      <p>Don&#39;t immediately drop them back into your normal broadcast schedule if you&#39;re sending daily or every other day. That&#39;s how they went cold in the first place.</p>
+      <p>Move them into a quieter nurture. One email a week, or every two weeks. Different subject line style. Less pitch, more utility. You&#39;re rebuilding trust, not trying to close them in the next four emails.</p>
+      <p>In the programs I run, re-engaged contacts often convert later—sometimes months later—but only if you don&#39;t immediately drown them again.</p>
+      <h2>Run This Once a Quarter</h2>
+      <p>List hygiene isn&#39;t a one-time project. New contacts go cold every month. Run this same 3-email test every 90 days on anyone who hasn&#39;t opened in the prior 90 days. Automate the whole thing so it&#39;s invisible to you.</p>
+      <p>The result: your list stays clean, your sender reputation stays high, and the contacts who remain are the ones actually reading. That&#39;s the list you want to mail.</p>
+      <hr>
+      <p>If your ActiveCampaign program is carrying dead weight and you&#39;re not sure where the leaks are, I&#39;ll audit it for free and show you exactly what&#39;s costing you money. Details at <a href="https://getner.ai/audit/">getner.ai/audit</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

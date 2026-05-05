@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 05 May 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>The 3-Email Re-Engagement Test I Run Before Unsubscribing Cold Contacts</title>
+      <link>https://getner.ai/blog/reengagement-before-unsubscribe.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/reengagement-before-unsubscribe.html</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Most operators either blast cold contacts until they complain or quietly delete them in batches—neither approach improves deliverability, and both leave money on the table.]]></description>
+    </item>
 
     <item>
       <title>How to Build an Abandon Cart Flow That Doesn't Feel Like a Guilt Trip</title>
