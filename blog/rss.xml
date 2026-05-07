@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 05 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>The Post-Purchase Sequence Most Ecommerce Brands Never Build</title>
+      <link>https://getner.ai/blog/post-purchase-sequence.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/post-purchase-sequence.html</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Most ecommerce brands build welcome automations and cart abandonment flows, then wonder why their retention numbers stay flat—meanwhile the entire relationship after purchase runs on default transactional emails and hope.]]></description>
+    </item>
 
     <item>
       <title>The 3-Email Re-Engagement Test I Run Before Unsubscribing Cold Contacts</title>
