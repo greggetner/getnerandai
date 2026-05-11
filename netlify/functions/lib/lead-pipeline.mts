@@ -1,7 +1,7 @@
 /**
  * Shared lead-processing pipeline. Used by:
  *   - draft-and-send-reply.mts (Netlify Forms webhook → consult/audit/migration/contact)
- *   - process-directory-lead.mts (Zapier webhook → AC consultants directory)
+ *   - process-directory-lead.mts (inbound email webhook → AC consultants directory)
  *
  * Flow per submission:
  *   1. Upsert AC contact by email
@@ -11,6 +11,7 @@
  *   5. Call Claude → { subject, paragraph } JSON
  *   6. Write AI body + sent-at to AC
  *   7. Send lead-facing email via Resend (AI version, or fallback if Claude failed)
+ *      CC: greg.getner@gmail.com always receives a copy of every outbound lead email
  *   8. Add trigger tag LAST (fires AC nurture automation; only for sources that route into one)
  *   9. Send internal alert to Greg with full context + preview
  *
@@ -38,6 +39,10 @@ import { sendEmail } from './resend-client.mts'
 const CLAUDE_MODEL = 'claude-sonnet-4-6'
 const CALENDLY_URL = 'https://calendly.com/getner/activecampaign-strategy-session'
 const AC_UI_BASE = 'https://accpgreggetner.activehosted.com'
+
+// Greg always gets a BCC/CC on every outbound lead email so he can monitor
+// what was sent in real time alongside the internal alert.
+const GREG_CC = 'greg.getner@gmail.com'
 
 // AC list IDs (per-source). ac-cert-leads is dedicated to AC directory leads
 // only; consult-leads catches consult/contact/application/ai-terminal.
@@ -228,6 +233,8 @@ export async function processLead(payload: LeadPayload): Promise<ProcessLeadResu
   const fromAddress = Netlify.env.get('EMAIL_FROM') || 'Greg Getner <greg@getner.ai>'
 
   // Step 4: Lead-facing send via Resend.
+  // CC greg.getner@gmail.com on every outbound lead email so Greg gets a
+  // real-time copy of exactly what landed in the lead's inbox.
   let resendEmailId: string | undefined
   let sendError: string | undefined
   let sendStatus: 'sent' | 'skipped' | 'failed' = 'skipped'
@@ -240,6 +247,7 @@ export async function processLead(payload: LeadPayload): Promise<ProcessLeadResu
         apiKey: resendKey,
         from: fromAddress,
         to: payload.email,
+        cc: [GREG_CC],
         replyTo: 'greg@getner.ai',
         subject: wrap.subject,
         text: wrap.body,
@@ -437,6 +445,7 @@ async function alertGreg(opts: {
     sentHeader,
     `From:     ${opts.fromAddress}`,
     `To:       ${p.email}`,
+    `CC:       greg.getner@gmail.com`,
     `Reply-To: greg@getner.ai`,
     `Subject:  ${opts.sentSubject}`,
     '',

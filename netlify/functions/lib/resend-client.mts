@@ -7,6 +7,7 @@ export async function sendEmail(opts: {
   apiKey: string
   from: string // "Greg Getner <greg@getner.ai>"
   to: string
+  cc?: string[]  // optional CC recipients
   replyTo?: string
   subject: string
   text: string
@@ -21,6 +22,7 @@ export async function sendEmail(opts: {
     body: JSON.stringify({
       from: opts.from,
       to: [opts.to],
+      ...(opts.cc && opts.cc.length > 0 ? { cc: opts.cc } : {}),
       reply_to: opts.replyTo,
       subject: opts.subject,
       text: opts.text,
