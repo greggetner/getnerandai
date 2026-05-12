@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>Using ActiveCampaign Deal Pipelines for Course Cohorts (Not Just Sales)</title>
+      <link>https://getner.ai/blog/deal-pipelines-for-courses.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/deal-pipelines-for-courses.html</guid>
+      <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Most operators treat deal pipelines as a sales-only tool, but they're built to manage any multi-stage process—including the ones happening after someone buys from you.]]></description>
+    </item>
 
     <item>
       <title>The Post-Purchase Sequence Most Ecommerce Brands Never Build</title>
