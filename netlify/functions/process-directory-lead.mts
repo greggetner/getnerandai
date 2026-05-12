@@ -163,6 +163,10 @@ function parseAcDirectoryEmail(body: string): DirectoryPayload {
   return result
 }
 
+// ─── Email format validator ───────────────────────────────────────────────────
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 // ─── Handler ──────────────────────────────────────────────────────────────────
 
 export default async (req: Request, _ctx: Context) => {
@@ -195,13 +199,18 @@ export default async (req: Request, _ctx: Context) => {
   // Option A: payload has name/email/company/etc. directly.
   let parsed: DirectoryPayload
   if (raw.body) {
+    // Enforce body size limit to prevent oversized payloads.
+    if (raw.body.length > 50000) {
+      return json({ error: 'payload too large' }, 413)
+    }
+
     // Option B: raw email — parse the body text.
     console.log('process-directory-lead: received raw email body, parsing…')
     parsed = parseAcDirectoryEmail(raw.body)
 
-    // Validate sender to reduce spam risk.
-    if (raw.from && !raw.from.includes('activecampaign.com')) {
-      console.warn('process-directory-lead: unexpected sender:', raw.from)
+    // Validate sender — require from field to be present and from activecampaign.com.
+    if (!raw.from || !raw.from.includes('activecampaign.com')) {
+      console.warn('process-directory-lead: unexpected or missing sender:', raw.from)
       return json({ error: 'unexpected sender' }, 403)
     }
   } else {
@@ -219,13 +228,19 @@ export default async (req: Request, _ctx: Context) => {
     return json({ error: 'no email in payload' }, 400)
   }
 
+  // Validate email format.
+  if (!EMAIL_RE.test(parsed.email)) {
+    return json({ error: 'invalid email address' }, 400)
+  }
+
   const lead: LeadPayload = {
     source: 'ac-cert-directory',
     email: parsed.email,
     name: parsed.name,
     company: parsed.company,
     phone: parsed.phone,
-    context: parsed.context,
+    // Truncate free-text fields before passing to pipeline.
+    context: parsed.context ? parsed.context.slice(0, 2000) : parsed.context,
   }
 
   const result = await processLead(lead)

@@ -29,6 +29,9 @@ const FORM_NAME_TO_SOURCE: Record<string, LeadSource> = {
   contact: 'contact-form',
 }
 
+// Email format validator
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 export default async (req: Request, _ctx: Context) => {
   if (req.method !== 'POST') {
     return json({ error: 'POST only' }, 405)
@@ -63,6 +66,11 @@ export default async (req: Request, _ctx: Context) => {
     return json({ error: 'no email in submission' }, 400)
   }
 
+  // Validate email format.
+  if (!EMAIL_RE.test(data.email)) {
+    return json({ error: 'invalid email address' }, 400)
+  }
+
   // Map Netlify Forms field names → LeadPayload. The Netlify Forms field name
   // is whatever the input's `name` attribute was. Most match 1:1; `referrer`
   // is the historical name for HTTP referrer.
@@ -72,7 +80,8 @@ export default async (req: Request, _ctx: Context) => {
     name: data.name,
     company: data.company,
     phone: data.phone,
-    context: data.context,
+    // Truncate free-text fields before passing to pipeline.
+    context: data.context ? data.context.slice(0, 2000) : data.context,
     existing_ac: data.existing_ac,
     list_size: data.list_size,
     revenue_band: data.revenue_band,
@@ -83,8 +92,8 @@ export default async (req: Request, _ctx: Context) => {
     current_platform: data.current_platform,
     concern: data.concern,
     experience: data.experience,
-    challenge: data.challenge,
-    transcript: data.transcript,
+    challenge: data.challenge ? data.challenge.slice(0, 2000) : data.challenge,
+    transcript: data.transcript ? data.transcript.slice(0, 3000) : data.transcript,
     question_count: data.question_count,
     utm_source: data.utm_source,
     utm_medium: data.utm_medium,
