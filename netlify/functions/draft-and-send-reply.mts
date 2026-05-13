@@ -11,6 +11,11 @@
  *
  * Webhook security: shared-secret query param `?token=...` matched against
  * env var FORM_WEBHOOK_SECRET.
+ *
+ * IMPORTANT: We return 200 immediately and process the lead in the background
+ * using ctx.waitUntil(). This prevents Netlify from retrying the webhook when
+ * the pipeline takes >10s (Claude + AC + Resend), which was causing duplicate
+ * emails to be sent to leads.
  */
 
 import type { Context } from '@netlify/functions'
@@ -32,7 +37,12 @@ const FORM_NAME_TO_SOURCE: Record<string, LeadSource> = {
 // Email format validator
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-export default async (req: Request, _ctx: Context) => {
+// Idempotency: track recently processed emails to catch any duplicate
+// webhook deliveries from the same function instance within 5 minutes.
+const recentLeads = new Map<string, number>()
+const DEDUP_WINDOW_MS = 5 * 60 * 1000
+
+export default async (req: Request, ctx: Context) => {
   if (req.method !== 'POST') {
     return json({ error: 'POST only' }, 405)
   }
@@ -71,16 +81,22 @@ export default async (req: Request, _ctx: Context) => {
     return json({ error: 'invalid email address' }, 400)
   }
 
-  // Map Netlify Forms field names → LeadPayload. The Netlify Forms field name
-  // is whatever the input's `name` attribute was. Most match 1:1; `referrer`
-  // is the historical name for HTTP referrer.
+  // Idempotency check: if same email processed recently from this instance,
+  // skip silently. Prevents duplicates from same-instance webhook retries.
+  const lastSeen = recentLeads.get(data.email)
+  if (lastSeen && Date.now() - lastSeen < DEDUP_WINDOW_MS) {
+    console.log('Duplicate webhook for', data.email, '-- skipping')
+    return json({ status: 'duplicate', reason: 'already processing' }, 200)
+  }
+  recentLeads.set(data.email, Date.now())
+
+  // Map Netlify Forms field names → LeadPayload.
   const lead: LeadPayload = {
     source,
     email: data.email,
     name: data.name,
     company: data.company,
     phone: data.phone,
-    // Truncate free-text fields before passing to pipeline.
     context: data.context ? data.context.slice(0, 2000) : data.context,
     existing_ac: data.existing_ac,
     list_size: data.list_size,
@@ -104,8 +120,17 @@ export default async (req: Request, _ctx: Context) => {
     landing_page: data.landing_page,
   }
 
-  const result = await processLead(lead)
-  return json(result, result.status === 'error' ? 500 : 200)
+  // Return 200 immediately so Netlify doesn't retry the webhook.
+  // Process the lead in the background via ctx.waitUntil().
+  // This is the key fix for duplicate sends -- Netlify was retrying because
+  // the pipeline (Claude + AC + Resend) took >10s to complete.
+  ctx.waitUntil(
+    processLead(lead).catch((err) => {
+      console.error('Background lead processing failed for', lead.email, ':', err)
+    })
+  )
+
+  return json({ status: 'accepted' }, 200)
 }
 
 function json(body: unknown, status: number): Response {
