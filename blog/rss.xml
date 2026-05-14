@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>The Win-Back Flow for Lapsed Customers (and When to Give Up)</title>
+      <link>https://getner.ai/blog/winback-flow-structure.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/winback-flow-structure.html</guid>
+      <pubDate>Thu, 14 May 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Most retention programs treat lapsed customers like cold prospects, then wonder why the win-back flow produces unsubscribes instead of orders.]]></description>
+    </item>
 
     <item>
       <title>Using ActiveCampaign Deal Pipelines for Course Cohorts (Not Just Sales)</title>
