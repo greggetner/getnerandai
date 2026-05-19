@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Map a Customer Journey in ActiveCampaign From Scratch — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Most ActiveCampaign accounts are a graveyard of disconnected automations—each built to solve one problem, none of them talking to each other, all of them firing whether or not the contact should still be receiving them." />
+<link rel="canonical" href="https://getner.ai/blog/customer-journey-mapping-ac.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="How to Map a Customer Journey in ActiveCampaign From Scratch" />
+<meta property="og:description" content="Most ActiveCampaign accounts are a graveyard of disconnected automations—each built to solve one problem, none of them talking to each other, all of them firing whether or not the contact should still be receiving them." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/customer-journey-mapping-ac.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Platform" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Map a Customer Journey in ActiveCampaign From Scratch",
+  "description": "Most ActiveCampaign accounts are a graveyard of disconnected automations—each built to solve one problem, none of them talking to each other, all of them firing whether or not the contact should still be receiving them.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-05-19",
+  "mainEntityOfPage": "https://getner.ai/blog/customer-journey-mapping-ac.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">May 19, 2026 · Platform · 12 min read</div>
+      <h1 class="post-title">How to Map a Customer Journey in ActiveCampaign From Scratch</h1>
+      <p class="post-lede">Most ActiveCampaign accounts are a graveyard of disconnected automations—each built to solve one problem, none of them talking to each other, all of them firing whether or not the contact should still be receiving them.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I&#39;ve been opening ActiveCampaign accounts for twenty-three years. The pattern is consistent: someone builds a welcome series. Then a webinar funnel. Then a cart abandonment flow. Then a win-back sequence. Each one works in isolation. None of them know what the others are doing.</p>
+      <p>The result? Contacts get pitched the same offer twice in three days from different automations. Customers still receive nurture emails for a product they already bought. High-intent prospects fall into a black hole between &quot;downloaded the lead magnet&quot; and &quot;ready to buy&quot; because no one mapped what happens in the middle.</p>
+      <p>You can&#39;t fix this by adding more automations. You fix it by mapping the customer journey first, then building the ActiveCampaign infrastructure to support it.</p>
+      <h2>The Five Stages Every Customer Journey Needs</h2>
+      <p>Most operators skip this step. They jump straight into building automations because ActiveCampaign makes it easy to start dragging boxes around a canvas. But if you don&#39;t know what stage a contact is in, you can&#39;t send them the right message at the right time.</p>
+      <p>Every customer journey breaks into five stages, whether you&#39;re selling a $47 course or a $25K mastermind:</p>
+      <ol>
+      <li><strong>Awareness</strong> – they know they have a problem, just learned you exist</li>
+      <li><strong>Consideration</strong> – they&#39;re evaluating whether your solution fits</li>
+      <li><strong>First purchase</strong> – they bought, now they need to activate and get value</li>
+      <li><strong>Retention</strong> – they got value, you want them to buy again or stay engaged</li>
+      <li><strong>Advocacy</strong> – they&#39;re promoters, referring others or creating content about you</li>
+      </ol>
+      <p>The stage determines the message. A contact in awareness needs education. A contact in retention needs upsell paths and engagement loops. Sending retention messages to someone still in awareness kills conversions. Sending awareness content to a customer wastes their time and yours.</p>
+      <p>Map these five stages on paper before you open ActiveCampaign. Write down what actions move someone from one stage to the next. That&#39;s your blueprint.</p>
+      <h2>Which ActiveCampaign Objects Handle Each Stage</h2>
+      <p>Once you&#39;ve mapped the stages, you need to assign each one a home inside ActiveCampaign. Here&#39;s the framework I use in the programs I run.</p>
+      <h3>Awareness: Tags and Entry Automations</h3>
+      <p>When someone first enters your world—subscribed to a list, downloaded a lead magnet, registered for a webinar—tag them with a source tag and drop them into an awareness automation.</p>
+      <p>Use a naming convention: <code>src-webinar</code>, <code>src-ebook</code>, <code>src-referral</code>. These source tags never get removed. They&#39;re your attribution layer. You&#39;ll want to know six months from now how someone originally found you.</p>
+      <p>The awareness automation delivers your core education. Introduce who you are. Teach them the framework. Position the problem. Most awareness sequences I see stop at email three or four. The high-performing ones run seven to ten emails and include a soft offer or a tripwire at the end to move someone into consideration.</p>
+      <h3>Consideration: Pipeline Stages and Conditional Content</h3>
+      <p>Consideration is where most accounts leak. Someone downloaded your lead magnet, read the welcome series, and then... nothing. Or they get lumped into a generic newsletter and you hope they eventually buy.</p>
+      <p>If you sell high-ticket or have a sales process, use a <strong>deal pipeline</strong> to track consideration. Create a pipeline stage for each step: <code>Lead In</code>, <code>Engaged</code>, <code>Booked Call</code>, <code>Proposal Sent</code>, <code>Closed Won</code>. Automations can create deals automatically when someone takes a high-intent action—books a call, attends a webinar live, replies to an email.</p>
+      <p>If you sell productized offers or courses, use a <strong>lifecycle custom field</strong> instead. Values: <code>Subscriber</code>, <code>Engaged Lead</code>, <code>Customer</code>, <code>VIP</code>. Update this field as contacts take actions. Then segment your campaigns and automations by lifecycle stage using conditional content blocks or if/else splits.</p>
+      <p>The consideration stage is where you nurture. Send case studies. Answer objections. Offer a low-ticket entry product. The goal is to get them to first purchase or disqualify themselves so you stop spending sends on dead leads.</p>
+      <h3>First Purchase: Goal Steps and Onboarding Automations</h3>
+      <p>The moment someone buys, three things need to happen in ActiveCampaign:</p>
+      <ol>
+      <li><p><strong>Exit all pre-purchase automations immediately.</strong> Use a goal step configured near the top of every nurture sequence, set to trigger on <code>Tag: customer</code> or <code>Lifecycle field = Customer</code>. When the purchase happens, the contact jumps to the goal and skips the remaining pitch emails.</p>
+      </li>
+      <li><p><strong>Tag them as a customer.</strong> Use a single universal tag like <code>customer</code> or <code>active-customer</code>. Update your lifecycle field to <code>Customer</code>. Remove any urgency or promotion tags.</p>
+      </li>
+      <li><p><strong>Start the onboarding automation.</strong> This is where you deliver the product, show them how to use it, and get them their first win as fast as possible. Onboarding is the highest-leverage sequence you&#39;ll ever build.</p>
+      </li>
+      </ol>
+      <p>I configure the customer tag and lifecycle field update inside the purchase confirmation automation or via webhook from your payment processor. Stripe, ThriveCart, and Kajabi all send purchase events to ActiveCampaign. Map them correctly once, and the rest of your journey flows automatically.</p>
+      <h3>Retention: Engagement Scoring and Re-Engagement Automations</h3>
+      <p>Retention starts the moment someone gets their first win. In a coaching business, that might be week two of the program. For a course, it&#39;s completing module one. For a DTC brand, it&#39;s using the product and not returning it.</p>
+      <p>Track engagement with a <strong>custom field</strong> or <strong>lead scoring</strong>. Award points for key actions: logged into the member portal, attended a coaching call, replied to an email, made a second purchase. Decay points over time if they go quiet.</p>
+      <p>Set up automations that trigger when engagement drops:</p>
+      <ul>
+      <li>If someone hasn&#39;t logged in for 14 days, send a check-in email</li>
+      <li>If they haven&#39;t attended a call in 30 days, offer a one-on-one</li>
+      <li>If their engagement score drops below a threshold, tag them <code>at-risk</code> and start a re-engagement sequence</li>
+      </ul>
+      <p>Retention is also where you introduce upsells, cross-sells, and renewals. Use conditional content in your regular campaigns to show existing customers different offers than prospects. If someone bought your foundational course, your newsletter should pitch them the advanced version—not the thing they already own.</p>
+      <h3>Advocacy: Referral Tags and VIP Segments</h3>
+      <p>Advocacy is the most under-automated stage. These are your best customers. They&#39;ve bought multiple times, they engage, they refer others. Most accounts treat them the same as everyone else.</p>
+      <p>Create a segment for advocates: multiple purchases, high engagement score, or manually tagged <code>VIP</code>. Send them different campaigns. Give them early access to new offers. Ask them for testimonials, case studies, and referrals.</p>
+      <p>Build a referral automation: when someone refers a new contact (tracked via UTM, referral link, or manual tag), send them a thank-you, award points, or give them a bonus. Loop this back into retention by recognizing your advocates and giving them reasons to keep promoting you.</p>
+      <h2>The One Diagram That Ties It All Together</h2>
+      <p>Here&#39;s what I build before I open ActiveCampaign: a single-page journey map that shows all five stages, the tags and fields that define each stage, the automations that run in each stage, and the actions that move someone from one stage to the next.</p>
+      <p>It looks like this:</p>
+      <pre><code>AWARENESS
+      Tags: src-* (source)
+      Field: lifecycle = Subscriber
+      Automations: Welcome series (7 emails)
+      Exit condition: Purchases → FIRST PURCHASE
+                      Engaged 3+ emails → CONSIDERATION
+
+      CONSIDERATION
+      Field: lifecycle = Engaged Lead
+      Pipeline: Lead → Engaged → Booked Call
+      Automations: Objection series, case study drip
+      Exit condition: Purchases → FIRST PURCHASE
+                      No engagement 60 days → Remove lifecycle field
+
+      FIRST PURCHASE
+      Tags: customer
+      Field: lifecycle = Customer
+      Automations: Onboarding (10 emails), product delivery
+      Exit condition: Completes onboarding → RETENTION
+
+      RETENTION
+      Field: lifecycle = Customer
+      Score: Engagement score (0–100)
+      Automations: Re-engagement (score &lt; 20), upsell path, renewal reminders
+      Exit condition: Refers 2+ people → ADVOCACY
+                      No purchase 180 days → At-risk automation
+
+      ADVOCACY
+      Tags: VIP, referrer
+      Field: lifecycle = VIP
+      Automations: VIP offers, referral rewards, early access
+      Exit condition: None (retain forever)
+      </code></pre>
+      <p>Your version will be different. Your stages might have different names. Your exit conditions will depend on your business model. But the structure stays the same: define the stages, assign each one tags and fields, list the automations that run in each stage, and specify what actions move someone forward.</p>
+      <p>This diagram is your source of truth. When you&#39;re about to build a new automation, open the diagram first. Ask: which stage is this contact in? What should happen next? Does an automation already handle this, or do I need to build something new?</p>
+      <h2>Build the Map First, Then Build the Automations</h2>
+      <p>Most ActiveCampaign accounts are a mess because someone built the automations first and tried to reverse-engineer a journey later. That never works. The automations don&#39;t know about each other. Contacts end up in the wrong sequences. Money leaks.</p>
+      <p>Map the five stages. Assign tags, fields, and automations to each stage. Draw the diagram. Then open ActiveCampaign and build the infrastructure to support it.</p>
+      <p>Your account will be cleaner. Your automations will stop overlapping. Your contacts will stop receiving the wrong message at the wrong time. And you&#39;ll finally be able to answer the question every operator should be able to answer: what stage is this contact in, and what happens next?</p>
+      <p>If your ActiveCampaign account is already a mess and you don&#39;t know where to start, I&#39;ll map it for you. Book a free audit at <a href="https://getner.ai/audit/">https://getner.ai/audit/</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>How to Map a Customer Journey in ActiveCampaign From Scratch</title>
+      <link>https://getner.ai/blog/customer-journey-mapping-ac.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/customer-journey-mapping-ac.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Most ActiveCampaign accounts are a graveyard of disconnected automations—each built to solve one problem, none of them talking to each other, all of them firing whether or not the contact should still be receiving them.]]></description>
+    </item>
 
     <item>
       <title>The Win-Back Flow for Lapsed Customers (and When to Give Up)</title>
