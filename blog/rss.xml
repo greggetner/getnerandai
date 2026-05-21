@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>SPF, DKIM, and DMARC: The 20-Minute Deliverability Setup Most Accounts Get Wrong</title>
+      <link>https://getner.ai/blog/spf-dkim-dmarc-20-min.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/spf-dkim-dmarc-20-min.html</guid>
+      <pubDate>Thu, 21 May 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[I've audited ActiveCampaign programs where every automation was built correctly, segmentation was tight, and content was strong—but 18% of sends never reached the inbox because nobody had configured DMARC.]]></description>
+    </item>
 
     <item>
       <title>How to Map a Customer Journey in ActiveCampaign From Scratch</title>
