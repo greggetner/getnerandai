@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Google Postmaster Tools: The 4 Metrics That Actually Matter — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Gmail gives you ten charts in Postmaster Tools. Seven of them are theater. Here are the four that actually tell you whether your email is landing or dying in spam." />
+<link rel="canonical" href="https://getner.ai/blog/postmaster-4-metrics.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Google Postmaster Tools: The 4 Metrics That Actually Matter" />
+<meta property="og:description" content="Gmail gives you ten charts in Postmaster Tools. Seven of them are theater. Here are the four that actually tell you whether your email is landing or dying in spam." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/postmaster-4-metrics.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Deliverability" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Google Postmaster Tools: The 4 Metrics That Actually Matter",
+  "description": "Gmail gives you ten charts in Postmaster Tools. Seven of them are theater. Here are the four that actually tell you whether your email is landing or dying in spam.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-05-26",
+  "mainEntityOfPage": "https://getner.ai/blog/postmaster-4-metrics.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">May 26, 2026 · Deliverability · 11 min read</div>
+      <h1 class="post-title">Google Postmaster Tools: The 4 Metrics That Actually Matter</h1>
+      <p class="post-lede">Gmail gives you ten charts in Postmaster Tools. Seven of them are theater. Here are the four that actually tell you whether your email is landing or dying in spam.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I open Google Postmaster Tools in almost every ActiveCampaign audit I run. The dashboard looks impressive—ten different charts, color-coded reputation scales, authentication badges. Most of it doesn&#39;t matter.</p>
+      <p>What matters: whether Gmail trusts you enough to deliver your mail, and whether recipients are telling Gmail they don&#39;t want it. Everything else is commentary.</p>
+      <p>Four metrics answer those questions. The rest are lag indicators, vanity data, or things you already know from your ActiveCampaign reports. Here&#39;s what to watch, what the thresholds mean, and what to do when something slips.</p>
+      <h2>User-Reported Spam Rate: The Only Metric That Can Kill You Overnight</h2>
+      <p>This is the percentage of your delivered Gmail messages that recipients manually marked as spam. Not bounces. Not unsubscribes. The button that says &quot;Report spam&quot; or &quot;Mark as spam.&quot;</p>
+      <p><strong>Healthy:</strong> Below <code>0.10%</code>. Invisible to Gmail&#39;s throttling algorithms.</p>
+      <p><strong>Warning zone:</strong> <code>0.10%</code> to <code>0.30%</code>. You&#39;re on the watch list. Gmail hasn&#39;t throttled you yet, but you&#39;re one bad send away from it.</p>
+      <p><strong>Red line:</strong> Above <code>0.30%</code>. Gmail starts routing your mail to spam, slowing delivery, or blocking it outright.</p>
+      <p>I have a standing rule in the programs I run: if user-reported spam rate crosses <code>0.30%</code> to any meaningful portion of our Gmail volume, we stop all sends to Gmail addresses until we find the cause. Not pause. Stop.</p>
+      <p>That threshold isn&#39;t theoretical. Gmail has said publicly that <code>0.30%</code> is where enforcement begins. I&#39;ve watched accounts go from 95% inbox placement to 11% in three days after crossing it during a botched promotional send.</p>
+      <p><strong>What causes spikes:</strong></p>
+      <ul>
+      <li>Sending to a list segment you haven&#39;t touched in 90+ days</li>
+      <li>Rented, scraped, or &quot;co-reg&quot; lists (which you should never touch anyway)</li>
+      <li>A sudden shift in content—going from educational emails to hard pitches</li>
+      <li>Sending without a working, visible unsubscribe link</li>
+      </ul>
+      <p><strong>The fix:</strong> Segment by engagement recency. In ActiveCampaign, build a segment for contacts who&#39;ve opened or clicked in the last 60 days and send only to them until your spam rate drops back under <code>0.10%</code>. Then slowly re-introduce older contacts in small batches—10% of the dormant list per week—and watch the spam rate after each batch.</p>
+      <p>If it jumps again, those contacts are dead. Suppress them permanently or move them to a low-frequency re-engagement sequence with a single goal: get one click or remove them.</p>
+      <h2>Domain Reputation: The Scorecard Gmail Actually Uses</h2>
+      <p>This is Gmail&#39;s trust rating for your sending domain—the part after the @ in your <code>From:</code> address. It&#39;s the single biggest factor in whether your mail hits the inbox or spam.</p>
+      <p>Postmaster Tools shows it on a scale: Bad, Low, Medium, High. No numbers. Just color bands.</p>
+      <p><strong>Healthy:</strong> High. Green bar, all the way right. This is where you want to live.</p>
+      <p><strong>Warning zone:</strong> Medium. Yellow-orange. Your mail is still mostly delivering, but Gmail is watching. A bad send here drops you faster than a bad send from High.</p>
+      <p><strong>Emergency:</strong> Low or Bad. Most of your mail is going to spam. If you&#39;re here, you&#39;ve already lost weeks of deliverability.</p>
+      <p>Domain reputation moves slowly when it&#39;s high and fast when it&#39;s falling. I&#39;ve seen accounts sit at High for nine months, send one unvetted list upload, and drop to Medium in 48 hours. The climb back took five weeks of perfect behavior.</p>
+      <p><strong>What drops it:</strong></p>
+      <ul>
+      <li>High user-reported spam rates (see above)</li>
+      <li>Sending to a lot of invalid addresses—hard bounces, spam traps, defunct domains</li>
+      <li>Sudden volume spikes (doubling your send volume week-over-week without warming)</li>
+      <li>Low engagement from Gmail recipients specifically (not opens—Gmail can&#39;t measure those reliably anymore—but clicks, replies, moves to Primary, stars, forwards)</li>
+      </ul>
+      <p><strong>The fix:</strong> You can&#39;t directly repair domain reputation. You fix the behaviors that broke it, then wait. Clean your list: pull a segment of everyone who hasn&#39;t engaged in 90 days and stop sending to them. Export your bounce list from ActiveCampaign and make sure those contacts are suppressed or deleted, not just tagged. Reduce your send frequency to Gmail addresses by 30–50% until reputation recovers, and make sure every email you <em>do</em> send has a clear, single action that&#39;s easy to take.</p>
+      <p>If you&#39;re stuck at Medium or Low for more than two weeks despite clean behavior, you may have burned the domain. Start warming a new sending domain in parallel and migrate over 60 days.</p>
+      <h2>IP Reputation: Matters Only If You&#39;re on a Dedicated IP</h2>
+      <p>Most ActiveCampaign users send from shared IPs—pools managed by ActiveCampaign where your mail mixes with others. If that&#39;s you, IP reputation in Postmaster Tools will either be grayed out or show the reputation of the shared pool, which you don&#39;t control.</p>
+      <p>IP reputation only matters if you&#39;re on a dedicated IP, which usually happens when you&#39;re sending 500,000+ emails a month and paying for the privilege.</p>
+      <p>The scale is the same: Bad, Low, Medium, High.</p>
+      <p><strong>Healthy:</strong> High.</p>
+      <p><strong>Warning zone:</strong> Medium. Same as domain reputation—you&#39;re on notice.</p>
+      <p><strong>Emergency:</strong> Low or Bad. You&#39;re in spam.</p>
+      <p><strong>What drops it:</strong></p>
+      <ul>
+      <li>Everything that drops domain reputation, but faster. A dedicated IP has no herd to hide in.</li>
+      <li>Inconsistent send volume. If you send 80,000 emails one week and 8,000 the next, Gmail sees erratic behavior and trusts you less.</li>
+      <li>Sending from a cold IP without proper warming (a multi-week ramp where you gradually increase daily volume).</li>
+      </ul>
+      <p><strong>The fix:</strong> If you&#39;re on a dedicated IP and reputation falls, the steps are the same as domain reputation—clean your list, cut volume, fix engagement—but you also need to stabilize your send schedule. Gmail wants to see predictable volume. If your business has natural peaks (launch weeks, monthly promos), warm Gmail to that pattern: send at peak volume to your most engaged segment during off-weeks so the IP stays warm.</p>
+      <p>If IP reputation tanks and won&#39;t recover, ask ActiveCampaign to assign you a new dedicated IP and warm it properly. Don&#39;t try to rehab a burned IP while still sending revenue mail from it. You&#39;ll just burn the domain, too.</p>
+      <h2>Authentication: The Table Stakes</h2>
+      <p>This section shows whether your email passes SPF, DKIM, and DMARC—the three technical checks that prove you&#39;re actually authorized to send from your domain.</p>
+      <p>In Postmaster Tools, you&#39;ll see a percentage for each: what portion of your mail passed each check.</p>
+      <p><strong>Healthy:</strong> 100% pass rate on all three, all the time.</p>
+      <p><strong>Warning zone:</strong> Anything under 100%. If even 5% of your mail fails authentication, Gmail assumes you don&#39;t control your sending infrastructure.</p>
+      <p><strong>Emergency:</strong> Below 90% on any check, or a DMARC policy of <code>p=none</code> combined with falling domain reputation.</p>
+      <p>Authentication doesn&#39;t directly control whether your mail hits the inbox, but it&#39;s a prerequisite. If you fail SPF or DKIM, Gmail won&#39;t even <em>consider</em> your domain reputation. You&#39;re auto-sorted into spam or blocked outright.</p>
+      <p><strong>What breaks it:</strong></p>
+      <ul>
+      <li>Sending through ActiveCampaign but not updating your DNS records with ActiveCampaign&#39;s SPF and DKIM tokens</li>
+      <li>Forwarding automations—like a &quot;forward to a friend&quot; feature—that send from your domain but originate from a recipient&#39;s action (these almost always fail SPF)</li>
+      <li>Sending from multiple platforms (ActiveCampaign + Mailchimp + a transactional provider) without consolidating DNS records</li>
+      <li>Copy-pasting your DKIM record incorrectly and leaving a typo or line break</li>
+      </ul>
+      <p><strong>The fix:</strong> Go into your DNS provider (usually wherever you bought your domain—Cloudflare, GoDaddy, Namecheap) and verify your SPF, DKIM, and DMARC records match what ActiveCampaign provides. If you don&#39;t know what those are, log into ActiveCampaign, go to <strong>Settings → Advanced → Sender domains</strong>, click your domain, and follow the instructions exactly.</p>
+      <p>Set your DMARC policy to <code>p=quarantine</code> or <code>p=reject</code> once you&#39;re consistently hitting 100% authentication. A <code>p=none</code> policy tells Gmail you don&#39;t actually enforce authentication, which gives you no credit for passing it.</p>
+      <p>If you&#39;re forwarding emails or using third-party tools that send &quot;from&quot; your domain (like some funnel builders or membership platforms), route them through ActiveCampaign&#39;s SMTP relay or switch their <code>From:</code> address to a subdomain you control, like <code>notify.yourdomain.com</code>, and set up separate authentication there.</p>
+      <h2>The Monitoring Cadence</h2>
+      <p>I check Postmaster Tools once a week in the accounts I run. Daily is overkill—the data lags by 24–48 hours anyway. Monthly is too slow—you&#39;ll miss a spike until it&#39;s already cost you.</p>
+      <p>Log in every Monday. Check user-reported spam rate first. If it&#39;s climbing, stop and diagnose before you check anything else. Then domain reputation, IP reputation (if applicable), and authentication.</p>
+      <p>If all four are green and stable, you&#39;re done. If any of them slip, you have the playbook above.</p>
+      <hr>
+      <p>Most of the deliverability advice you&#39;ll find online is vague or outdated. Gmail Postmaster Tools is the rare case where Google actually tells you what they care about and shows you the thresholds. The work is in watching the four metrics that matter and acting the moment one slips.</p>
+      <p>If you&#39;re seeing reputation drops, spam rate spikes, or authentication failures and don&#39;t know what&#39;s breaking inside your ActiveCampaign setup, I&#39;ll walk through your account and show you: <strong><a href="https://getner.ai/audit/">getner.ai/audit</a></strong>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
