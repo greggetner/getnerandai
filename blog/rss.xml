@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jun 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>Email Validation: When to Use It, How Often, and Which Tool</title>
+      <link>https://getner.ai/blog/email-validation-when-how-often.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/email-validation-when-how-often.html</guid>
+      <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Email validation is a tax on bad lead sources—and most operators don't pay it until bounce rates wreck their sender reputation.]]></description>
+    </item>
 
     <item>
       <title>Why Your Sender Reputation Is Slipping (And How to Diagnose It in 10 Minutes)</title>

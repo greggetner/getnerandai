@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Email Validation: When to Use It, How Often, and Which Tool — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Email validation is a tax on bad lead sources—and most operators don't pay it until bounce rates wreck their sender reputation." />
+<link rel="canonical" href="https://getner.ai/blog/email-validation-when-how-often.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Email Validation: When to Use It, How Often, and Which Tool" />
+<meta property="og:description" content="Email validation is a tax on bad lead sources—and most operators don't pay it until bounce rates wreck their sender reputation." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/email-validation-when-how-often.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Deliverability" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Email Validation: When to Use It, How Often, and Which Tool",
+  "description": "Email validation is a tax on bad lead sources—and most operators don't pay it until bounce rates wreck their sender reputation.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-06-02",
+  "mainEntityOfPage": "https://getner.ai/blog/email-validation-when-how-often.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">June 2, 2026 · Deliverability · 10 min read</div>
+      <h1 class="post-title">Email Validation: When to Use It, How Often, and Which Tool</h1>
+      <p class="post-lede">Email validation is a tax on bad lead sources—and most operators don't pay it until bounce rates wreck their sender reputation.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I&#39;ve opened enough ActiveCampaign accounts to spot the pattern. Someone imports a list from a webinar platform, or runs Facebook lead ads for six months, or buys a booth at a conference and collects business cards. The list goes straight into ActiveCampaign. No scrubbing. No verification. The first campaign bounces at twelve percent, Gmail starts throttling, and by the time they call me, their domain reputation is toast.</p>
+      <p>Email validation isn&#39;t something you do because you&#39;re sophisticated. It&#39;s something you do because your lead sources are dirty. If you&#39;re running clean opt-ins from your own site—double opt-in, CAPTCHA, real human behavior—you probably don&#39;t need it. If you&#39;re importing spreadsheets or collecting emails in the wild, you absolutely do.</p>
+      <p>Here&#39;s when validation is worth the cost, when it isn&#39;t, and what a reasonable cadence looks like.</p>
+      <h2>The Three Scenarios Where Validation Pays for Itself</h2>
+      <h3>List Imports</h3>
+      <p>Any time you&#39;re bringing contacts into ActiveCampaign from an external source—an event, a partner list, a webinar platform, a CRM migration—run validation before the import. Not after. Before.</p>
+      <p>The pattern I see: someone imports three thousand contacts from a conference, sends a welcome campaign, and watches the bounce rate climb past eight percent. Gmail and Outlook interpret that as &quot;this sender doesn&#39;t know who they&#39;re mailing,&quot; and your domain reputation drops. It takes months to recover.</p>
+      <p>Run the import file through an email verification tool first. Strip out the syntax errors, the role accounts, the disposable domains, the catch-alls that will never convert. Import the clean file. Your bounce rate stays under two percent, your inbox rate stays high, and you don&#39;t burn your sender reputation on leads that were never real.</p>
+      <h3>Lead-Gen with Public Forms</h3>
+      <p>If you&#39;re running paid traffic to a landing page with no friction—no double opt-in, no CAPTCHA, just a name and email field—you&#39;re collecting garbage alongside real leads. Competitors filling out your form with fake emails. Bots. Typos. People entering <code>test@test.com</code> because they want the lead magnet but don&#39;t want your emails.</p>
+      <p>I see this most often with Facebook and YouTube lead-gen campaigns. The cost-per-lead looks amazing until you realize thirty percent of the list is undeliverable.</p>
+      <p>Set up a quarterly validation routine. Export your leads from the last ninety days, run them through a list hygiene tool, and suppress the bad addresses in ActiveCampaign using a <code>validation-failed</code> tag or a suppression list. Don&#39;t delete them—ActiveCampaign&#39;s contact limits are generous and you may want the record—but make sure they&#39;re excluded from all campaigns and automations.</p>
+      <p>If your paid lead volume is high and your cost-per-acquisition matters, validate monthly. The math is simple: if you&#39;re spending four dollars per lead and twenty percent of your leads are fake, you&#39;re lighting money on fire.</p>
+      <h3>Quarterly Maintenance on Aged Segments</h3>
+      <p>Contacts go bad over time. People change jobs. Domains expire. Email addresses get abandoned. If you have segments that haven&#39;t been mailed in six months, or contacts who haven&#39;t opened in a year, run them through email validation before you try to re-engage them.</p>
+      <p>This is where I see the surprise failure rate. An account will have twenty thousand &quot;cold&quot; contacts. The operator decides to run a re-engagement campaign. Bounce rate hits nine percent on the first send because a chunk of that list aged out and nobody noticed.</p>
+      <p>Validate before you mail cold segments. Accept that five to ten percent will come back undeliverable, and suppress them. You&#39;ll keep your sender reputation intact and your engagement metrics honest.</p>
+      <h2>When Validation Isn&#39;t Worth It</h2>
+      <p>If you&#39;re running a clean, double opt-in process on your own website—someone fills out a form, receives a confirmation email, and clicks a link to confirm—you don&#39;t need to validate those contacts. The confirmation step is doing the validation work for you. A fake email address can&#39;t click a confirmation link.</p>
+      <p>The programs I run for operators with direct-to-site traffic rarely need ongoing email verification. The bounce rate stays under one percent, deliverability stays high, and the cost of validation would outweigh the benefit.</p>
+      <p>Same goes for contacts who&#39;ve engaged recently. If someone opened or clicked in the last thirty days, there&#39;s no reason to validate them. They&#39;re real, they&#39;re active, and their address works.</p>
+      <p>Validation is insurance against bad inputs. If your inputs are clean, skip it.</p>
+      <h2>The Pre-Campaign Validation Move</h2>
+      <p>Here&#39;s the tactic most operators miss: bulk validation right before a big send.</p>
+      <p>Say you&#39;re launching a new offer, or reopening cart, or promoting a live event. You&#39;re about to mail fifty thousand contacts, including segments you haven&#39;t touched in months. Run those segments through email verification forty-eight hours before the send.</p>
+      <p>You&#39;ll catch the surprise five to ten percent of addresses that went bad since the last campaign. Suppress them. Your bounce rate stays low, your inbox rate stays high, and you don&#39;t risk throttling right when it matters most.</p>
+      <p>I configure this as a manual step in my own programs. Before any high-stakes campaign, I export the target segment, validate, and suppress. It takes twenty minutes and it&#39;s saved my reputation more than once.</p>
+      <h2>What a Reasonable Cadence Looks Like</h2>
+      <p>Most operators overthink this. You don&#39;t need a standing monthly validation contract unless your lead volume is massive and your sources are dirty.</p>
+      <p>Here&#39;s what works in the accounts I run:</p>
+      <ul>
+      <li><strong>Validate all imports</strong> before they enter ActiveCampaign.</li>
+      <li><strong>Validate cold segments</strong> before you mail them (anything unmailed for six months or longer).</li>
+      <li><strong>Validate paid lead sources</strong> quarterly if your volume is under ten thousand new leads per quarter, monthly if it&#39;s higher.</li>
+      <li><strong>Validate your full list once a year</strong> as a hygiene check, especially if you&#39;ve been in-market for three years or more.</li>
+      </ul>
+      <p>That&#39;s it. You&#39;re not validating weekly. You&#39;re not running your entire database through verification every month. You&#39;re applying email validation strategically, where the risk is highest.</p>
+      <h2>Which Email Verification Tool to Use</h2>
+      <p>Most list hygiene tools do the same thing: syntax checks, domain validation, mailbox verification, disposable email detection, role account flagging. The differences are speed, accuracy on catch-all domains, and price.</p>
+      <p>I use <a href="https://www.zerobounce.net?ref=greggetner6">Zerobounce</a> for bulk validation jobs. It handles the edge cases well—catch-alls, greylisting, temporary failures—and the API integrates cleanly if you want to automate validation on form submissions. Pricing is usage-based, so you&#39;re not paying for a seat you don&#39;t need.</p>
+      <p>Other tools work fine. The important part is that you actually use one, and that you validate <em>before</em> the damage happens, not after.</p>
+      <h2>The Real Cost of Skipping Validation</h2>
+      <p>Every percentage point your bounce rate climbs above two percent makes Gmail, Outlook, and Yahoo more suspicious. Sustained bounce rates above five percent trigger filtering. Your emails start landing in spam, your open rates drop, and your automation sequences stop working because nobody sees them.</p>
+      <p>I&#39;ve watched operators burn six months of sender reputation because they skipped a twenty-dollar validation job on a conference import. The leads didn&#39;t convert anyway—because half of them were fake—and the sender reputation damage made every other campaign perform worse.</p>
+      <p>Email validation isn&#39;t glamorous. It doesn&#39;t show up in your funnel metrics. But it&#39;s the tax you pay to keep your deliverability intact, and skipping it is one of the fastest ways to wreck a program that was working.</p>
+      <p>If you&#39;re importing lists, running public lead-gen, or mailing cold segments, validate first. If you&#39;re running clean opt-ins from your own site, you probably don&#39;t need it. And if you&#39;re about to launch something big, run a bulk verification forty-eight hours before you hit send.</p>
+      <p>If you want a second set of eyes on your ActiveCampaign setup—deliverability, automation logic, list hygiene, all of it—grab a free audit at <a href="https://getner.ai/audit/">getner.ai/audit</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
