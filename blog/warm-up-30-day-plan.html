@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Warming a New IP or Sending Domain: The 30-Day Plan — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Spin up a new sending domain wrong and you'll spend the next six months crawling out of the spam folder—here's the 30-day ramp that actually works." />
+<link rel="canonical" href="https://getner.ai/blog/warm-up-30-day-plan.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Warming a New IP or Sending Domain: The 30-Day Plan" />
+<meta property="og:description" content="Spin up a new sending domain wrong and you'll spend the next six months crawling out of the spam folder—here's the 30-day ramp that actually works." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/warm-up-30-day-plan.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Deliverability" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Warming a New IP or Sending Domain: The 30-Day Plan",
+  "description": "Spin up a new sending domain wrong and you'll spend the next six months crawling out of the spam folder—here's the 30-day ramp that actually works.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-06-04",
+  "mainEntityOfPage": "https://getner.ai/blog/warm-up-30-day-plan.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">June 4, 2026 · Deliverability · 9 min read</div>
+      <h1 class="post-title">Warming a New IP or Sending Domain: The 30-Day Plan</h1>
+      <p class="post-lede">Spin up a new sending domain wrong and you'll spend the next six months crawling out of the spam folder—here's the 30-day ramp that actually works.</p>
+    </header>
+
+    <div class="post-body">
+
+      <h2>The Problem With Going Zero to Full Blast</h2>
+      <p>Most operators treat a new sending domain like flipping a light switch. They configure SPF and DKIM, import their entire list, and fire off a broadcast to 80,000 contacts on day one. Gmail sees a brand-new domain suddenly blasting volume and flags it immediately. Not as spam—yet—but as untrusted. Your emails land in the promotions tab if you&#39;re lucky, spam if you&#39;re not, and now you&#39;re starting from a reputational hole that takes months to climb out of.</p>
+      <p>I&#39;ve opened accounts where the operator burned through two domains in four months doing exactly this. By the third domain, even their engaged subscribers weren&#39;t seeing emails. ISPs have long memories.</p>
+      <p>The alternative is a structured domain warm-up: a 30-day plan that builds sender reputation incrementally by proving to ISPs that real humans want your mail. It&#39;s not complicated, but it is high-stakes. Miss a threshold and you&#39;re set back weeks.</p>
+      <h2>Days 1–3: Your Most Engaged 500</h2>
+      <p>Start with the smallest, cleanest cohort you have. In ActiveCampaign, build a segment using these filters:</p>
+      <ul>
+      <li>Has opened or clicked any email in the last 30 days</li>
+      <li>Sort by engagement score (highest first)</li>
+      <li>Limit to 500 contacts</li>
+      </ul>
+      <p>Send one email per day for three days. Not a welcome series. Not a pitch. A single broadcast or a short automation that delivers value and expects nothing. A useful resource, a case study, a How I Built This-style breakdown—something your best subscribers would forward.</p>
+      <p><strong>What to watch:</strong> Open rate and user-reported spam rate in Gmail Postmaster Tools. If you&#39;re above <code>0.10%</code> spam complaints in the first 72 hours, your segmentation is bad. You&#39;re either including stale contacts or sending content that doesn&#39;t match what they signed up for. Pause and tighten the list.</p>
+      <p>Soft bounces should be near zero. If you&#39;re seeing <code>&gt; 2%</code> soft bounce rate, your segment accidentally included suppressed or invalid addresses. Pull them out before day four.</p>
+      <h2>Days 4–10: Scale to Your Top 5,000</h2>
+      <p>Expand the segment to your top 5,000 engaged contacts. Same criteria—opened or clicked in the last 30 to 60 days, sorted by engagement. Send daily or every other day, depending on your normal cadence. If you typically send three times a week, send three times a week. The goal is to mimic your mature sending pattern at lower volume.</p>
+      <p><strong>What to watch:</strong> Soft bounce rate should stay under <code>1%</code>. User-reported spam rate in Gmail Postmaster Tools should stay under <code>0.10%</code>. If you hit <code>0.30%</code>, Gmail starts throttling. You won&#39;t see it as hard bounces—emails just won&#39;t arrive, or they&#39;ll land in spam silently.</p>
+      <p>Watch your domain reputation in Postmaster. It should show as &quot;Low&quot; on day one (new domains always do) and start climbing toward &quot;Medium&quot; by day seven. If it stays low or drops to &quot;Bad,&quot; stop immediately. You&#39;ve either got list hygiene issues or a content mismatch.</p>
+      <h2>Days 11–21: Double Every Three Days</h2>
+      <p>Now you ramp. Every three days, double your sending volume:</p>
+      <ul>
+      <li>Days 11–13: 10,000 contacts</li>
+      <li>Days 14–16: 20,000 contacts  </li>
+      <li>Days 17–19: 40,000 contacts  </li>
+      <li>Days 20–21: 80,000 contacts</li>
+      </ul>
+      <p>Pull from progressively older engagement cohorts. Days 11–13 should include anyone who opened or clicked in the last 90 days. Days 14–16, expand to 120 days. By days 20–21, you&#39;re including anyone who&#39;s engaged in the last six months.</p>
+      <p><strong>Do not include unengaged contacts yet.</strong> If someone hasn&#39;t opened an email in six months, they&#39;re dead weight during a warm-up. They drag down your engagement metrics and increase the chance someone marks you as spam because they forgot they subscribed.</p>
+      <p><strong>What to watch:</strong> Soft bounce rate creeping up is normal as you expand the cohort, but it should stay under <code>2%</code>. If you hit <code>3%</code> or higher, you&#39;re pulling in stale addresses. Tighten your segment date range.</p>
+      <p>Gmail domain reputation in Postmaster should be climbing toward &quot;Medium&quot; or &quot;High&quot; by day 18. If it&#39;s stuck at &quot;Low&quot; or drops, pause the ramp for 48 hours and send only to your top 5,000 again. Let the metrics recover, then resume.</p>
+      <p>User-reported spam rate is your kill switch. If you cross <code>0.20%</code>, pause immediately. Above <code>0.30%</code>, Gmail throttles hard and you&#39;re looking at weeks of recovery time.</p>
+      <h2>Days 22–30: Full Volume, With Guardrails</h2>
+      <p>You&#39;re now at or near your full list size. For the final nine days, send at normal volume and cadence, but continue excluding unengaged contacts. If your total list is 150,000 and only 90,000 have engaged in the last six months, keep sending to the 90,000.</p>
+      <p>After day 30, you can cautiously reintroduce older segments—contacts who haven&#39;t engaged in 9 or 12 months—but do it in small batches (5–10% of total volume per week) and watch spam rates closely.</p>
+      <p><strong>What to watch:</strong> Domain reputation in Gmail Postmaster should be &quot;Medium&quot; or &quot;High&quot; by day 25. Anything lower means your warm-up didn&#39;t establish trust. Keep volume conservative and let reputation build naturally over the next two weeks before attempting full-list sends.</p>
+      <p>Soft bounce rates should stabilize under <code>1%</code>. User-reported spam should stay under <code>0.10%</code>. If you&#39;re clean through day 30 at these thresholds, your domain is warmed and you can operate normally.</p>
+      <h2>When to Pause (and How Long)</h2>
+      <p>If at any point you hit these thresholds, stop sending immediately:</p>
+      <ul>
+      <li>User-reported spam rate <code>&gt; 0.20%</code> in Gmail Postmaster</li>
+      <li>Soft bounce rate <code>&gt; 3%</code>  </li>
+      <li>Domain reputation drops to &quot;Low&quot; or &quot;Bad&quot; in Postmaster after it had been climbing</li>
+      </ul>
+      <p>Pause for 48 to 72 hours. Send nothing. Let the ISPs see silence, not continued volume. Then restart at half the volume you were at when you paused, using only your most engaged segment. Rebuild slowly—usually five to seven days at reduced volume—then resume the ramp.</p>
+      <p>I&#39;ve seen operators ignore a <code>0.25%</code> spam rate on day 14 because &quot;it&#39;s close enough.&quot; By day 18 they were at <code>0.40%</code> and Gmail had quietly routed 60% of their sends to spam. It took six weeks of conservative sending to recover. The pause always costs less than the recovery.</p>
+      <h2>The Mistake That Kills Most Warm-Ups</h2>
+      <p>The pattern I see in almost every failed domain warm-up: the operator runs the plan perfectly for two weeks, sees decent opens and no obvious problems, then gets impatient and jumps straight to full volume on day 15.</p>
+      <p>ISPs don&#39;t react instantly. A spike in complaints or bounces on day 15 shows up as throttling or spam placement on day 17 or 18, after you&#39;ve already sent three more high-volume batches. By the time you notice the problem in your metrics, the domain reputation is cratered and you&#39;re starting over.</p>
+      <p>The 30-day plan isn&#39;t 30 days because that&#39;s how long it takes your domain to warm. It&#39;s 30 days because that&#39;s how long it takes to catch and correct problems before they become permanent reputation damage.</p>
+      <hr>
+      <p>If you&#39;re spinning up a new domain or your current sending reputation is already burned, the ramp is non-negotiable. There&#39;s no shortcut that doesn&#39;t cost you months on the back end.</p>
+      <p>Need someone to audit your current deliverability setup or walk through a warm-up plan for your account? I offer a free ActiveCampaign audit at <a href="https://getner.ai/audit/">https://getner.ai/audit/</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

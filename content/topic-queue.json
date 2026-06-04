@@ -182,9 +182,9 @@
       "new sending domain deliverability"
     ],
     "affiliate_opportunity": null,
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-06-02T17:15:15.127Z",
-    "published_at": null
+    "published_at": "2026-06-04T16:17:47.731Z"
   },
   {
     "id": "spam-trigger-patterns",
@@ -197,8 +197,8 @@
       "inbox placement patterns"
     ],
     "affiliate_opportunity": null,
-    "status": "queued",
-    "drafted_at": null,
+    "status": "drafted",
+    "drafted_at": "2026-06-04T16:17:47.575Z",
     "published_at": null
   },
   {

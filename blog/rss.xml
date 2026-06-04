@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Jun 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>Warming a New IP or Sending Domain: The 30-Day Plan</title>
+      <link>https://getner.ai/blog/warm-up-30-day-plan.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/warm-up-30-day-plan.html</guid>
+      <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Spin up a new sending domain wrong and you'll spend the next six months crawling out of the spam folder—here's the 30-day ramp that actually works.]]></description>
+    </item>
 
     <item>
       <title>Email Validation: When to Use It, How Often, and Which Tool</title>
