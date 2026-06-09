@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>5 Spam Trigger Patterns Your Content Keeps Landing In (Without You Realizing) — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Spam filters stopped caring about words like &quot;free&quot; and &quot;guarantee&quot; years ago — but most operators still optimize their emails like it's 2012." />
+<link rel="canonical" href="https://getner.ai/blog/spam-trigger-patterns.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="5 Spam Trigger Patterns Your Content Keeps Landing In (Without You Realizing)" />
+<meta property="og:description" content="Spam filters stopped caring about words like &quot;free&quot; and &quot;guarantee&quot; years ago — but most operators still optimize their emails like it's 2012." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/spam-trigger-patterns.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Deliverability" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "5 Spam Trigger Patterns Your Content Keeps Landing In (Without You Realizing)",
+  "description": "Spam filters stopped caring about words like &quot;free&quot; and &quot;guarantee&quot; years ago — but most operators still optimize their emails like it's 2012.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-06-09",
+  "mainEntityOfPage": "https://getner.ai/blog/spam-trigger-patterns.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">June 9, 2026 · Deliverability · 11 min read</div>
+      <h1 class="post-title">5 Spam Trigger Patterns Your Content Keeps Landing In (Without You Realizing)</h1>
+      <p class="post-lede">Spam filters stopped caring about words like &quot;free&quot; and &quot;guarantee&quot; years ago — but most operators still optimize their emails like it's 2012.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I open ActiveCampaign accounts every week. The senders look professional. Authentication passes. Subject lines are clean. But Gmail marks them promotions or spam anyway.</p>
+      <p>The problem isn&#39;t what you&#39;re saying. It&#39;s the pattern you&#39;re creating across sends. Modern spam filters — Gmail, Outlook, Yahoo — analyze behavior over time, not individual messages. They watch how your audience responds to your content, how you structure your emails, and how consistently you send. When those signals form the wrong pattern, you get filtered. Often without knowing it happened.</p>
+      <p>Here are the five patterns I see most often. And the fix for each.</p>
+      <h2>Pattern 1: Excessive Image-to-Text Ratio (Especially in Sequential Sends)</h2>
+      <p>You send a launch email with a single hero image, a headline in the image, and two sentences of body copy. Then you send another one three days later with the same structure. Then another.</p>
+      <p>Filters don&#39;t flag a single image-heavy email. They flag senders who <em>consistently</em> send image-heavy emails with minimal plain text — because that&#39;s the pattern phishing campaigns and affiliate spam follow. The email client can&#39;t read your image. It sees a sparse text payload and a large binary attachment. If your audience isn&#39;t clicking or replying, the filter assumes the content isn&#39;t valuable.</p>
+      <p>The accounts I work in that have the worst inbox placement problems almost always send emails with less than 100 words of plain text and one or two large image files. Sometimes it&#39;s a designed announcement. Sometimes it&#39;s a product grid. The structure doesn&#39;t matter. The ratio does.</p>
+      <p><strong>The fix:</strong> aim for at least 200–300 words of plain text in the email body, even if you&#39;re using images. Write real sentences. Tell a story. Give context around the image instead of embedding all your messaging inside it. If you&#39;re sending a product launch, describe the product in text <em>and</em> show the image. If you&#39;re announcing a webinar, write three paragraphs about what&#39;s covered, then include the graphic.</p>
+      <p>And vary your structure. If you sent an image-heavy email on Monday, send a text-only or text-dominant email on Thursday. Filters reward senders whose content structure changes because that signals real human communication, not templated blasts.</p>
+      <h2>Pattern 2: &#39;All Promo&#39; Subject Lines Back-to-Back</h2>
+      <p>You&#39;re launching. You send:</p>
+      <ul>
+      <li>Monday: &quot;Early access closes tonight&quot;</li>
+      <li>Wednesday: &quot;Last chance — doors close in 6 hours&quot;</li>
+      <li>Friday: &quot;FINAL CALL: Cart closes at midnight&quot;</li>
+      <li>Monday: &quot;New masterclass — 40% off this week only&quot;</li>
+      </ul>
+      <p>Every subject line is urgency, scarcity, or a discount. There&#39;s no education. No value-first content. No plain &quot;here&#39;s what I&#39;m thinking about&quot; emails. Just offer after offer.</p>
+      <p>Gmail doesn&#39;t filter individual promotional subject lines. It filters senders whose <em>entire send pattern</em> is promotional. If you only send when you&#39;re selling, your audience stops opening. When open rates crater and reply rates disappear, the algorithm assumes your content isn&#39;t wanted — even by people who originally opted in.</p>
+      <p><strong>The fix:</strong> send at least two value emails for every one promotional email. Value doesn&#39;t mean long-form educational content. It means an email where you&#39;re not asking for money or a click to a sales page. A story. A lesson. A case study. A reply-encouraging question.</p>
+      <p>In the programs I run, I enforce a <code>promo</code> tag on every automation and campaign that pitches an offer. Then I build a segment: contacts who&#39;ve received three or more <code>promo</code>-tagged emails in the last 14 days without receiving a <code>value</code> tag. That segment gets suppressed from the next promotional send and gets a value-first email instead.</p>
+      <p>You can do this manually. Tag your campaigns. Check the ratio every week. If it&#39;s skewed toward promo, send something that isn&#39;t.</p>
+      <h2>Pattern 3: Link-to-Everything Body Copy</h2>
+      <p>Your email has eleven links. Three CTAs to the same sales page. Two links to your podcast. One to your Instagram. One to &quot;update preferences.&quot; Two to previous blog posts. One to your affiliate partner. One &quot;click here to view this email in a browser.&quot;</p>
+      <p>Filters see this as scatter. Real personal emails have one, maybe two links. Broadcast emails from trusted senders have a clear primary CTA and maybe one secondary link. Spam has eight.</p>
+      <p>The accounts I audit with the worst inbox placement often have the highest link density. The operator wants to give options. The filter interprets it as desperation or, worse, as a link farm testing which URL gets past the filter.</p>
+      <p><strong>The fix:</strong> one primary CTA per email. Two links maximum — the main CTA button or text link, repeated once lower in the email, and <em>maybe</em> one secondary resource if it&#39;s contextually necessary.</p>
+      <p>Remove &quot;view in browser&quot; links unless your design actually breaks in certain clients. Remove social media links in the body copy. Remove &quot;update preferences&quot; from the main content area — the unsubscribe link in the footer is enough. Remove links to previous emails or blog posts unless they&#39;re directly relevant to the current message and essential to understanding it.</p>
+      <p>Every link you add dilutes the primary action and increases your spam score. Pick one thing you want the reader to do. Link to that. Nothing else.</p>
+      <h2>Pattern 4: Mismatched Envelope-vs-Header Senders</h2>
+      <p>Your <code>From</code> name in ActiveCampaign says &quot;Sarah at Brand Name&quot; but your actual sending domain is <code>mail.brandname.com</code> and your envelope sender is <code>bounce@subdomain.thirdpartytool.com</code> because you&#39;re routing through a secondary ESP or relay.</p>
+      <p>Or you&#39;re sending from <code>hello@brandname.com</code> but your SPF record authorizes <code>mail.brandname.com</code> and your DKIM signature is for a completely different subdomain you used two months ago and forgot to update.</p>
+      <p>This is one of the fastest ways to get filtered. Gmail, Outlook, and Yahoo check whether the domain in your <code>From</code> address matches the domain in your DKIM signature and your SPF record. If they don&#39;t align — or if your envelope sender uses a domain that doesn&#39;t match your header sender — it signals forwarding, spoofing, or a compromised account.</p>
+      <p><strong>The fix:</strong> your <code>From</code> address, your DKIM signing domain, and your SPF-authorized domain must all match. In ActiveCampaign, that means:</p>
+      <ul>
+      <li>Your <code>From</code> email address should be <code>someone@yourdomain.com</code></li>
+      <li>Your DKIM record should be published for <code>yourdomain.com</code> (ActiveCampaign provides the record; you publish it in DNS)</li>
+      <li>Your SPF record should include <code>include:rsgsv.net</code> (ActiveCampaign&#39;s sending infrastructure) if you&#39;re using them to send</li>
+      <li>Your DMARC policy should be set to at least <code>p=none</code> so you can monitor alignment, and eventually <code>p=quarantine</code> or <code>p=reject</code> once you&#39;ve confirmed everything passes</li>
+      </ul>
+      <p>Check your authentication in Gmail Postmaster Tools and in your ActiveCampaign account settings under <code>Settings &gt; Advanced &gt; Email authentication</code>. If any of those records are missing or misaligned, fix them before your next send. This isn&#39;t optional anymore.</p>
+      <h2>Pattern 5: Rapid-Fire Sends from New Subdomains</h2>
+      <p>You launch a new product. You spin up a new subdomain — <code>promo.brandname.com</code> — because you want to keep promotional sends separate from transactional. You load a list of 40,000 contacts and send four emails in five days.</p>
+      <p>Filters see a domain with no sending history, no engagement history, and sudden high volume. That&#39;s the signature of a compromised account or a purchased list. Even if every contact legitimately opted in, the <em>pattern</em> looks like spam.</p>
+      <p>Subdomain reputation is separate from root domain reputation. If <code>mail.brandname.com</code> has great sending history, <code>promo.brandname.com</code> starts at zero. Gmail doesn&#39;t care that they share a root. It evaluates each subdomain independently.</p>
+      <p><strong>The fix:</strong> warm the subdomain. Start with your most engaged contacts — people who&#39;ve opened or clicked in the last 30 days. Send to 500–1,000 contacts on day one. If engagement is strong (opens, clicks, no spam complaints), double the volume every two to three days. Over two to three weeks, you&#39;ll build enough positive engagement history that filters trust the subdomain.</p>
+      <p>If you&#39;re launching and you don&#39;t have time to warm a new subdomain, don&#39;t use one. Send from your existing authenticated domain. Segmenting by subdomain is a luxury you earn after you&#39;ve built reputation, not a tactic you use to protect your main domain from a risky send.</p>
+      <p>And if you <em>are</em> sending something risky — a re-engagement campaign to cold contacts, a list you haven&#39;t touched in six months — the subdomain won&#39;t save you. Filters will throttle it, your main domain reputation will suffer by association, and you&#39;ll burn the subdomain in the process. Better to clean the list first and send from your primary domain to people who actually want to hear from you.</p>
+      <hr>
+      <p>Spam filters changed. Most operators didn&#39;t. They still obsess over subject line words and ignore the structural patterns that actually determine placement.</p>
+      <p>If you&#39;re seeing promotions-tab placement, low open rates, or soft bounces from Gmail and Outlook, these five patterns are almost always involved. Fix the patterns, and inbox placement follows.</p>
+      <p>If you want a second set of eyes on your ActiveCampaign setup — authentication, sending patterns, content structure, automation goals — I offer a free audit at <a href="https://getner.ai/audit/">https://getner.ai/audit/</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
