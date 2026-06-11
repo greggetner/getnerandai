@@ -212,9 +212,9 @@
       "automation performance"
     ],
     "affiliate_opportunity": null,
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-06-09T15:51:09.612Z",
-    "published_at": null
+    "published_at": "2026-06-11T16:45:31.208Z"
   },
   {
     "id": "utm-that-ties-back",
@@ -227,8 +227,8 @@
       "revenue attribution"
     ],
     "affiliate_opportunity": null,
-    "status": "queued",
-    "drafted_at": null,
+    "status": "drafted",
+    "drafted_at": "2026-06-11T16:45:31.047Z",
     "published_at": null
   },
   {

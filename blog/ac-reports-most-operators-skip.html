@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The ActiveCampaign Reports Most Operators Never Open (and What They Reveal) — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="You're sitting on the clearest signals your program generates, and you've never looked at them once." />
+<link rel="canonical" href="https://getner.ai/blog/ac-reports-most-operators-skip.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="The ActiveCampaign Reports Most Operators Never Open (and What They Reveal)" />
+<meta property="og:description" content="You're sitting on the clearest signals your program generates, and you've never looked at them once." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/ac-reports-most-operators-skip.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Analytics" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The ActiveCampaign Reports Most Operators Never Open (and What They Reveal)",
+  "description": "You're sitting on the clearest signals your program generates, and you've never looked at them once.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-06-11",
+  "mainEntityOfPage": "https://getner.ai/blog/ac-reports-most-operators-skip.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">June 11, 2026 · Analytics · 11 min read</div>
+      <h1 class="post-title">The ActiveCampaign Reports Most Operators Never Open (and What They Reveal)</h1>
+      <p class="post-lede">You're sitting on the clearest signals your program generates, and you've never looked at them once.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>Most operators stop at campaign reports and automation performance. Opens, clicks, unsubscribes—the metrics that confirm you sent something and people saw it. These matter, but they&#39;re lag indicators. They tell you what already happened, not what&#39;s breaking right now or where the next six months are headed.</p>
+      <p>The reports that actually change decisions live one layer deeper. Contact trends. List growth and decay. Automation goal conversions. Deal pipeline velocity. Most accounts I audit have never opened them. When I pull them up in a screen share, the reaction is always the same: &quot;Wait, that&#39;s been there the whole time?&quot;</p>
+      <h2>Contact Trends Report</h2>
+      <p>This one lives under <strong>Reports → Contact Trends</strong>. It shows you contact additions, removals, and net growth over time—broken down by list, source, and activity status. Most operators assume their list is growing because they&#39;re running ads and adding opt-in forms. The contact trends report shows you if that&#39;s actually true.</p>
+      <p>The pattern I see: list size looks stable month-over-month, so the operator assumes everything&#39;s fine. Then I open contact trends and find they&#39;re adding 800 contacts a month and losing 750. The net is growth, but barely. The real story is churn, and they&#39;ve been ignoring it for eighteen months.</p>
+      <p><strong>What it reveals:</strong> where your contacts are coming from, where they&#39;re going, and whether your list is compounding or treading water. If you&#39;re spending to acquire and losing them just as fast, your acquisition cost never pays back.</p>
+      <p><strong>One decision you can make this week:</strong> filter the report by list and look at removals over the last 90 days. If one list is bleeding contacts faster than the others, audit the automations tied to it. You&#39;re either over-mailing, under-delivering, or both.</p>
+      <h2>List Growth and Decay Report</h2>
+      <p>This sits under <strong>Reports → List Growth</strong>. It&#39;s adjacent to contact trends but narrows the lens: instead of showing you aggregate adds and removals, it breaks down <em>why</em> contacts left. Unsubscribes. Bounces. Admin removals. Manual deletions. Spam complaints.</p>
+      <p>Most operators look at their unsubscribe rate in campaign reports and stop there. The list growth report shows you the pattern across automations, campaigns, and timeframes. If your unsubscribe rate spiked in week three of a launch sequence, you&#39;ll see it here. If one automation consistently drives more complaints than anything else in your program, it shows up.</p>
+      <p><strong>What it reveals:</strong> which parts of your program are burning goodwill. A campaign might look fine in isolation—solid open rate, decent clicks—but if it drove fifteen unsubscribes and your list is only 4,000 people, you just lost measurable reach.</p>
+      <p><strong>One decision you can make this week:</strong> pull the last six months and sort by spam complaints. If any single automation or campaign is responsible for more than one complaint, open it and read it like a stranger would. I&#39;ve seen &quot;personal&quot; emails that read like ad copy and urgency sequences that sound like threats. If you&#39;re getting flagged, your tone or your frequency is wrong.</p>
+      <h2>Automation Goal Report</h2>
+      <p>If you&#39;ve never opened this, you&#39;re missing the biggest signal in the platform.</p>
+      <p>The automation goal report lives under <strong>Automations → Goals</strong> (or inside individual automation performance views if you&#39;ve configured goals correctly). It shows you how many contacts entered an automation, how many reached each goal, and how long it took them to get there. Goals are the step most operators skip when they build. They tag the start, tag the end, maybe throw in a conditional branch, and call it done.</p>
+      <p>Goals do something different. A <code>goal</code> step in ActiveCampaign evaluates on <em>every contact action</em>. The moment a contact meets the goal condition—tag applied, deal moved to a stage, custom field updated, email opened—they jump directly to the goal and skip everything between where they are and where the goal sits. It&#39;s not just measurement. It&#39;s logic.</p>
+      <p><strong>What it reveals:</strong> how many people are achieving the outcome the automation was built to create, and how many are sitting in sequences that no longer apply to them. If you built a five-email product launch automation and your goal is <code>purchase-complete</code> tag, the report tells you how many people bought, which email they were on when they bought, and how many kept receiving pitch emails after they&#39;d already purchased.</p>
+      <p>I see this in almost every account. A contact buys on day two of a seven-day launch sequence. ActiveCampaign keeps sending them emails four, five, six, and seven—all urgency, all scarcity, all selling the thing they already own. They reply confused or annoyed. Sometimes they refund.</p>
+      <p><strong>One decision you can make this week:</strong> open your three highest-stakes automations—launch sequences, application funnels, anything tied to revenue—and check if they have goals configured. If they don&#39;t, add one. Place it as the second or third step so it&#39;s reachable from anywhere in the flow. Set the condition to whatever proves the automation succeeded: a tag, a deal stage, a field update. Then check the goal report in thirty days and see how many contacts are skipping unnecessary steps.</p>
+      <h2>Deal Pipeline Velocity</h2>
+      <p>This one&#39;s under <strong>Deals → Reports → Pipeline</strong>. If you&#39;re using ActiveCampaign&#39;s CRM, this report shows you average time-in-stage, win rates by stage, and total value moving through your pipeline. Most course creators and coaches don&#39;t touch deals. They think it&#39;s for agencies or SaaS companies. That&#39;s a mistake.</p>
+      <p>If you&#39;re running application funnels, sales calls, or anything that requires a human conversation before purchase, deals give you the only view that matters: how long people sit in each stage and where they drop off.</p>
+      <p>The pattern across the accounts I work in: operators know their close rate from call-booked to customer. They don&#39;t know how long contacts sit between application-submitted and call-booked, or how many applied but never scheduled. Deal velocity shows both. If the average contact sits in <code>Application Submitted</code> for nine days before moving to <code>Call Booked</code>, you have a scheduling problem or a follow-up problem, not a close-rate problem.</p>
+      <p><strong>What it reveals:</strong> where your pipeline stalls and which stages are actually predictive of a close. If your win rate from <code>Call Completed</code> to <code>Customer</code> is high but only a fraction of applicants ever reach <code>Call Completed</code>, the issue is upstream.</p>
+      <p><strong>One decision you can make this week:</strong> if you&#39;re not using deals yet, start. Create a pipeline with four stages: <code>Lead</code>, <code>Application Submitted</code>, <code>Call Booked</code>, <code>Customer</code>. Tie your automations to stage changes—when someone submits an application form, create a deal and set the stage to <code>Application Submitted</code>. Thirty days from now, open the velocity report and look at average time between stages. Wherever the gap is longest, that&#39;s where you build the next automation.</p>
+      <h2>Attribution Report</h2>
+      <p>This lives under <strong>Reports → Attribution</strong> and only appears if you&#39;ve turned on site tracking and enabled enhanced analytics. It shows you which campaigns, automations, and touchpoints contributed to conversions—defined by whatever goal or event you&#39;re measuring. Most operators either don&#39;t know it exists or assume it&#39;s too complicated to set up.</p>
+      <p>It&#39;s not. You define a conversion event—a tag applied, a deal won, a custom field updated to a specific value—and ActiveCampaign traces back through every email, site visit, and automation that contact interacted with before converting. It&#39;s not perfect attribution, but it&#39;s the best you&#39;ll get inside an email platform.</p>
+      <p><strong>What it reveals:</strong> which automations and campaigns are actually contributing to outcomes, not just generating opens. I&#39;ve seen welcome sequences that look weak in isolation—low click rates, modest engagement—but when you pull attribution, they&#39;re present in the journey of every high-value customer. Cutting that sequence would destroy the program, but you&#39;d never know from campaign stats alone.</p>
+      <p><strong>One decision you can make this week:</strong> turn on site tracking if you haven&#39;t. Install the tracking script, define one conversion event—<code>customer</code> tag applied, or a deal reaching <code>Closed Won</code>—and let it run for sixty days. Then open the attribution report and sort automations and campaigns by conversion contribution. If something you thought was critical shows zero conversions, kill it or rebuild it. If something you almost cut is showing up in most conversion paths, double down.</p>
+      <hr>
+      <p>Most operators treat reporting like a report card—something to glance at after the fact to confirm effort. The reports that matter don&#39;t confirm anything. They surface the pattern you didn&#39;t see, the drop-off you didn&#39;t notice, the signal that tells you what to build next.</p>
+      <p>If you&#39;ve never opened the automation goal report, start there. It&#39;s the clearest signal in the platform, and it&#39;s been sitting in your account the entire time.</p>
+      <p>If your ActiveCampaign program isn&#39;t surfacing these signals—or you&#39;re not sure what to do with them—request a free audit at <a href="https://getner.ai/audit/">https://getner.ai/audit/</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

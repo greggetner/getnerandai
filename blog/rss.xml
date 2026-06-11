@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Jun 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jun 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>The ActiveCampaign Reports Most Operators Never Open (and What They Reveal)</title>
+      <link>https://getner.ai/blog/ac-reports-most-operators-skip.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/ac-reports-most-operators-skip.html</guid>
+      <pubDate>Thu, 11 Jun 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[You're sitting on the clearest signals your program generates, and you've never looked at them once.]]></description>
+    </item>
 
     <item>
       <title>5 Spam Trigger Patterns Your Content Keeps Landing In (Without You Realizing)</title>
