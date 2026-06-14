@@ -199,7 +199,48 @@
     color: var(--ink-soft);
     margin-bottom: 32px;
   }
- 
+
+  .platform-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .platform-switch {
+    display: inline-flex;
+    background: var(--paper-deep);
+    border: 1px solid var(--line);
+    border-radius: 40px;
+    padding: 4px;
+  }
+
+  .platform-switch button {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 40px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  .platform-switch button.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .platform-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.3px;
+    padding-left: 8px;
+  }
+
   .hero-image {
     position: relative;
     text-align: center;
@@ -2039,21 +2080,29 @@
   <!-- HERO -->
   <main class="hero">
     <div class="hero-content">
-      <p class="hero-eyebrow">We live and breathe ActiveCampaign</p>
-      <h1>Scale Your Business With Profitable Retention Marketing</h1>
+      <p class="hero-eyebrow">Lifecycle email systems</p>
+      <h1>More revenue from the list you already have.</h1>
       
-      <p class="lead">I run a boutique, AI-powered operation that delivers better results faster — without the agency overhead.</p>
-      
-      <p>If your ActiveCampaign program needs an upgrade, let's talk.</p>
-      
+      <p class="lead">Lifecycle and retention systems built in <span id="platform-name">ActiveCampaign</span>, personalized with AI well past the first-name merge tag.</p>
+
+      <p>A boutique, AI-powered operation that gets better results faster, without the agency overhead. If your email program needs an upgrade, let's talk.</p>
+
+      <div class="platform-toggle">
+        <div class="platform-switch" role="group" aria-label="Choose your email platform">
+          <button type="button" class="active" data-platform="ac" aria-pressed="true">ActiveCampaign</button>
+          <button type="button" data-platform="klaviyo" aria-pressed="false">Klaviyo</button>
+        </div>
+        <span class="platform-note">same system &middot; your platform</span>
+      </div>
+     
       <div class="hero-cta-group">
         <div class="hero-actions">
           <a href="#apply" class="btn-primary">
             <span>Apply to work with me</span>
             <span>↗</span>
           </a>
-          <a href="/audit/" class="btn-secondary">
-            <span>Get my FREE audit</span>
+          <a href="/audit/" class="btn-secondary" id="hero-audit">
+            <span data-audit-label>Get my FREE ActiveCampaign audit</span>
             <span>↗</span>
           </a>
         </div>
@@ -2079,6 +2128,45 @@
     </div>
   </main>
  
+  <script>
+    (function () {
+      var sw = document.querySelector('.platform-switch');
+      if (!sw) return;
+      var PLATFORMS = {
+        ac: { name: 'ActiveCampaign', audit: 'Get my FREE ActiveCampaign audit', href: '/audit/' },
+        klaviyo: { name: 'Klaviyo', audit: 'Get my FREE Klaviyo audit', href: '/audit/?platform=klaviyo' }
+      };
+      var nameEl = document.getElementById('platform-name');
+      var auditLabels = document.querySelectorAll('[data-audit-label]');
+      var heroAudit = document.getElementById('hero-audit');
+      var headerAudit = document.querySelector('.masthead .header-cta');
+
+      function apply(key) {
+        var p = PLATFORMS[key] || PLATFORMS.ac;
+        sw.querySelectorAll('button').forEach(function (b) {
+          var on = b.getAttribute('data-platform') === key;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        if (nameEl) nameEl.textContent = p.name;
+        auditLabels.forEach(function (el) { el.textContent = p.audit; });
+        if (heroAudit) heroAudit.setAttribute('href', p.href);
+        if (headerAudit) headerAudit.setAttribute('href', p.href);
+        try { localStorage.setItem('getner-platform', key); } catch (e) {}
+      }
+
+      sw.addEventListener('click', function (e) {
+        var btn = e.target.closest('button[data-platform]');
+        if (!btn) return;
+        apply(btn.getAttribute('data-platform'));
+      });
+
+      var saved;
+      try { saved = localStorage.getItem('getner-platform'); } catch (e) {}
+      apply(saved && PLATFORMS[saved] ? saved : 'ac');
+    })();
+  </script>
+
   <!-- PARTIAL LIST -->
   <section class="partial-list">
     <div class="partial-list-container">
