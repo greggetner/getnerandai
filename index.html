@@ -90,8 +90,11 @@
  
   .masthead-meta {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 16px;
     font-family: 'JetBrains Mono', monospace;
   }
 
@@ -199,7 +202,49 @@
     color: var(--ink-soft);
     margin-bottom: 32px;
   }
- 
+
+  .platform-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .platform-switch {
+    display: inline-flex;
+    flex-shrink: 0;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 40px;
+    padding: 4px;
+  }
+
+  .platform-switch button {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 40px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  .platform-switch button.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .platform-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.3px;
+    padding-left: 8px;
+  }
+
   .hero-image {
     position: relative;
     text-align: center;
@@ -1730,6 +1775,9 @@
   .footer-badge-home {
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
   }
 
   .footer-badge-home img {
@@ -2027,10 +2075,14 @@
   <header class="masthead">
     <div class="masthead-brand">
       <h1 class="masthead-title">Getner & AI</h1>
-      <p class="masthead-subtitle">Boutique ActiveCampaign Management</p>
+      <p class="masthead-subtitle">Boutique <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> Management</p>
     </div>
     <div class="masthead-meta">
-      <a href="/consult/" class="header-cta" style="margin-right: 12px;">
+      <div class="platform-switch" role="group" aria-label="Choose your email platform">
+        <button type="button" class="active" data-platform="ac" aria-pressed="true">ActiveCampaign</button>
+        <button type="button" data-platform="klaviyo" aria-pressed="false">Klaviyo</button>
+      </div>
+      <a href="/consult/" class="header-cta">
         <span class="header-cta-label">Work with me</span>
       </a>
       <a href="/audit/" class="header-cta">
@@ -2042,21 +2094,21 @@
   <!-- HERO -->
   <main class="hero">
     <div class="hero-content">
-      <p class="hero-eyebrow">We live and breathe ActiveCampaign</p>
-      <h1>Scale Your Business With Profitable Retention Marketing</h1>
+      <p class="hero-eyebrow">Lifecycle email systems</p>
+      <h1>Your list is worth more than it's making you.</h1>
       
-      <p class="lead">I run a boutique, AI-powered operation that delivers better results faster — without the agency overhead.</p>
-      
-      <p>If your ActiveCampaign program needs an upgrade, let's talk.</p>
-      
+      <p class="lead">Lifecycle and retention systems built in <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span>, personalized with AI.</p>
+
+      <p>A boutique, AI-powered operation that gets better results faster, without the agency overhead. If your email program needs an upgrade, let's talk.</p>
+
       <div class="hero-cta-group">
         <div class="hero-actions">
           <a href="#apply" class="btn-primary">
             <span>Apply to work with me</span>
             <span>↗</span>
           </a>
-          <a href="/audit/" class="btn-secondary">
-            <span>Get my FREE audit</span>
+          <a href="/audit/" class="btn-secondary" id="hero-audit">
+            <span data-plat data-ac="Get my FREE ActiveCampaign audit" data-klaviyo="Get my FREE Klaviyo audit">Get my FREE ActiveCampaign audit</span>
             <span>↗</span>
           </a>
         </div>
@@ -2082,6 +2134,52 @@
     </div>
   </main>
  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var sw = document.querySelector('.platform-switch');
+      if (!sw) return;
+      var AFF = 'https://www.activecampaign.com/?_r=B3543K68';
+      var auditHref = { ac: '/audit/', klaviyo: '/audit/?platform=klaviyo' };
+      var plats = sw.querySelectorAll('button');
+      var swappable = document.querySelectorAll('[data-plat]');
+      var phSwappable = document.querySelectorAll('[data-plat-ph]');
+      var heroAudit = document.getElementById('hero-audit');
+      var headerAudit = document.querySelector('.masthead .header-cta');
+      var startFree = document.getElementById('start-free-cta');
+
+      function apply(key) {
+        if (key !== 'klaviyo') key = 'ac';
+        plats.forEach(function (b) {
+          var on = b.getAttribute('data-platform') === key;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        swappable.forEach(function (el) {
+          var v = el.getAttribute('data-' + key);
+          if (v !== null) el.textContent = v;
+        });
+        phSwappable.forEach(function (el) {
+          var v = el.getAttribute('data-' + key);
+          if (v !== null) el.setAttribute('placeholder', v);
+        });
+        if (heroAudit) heroAudit.setAttribute('href', auditHref[key]);
+        if (headerAudit) headerAudit.setAttribute('href', auditHref[key]);
+        if (startFree) startFree.setAttribute('href', key === 'klaviyo' ? auditHref.klaviyo : AFF);
+        try { localStorage.setItem('getner-platform', key); } catch (e) {}
+      }
+
+      sw.addEventListener('click', function (e) {
+        var btn = e.target.closest('button[data-platform]');
+        if (!btn) return;
+        apply(btn.getAttribute('data-platform'));
+      });
+
+      var saved;
+      try { saved = localStorage.getItem('getner-platform'); } catch (e) {}
+      apply(saved === 'klaviyo' ? 'klaviyo' : 'ac');
+    });
+  </script>
+
   <!-- PARTIAL LIST -->
   <section class="partial-list">
     <div class="partial-list-container">
@@ -2272,7 +2370,7 @@
               <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
               <select class="form-control" id="app-experience" name="experience" required>
                 <option value="">Select one…</option>
-                <option>New to ActiveCampaign (just getting started)</option>
+                <option data-plat data-ac="New to ActiveCampaign (just getting started)" data-klaviyo="New to Klaviyo (just getting started)">New to ActiveCampaign (just getting started)</option>
                 <option>Somewhat experienced (been using it 6+ months)</option>
                 <option>Very experienced (power user, advanced features)</option>
                 <option>Expert level (know the platform inside &amp; out)</option>
@@ -2280,10 +2378,10 @@
               <span class="form-error" data-error-for="app-experience"></span>
             </div>
             <div class="form-field">
-              <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+              <label class="form-label" for="app-list-size"><span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> List Size<span class="required">*</span></label>
               <select class="form-control" id="app-list-size" name="list_size" required>
                 <option value="">Select one…</option>
-                <option>Not yet on AC</option>
+                <option data-plat data-ac="Not yet on AC" data-klaviyo="Not yet on Klaviyo">Not yet on AC</option>
                 <option>Under 10K</option>
                 <option>10K–50K</option>
                 <option>50K–100K</option>
@@ -2310,7 +2408,7 @@
 
           <div class="form-field">
             <label class="form-label" for="app-challenge">Biggest Challenge</label>
-            <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+            <textarea class="form-control" id="app-challenge" name="challenge" data-plat-ph data-ac="What's the ActiveCampaign problem that's most on your mind right now?" data-klaviyo="What's the Klaviyo problem that's most on your mind right now?" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
           </div>
 
           <button type="submit" class="form-submit">Submit Application</button>
@@ -2448,7 +2546,7 @@
       </div>
       <div class="ticker-item">
         <span class="ticker-dot"></span>
-        <span>Available Q2 2026</span>
+        <span>Now Booking</span>
       </div>
       <!-- Duplicate set for seamless loop -->
       <div class="ticker-item">
@@ -2465,7 +2563,7 @@
       </div>
       <div class="ticker-item">
         <span class="ticker-dot"></span>
-        <span>Available Q2 2026</span>
+        <span>Now Booking</span>
       </div>
     </div>
   </div>
@@ -2563,7 +2661,7 @@
   <!-- PROCESS -->
   <section class="process">
     <h2>Three ways to work together</h2>
-    <p class="process-subtitle">Strategy, build, and ongoing partnership — choose what your ActiveCampaign program needs most.</p>
+    <p class="process-subtitle">Strategy, build, and ongoing partnership — choose what your <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> program needs most.</p>
     
     <div class="process-grid">
       <div class="process-step">
@@ -2586,7 +2684,7 @@
         <div class="step-number">03</div>
         <h3 class="step-title">The Partnership</h3>
         <p class="step-text">
-          Ongoing fractional retention leadership. I become your behind-the-scenes ActiveCampaign brain — campaigns, launches, list strategy.
+          Ongoing fractional retention leadership. I become your behind-the-scenes <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> brain — campaigns, launches, list strategy.
         </p>
       </div>
     </div>
@@ -2595,17 +2693,17 @@
   <!-- CTA -->
   <section class="cta-section" id="apply">
     <div class="cta-container">
-      <h2>Ready to upgrade your ActiveCampaign program?</h2>
+      <h2>Ready to upgrade your <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> program?</h2>
       <p>
-        Next opening: Q2 2026. Limited to 2-3 clients for focused, high-quality work.
+        Limited to 2-3 clients at a time, for focused, high-quality work.
       </p>
       <div class="cta-buttons">
         <a href="#apply" class="btn-white">
           <span>Apply to work with me</span>
           <span>↗</span>
         </a>
-        <a href="https://www.activecampaign.com/?_r=B3543K68" class="btn-ghost">
-          <span>Start with ActiveCampaign free</span>
+        <a href="https://www.activecampaign.com/?_r=B3543K68" class="btn-ghost" id="start-free-cta">
+          <span data-plat data-ac="Start with ActiveCampaign free" data-klaviyo="Get my free Klaviyo audit">Start with ActiveCampaign free</span>
           <span>↗</span>
         </a>
       </div>
@@ -2617,7 +2715,7 @@
     <div class="footer-container">
       <div class="footer-info">
         <h3>Greg Getner</h3>
-        <p>ActiveCampaign Expert • Retention Marketing Specialist</p>
+        <p data-plat data-ac="ActiveCampaign Expert • Retention Marketing Specialist" data-klaviyo="Klaviyo Expert • Retention Marketing Specialist">ActiveCampaign Expert • Retention Marketing Specialist</p>
         <a href="mailto:greg@getner.ai" class="footer-contact">
           <span>✉</span>
           <span>greg@getner.ai</span>
@@ -2646,6 +2744,7 @@
         <a href="https://www.activecampaign.com/consultants/directory/certified-consultant-greg-getner" target="_blank" rel="noopener noreferrer" aria-label="View Greg Getner's ActiveCampaign Certified Consultant profile">
           <img src="/assets/ac-certified-partner-light.svg" alt="ActiveCampaign Certified Consultant" width="160" height="59" loading="lazy" />
         </a>
+        <img src="/assets/klaviyo-partner-badge.svg" alt="Klaviyo Partner" loading="lazy" style="height: 59px; width: auto;" onerror="this.style.display='none'" />
       </div>
     </div>
     
