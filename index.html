@@ -213,7 +213,7 @@
   .platform-switch {
     display: inline-flex;
     flex-shrink: 0;
-    background: var(--paper);
+    background: var(--paper-deep);
     border: 1px solid var(--line);
     border-radius: 40px;
     padding: 4px;
@@ -2078,14 +2078,10 @@
       <p class="masthead-subtitle">Boutique <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> Management</p>
     </div>
     <div class="masthead-meta">
-      <div class="platform-switch" role="group" aria-label="Choose your email platform">
-        <button type="button" class="active" data-platform="ac" aria-pressed="true">ActiveCampaign</button>
-        <button type="button" data-platform="klaviyo" aria-pressed="false">Klaviyo</button>
-      </div>
-      <a href="/consult/" class="header-cta">
-        <span class="header-cta-label">Work with me</span>
+      <a href="https://calendly.com/getner/activecampaign-strategy-session" class="header-cta" target="_blank" rel="noopener noreferrer">
+        <span class="header-cta-label">Schedule a call</span>
       </a>
-      <a href="/audit/" class="header-cta">
+      <a href="/audit/" class="header-cta" id="header-audit">
         <span class="header-cta-label">Get my FREE audit</span>
       </a>
     </div>
@@ -2094,6 +2090,10 @@
   <!-- HERO -->
   <main class="hero">
     <div class="hero-content">
+      <div class="platform-switch" role="group" aria-label="Choose your email platform" style="margin-bottom: 18px;">
+        <button type="button" class="active" data-platform="ac" aria-pressed="true">ActiveCampaign</button>
+        <button type="button" data-platform="klaviyo" aria-pressed="false">Klaviyo</button>
+      </div>
       <p class="hero-eyebrow">Lifecycle email systems</p>
       <h1>Your list is worth more than it's making you.</h1>
       
@@ -2112,10 +2112,6 @@
             <span>↗</span>
           </a>
         </div>
-        <p class="hero-microcopy">
-          <span>Got Bots?</span>
-          <a href="https://botbuster.biz">BotBuster.biz</a>
-        </p>
       </div>
     </div>
  
@@ -2144,7 +2140,7 @@
       var swappable = document.querySelectorAll('[data-plat]');
       var phSwappable = document.querySelectorAll('[data-plat-ph]');
       var heroAudit = document.getElementById('hero-audit');
-      var headerAudit = document.querySelector('.masthead .header-cta');
+      var headerAudit = document.getElementById('header-audit');
       var startFree = document.getElementById('start-free-cta');
 
       function apply(key) {
@@ -2715,7 +2711,7 @@
     <div class="footer-container">
       <div class="footer-info">
         <h3>Greg Getner</h3>
-        <p data-plat data-ac="ActiveCampaign Expert • Retention Marketing Specialist" data-klaviyo="Klaviyo Expert • Retention Marketing Specialist">ActiveCampaign Expert • Retention Marketing Specialist</p>
+        <p>ActiveCampaign &amp; Klaviyo Expert • Retention Marketing Specialist</p>
         <a href="mailto:greg@getner.ai" class="footer-contact">
           <span>✉</span>
           <span>greg@getner.ai</span>
