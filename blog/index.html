@@ -47,9 +47,13 @@
 <header class="blog-masthead">
   <a href="/" class="blog-masthead-brand">
     <span class="blog-masthead-title">Getner &amp; AI</span>
-    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Management</span>
+    <span class="blog-masthead-subtitle">Boutique <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> Management</span>
   </a>
   <nav class="blog-masthead-nav">
+    <div class="platform-switch" role="group" aria-label="Choose your email platform">
+      <button type="button" class="active" data-platform="ac" aria-pressed="true">ActiveCampaign</button>
+      <button type="button" data-platform="klaviyo" aria-pressed="false">Klaviyo</button>
+    </div>
     <a href="/">Home</a>
     <a href="/blog/" class="current">Blog</a>
     <a href="/#apply">Apply</a>
@@ -65,7 +69,7 @@
 
   <ul class="blog-post-list">
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="ac">
       <div class="post-meta">June 11, 2026 · Analytics · 11 min read</div>
       <h2><a href="/blog/ac-reports-most-operators-skip.html">The ActiveCampaign Reports Most Operators Never Open (and What They Reveal)</a></h2>
       <p class="excerpt">You're sitting on the clearest signals your program generates, and you've never looked at them once.</p>
@@ -73,7 +77,7 @@
     </li>
 
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="both">
       <div class="post-meta">June 9, 2026 · Deliverability · 11 min read</div>
       <h2><a href="/blog/spam-trigger-patterns.html">5 Spam Trigger Patterns Your Content Keeps Landing In (Without You Realizing)</a></h2>
       <p class="excerpt">Spam filters stopped caring about words like &quot;free&quot; and &quot;guarantee&quot; years ago — but most operators still optimize their emails like it's 2012.</p>
@@ -81,7 +85,7 @@
     </li>
 
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="both">
       <div class="post-meta">June 4, 2026 · Deliverability · 9 min read</div>
       <h2><a href="/blog/warm-up-30-day-plan.html">Warming a New IP or Sending Domain: The 30-Day Plan</a></h2>
       <p class="excerpt">Spin up a new sending domain wrong and you'll spend the next six months crawling out of the spam folder—here's the 30-day ramp that actually works.</p>
@@ -89,7 +93,7 @@
     </li>
 
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="both">
       <div class="post-meta">June 2, 2026 · Deliverability · 10 min read</div>
       <h2><a href="/blog/email-validation-when-how-often.html">Email Validation: When to Use It, How Often, and Which Tool</a></h2>
       <p class="excerpt">Email validation is a tax on bad lead sources—and most operators don't pay it until bounce rates wreck their sender reputation.</p>
@@ -97,7 +101,7 @@
     </li>
 
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="both">
       <div class="post-meta">May 28, 2026 · Deliverability · 9 min read</div>
       <h2><a href="/blog/sender-reputation-diagnostic.html">Why Your Sender Reputation Is Slipping (And How to Diagnose It in 10 Minutes)</a></h2>
       <p class="excerpt">Your open rates were stable for months, then they dropped six points in two weeks—and you changed nothing.</p>
@@ -105,7 +109,7 @@
     </li>
 
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="both">
       <div class="post-meta">May 26, 2026 · Deliverability · 11 min read</div>
       <h2><a href="/blog/postmaster-4-metrics.html">Google Postmaster Tools: The 4 Metrics That Actually Matter</a></h2>
       <p class="excerpt">Gmail gives you ten charts in Postmaster Tools. Seven of them are theater. Here are the four that actually tell you whether your email is landing or dying in spam.</p>
@@ -113,7 +117,7 @@
     </li>
 
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="both">
       <div class="post-meta">May 21, 2026 · Deliverability · 11 min read</div>
       <h2><a href="/blog/spf-dkim-dmarc-20-min.html">SPF, DKIM, and DMARC: The 20-Minute Deliverability Setup Most Accounts Get Wrong</a></h2>
       <p class="excerpt">I've audited ActiveCampaign programs where every automation was built correctly, segmentation was tight, and content was strong—but 18% of sends never reached the inbox because nobody had configured DMARC.</p>
@@ -121,7 +125,7 @@
     </li>
 
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="ac">
       <div class="post-meta">May 19, 2026 · Platform · 12 min read</div>
       <h2><a href="/blog/customer-journey-mapping-ac.html">How to Map a Customer Journey in ActiveCampaign From Scratch</a></h2>
       <p class="excerpt">Most ActiveCampaign accounts are a graveyard of disconnected automations—each built to solve one problem, none of them talking to each other, all of them firing whether or not the contact should still be receiving them.</p>
@@ -129,7 +133,7 @@
     </li>
 
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="ac">
       <div class="post-meta">May 14, 2026 · Retention · 11 min read</div>
       <h2><a href="/blog/winback-flow-structure.html">The Win-Back Flow for Lapsed Customers (and When to Give Up)</a></h2>
       <p class="excerpt">Most retention programs treat lapsed customers like cold prospects, then wonder why the win-back flow produces unsubscribes instead of orders.</p>
@@ -137,7 +141,7 @@
     </li>
 
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="ac">
       <div class="post-meta">May 12, 2026 · Platform · 14 min read</div>
       <h2><a href="/blog/deal-pipelines-for-courses.html">Using ActiveCampaign Deal Pipelines for Course Cohorts (Not Just Sales)</a></h2>
       <p class="excerpt">Most operators treat deal pipelines as a sales-only tool, but they're built to manage any multi-stage process—including the ones happening after someone buys from you.</p>
@@ -145,56 +149,56 @@
     </li>
 
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="ac">
       <div class="post-meta">May 13, 2026 · Automations · Intermediate · 8 min read</div>
       <h2><a href="/blog/activecampaign-jump-to.html">Jump To: The ActiveCampaign Feature That Saved One Client $40K</a></h2>
       <p class="excerpt">Most people treat their automations like a conveyor belt. Contact comes in, emails go out, sequence ends. Jump To changes the routing logic — and sometimes the outcome — entirely.</p>
       <a class="read-more" href="/blog/activecampaign-jump-to.html">Read post →</a>
     </li>
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="ac">
       <div class="post-meta">May 7, 2026 · Automations · 12 min read</div>
       <h2><a href="/blog/post-purchase-sequence.html">The Post-Purchase Sequence Most Ecommerce Brands Never Build</a></h2>
       <p class="excerpt">Most ecommerce brands build welcome automations and cart abandonment flows, then wonder why their retention numbers stay flat — meanwhile the entire relationship after purchase runs on default transactional emails and hope.</p>
       <a class="read-more" href="/blog/post-purchase-sequence.html">Read post →</a>
     </li>
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="ac">
       <div class="post-meta">May 5, 2026 · Retention · 10 min read</div>
       <h2><a href="/blog/reengagement-before-unsubscribe.html">The 3-Email Re-Engagement Test I Run Before Unsubscribing Cold Contacts</a></h2>
       <p class="excerpt">Most operators either blast cold contacts until they complain or quietly delete them in batches — neither approach improves deliverability, and both leave money on the table.</p>
       <a class="read-more" href="/blog/reengagement-before-unsubscribe.html">Read post →</a>
     </li>
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="ac">
       <div class="post-meta">April 30, 2026 · Automations · 9 min read</div>
       <h2><a href="/blog/abandon-cart-without-guilt.html">How to Build an Abandon Cart Flow That Doesn't Feel Like a Guilt Trip</a></h2>
       <p class="excerpt">Most cart abandonment sequences read like the brand got their feelings hurt — but the ones that actually convert lead with utility before they ever mention a discount.</p>
       <a class="read-more" href="/blog/abandon-cart-without-guilt.html">Read post →</a>
     </li>
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="ac">
       <div class="post-meta">April 28, 2026 · Automations · 11 min read</div>
       <h2><a href="/blog/welcome-series-structure.html">The Welcome Series Structure That Actually Converts</a></h2>
       <p class="excerpt">Most welcome series are seven generic emails that sound like everyone else's. The ones that convert follow a specific land, check, qualify, offer structure — and never pitch in email one.</p>
       <a class="read-more" href="/blog/welcome-series-structure.html">Read post →</a>
     </li>
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="ac">
       <div class="post-meta">April 18, 2026 · ActiveCampaign · 12 min read</div>
       <h2><a href="/blog/hidden-activecampaign-features.html">The Hidden ActiveCampaign Features Most Consultants Miss</a></h2>
       <p class="excerpt">I've inherited accounts from dozens of other consultants. The same six features keep showing up on my "never enabled" list — and they're not obscure. They're sitting in the product, shipped, documented, free.</p>
       <a class="read-more" href="/blog/hidden-activecampaign-features.html">Read post →</a>
     </li>
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="ac">
       <div class="post-meta">April 17, 2026 · Retention · 11 min read</div>
       <h2><a href="/blog/why-your-email-list-is-dying.html">Why Your Email List Is Dying (And How to Fix It)</a></h2>
       <p class="excerpt">It isn't a sudden collapse. It's been drifting for months, and the dashboard most operators look at is the last place the problem shows up.</p>
       <a class="read-more" href="/blog/why-your-email-list-is-dying.html">Read post →</a>
     </li>
 
-    <li class="blog-post-card">
+    <li class="blog-post-card" data-plat-card="ac">
       <div class="post-meta">April 16, 2026 · Automations · 12 min read</div>
       <h2><a href="/blog/activecampaign-automation-mistakes.html">5 ActiveCampaign Automation Mistakes That Kill Conversions</a></h2>
       <p class="excerpt">The same five problems show up in nearly every account I audit. None of them are exotic. All of them are quietly bleeding revenue, and most operators don't see them because the automation "looks right" in the builder.</p>
@@ -217,5 +221,6 @@
   <div>&copy; 2026 Getner &amp; AI</div>
 </footer>
 
+<script src="/scripts/platform-toggle.js" defer></script>
 </body>
 </html>

@@ -72,7 +72,7 @@
           "name": "Is this audit free for any email platform?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The free audit is specifically for existing ActiveCampaign accounts. Businesses on Mailchimp, Klaviyo, ConvertKit, or HubSpot can use the free migration service or email greg@getner.ai about a custom audit."
+            "text": "The free audit is for existing ActiveCampaign or Klaviyo accounts. Businesses on Mailchimp, ConvertKit, or HubSpot can use the free migration service or email greg@getner.ai about a custom audit."
           }
         },
         {
@@ -452,9 +452,13 @@
 <header class="blog-masthead">
   <a href="/" class="blog-masthead-brand">
     <span class="blog-masthead-title">Getner &amp; AI</span>
-    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Management</span>
+    <span class="blog-masthead-subtitle">Boutique <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> Management</span>
   </a>
   <nav class="blog-masthead-nav">
+    <div class="platform-switch" role="group" aria-label="Choose your email platform">
+      <button type="button" class="active" data-platform="ac" aria-pressed="true">ActiveCampaign</button>
+      <button type="button" data-platform="klaviyo" aria-pressed="false">Klaviyo</button>
+    </div>
     <a href="/">Home</a>
     <a href="/blog/">Blog</a>
     <a href="/#apply">Apply</a>
@@ -465,9 +469,9 @@
 
   <!-- HERO -->
   <section class="audit-section audit-hero">
-    <p class="eyebrow">Free ActiveCampaign Audit</p>
+    <p class="eyebrow">Free <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> Audit</p>
     <h1>Discover What's Working and What's Not</h1>
-    <p class="subhead">Most ActiveCampaign accounts waste 90% of their effort on activities that barely move the needle. I'll identify the 10% of your setup — automations, email types, and segments — that's actually driving your results.</p>
+    <p class="subhead">Most <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> accounts waste 90% of their effort on activities that barely move the needle. I'll identify the 10% of your setup — automations, email types, and segments — that's actually driving your results.</p>
     <ul class="hero-bullets">
       <li>✅ Your highest-impact automations</li>
       <li>✅ Your most profitable email types</li>
@@ -475,7 +479,7 @@
       <li>✅ Where to stop wasting effort</li>
     </ul>
     <a class="audit-hero-cta" href="#audit-form">Get my FREE audit →</a>
-    <p class="audit-eligibility">Audit is for existing ActiveCampaign accounts. On another platform? <a href="/free-migration/">Check the free migration service</a> or <a href="mailto:greg@getner.ai">email me</a> about a custom audit.</p>
+    <p class="audit-eligibility">Audit is for existing ActiveCampaign or Klaviyo accounts. On another platform? <a href="/free-migration/">Check the free migration service</a> or <a href="mailto:greg@getner.ai">email me</a> about a custom audit.</p>
   </section>
 
   <!-- METHODOLOGY -->
@@ -483,7 +487,7 @@
     <div class="method-panel">
       <div class="kicker">The Hyper-Pareto Principle</div>
       <h3>Every account I've ever audited reveals the same pattern.</h3>
-      <p>Roughly 5–10% of your ActiveCampaign activity drives 90% of your results. Sometimes it's two emails in a welcome series. Sometimes it's a single segment. Sometimes it's three automations doing all the work while twelve others produce noise.</p>
+      <p>Roughly 5–10% of your <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> activity drives 90% of your results. Sometimes it's two emails in a welcome series. Sometimes it's a single segment. Sometimes it's three automations doing all the work while twelve others produce noise.</p>
       <p>The Hyper-Pareto audit finds those concentration points so you can double down on what works and stop carrying the dead weight.</p>
     </div>
   </section>
@@ -555,7 +559,7 @@
       <div class="process-card">
         <div class="step-number">Step 02</div>
         <h3>I request access</h3>
-        <p>I'll email you within one business day with a short request for read-only access to your ActiveCampaign account.</p>
+        <p>I'll email you within one business day with a short request for read-only access to your <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> account.</p>
       </div>
       <div class="process-card">
         <div class="step-number">Step 03</div>
@@ -572,7 +576,7 @@
 
   <!-- FORM -->
   <section class="audit-section" id="audit-form">
-    <h2>Get my ActiveCampaign audit</h2>
+    <h2>Get my <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> audit</h2>
     <p class="intro">Three questions and I'll know if your account is a fit. If it is, I'll be in touch within one business day to request access.</p>
 
     <div class="audit-form-wrapper">
@@ -636,7 +640,7 @@
             <label class="form-label" for="aud-list">List size<span class="required">*</span></label>
             <select class="form-control" id="aud-list" name="list_size" required>
               <option value="">Select one…</option>
-              <option>Not yet on AC</option>
+              <option data-plat data-ac="Not yet on AC" data-klaviyo="Not yet on Klaviyo">Not yet on AC</option>
               <option>Under 10K</option>
               <option>10K–50K</option>
               <option>50K–100K</option>
@@ -655,7 +659,7 @@
               <option>Identify my highest-impact activities (Hyper-Pareto analysis)</option>
               <option>Improve deliverability &amp; inbox placement</option>
               <option>Increase email engagement (opens / clicks)</option>
-              <option>Generate more revenue from ActiveCampaign</option>
+              <option data-plat data-ac="Generate more revenue from ActiveCampaign" data-klaviyo="Generate more revenue from Klaviyo">Generate more revenue from ActiveCampaign</option>
               <option>Fix automation performance issues</option>
               <option>Get an expert second opinion on my current setup</option>
               <option>Other</option>
@@ -671,7 +675,7 @@
         <h3>Thanks — your audit is queued.</h3>
         <p>Here's what happens next:</p>
         <p style="margin-top:10px;">
-          <strong>1.</strong> I'll email you within one business day from <code>greg@getner.ai</code> with a short request for read-only ActiveCampaign access.<br>
+          <strong>1.</strong> I'll email you within one business day from <code>greg@getner.ai</code> with a short request for read-only <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> access.<br>
           <strong>2.</strong> Once I have access, the Hyper-Pareto audit takes 2–3 business days.<br>
           <strong>3.</strong> Your PDF report lands in your inbox — health score, concentration breakdown, top 3 moves to make.
         </p>
@@ -688,6 +692,7 @@
     <a href="https://www.activecampaign.com/consultants/directory/certified-consultant-greg-getner" target="_blank" rel="noopener noreferrer" aria-label="View Greg Getner's ActiveCampaign Certified Consultant profile">
       <img src="/assets/ac-certified-partner-light.svg" alt="ActiveCampaign Certified Consultant" width="160" height="59" loading="lazy" />
     </a>
+    <img src="/assets/klaviyo-partner-badge.svg" alt="Klaviyo Master Platinum Partner" loading="lazy" style="height: 59px; width: auto;" onerror="this.style.display='none'" />
   </div>
   <div class="blog-footer-links">
     <a href="/">Home</a>
@@ -804,5 +809,6 @@
   })();
 </script>
 
+<script src="/scripts/platform-toggle.js" defer></script>
 </body>
 </html>

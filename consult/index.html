@@ -377,9 +377,13 @@
 <header class="blog-masthead">
   <a href="/" class="blog-masthead-brand">
     <span class="blog-masthead-title">Getner &amp; AI</span>
-    <span class="blog-masthead-subtitle">Boutique ActiveCampaign Management</span>
+    <span class="blog-masthead-subtitle">Boutique <span data-plat data-ac="ActiveCampaign" data-klaviyo="Klaviyo">ActiveCampaign</span> Management</span>
   </a>
   <nav class="blog-masthead-nav">
+    <div class="platform-switch" role="group" aria-label="Choose your email platform">
+      <button type="button" class="active" data-platform="ac" aria-pressed="true">ActiveCampaign</button>
+      <button type="button" data-platform="klaviyo" aria-pressed="false">Klaviyo</button>
+    </div>
     <a href="/">Home</a>
     <a href="/blog/">Blog</a>
     <a href="/audit/">Free Audit</a>
@@ -633,6 +637,7 @@
     <a href="https://www.activecampaign.com/consultants/directory/certified-consultant-greg-getner" target="_blank" rel="noopener noreferrer" aria-label="View Greg Getner's ActiveCampaign Certified Consultant profile">
       <img src="/assets/ac-certified-partner-light.svg" alt="ActiveCampaign Certified Consultant" width="160" height="59" loading="lazy" />
     </a>
+    <img src="/assets/klaviyo-partner-badge.svg" alt="Klaviyo Master Platinum Partner" loading="lazy" style="height: 59px; width: auto;" onerror="this.style.display='none'" />
   </div>
   <div class="blog-footer-links">
     <a href="/">Home</a>
@@ -754,5 +759,6 @@
   })();
 </script>
 
+<script src="/scripts/platform-toggle.js" defer></script>
 </body>
 </html>

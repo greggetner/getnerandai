@@ -61,6 +61,12 @@ That way a single goal is reachable from anywhere in the flow.
 // Prompt builder
 // ────────────────────────────────────────────────────────────────
 function buildPrompt(topic) {
+  const isKlaviyo = topic.platform === 'klaviyo';
+  const platformName = isKlaviyo ? 'Klaviyo' : 'ActiveCampaign';
+  const platformFeatures = isKlaviyo
+    ? 'flows, flow triggers and filters, conditional splits, segments, lists, sign-up forms, campaigns, A/B tests, metrics and metric-triggered flows, predictive analytics (predicted CLV, churn risk, predicted date of next order), benchmarks, the deliverability hub, smart sending, sunset flows, back-in-stock and price-drop flows, webhooks, the reviews product, SMS, and profiles / the customer data platform'
+    : 'goal steps, conditional branches, conditional content blocks, predictive sending, deal pipelines, tags, custom fields, custom objects (higher plans), site tracking, automations, segments, lists, forms, landing pages, campaigns, deep data integration, SMS add-on, machine learning optimized send time, attribution reports, event tracking, webhook actions';
+
   const affiliateBlock = topic.affiliate_opportunity
     ? `
 AFFILIATE MENTION:
@@ -71,7 +77,9 @@ Do NOT force it if it doesn't fit the flow. Better to omit than to shoehorn.
 `.trim()
     : 'No affiliate mentions required. Keep the post clean.';
 
-  return `You are writing a blog post for Greg Getner's site — getner.ai, a boutique ActiveCampaign consulting practice. Greg has 23 years of experience in retention marketing. His audience is operators running 7-figure+ coaching businesses, course creators, online businesses, DTC brands, and content creators who manage their own ActiveCampaign programs.
+  return `You are writing a blog post for Greg Getner's site — getner.ai, a boutique email and retention consulting practice working in both ActiveCampaign and Klaviyo. Greg has 23 years of experience in retention marketing. His audience is operators running 7-figure+ coaching businesses, course creators, online businesses, DTC brands, and content creators who manage their own ${platformName} programs.
+
+This post is a ${platformName} post. Write it for ${platformName} users, using ${platformName} terminology and features throughout.
 
 ## TOPIC
 
@@ -88,7 +96,7 @@ Do NOT force it if it doesn't fit the flow. Better to omit than to shoehorn.
 
 1. Opening: 2–3 short paragraphs. Lead with a specific observation, a common pattern, or a blunt statement. NO "In today's digital world…" openings. NO generic listicle intros. Get to the point in two sentences.
 2. Body: 3–7 sections with H2 headings. Each section makes one clear point, gives specifics, and tells the reader what to do. Use sub-H3 headings only if a section has sub-topics.
-3. Closing: 1–2 paragraphs that tie back to the opening problem. Followed by ONE call-to-action sentence pointing to Greg's free ActiveCampaign audit at https://getner.ai/audit/.
+3. Closing: 1–2 paragraphs that tie back to the opening problem. Followed by ONE call-to-action sentence pointing to Greg's free ${platformName} audit at https://getner.ai/audit/.
 
 ## VOICE (reference from an existing Greg post)
 
@@ -96,14 +104,16 @@ ${VOICE_REFERENCE}
 
 Match this voice: direct, confident, plural-first-person ("I see this pattern", "in most accounts I audit", "in the programs I run"), declarative sentences, no hedging, no filler phrases, no "It's important to note that…".
 
+The voice reference above happens to use an ActiveCampaign example — it is there ONLY to calibrate tone. Write this post for ${platformName}; do not import ActiveCampaign feature names into a Klaviyo post (or vice versa) unless the topic explicitly compares the two platforms.
+
 ## HARD RULES
 
 - **No fabricated specifics about real clients.** Never write sentences like "I worked with a brand that did $12M". Use generalized framing: "in most accounts I audit", "a common pattern", "the programs I run". The plural/generalized first-person is fine and expected.
 - **No claims about your own business volume, throughput, or client counts.** Do NOT write sentences like "I audit 40 accounts a month", "I've worked with over 200 brands", "My clients generate $X in revenue", "I open at least N accounts a week". If Greg's scale needs to be referenced, stay qualitative: "in the programs I run", "across the accounts I've worked in" — no specific counts, ever.
 - **No fabricated quantitative performance ranges.** Do NOT invent conversion rates, open rates, click rates, revenue lifts, or percentage gains. Do NOT write "sequences convert at 0.8–2%", "drives a 40–80% lift", "67% of marketers". These pattern like authority but they're fabricated unless you can cite a real public source (which you cannot inside this prompt).
-- **Acceptable quantitative references.** You MAY use: (a) Gmail Postmaster thresholds (\`0.30%\` user-reported spam rate), (b) authentication records (SPF, DKIM, DMARC), (c) specific ActiveCampaign feature parameters (\`Wait 24 hours\`, \`Wait until specific day/time\`), (d) clearly hypothetical/illustrative examples introduced with "if..." or "say..." ("if your welcome series has 7 emails and 2 produce the bulk of your revenue, the other 5 are dead weight").
-- **No made-up ActiveCampaign features.** Only reference features that actually exist: goal steps, conditional branches, conditional content blocks, predictive sending, deal pipelines, tags, custom fields, custom objects (higher plans), site tracking, automations, segments, lists, forms, landing pages, campaigns, deep data integration, SMS add-on, machine learning optimized send time, attribution reports, event tracking, webhook actions. If you're unsure about a specific feature name or behavior, use generic language.
-- **Use code formatting** (backticks in markdown) for specific AC feature names, tag conventions, field names, and numeric thresholds. Example: \`Wait until specific day/time\`, \`src-webinar\` tag convention, \`> 0.30%\` Gmail spam rate.
+- **Acceptable quantitative references.** You MAY use: (a) Gmail Postmaster thresholds (\`0.30%\` user-reported spam rate), (b) authentication records (SPF, DKIM, DMARC), (c) specific ${platformName} feature parameters and timing settings, (d) clearly hypothetical/illustrative examples introduced with "if..." or "say..." ("if your welcome series has 7 emails and 2 produce the bulk of your revenue, the other 5 are dead weight").
+- **No made-up ${platformName} features.** Only reference features that actually exist in ${platformName}: ${platformFeatures}. If you're unsure about a specific feature name or behavior, use generic language.
+- **Use code formatting** (backticks in markdown) for specific ${platformName} feature names, tag/segment conventions, field names, and numeric thresholds.
 - **Every section must tell the reader what to DO**, not just describe a thing. Actionable over descriptive.
 - **Avoid marketing buzzwords:** leverage, synergy, optimize (unless referring to a specific AC feature), unleash, supercharge, game-changing, revolutionize.
 
@@ -181,8 +191,13 @@ async function main() {
   const queueRaw = await readFile(QUEUE_PATH, 'utf8');
   const queue = JSON.parse(queueRaw);
 
-  // 2. Pick next queued topic
-  const topic = queue.find(t => t.status === 'queued');
+  // 2. Pick next queued topic, alternating platform (AC <-> Klaviyo) from the last draft
+  const drafted = queue.filter(t => t.drafted_at).sort((a, b) => (a.drafted_at < b.drafted_at ? 1 : -1));
+  const lastPlatform = drafted.length && drafted[0].platform === 'klaviyo' ? 'klaviyo' : 'ac';
+  const wantPlatform = lastPlatform === 'klaviyo' ? 'ac' : 'klaviyo';
+  const topic =
+    queue.find(t => t.status === 'queued' && (t.platform || 'ac') === wantPlatform) ||
+    queue.find(t => t.status === 'queued');
   if (!topic) {
     console.log('No queued topics remain. Add more to content/topic-queue.json.');
     return;
@@ -206,6 +221,7 @@ async function main() {
     `topic_id: ${topic.id}`,
     `title: ${JSON.stringify(topic.title)}`,
     `category: ${topic.category}`,
+    `platform: ${topic.platform || 'ac'}`,
     `drafted_at: ${new Date().toISOString()}`,
     `word_count: ${wordCount}`,
     topic.affiliate_opportunity ? `affiliate: ${topic.affiliate_opportunity.name}` : null,

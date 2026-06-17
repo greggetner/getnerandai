@@ -335,8 +335,33 @@ a:hover { color: var(--rust-deep); text-decoration: underline; }
 
 .blog-footer-links { margin-bottom: 12px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
 
-.footer-badge { margin-bottom: 20px; display: flex; justify-content: center; }
+.footer-badge { margin-bottom: 20px; display: flex; justify-content: center; align-items: center; gap: 24px; flex-wrap: wrap; }
 .footer-badge img { width: 160px; height: auto; display: block; }
+
+.platform-switch {
+  display: inline-flex;
+  flex-shrink: 0;
+  background: var(--paper-deep);
+  border: 1px solid var(--line);
+  border-radius: 40px;
+  padding: 4px;
+}
+.platform-switch button {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 40px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.platform-switch button.active {
+  background: var(--ink);
+  color: var(--paper);
+}
 
 /* ── Responsive ── */
 @media (max-width: 640px) {
