@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Jun 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>How to Measure Your Email Program's Revenue (When ActiveCampaign Doesn't Track It Natively)</title>
+      <link>https://getner.ai/blog/email-revenue-without-native-revenue.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/email-revenue-without-native-revenue.html</guid>
+      <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[ActiveCampaign doesn't track revenue unless you're running a Shopify or WooCommerce integration, and most coaching, course, and content businesses aren't.]]></description>
+    </item>
 
     <item>
       <title>Setting Up UTM Tracking That Actually Ties Revenue Back to Email</title>

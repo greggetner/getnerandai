@@ -246,9 +246,9 @@
       "url": "http://hyros.com/affiliate-grow.html?fpr=greg55",
       "placement_hint": "mention near end as a heavier-duty attribution tool for programs that have outgrown UTM-based tracking"
     },
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-06-16T17:55:48.554Z",
-    "published_at": null
+    "published_at": "2026-06-18T16:22:23.135Z"
   },
   {
     "id": "5-engagement-metrics-health",
@@ -473,11 +473,16 @@
     "title": "The Klaviyo Abandoned Cart Flow Most Stores Set Up Wrong",
     "category": "Flows",
     "angle": "Most Klaviyo abandoned cart flows fire one discount-led email and stop. The ones that recover revenue lead with utility before any incentive: a 1-hour reminder with the cart contents, a value-add at 24 hours (shipping, returns, reviews), and only then a 48-hour incentive if needed. Walk through the flow structure in Klaviyo terms (started checkout trigger, flow filters to exclude placed-order, conditional split on customer vs prospect). Cover the cardinal mistake: leading with the discount, which trains customers to abandon on purpose.",
-    "keywords": ["klaviyo abandoned cart", "abandoned cart flow", "klaviyo checkout flow", "cart recovery"],
+    "keywords": [
+      "klaviyo abandoned cart",
+      "abandoned cart flow",
+      "klaviyo checkout flow",
+      "cart recovery"
+    ],
     "affiliate_opportunity": null,
     "platform": "klaviyo",
-    "status": "queued",
-    "drafted_at": null,
+    "status": "drafted",
+    "drafted_at": "2026-06-18T16:22:22.976Z",
     "published_at": null
   },
   {
@@ -485,7 +490,12 @@
     "title": "The Klaviyo Welcome Flow That Earns Its First Sale",
     "category": "Flows",
     "angle": "A welcome flow is the highest-intent moment a subscriber will ever give you, and most stores waste it on a single 'thanks for signing up' email. Walk through a welcome flow that moves someone to a first purchase: deliver the sign-up incentive immediately, establish the brand, handle the top objection, then make the offer. Cover Klaviyo specifics: the list/segment trigger, conditional splits on whether the incentive was used, and how to suppress the flow for people who already purchased.",
-    "keywords": ["klaviyo welcome flow", "welcome series klaviyo", "ecommerce onboarding email", "klaviyo signup flow"],
+    "keywords": [
+      "klaviyo welcome flow",
+      "welcome series klaviyo",
+      "ecommerce onboarding email",
+      "klaviyo signup flow"
+    ],
     "affiliate_opportunity": null,
     "platform": "klaviyo",
     "status": "queued",
@@ -497,7 +507,12 @@
     "title": "The 5 Klaviyo Segments Every Store Should Build First",
     "category": "Segments",
     "angle": "Most Klaviyo accounts have dozens of one-off segments and still can't answer 'who do I send to this week?'. The five that matter: engaged (opened/clicked in 30-60 days), customers, lapsed customers, never-purchased subscribers, and a suppression segment for poor engagement. Show how to build each in Klaviyo's segment builder with the actual definition logic, and what gets sent to each.",
-    "keywords": ["klaviyo segments", "klaviyo segmentation", "email segmentation ecommerce", "klaviyo engaged segment"],
+    "keywords": [
+      "klaviyo segments",
+      "klaviyo segmentation",
+      "email segmentation ecommerce",
+      "klaviyo engaged segment"
+    ],
     "affiliate_opportunity": null,
     "platform": "klaviyo",
     "status": "queued",
@@ -509,7 +524,12 @@
     "title": "Klaviyo Predictive Analytics: CLV, Churn Risk, and Next Order Date, Explained",
     "category": "Analytics",
     "angle": "Klaviyo gives you predicted CLV, churn risk, and predicted date of next order on customer profiles, and most operators never use them. Explain what each prediction actually means, the data Klaviyo needs before the numbers are trustworthy, and three concrete flows you can trigger from them: a win-back timed to predicted next-order date, a VIP track for high predicted CLV, and a save flow for rising churn risk.",
-    "keywords": ["klaviyo predictive analytics", "klaviyo CLV", "predicted next order date", "klaviyo churn risk"],
+    "keywords": [
+      "klaviyo predictive analytics",
+      "klaviyo CLV",
+      "predicted next order date",
+      "klaviyo churn risk"
+    ],
     "affiliate_opportunity": null,
     "platform": "klaviyo",
     "status": "queued",
@@ -521,7 +541,12 @@
     "title": "Reading the Klaviyo Deliverability Hub Before It Reads You",
     "category": "Deliverability",
     "angle": "Klaviyo's deliverability hub surfaces the signals that predict an inbox problem before it tanks a send, but the dashboard is easy to glance past. Walk through what to actually watch: spam complaint rate, the engagement trend, bounce rate, and the sending-against-unengaged warnings. Tie it back to Gmail Postmaster thresholds (user-reported spam above 0.30% means stop), and the sunset flow that keeps unengaged contacts from dragging the rest of the list down.",
-    "keywords": ["klaviyo deliverability", "klaviyo deliverability hub", "klaviyo spam complaints", "klaviyo sunset flow"],
+    "keywords": [
+      "klaviyo deliverability",
+      "klaviyo deliverability hub",
+      "klaviyo spam complaints",
+      "klaviyo sunset flow"
+    ],
     "affiliate_opportunity": null,
     "platform": "klaviyo",
     "status": "queued",
@@ -533,7 +558,12 @@
     "title": "The Klaviyo Post-Purchase Flow That Turns One Order Into Three",
     "category": "Flows",
     "angle": "Most stores build a welcome flow and an abandoned cart flow and call retention done. The post-purchase flow is where repeat revenue actually lives: order confirmation, shipping and delivery, a how-to or first-use email, a review request timed to delivery, and a replenishment or cross-sell nudge. Walk through the structure in Klaviyo, including the placed-order trigger, conditional splits on first-time vs repeat buyer, and timing the review ask to predicted delivery rather than purchase date.",
-    "keywords": ["klaviyo post-purchase flow", "ecommerce retention", "klaviyo review request flow", "repeat purchase email"],
+    "keywords": [
+      "klaviyo post-purchase flow",
+      "ecommerce retention",
+      "klaviyo review request flow",
+      "repeat purchase email"
+    ],
     "affiliate_opportunity": null,
     "platform": "klaviyo",
     "status": "queued",
