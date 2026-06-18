@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Setting Up UTM Tracking That Actually Ties Revenue Back to Email — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Most operators track email inconsistently — some campaigns have UTMs, some don't, the values conflict across automations — and when you try to answer &quot;which emails drove revenue last quarter?&quot; the data is worthless." />
+<link rel="canonical" href="https://getner.ai/blog/utm-that-ties-back.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Setting Up UTM Tracking That Actually Ties Revenue Back to Email" />
+<meta property="og:description" content="Most operators track email inconsistently — some campaigns have UTMs, some don't, the values conflict across automations — and when you try to answer &quot;which emails drove revenue last quarter?&quot; the data is worthless." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/utm-that-ties-back.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Analytics" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Setting Up UTM Tracking That Actually Ties Revenue Back to Email",
+  "description": "Most operators track email inconsistently — some campaigns have UTMs, some don't, the values conflict across automations — and when you try to answer &quot;which emails drove revenue last quarter?&quot; the data is worthless.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-06-16",
+  "mainEntityOfPage": "https://getner.ai/blog/utm-that-ties-back.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">June 16, 2026 · Analytics · 11 min read</div>
+      <h1 class="post-title">Setting Up UTM Tracking That Actually Ties Revenue Back to Email</h1>
+      <p class="post-lede">Most operators track email inconsistently — some campaigns have UTMs, some don't, the values conflict across automations — and when you try to answer &quot;which emails drove revenue last quarter?&quot; the data is worthless.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I open ActiveCampaign accounts and ask to see the attribution report. The operator pulls it up, filters by source, and we see fifteen variations of what should be the same value: <code>email</code>, <code>Email</code>, <code>newsletter</code>, <code>ActiveCampaign</code>, <code>campaign</code>, <code>ac</code>, and eight URLs with no UTM parameters at all. </p>
+      <p>The report can&#39;t group anything. Revenue is scattered across made-up source names. The operator can&#39;t tell which automations are working, which broadcasts are paying for themselves, or whether the nurture sequence they spent two weeks building has ever closed a single deal.</p>
+      <h2>The Real Cost of Inconsistent UTM Tracking</h2>
+      <p>When your UTM taxonomy is broken, you lose the ability to make decisions. You can&#39;t kill underperforming broadcasts because you don&#39;t know which ones underperform. You can&#39;t double down on high-converting automations because the revenue never traces back to them. You end up optimizing based on open rates and gut feeling instead of actual dollars.</p>
+      <p>The pattern I see across the accounts I work in: UTM parameters are added inconsistently by whoever is sending that week. A contractor sets them one way. The operator sets them another. A campaign goes out with no parameters at all because someone forgot. Six months later, the attribution data is a junk drawer.</p>
+      <h2>The UTM Taxonomy That Actually Works</h2>
+      <p>Here&#39;s the structure that makes email attribution work:</p>
+      <ul>
+      <li><strong><code>utm_source=email</code></strong> — always <code>email</code>, never anything else, always lowercase</li>
+      <li><strong><code>utm_medium={broadcast|automation|nurture}</code></strong> — three values, that&#39;s it</li>
+      <li><strong><code>utm_campaign={campaign-name}</code></strong> — the name of the specific broadcast or automation, lowercase, hyphens instead of spaces</li>
+      <li><strong><code>utm_content={variant}</code></strong> — optional, use it when you&#39;re testing link placement, CTA copy, or sending to different segments</li>
+      </ul>
+      <p>Every link in every email gets all four parameters. No exceptions.</p>
+      <h3>The Three Medium Values</h3>
+      <p><code>broadcast</code> is a one-time send to a list or segment. Your weekly newsletter. A product launch announcement. A flash sale. If you wrote it once and hit send, it&#39;s a broadcast.</p>
+      <p><code>automation</code> is a triggered sequence tied to a specific behavior or event. Welcome series. Post-purchase onboarding. Abandoned cart. If it fires based on a tag, list subscription, or event, it&#39;s an automation.</p>
+      <p><code>nurture</code> is a longer-term educational or relationship sequence that isn&#39;t directly tied to a single conversion event. A 12-week course delivery sequence. A monthly content drip. Use this when the sequence is about engagement over time, not immediate conversion.</p>
+      <p>Most operators try to track by campaign name alone and end up with sixty campaign names that mean nothing six months later. The medium parameter is what lets you roll up performance by type. You can see all automation revenue vs. all broadcast revenue. You can compare nurture performance across programs. The campaign name gives you the detail; the medium gives you the category.</p>
+      <h2>The Single Rule That Makes Attribution Work</h2>
+      <p>Write the taxonomy down. Put it in a Google Doc, a Notion page, a Slack pinned message. Title it &quot;UTM Standards&quot; and include the exact parameter values you use.</p>
+      <p>Then review it before every send.</p>
+      <p>Not after. Not during QA. Before you build the campaign or automation. Before you write the copy. The moment you decide to create a new email, you decide what the UTM parameters will be and you write them down next to the campaign name in your project tracker.</p>
+      <p>I&#39;ve built this into the programs I run: the campaign brief template has a UTM field at the top. If it&#39;s blank, the email doesn&#39;t get built. If the parameters don&#39;t match the taxonomy, it doesn&#39;t go into ActiveCampaign.</p>
+      <p>Tracking fails when it&#39;s treated as a last-minute detail. It works when it&#39;s a required field.</p>
+      <h2>The Mini-Audit: Find Broken Tracking in Your Current Setup</h2>
+      <p>Pull your last thirty days of email sends — broadcasts and automations. Export the campaign list from ActiveCampaign or pull the data from Google Analytics if you&#39;re tracking email traffic there.</p>
+      <p>Look for three patterns:</p>
+      <p><strong>Pattern one: missing UTMs.</strong> Open ten recent broadcast campaigns in ActiveCampaign. Click through to preview the email. Right-click any link and copy the URL. Paste it into a text editor. If you don&#39;t see <code>utm_source=</code>, <code>utm_medium=</code>, and <code>utm_campaign=</code> in every link, your tracking is broken. </p>
+      <p>Do the same for your top five automations. Open the automation, click into each email, preview, check the links. Missing parameters mean missing attribution.</p>
+      <p><strong>Pattern two: inconsistent source values.</strong> If you&#39;re using Google Analytics, go to Acquisition &gt; All Traffic &gt; Source/Medium and filter the date range to the last ninety days. Look at the source column. If you see more than one value that should mean &quot;email&quot; — <code>email</code>, <code>newsletter</code>, <code>activecampaign</code>, <code>campaign</code> — your data is fragmented. Revenue is being split across sources that should be grouped.</p>
+      <p><strong>Pattern three: meaningless campaign names.</strong> Look at the <code>utm_campaign</code> values in your Analytics report or your ActiveCampaign link tracking. If you see <code>campaign-1</code>, <code>test</code>, <code>new-email</code>, <code>october</code>, or anything else you can&#39;t decode without opening the actual campaign, your taxonomy isn&#39;t helping you. Campaign names need to be descriptive enough that you know what the email was about six months later.</p>
+      <p>If you find any of these three patterns, your attribution is compromised. The data exists, but it&#39;s not structured in a way that lets you make decisions.</p>
+      <h2>How to Fix Broken Tracking Without Starting Over</h2>
+      <p>You can&#39;t retroactively fix UTM parameters on emails that already sent. The links are in inboxes. The traffic already hit your site. That data is lost.</p>
+      <p>But you can fix it going forward in about an hour.</p>
+      <p><strong>Step one:</strong> Document your taxonomy. Write down the exact source, medium, and campaign name structure you&#39;re going to use. Use the structure I outlined earlier or adapt it, but write it down and make it a rule.</p>
+      <p><strong>Step two:</strong> Audit your active automations. Open every automation that&#39;s currently live. Check every email in every automation. If the links don&#39;t have UTM parameters, add them. If the parameters don&#39;t match your new taxonomy, fix them. This is tedious. Do it anyway.</p>
+      <p><strong>Step three:</strong> Set up a QA checklist. Before any email goes live — broadcast or automation — someone checks that every link has UTM parameters and that the values match the taxonomy. Make it a required step in your send process. I use a simple checklist in ClickUp: &quot;UTM parameters added and verified&quot; is a checkbox that has to be ticked before the campaign status moves to &quot;ready to send.&quot;</p>
+      <p><strong>Step four:</strong> Set a calendar reminder to audit your UTM structure every quarter. Drift happens. Someone forgets. A contractor uses a different format. A quarterly audit catches it before the data gets too messy.</p>
+      <h2>Using Attribution Data to Make Actual Decisions</h2>
+      <p>Once your tracking is consistent, you can answer the questions that matter.</p>
+      <p>Which automations drive the most revenue per contact? Look at <code>utm_medium=automation</code>, group by <code>utm_campaign</code>, and sort by revenue. The top three are your highest-leverage sequences. Optimize those first. The bottom half might not be worth the maintenance cost.</p>
+      <p>Which broadcasts are paying for themselves? If you&#39;re spending time writing a weekly newsletter, you should know whether it&#39;s driving revenue or just open rates. Look at <code>utm_medium=broadcast</code>, group by <code>utm_campaign</code>, and calculate revenue per send. If a broadcast format consistently drives revenue, send it more often. If it doesn&#39;t, kill it or change the format.</p>
+      <p>Which links in each email actually convert? Use the <code>utm_content</code> parameter to track link position. Put <code>utm_content=cta-top</code> on the first CTA and <code>utm_content=cta-bottom</code> on the second. After a few sends, you&#39;ll see which position drives more clicks and more revenue. Then you can stop guessing about email structure and start using data.</p>
+      <p>The attribution report is only useful if the taxonomy is consistent. Consistent taxonomy only happens if you treat it like a requirement, not a nice-to-have.</p>
+      <hr>
+      <p>Most operators don&#39;t have a tracking problem. They have a taxonomy problem. The data is there. It&#39;s just not structured in a way that lets you use it. Write the structure down, enforce it before every send, and audit it every quarter. The attribution report will start making sense, and you&#39;ll stop optimizing email based on open rates and gut feeling.</p>
+      <p>If you want a second set of eyes on your current setup, I&#39;ll walk through your ActiveCampaign account and flag what&#39;s broken — free audit at <a href="https://getner.ai/audit/">https://getner.ai/audit/</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
