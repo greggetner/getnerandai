@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Jun 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>The Klaviyo Abandoned Cart Flow Most Stores Set Up Wrong</title>
+      <link>https://getner.ai/blog/klaviyo-abandoned-cart-flow.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/klaviyo-abandoned-cart-flow.html</guid>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Most Klaviyo abandoned cart flows fire one discount-led email and stop. The ones that recover revenue lead with utility before any incentive.]]></description>
+    </item>
 
     <item>
       <title>How to Measure Your Email Program's Revenue (When ActiveCampaign Doesn't Track It Natively)</title>

@@ -261,8 +261,8 @@
       "email program KPIs"
     ],
     "affiliate_opportunity": null,
-    "status": "queued",
-    "drafted_at": null,
+    "status": "drafted",
+    "drafted_at": "2026-06-23T15:44:28.533Z",
     "published_at": null
   },
   {
@@ -481,9 +481,9 @@
     ],
     "affiliate_opportunity": null,
     "platform": "klaviyo",
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-06-18T16:22:22.976Z",
-    "published_at": null
+    "published_at": "2026-06-23T15:44:28.677Z"
   },
   {
     "id": "klaviyo-welcome-flow-first-sale",

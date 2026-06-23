@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Klaviyo Abandoned Cart Flow Most Stores Set Up Wrong — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Most Klaviyo abandoned cart flows fire one discount-led email and stop. The ones that recover revenue lead with utility before any incentive." />
+<link rel="canonical" href="https://getner.ai/blog/klaviyo-abandoned-cart-flow.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="The Klaviyo Abandoned Cart Flow Most Stores Set Up Wrong" />
+<meta property="og:description" content="Most Klaviyo abandoned cart flows fire one discount-led email and stop. The ones that recover revenue lead with utility before any incentive." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/klaviyo-abandoned-cart-flow.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Flows" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Klaviyo Abandoned Cart Flow Most Stores Set Up Wrong",
+  "description": "Most Klaviyo abandoned cart flows fire one discount-led email and stop. The ones that recover revenue lead with utility before any incentive.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-06-23",
+  "mainEntityOfPage": "https://getner.ai/blog/klaviyo-abandoned-cart-flow.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">June 23, 2026 · Flows · 14 min read</div>
+      <h1 class="post-title">The Klaviyo Abandoned Cart Flow Most Stores Set Up Wrong</h1>
+      <p class="post-lede">Most Klaviyo abandoned cart flows fire one discount-led email and stop. The ones that recover revenue lead with utility before any incentive.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I&#39;ve audited enough Klaviyo accounts to recognize the pattern immediately. Someone abandons a cart. The store waits thirty minutes, then sends an email with a subject line like &quot;Forgot something? Here&#39;s 10% off.&quot; If that doesn&#39;t convert, nothing else fires. The flow ends.</p>
+      <p>The problem isn&#39;t that the email is bad. The problem is that it trains customers to abandon on purpose. Leave the cart, wait for the discount, then buy. You&#39;ve just built a margin-killing incentive system disguised as a recovery flow.</p>
+      <p>The abandoned cart flows that actually recover revenue do something different. They lead with utility. They remind, reassure, and remove friction before they ever mention a discount. And they&#39;re structured in Klaviyo to handle different customer segments differently.</p>
+      <h2>The Three-Stage Structure That Works</h2>
+      <p>The flow I build in every Klaviyo account has three stages, and only the third one includes an incentive.</p>
+      <p><strong>Stage one: the one-hour reminder.</strong> This email exists to catch people who got distracted. No discount. No urgency language. Just a plain reminder that says &quot;you left these items in your cart&quot; with product images, prices, and a single call-to-action button. The trigger is <code>Started Checkout</code> with a one-hour time delay.</p>
+      <p><strong>Stage two: the 24-hour value-add.</strong> This is where you remove friction. Highlight your return policy. Show shipping details. Include customer reviews or user-generated content for the products in the cart. Add trust signals—secure checkout badges, testimonials, whatever reduces purchase anxiety. Still no discount. You&#39;re selling the decision they already made once.</p>
+      <p><strong>Stage three: the 48-hour incentive (if needed).</strong> Now—and only now—you can offer a discount. But make it conditional. Use a conditional split in Klaviyo to check <code>Placed Order zero times since starting this flow</code> so you&#39;re not sending discounts to people who already converted from email one or two.</p>
+      <p>Most stores fire the discount first. That&#39;s the mistake that costs you margin on every future purchase from that customer.</p>
+      <h2>The Klaviyo Trigger and Flow Filter Setup</h2>
+      <p>Start with the <code>Started Checkout</code> metric as your flow trigger. This fires when someone hits your checkout page and provides an email address.</p>
+      <p>Immediately after the trigger, add a flow filter: <code>Placed Order zero times since starting this flow</code>. This is the suppression logic that prevents the flow from continuing if someone completes their purchase. Klaviyo evaluates flow filters before every email in the sequence, so if someone buys after email one, they won&#39;t receive email two.</p>
+      <p>Do not use <code>Placed Order at least once over all time</code> as your filter. That excludes first-time customers entirely, and first-time customers are exactly who you want in this flow. The flow filter needs to be scoped to activity <em>since starting this flow</em>, not lifetime behavior.</p>
+      <p>In the flow settings, enable <code>Smart Sending</code> and set it to skip profiles who have received a campaign or are in another flow within the last 16 hours. This prevents message overlap if you&#39;re running sale campaigns or other automated flows.</p>
+      <h2>The Conditional Split You Need at Stage Three</h2>
+      <p>Before you send the discount email, add a conditional split based on <code>Placed Order at least once over all time</code>. This separates first-time prospects from repeat customers.</p>
+      <p><strong>Yes path (existing customers):</strong> Send the discount email, but frame it as a thank-you for being a returning customer. &quot;Welcome back—here&#39;s 10% off to finish your order.&quot; The psychology is different. You&#39;re rewarding loyalty, not training behavior.</p>
+      <p><strong>No path (first-time prospects):</strong> You have two options here. Option one: send the discount with a first-purchase framing. &quot;New here? Take 10% off your first order.&quot; Option two, which I use in most accounts I run: skip the discount entirely and send a final friction-reduction email. Highlight the no-risk purchase (easy returns, money-back guarantee, whatever your offer includes). Save the discount for a separate prospect nurture flow.</p>
+      <p>The split matters because repeat customers already know your brand. They have a different set of objections than someone who&#39;s never bought from you. Treating them the same leaves money on the table.</p>
+      <h2>What to Put in Each Email</h2>
+      <p><strong>Email one (1 hour):</strong> Subject line that&#39;s plain and factual. &quot;You left something in your cart&quot; or &quot;Still thinking it over?&quot; Body copy is three parts: a single sentence of acknowledgment (&quot;You started checking out but didn&#39;t finish&quot;), a visual cart summary with product images and a subtotal, and a single call-to-action button that says &quot;Complete your order&quot; and links directly to the checkout page with the cart pre-populated. No secondary CTAs. No discount mentions. No &quot;limited time&quot; language. Just the reminder.</p>
+      <p><strong>Email two (24 hours):</strong> Subject line that addresses friction. &quot;Questions about shipping?&quot; or &quot;Here&#39;s what to expect.&quot; Body copy leads with the friction-reducer: free shipping threshold, return window, product reviews, size guide, whatever objection you hear most often from customer support. Include the cart summary again, smaller this time, with the CTA button at the bottom. You&#39;re selling confidence in the purchase decision.</p>
+      <p><strong>Email three (48 hours):</strong> Subject line mentions the incentive if you&#39;re sending one. &quot;Here&#39;s 10% off to finish your order.&quot; Body copy is short. Acknowledge they haven&#39;t purchased yet, present the discount code (use Klaviyo&#39;s coupon code feature so each email gets a unique code that tracks back to the flow), restate the cart contents, single CTA button. Set the email to skip if <code>Placed Order at least once since starting this flow</code> so you&#39;re not giving away margin to someone who already bought.</p>
+      <p>Some accounts I work in add a fourth email at 7 days with a final &quot;cart expiring&quot; message and no discount. It works if your cart abandonment window is long and your average order value is high. For most DTC brands, three emails is the structure.</p>
+      <h2>The Cardinal Mistake: Leading With the Discount</h2>
+      <p>When you send the discount in email one, you teach customers a behavior pattern. Abandon the cart, wait thirty minutes, get the discount code, then complete the purchase. They&#39;ll do it on every future order.</p>
+      <p>I see this pattern in almost every account I audit. The abandoned cart flow has a single email. It fires fast—ten minutes, twenty minutes—and it leads with a percentage off. The store owner sees it recovering revenue and thinks it&#39;s working. What they don&#39;t see is the margin erosion on every subsequent purchase.</p>
+      <p>Run a Klaviyo segment: <code>Placed Order at least twice over all time AND Received Email in Flow where Flow equals Abandoned Cart Flow at least once per person</code>. Look at the average time between receiving that first discount email and placing the first order. Then look at the average time between cart abandonment and order placement on their second purchase. If the second-purchase delay is consistently close to your abandoned cart email delay, you&#39;ve trained them.</p>
+      <p>The fix is to remove the discount from email one and move it to email three, behind the conditional split that checks for prior purchase behavior. You&#39;ll recover fewer carts in the first 24 hours. But the customers you do acquire won&#39;t expect a discount on every transaction.</p>
+      <h2>Flow Trigger Timing Matters More Than You Think</h2>
+      <p>Most stores set the first abandoned cart email to send after 30 minutes or 1 hour. That&#39;s fine for stage one. But I see stores set email two at 2 hours and email three at 4 hours. That&#39;s too tight.</p>
+      <p>The person who abandons and doesn&#39;t come back in the first hour is not sitting at their computer waiting for your second email 60 minutes later. They&#39;ve moved on. Email two needs to land at a different time of day—24 hours later means it hits a different session, a different mindset.</p>
+      <p>In Klaviyo, set your time delays as follows: email one at 1 hour, email two at 24 hours from the <code>Started Checkout</code> trigger (not 24 hours from email one—use the trigger as the anchor), email three at 48 hours from trigger. This spreads the touches across multiple days and multiple sessions. Each email is a new opportunity to recapture attention, not just a faster follow-up to the last one.</p>
+      <p>If your store has a short purchase-decision window—flash sales, limited inventory, event-based products—you can compress this to 1 hour, 6 hours, 24 hours. But test it. The tighter you compress the timing, the more likely you are to annoy instead of convert.</p>
+      <h2>Excluding Purchasers From the Flow</h2>
+      <p>The flow filter <code>Placed Order zero times since starting this flow</code> handles most of the suppression logic. But you also need to exclude people who placed an order for the <em>same products</em> even if they didn&#39;t click through your email.</p>
+      <p>In Klaviyo, this requires a conditional split after each time delay and before each email. The split checks <code>Placed Order at least once since starting this flow where Product ID equals &lt;cart product ID&gt;</code>. If yes, they exit the flow via a designated end path. If no, they continue to the email.</p>
+      <p>This is more complex to set up than a simple flow filter, but it prevents the embarrassing scenario where someone places an order on their phone, then receives your abandoned cart email on desktop three hours later trying to sell them the thing they already bought.</p>
+      <p>Klaviyo&#39;s flow builder doesn&#39;t make this easy—you&#39;ll need one conditional split per email, and you&#39;ll need to use the <code>Placed Order</code> conditional split logic with product-level matching. It&#39;s worth the setup time. The alternative is sending recovery emails to people who don&#39;t need recovering.</p>
+      <h2>What This Flow Structure Actually Fixes</h2>
+      <p>The three-stage structure solves three problems at once.</p>
+      <p><strong>Problem one:</strong> You stop training customers to wait for discounts. The first two emails never mention a discount, so the customer who&#39;s ready to buy at full price doesn&#39;t learn that waiting pays off.</p>
+      <p><strong>Problem two:</strong> You handle different customer segments differently. The conditional split at stage three means your repeat customers get different messaging than first-time prospects. You&#39;re not treating a $10,000 lifetime-value customer the same as someone who&#39;s never heard of you.</p>
+      <p><strong>Problem three:</strong> You remove friction before you resort to discounting. Most cart abandonment isn&#39;t about price. It&#39;s about trust, clarity, or distraction. Email two handles the first two. Email one handles the third. The discount is a last resort, not the opening move.</p>
+      <p>The stores that run this structure recover more revenue per cart abandonment than the stores that lead with discounts, and they do it without eroding margin on future purchases. The flow takes longer to build in Klaviyo—more conditional splits, more time delays, more email variants—but it pays back the setup time in the first month.</p>
+      <hr>
+      <p>If your Klaviyo abandoned cart flow is a single discount email, you&#39;re leaving money on the table and training bad customer behavior at the same time. The three-stage structure fixes both problems. If you want a second set of eyes on your flow setup—or any other part of your Klaviyo account—request a free audit at <a href="https://getner.ai/audit/">https://getner.ai/audit/</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
