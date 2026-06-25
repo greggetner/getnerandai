@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Jun 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>The 5 Engagement Metrics That Tell You Your List Is Healthy</title>
+      <link>https://getner.ai/blog/5-engagement-metrics-health.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/5-engagement-metrics-health.html</guid>
+      <pubDate>Thu, 25 Jun 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Open rate hasn't told you the truth since Apple Mail Privacy Protection rolled out in 2021, and click rate only tells you what happened two weeks after the problem started.]]></description>
+    </item>
 
     <item>
       <title>The Klaviyo Abandoned Cart Flow Most Stores Set Up Wrong</title>

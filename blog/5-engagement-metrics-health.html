@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The 5 Engagement Metrics That Tell You Your List Is Healthy — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Open rate hasn't told you the truth since Apple Mail Privacy Protection rolled out in 2021, and click rate only tells you what happened two weeks after the problem started." />
+<link rel="canonical" href="https://getner.ai/blog/5-engagement-metrics-health.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="The 5 Engagement Metrics That Tell You Your List Is Healthy" />
+<meta property="og:description" content="Open rate hasn't told you the truth since Apple Mail Privacy Protection rolled out in 2021, and click rate only tells you what happened two weeks after the problem started." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/5-engagement-metrics-health.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Analytics" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The 5 Engagement Metrics That Tell You Your List Is Healthy",
+  "description": "Open rate hasn't told you the truth since Apple Mail Privacy Protection rolled out in 2021, and click rate only tells you what happened two weeks after the problem started.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-06-25",
+  "mainEntityOfPage": "https://getner.ai/blog/5-engagement-metrics-health.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">June 25, 2026 · Analytics · 10 min read</div>
+      <h1 class="post-title">The 5 Engagement Metrics That Tell You Your List Is Healthy</h1>
+      <p class="post-lede">Open rate hasn't told you the truth since Apple Mail Privacy Protection rolled out in 2021, and click rate only tells you what happened two weeks after the problem started.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I&#39;ve been doing this for twenty-three years. The accounts I audit are almost always watching the wrong numbers. They see open rates holding at 40%, they assume the list is fine, and six months later they can&#39;t figure out why deliverability fell off a cliff or revenue-per-send dropped by half.</p>
+      <p>By the time click rate dips, you&#39;re already bleeding. The early signals—the ones that actually predict list health—are hiding in metrics most operators never pull. Here are the five I check first.</p>
+      <h2>Reply Rate on Relational Content</h2>
+      <p>This is the earliest signal you&#39;ll get that your list still cares.</p>
+      <p>Once a quarter, I send a plain-text campaign from the founder&#39;s name asking a single question. No pitch. No link. Just a question that invites a real answer. &quot;What&#39;s the biggest challenge you&#39;re facing with [topic] right now?&quot; or &quot;What made you sign up in the first place?&quot;</p>
+      <p>If the list is healthy, you&#39;ll get replies from 0.5–2% of delivered contacts. Not clicks. Replies.</p>
+      <p>If you&#39;re under 0.2%, the list doesn&#39;t see you as a human anymore. You&#39;ve trained them that your emails are transactional noise, not relational content. If you&#39;re above 3%, you&#39;ve probably got a small, highly engaged list or you just sent something that triggered an emotional response (which is fine, but not sustainable as a baseline).</p>
+      <p><strong>What to do:</strong> create a campaign in ActiveCampaign, write a plain-text email from your actual inbox address (use <code>Reply Tracking</code> enabled), and ask one question. Send it to your entire engaged segment—contacts who&#39;ve opened or clicked in the last 90 days. Wait 48 hours. Count the replies in the campaign report under the <code>Replies</code> tab.</p>
+      <p>If you&#39;re under 0.5%, your content has drifted into broadcast mode. You need to reintroduce relational storytelling, kill the hyper-formatted emails, and stop pitching in every send.</p>
+      <h2>Unsubscribe Rate Trend</h2>
+      <p>The absolute number doesn&#39;t matter as much as the direction.</p>
+      <p>A healthy list holds between 0.05% and 0.15% unsubscribe rate per campaign. That&#39;s normal attrition. People change jobs, lose interest, move on. If you&#39;re under 0.05%, your list might be too disengaged to even bother unsubscribing—they&#39;ve already mentally tuned out. If you&#39;re consistently above 0.20%, you&#39;re burning the list faster than you&#39;re building it.</p>
+      <p>But the trend is what tells you when something breaks. I look at a rolling 30-day average in the <code>Reports</code> tab, filtered by campaigns only (not automations, since those fire on different cohorts). If the trend climbs week-over-week for three consecutive weeks, something in your content or frequency changed and the list is rejecting it.</p>
+      <p><strong>What to do:</strong> in ActiveCampaign, go to <code>Reports</code> &gt; <code>Campaigns</code>, export the last 30 campaigns, and calculate the average unsubscribe rate. Compare it to the previous 30. If it&#39;s climbed more than 50% (say, from 0.10% to 0.16%), audit the last four weeks of sends. Look for frequency spikes, sudden format changes, or a shift in voice. Roll one variable back and watch the trend for another week.</p>
+      <p>The worst thing you can do is ignore it and keep sending.</p>
+      <h2>Soft Bounce Rate Trend</h2>
+      <p>Soft bounces are your canary in the coal mine for deliverability problems.</p>
+      <p>A soft bounce means the receiving server rejected the email temporarily—mailbox full, server overloaded, or increasingly common: the server is throttling you because your sender reputation is sliding. One-off soft bounces are noise. A rising soft bounce rate is a red flag.</p>
+      <p>Healthy programs hold under 1% soft bounce per campaign. If you&#39;re creeping toward 2–3%, Gmail or Outlook is already filtering you more aggressively. By the time you hit 5%, you&#39;re landing in spam for a meaningful chunk of your list.</p>
+      <p>I check this weekly. In ActiveCampaign, go to <code>Reports</code> &gt; <code>Campaigns</code>, open the last five sends, and note the soft bounce count. Divide by delivered contacts. If the percentage is climbing week-over-week, your sender reputation is degrading.</p>
+      <p><strong>What to do:</strong> first, confirm your authentication is clean—<code>SPF</code>, <code>DKIM</code>, and <code>DMARC</code> records in your DNS. ActiveCampaign&#39;s <code>Settings</code> &gt; <code>Advanced</code> &gt; <code>Email Authentication</code> will show you the status. If those are green and soft bounces are still climbing, you&#39;ve got an engagement problem masquerading as a deliverability problem. Gmail and Outlook throttle senders whose lists don&#39;t engage.</p>
+      <p>Cut your broadcast frequency by 30% for two weeks and re-engagement the bottom 40% of your list with a dedicated winback automation. Soft bounces should stabilize within 10 days.</p>
+      <h2>Cohort Engagement Distribution</h2>
+      <p>This tells you whether new subscribers are behaving like your old ones—or whether you&#39;re importing decay.</p>
+      <p>Segment your list into cohorts by the month they subscribed. In ActiveCampaign, create a segment with conditions: <code>Subscription Date</code> is between <code>first day of month X</code> and <code>last day of month X</code>. Do this for the last six months. Now look at the 30-day engagement rate for each cohort—contacts who opened or clicked at least once in the last 30 days, divided by total cohort size.</p>
+      <p>Healthy cohorts decay predictably. Month one: 40–60% engaged. Month three: 25–40%. Month six: 15–25%. The absolute numbers matter less than the pattern. If your most recent cohort (month one) is engaging at 20%, but your six-month cohort is still at 18%, your new subscribers are dead on arrival. You&#39;re acquiring the wrong people, or your welcome automation isn&#39;t doing its job.</p>
+      <p><strong>What to do:</strong> pull the cohort engagement data for the last six months. If month-one engagement is below 35%, audit your lead sources. Look at the forms, landing pages, and ads feeding your list. You&#39;re either attracting cold traffic that doesn&#39;t know you, or your opt-in copy is overselling what you actually deliver.</p>
+      <p>If month-one is healthy but engagement drops off a cliff by month two, your welcome automation is the problem. Add a <code>goal</code> step after the first three emails that moves engaged contacts (those who&#39;ve clicked at least once) into a different branch. Let them graduate into your regular broadcast rotation. Keep the unengaged contacts in a longer nurture track with relational content and no pitch for 30 days.</p>
+      <h2>Sends Per Engaged Contact</h2>
+      <p>This is the efficiency metric no one tracks.</p>
+      <p>Take your total campaign sends in the last 30 days. Divide by the number of unique contacts who opened or clicked at least once in that same period. If you&#39;re sending five campaigns a week to 10,000 contacts, that&#39;s 200,000 sends. If only 2,000 contacts engaged, your sends-per-engaged-contact is 100:1. You sent 100 emails to get one person to care.</p>
+      <p>Healthy programs run between 8:1 and 20:1. Anything above 30:1 means you&#39;re carpet-bombing a mostly dead list. You&#39;re training Gmail to think you&#39;re a spammer, and you&#39;re paying for the privilege.</p>
+      <p><strong>What to do:</strong> in ActiveCampaign, go to <code>Reports</code> &gt; <code>Campaigns</code>, export the last 30 days of sends, and sum total delivered emails. Then create a segment: <code>Has opened or clicked a campaign in the last 30 days</code>. The segment size is your unique engaged contacts. Divide total sends by that number.</p>
+      <p>If you&#39;re above 25:1, you need to shrink your broadcast audience immediately. Create a segment called <code>Engaged - 90 Days</code> with conditions: <code>Has opened or clicked a campaign in the last 90 days</code>. Send only to that segment for the next 60 days. Move everyone else into a re-engagement automation—three emails over three weeks, plain-text, asking if they still want to hear from you. If they don&#39;t engage, suppress them from campaigns and let them sit in automations only.</p>
+      <p>This will cut your send volume and it will hurt your ego. It will also stabilize your deliverability and triple your revenue per send.</p>
+      <hr>
+      <p>Open rate hasn&#39;t been reliable for three years. Click rate is a lagging indicator. The metrics that matter are the ones that tell you whether your list still sees you as a person worth hearing from—and whether you&#39;re burning the relationship faster than you&#39;re building it.</p>
+      <p>If you&#39;re not sure where your program sits, I&#39;ll audit it for free and show you exactly which of these five is breaking: <a href="https://getner.ai/audit/">getner.ai/audit</a></p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
