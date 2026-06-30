@@ -276,8 +276,8 @@
       "lead qualification"
     ],
     "affiliate_opportunity": null,
-    "status": "queued",
-    "drafted_at": null,
+    "status": "drafted",
+    "drafted_at": "2026-06-30T15:23:26.919Z",
     "published_at": null
   },
   {
@@ -498,9 +498,9 @@
     ],
     "affiliate_opportunity": null,
     "platform": "klaviyo",
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-06-25T15:37:46.056Z",
-    "published_at": null
+    "published_at": "2026-06-30T15:23:27.072Z"
   },
   {
     "id": "klaviyo-five-segments",

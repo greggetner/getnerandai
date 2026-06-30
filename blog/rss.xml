@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Jun 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>The Klaviyo Welcome Flow That Earns Its First Sale</title>
+      <link>https://getner.ai/blog/klaviyo-welcome-flow-first-sale.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/klaviyo-welcome-flow-first-sale.html</guid>
+      <pubDate>Tue, 30 Jun 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[A welcome flow is the highest-intent moment a subscriber will ever give you, and most brands waste it on a single "thanks for signing up" email.]]></description>
+    </item>
 
     <item>
       <title>The 5 Engagement Metrics That Tell You Your List Is Healthy</title>
