@@ -276,9 +276,9 @@
       "lead qualification"
     ],
     "affiliate_opportunity": null,
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-06-30T15:23:26.919Z",
-    "published_at": null
+    "published_at": "2026-07-02T15:06:41.647Z"
   },
   {
     "id": "ac-shopify-integration-gaps",
@@ -515,8 +515,8 @@
     ],
     "affiliate_opportunity": null,
     "platform": "klaviyo",
-    "status": "queued",
-    "drafted_at": null,
+    "status": "drafted",
+    "drafted_at": "2026-07-02T15:06:41.475Z",
     "published_at": null
   },
   {

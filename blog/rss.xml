@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Jun 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>Lead Scoring in ActiveCampaign: Building the Scoring Model</title>
+      <link>https://getner.ai/blog/lead-scoring-in-ac.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/lead-scoring-in-ac.html</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[You're sitting on one of ActiveCampaign's most powerful features, but you're not using it because you don't know what numbers to assign to which behaviors.]]></description>
+    </item>
 
     <item>
       <title>The Klaviyo Welcome Flow That Earns Its First Sale</title>

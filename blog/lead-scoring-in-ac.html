@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lead Scoring in ActiveCampaign: Building the Scoring Model — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="You're sitting on one of ActiveCampaign's most powerful features, but you're not using it because you don't know what numbers to assign to which behaviors." />
+<link rel="canonical" href="https://getner.ai/blog/lead-scoring-in-ac.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Lead Scoring in ActiveCampaign: Building the Scoring Model" />
+<meta property="og:description" content="You're sitting on one of ActiveCampaign's most powerful features, but you're not using it because you don't know what numbers to assign to which behaviors." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/lead-scoring-in-ac.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Platform" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Lead Scoring in ActiveCampaign: Building the Scoring Model",
+  "description": "You're sitting on one of ActiveCampaign's most powerful features, but you're not using it because you don't know what numbers to assign to which behaviors.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-07-02",
+  "mainEntityOfPage": "https://getner.ai/blog/lead-scoring-in-ac.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">July 2, 2026 · Platform · 12 min read</div>
+      <h1 class="post-title">Lead Scoring in ActiveCampaign: Building the Scoring Model</h1>
+      <p class="post-lede">You're sitting on one of ActiveCampaign's most powerful features, but you're not using it because you don't know what numbers to assign to which behaviors.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I open ActiveCampaign accounts every week. Course creators with six-figure launches. Membership sites doing eight figures. DTC brands running complex automations across hundreds of segments. The lead scoring feature is sitting there, ignored or half-configured with arbitrary point values someone set three years ago and never touched again.</p>
+      <p>The flexibility is the problem. ActiveCampaign gives you the entire scoring engine — positive signals, negative signals, decay rules, threshold triggers — but no framework for what actually matters. So most operators skip it entirely and fall back on tagging everything, building bloated segment conditions, or worse: treating every contact the same regardless of engagement level.</p>
+      <h2>Why Lead Scoring Actually Matters in Your Account</h2>
+      <p>Lead scoring gives you a single numeric field — <code>Contact Score</code> — that updates automatically based on behavior. That number becomes a filter you can use everywhere: segment conditions, automation start triggers, conditional content blocks, deal stage advancement, and campaign send criteria.</p>
+      <p>The alternative is building parallel tagging systems that try to approximate engagement level. I&#39;ve seen accounts with tags like <code>Engaged-Q1-2024</code> and <code>High-Intent-Webinar</code> and <code>Cold-Reactivation-Target</code> all trying to do what a scoring model does automatically. Those tags require manual maintenance. They go stale. Someone forgets to remove the old ones when adding new ones, and six months later you&#39;ve got contacts with contradictory engagement tags.</p>
+      <p>A scoring model runs continuously in the background. Contact opens three emails in a week? Score goes up. Contact goes dark for sixty days? Score decays. No automation required. No tag cleanup sprint required.</p>
+      <h2>The Two-Part Scoring Framework</h2>
+      <p>Every scoring model needs two inputs: signals that add points and signals that subtract them.</p>
+      <p><strong>Positive signals</strong> are engagement behaviors that indicate interest, intent, or proximity to purchase. Opens, clicks, form submissions, page visits, webinar attendance, reply activity. In ActiveCampaign you configure these under <strong>Contacts → Manage Scoring → Edit Rules</strong>.</p>
+      <p><strong>Negative signals</strong> are absence or disengagement behaviors. No opens in sixty days. Unsubscribed from a list. Clicked &quot;not interested&quot; on a survey. Abandoned cart three times without purchase. These subtract points.</p>
+      <p>Most accounts I audit only configure positive signals. The score climbs forever. A contact who was highly engaged two years ago still has a score of 95 even though they haven&#39;t opened an email in eighteen months. That score is useless for segmentation.</p>
+      <p>Decay matters more than most operators realize. ActiveCampaign lets you subtract points automatically when a contact hasn&#39;t performed a specific action within a timeframe. You set this per rule. A contact who opened an email might get <code>+2</code> points, but if they don&#39;t open anything in the next <code>30</code> days, they lose <code>-1</code> point per week until the score stabilizes.</p>
+      <h2>What to Score: The Engagement Layer</h2>
+      <p>Start with email engagement. This is universal across every business model — courses, memberships, DTC, coaching programs, content businesses.</p>
+      <p>Here&#39;s the model I use in most accounts:</p>
+      <ul>
+      <li><strong>Email open (any campaign or automation):</strong> <code>+1</code> point</li>
+      <li><strong>Email click (any link):</strong> <code>+3</code> points</li>
+      <li><strong>Reply to any email:</strong> <code>+5</code> points</li>
+      </ul>
+      <p>Set decay rules for inactivity:</p>
+      <ul>
+      <li><strong>No email open in <code>30</code> days:</strong> <code>-2</code> points per week</li>
+      <li><strong>No click in <code>60</code> days:</strong> <code>-5</code> points</li>
+      </ul>
+      <p>In ActiveCampaign you configure this by creating a rule for &quot;Opens an email&quot; with a value of <code>1</code>, then adding a decay rule to that same action with a negative value and a time threshold. Do the same for clicks and replies.</p>
+      <p>The specific point values matter less than the relative weight. A click should be worth more than an open. A reply should be worth more than a click. Decay should be slower than accumulation so a single burst of activity doesn&#39;t immediately evaporate.</p>
+      <h2>What to Score: The Intent Layer</h2>
+      <p>Email engagement tells you someone is paying attention. Intent signals tell you they&#39;re considering a purchase.</p>
+      <p>These are business-specific, but the common patterns:</p>
+      <ul>
+      <li><strong>Visited pricing page:</strong> <code>+10</code> points</li>
+      <li><strong>Visited sales page for primary offer:</strong> <code>+8</code> points</li>
+      <li><strong>Watched product demo video (tracked via site tracking or Vimeo/Wistia integration):</strong> <code>+7</code> points</li>
+      <li><strong>Downloaded lead magnet directly related to paid offer:</strong> <code>+5</code> points</li>
+      <li><strong>Attended live webinar or workshop:</strong> <code>+12</code> points</li>
+      </ul>
+      <p>ActiveCampaign&#39;s site tracking makes this possible. You add the tracking script to your site, then create scoring rules based on &quot;Visits a page&quot; with URL conditions. You can match exact URLs or use &quot;contains&quot; logic for dynamic product pages.</p>
+      <p>For the accounts I work in, intent scoring separates window-shoppers from people actually evaluating a purchase. A contact with a score of <code>40</code> built entirely from email opens is different from a contact with a score of <code>40</code> who visited your sales page three times last week.</p>
+      <h2>What to Score: The Conversion Layer</h2>
+      <p>Once someone converts — purchases, books a call, joins a membership, enrolls in a course — their score should reflect that status.</p>
+      <ul>
+      <li><strong>Completed purchase (any product):</strong> <code>+25</code> points</li>
+      <li><strong>Booked sales call or strategy session:</strong> <code>+20</code> points</li>
+      <li><strong>Started trial or joined free challenge:</strong> <code>+10</code> points</li>
+      </ul>
+      <p>You trigger these rules using tags or list membership changes. In ActiveCampaign: create a rule for &quot;Tag is added&quot; and specify your purchase tag (e.g., <code>purchase-complete</code> or <code>customer-active</code>), then assign the point value.</p>
+      <p>I also configure negative conversion signals:</p>
+      <ul>
+      <li><strong>Refund processed:</strong> <code>-30</code> points</li>
+      <li><strong>Cancelled subscription:</strong> <code>-20</code> points</li>
+      <li><strong>No-showed on booked call:</strong> <code>-10</code> points</li>
+      </ul>
+      <p>This keeps your scoring model current. A contact who purchased, refunded, then went dark for ninety days shouldn&#39;t have the same score as an active customer.</p>
+      <h2>What to Score: The Disengagement Layer</h2>
+      <p>Negative signals prevent score inflation and let you identify contacts who&#39;ve checked out.</p>
+      <ul>
+      <li><strong>No email open in <code>60</code> days:</strong> <code>-10</code> points</li>
+      <li><strong>No site visit in <code>90</code> days:</strong> <code>-8</code> points</li>
+      <li><strong>Unsubscribed from any list:</strong> <code>-50</code> points (effectively zeroing them out)</li>
+      <li><strong>Marked email as spam:</strong> <code>-100</code> points (nuclear option; you want this contact at the bottom)</li>
+      </ul>
+      <p>In the accounts I run, the disengagement layer does two things: it pulls down scores for contacts who&#39;ve drifted away, and it creates a clear segmentation threshold. Any contact below a score of <code>20</code> is cold. Between <code>20</code> and <code>50</code> is warm. Above <code>50</code> is hot. You can filter campaigns and automations accordingly.</p>
+      <h2>Sample 0–100 Scoring Model</h2>
+      <p>Here&#39;s a complete reference model. You&#39;ll adapt the point values and actions to your business, but the structure holds:</p>
+      <p><strong>Engagement actions:</strong></p>
+      <ul>
+      <li>Email open: <code>+1</code></li>
+      <li>Email click: <code>+3</code></li>
+      <li>Reply to email: <code>+5</code></li>
+      </ul>
+      <p><strong>Intent actions:</strong></p>
+      <ul>
+      <li>Pricing page visit: <code>+10</code></li>
+      <li>Sales page visit: <code>+8</code></li>
+      <li>Case study or testimonial page visit: <code>+5</code></li>
+      <li>Lead magnet download (high-intent topic): <code>+6</code></li>
+      <li>Webinar registration: <code>+8</code></li>
+      <li>Webinar attendance: <code>+12</code></li>
+      </ul>
+      <p><strong>Conversion actions:</strong></p>
+      <ul>
+      <li>Purchase (any product): <code>+25</code></li>
+      <li>Sales call booked: <code>+20</code></li>
+      <li>Trial started: <code>+10</code></li>
+      </ul>
+      <p><strong>Disengagement actions:</strong></p>
+      <ul>
+      <li>No open in <code>30</code> days: <code>-2</code> per week</li>
+      <li>No click in <code>60</code> days: <code>-5</code> total</li>
+      <li>No site visit in <code>90</code> days: <code>-8</code> total</li>
+      <li>Unsubscribed: <code>-50</code></li>
+      <li>Spam complaint: <code>-100</code></li>
+      </ul>
+      <p><strong>Negative conversion actions:</strong></p>
+      <ul>
+      <li>Refund: <code>-30</code></li>
+      <li>Subscription cancelled: <code>-20</code></li>
+      <li>Call no-show: <code>-10</code></li>
+      </ul>
+      <p>In ActiveCampaign, set this up under <strong>Contacts → Manage Scoring</strong>. Each rule is a separate line. Actions that add points use positive integers. Decay and negative behaviors use negative integers. You can create time-based decay by adding a rule with a threshold (e.g., &quot;Has not opened an email in the last <code>30</code> days&quot;).</p>
+      <h2>Using the Score in Automations and Segments</h2>
+      <p>Once your scoring model is live, the <code>Contact Score</code> field updates automatically. Now you filter everything through it.</p>
+      <p><strong>In segments:</strong> create a condition for &quot;Contact score is greater than <code>50</code>&quot; to build a hot leads segment. Use &quot;Contact score is less than <code>20</code>&quot; for a cold reactivation segment. Layer these with other conditions — list membership, tag presence, custom field values — to get precise.</p>
+      <p><strong>In automations:</strong> use an &quot;If/Else&quot; condition to branch based on score. If someone enters a nurture sequence with a score above <code>60</code>, skip the education emails and send them straight to the pitch. If their score is below <code>30</code>, send them re-engagement content before any offer.</p>
+      <p><strong>In campaigns:</strong> filter your audience by score before sending promotional emails. Don&#39;t send your big launch campaign to contacts scoring below <code>25</code>. They&#39;re not engaged enough to convert, and sending to cold contacts damages deliverability.</p>
+      <p><strong>In conditional content:</strong> use the score to show different content blocks within the same email. High scorers see case studies and testimonials. Low scorers see foundational content and re-engagement hooks. ActiveCampaign&#39;s conditional content blocks support score-based conditions.</p>
+      <p>The model runs itself. You configure it once, let it accumulate data for thirty days, then start using the score as a filter everywhere. Every few months, audit the point values. If you notice inflation — average scores creeping above <code>70</code> — increase your decay rates or reduce your positive signal values. If scores are too low — most contacts below <code>30</code> — your positive signals are too conservative or your decay is too aggressive.</p>
+      <hr>
+      <p>Your scoring model is only as useful as the framework underneath it. Arbitrary point values create arbitrary scores. A structured model — engagement, intent, conversion, and disengagement layers with balanced weights and active decay — gives you a single number that actually means something.</p>
+      <p>If you want a second set of eyes on your ActiveCampaign scoring setup (or lack thereof), request a free audit at <a href="https://getner.ai/audit/">https://getner.ai/audit/</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
