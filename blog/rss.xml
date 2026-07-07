@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jul 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>The 5 Klaviyo Segments Every Store Should Build First</title>
+      <link>https://getner.ai/blog/klaviyo-five-segments.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/klaviyo-five-segments.html</guid>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[You have sixty-three segments in Klaviyo, and when it's time to send a campaign you still can't answer "who should get this email?"]]></description>
+    </item>
 
     <item>
       <title>Lead Scoring in ActiveCampaign: Building the Scoring Model</title>
