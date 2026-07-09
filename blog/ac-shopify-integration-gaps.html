@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Connecting ActiveCampaign to Shopify: What Most Setups Miss — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="The ActiveCampaign-Shopify integration syncs orders and customers, but most setups stop at the handshake and leave the real automation work undone." />
+<link rel="canonical" href="https://getner.ai/blog/ac-shopify-integration-gaps.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Connecting ActiveCampaign to Shopify: What Most Setups Miss" />
+<meta property="og:description" content="The ActiveCampaign-Shopify integration syncs orders and customers, but most setups stop at the handshake and leave the real automation work undone." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/ac-shopify-integration-gaps.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Integrations" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Connecting ActiveCampaign to Shopify: What Most Setups Miss",
+  "description": "The ActiveCampaign-Shopify integration syncs orders and customers, but most setups stop at the handshake and leave the real automation work undone.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-07-09",
+  "mainEntityOfPage": "https://getner.ai/blog/ac-shopify-integration-gaps.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">July 9, 2026 · Integrations · 11 min read</div>
+      <h1 class="post-title">Connecting ActiveCampaign to Shopify: What Most Setups Miss</h1>
+      <p class="post-lede">The ActiveCampaign-Shopify integration syncs orders and customers, but most setups stop at the handshake and leave the real automation work undone.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I audit a lot of ActiveCampaign accounts connected to Shopify. The Deep Data integration is live. Orders flow in. Customers sync. But when I open the automation builder, I find two welcome emails, maybe an abandoned cart sequence, and nothing else.</p>
+      <p>The integration gives you access to order data, purchase history, product SKUs, cart value, and behavioral triggers. Most stores use less than twenty percent of it. Here are the five automations that should exist on day one, and how to build each one properly.</p>
+      <h2>1. Abandoned Checkout Recovery (Not Just Cart)</h2>
+      <p>Most Shopify stores run an abandoned cart automation. Fewer run abandoned <em>checkout</em> recovery. The difference matters.</p>
+      <p>A cart is abandoned when someone adds a product but never reaches the checkout page. A checkout is abandoned when they land on the checkout page, enter an email address, and bail before completing payment. Checkout abandoners are warmer. They were one click from buying.</p>
+      <p>ActiveCampaign fires the <strong>Abandons a cart</strong> automation trigger when Shopify registers a checkout URL visit without a corresponding completed order. This is your highest-intent segment.</p>
+      <p><strong>How to build it:</strong></p>
+      <p>Create a new automation using the <strong>Abandons a cart</strong> trigger. Set the wait time to one hour. Most people who intend to complete a purchase do it within sixty minutes. Waiting longer just gives them time to forget or buy elsewhere.</p>
+      <p>Send three emails:</p>
+      <ul>
+      <li><p><strong>Email 1 (1 hour):</strong> Remind them what they left behind. Use the <code>%ABANDON_PRODUCTS%</code> personalization tag to pull product names and images directly from the abandoned checkout. Include a direct link back to checkout using <code>%ABANDON_URL%</code>.</p>
+      </li>
+      <li><p><strong>Email 2 (24 hours):</strong> Social proof or urgency. &quot;Still thinking about [product name]?&quot; Add a review snippet or stock notice if applicable.</p>
+      </li>
+      <li><p><strong>Email 3 (48 hours):</strong> Discount or incentive, if your margin allows it. I see a lot of stores offer ten percent here. If you&#39;re going to discount, make it conditional—only send this email to contacts who haven&#39;t opened the first two.</p>
+      </li>
+      </ul>
+      <p><strong>Critical step:</strong> Add a <strong>goal</strong> as the second step in the automation. Set the goal condition to <strong>Makes a purchase</strong>. The moment someone completes an order, they jump to the goal and exit the sequence. Without this, you&#39;ll send &quot;come back and buy&quot; emails to people who already bought. I&#39;ve seen this happen in half the Shopify accounts I open.</p>
+      <p>Tag contacts who reach the end of the sequence without purchasing as <code>Abandoned Checkout - Did Not Convert</code>. Use this segment for retargeting or future offers.</p>
+      <h2>2. Post-Purchase Tagging and Segmentation Flow</h2>
+      <p>The Deep Data integration pushes order details into ActiveCampaign: product name, SKU, category, price, order total. Most accounts do nothing with this data except let it sit in the contact record.</p>
+      <p>You need a post-purchase automation that tags and segments buyers based on what they purchased. This powers everything downstream—product-specific follow-ups, replenishment reminders, review requests, cross-sells.</p>
+      <p><strong>How to build it:</strong></p>
+      <p>Create an automation triggered by <strong>Makes a purchase</strong>. Immediately after the trigger, add a series of <strong>If/Else</strong> conditional blocks that evaluate <code>Product name</code> or <code>Product SKU</code>.</p>
+      <p>For each product or product category, apply a tag. Examples:</p>
+      <ul>
+      <li>Purchased a skincare product → tag: <code>Product: Skincare</code></li>
+      <li>Purchased a course on email marketing → tag: <code>Product: Email Course</code></li>
+      <li>Purchased a supplement → tag: <code>Product: Supplement</code></li>
+      </ul>
+      <p>These tags become the foundation for segmentation. If you sell consumables, add a custom field called <code>Last Purchase Date</code> and update it with the current date using the <strong>Update contact</strong> action. You&#39;ll use this for replenishment automations.</p>
+      <p>If you sell products with different price points, also tag by order value tier:</p>
+      <ul>
+      <li>Order total over $200 → tag: <code>High Value Customer</code></li>
+      <li>Order total under $50 → tag: <code>Entry Buyer</code></li>
+      </ul>
+      <p>This takes five minutes to set up and makes every other automation easier to target.</p>
+      <h2>3. Product-Specific Review Request Automation</h2>
+      <p>Generic review requests sent to everyone get ignored. Product-specific review requests with the right timing perform meaningfully better.</p>
+      <p>The pattern I see: stores send one review email seven days after any purchase, asking for &quot;feedback on your recent order.&quot; The email has no product details. No specificity. No reason for the buyer to care.</p>
+      <p><strong>How to build it:</strong></p>
+      <p>Don&#39;t build one review automation. Build separate automations for each product or product category, triggered by the purchase tags you created in automation two.</p>
+      <p>Start each automation with the trigger <strong>Tag is added</strong> and specify the product tag (e.g., <code>Product: Skincare</code>). Add a wait step that matches the natural usage window for that product:</p>
+      <ul>
+      <li>Skincare: 14 days (enough time to see results)</li>
+      <li>Supplements: 21 days (full bottle trial)</li>
+      <li>Courses: 7 days (time to consume some content)</li>
+      <li>Physical products with fast consumption: 10 days</li>
+      </ul>
+      <p>Send a single email asking for a review. Reference the specific product by name in the subject line: &quot;How&#39;s the [product name] working for you?&quot; Include a direct link to the review page. Use conditional content blocks to pull the product image and name from the order data.</p>
+      <p>Add a goal: <strong>Visits review page URL</strong> (tracked via site tracking). Once they visit, exit them from the automation. No need to keep asking.</p>
+      <p>If you use a review platform like Okendo or Loox that integrates with Shopify, check whether they fire a webhook on review submission. If they do, you can set up a webhook listener in ActiveCampaign to tag reviewers as <code>Left Review</code> and suppress future review requests entirely.</p>
+      <h2>4. RFM-Based Win-Back Sequence</h2>
+      <p>Recency, Frequency, Monetary value. RFM segmentation identifies your best customers, your at-risk customers, and your dead weight. Most Shopify-ActiveCampaign setups sync order data but never segment by purchase behavior.</p>
+      <p>The ActiveCampaign Deep Data integration tracks total order count, total revenue, and date of last purchase for each contact. You can build segments around these data points without exporting to a spreadsheet.</p>
+      <p><strong>How to build it:</strong></p>
+      <p>Create a segment called <code>At Risk - 90 Days No Purchase</code>. Set the conditions:</p>
+      <ul>
+      <li><code>Has purchased</code> is <code>Yes</code></li>
+      <li><code>Date of last purchase</code> is <code>more than 90 days ago</code></li>
+      </ul>
+      <p>Create an automation triggered by <strong>Contact enters segment</strong> and select your at-risk segment.</p>
+      <p>Send a three-email win-back sequence:</p>
+      <ul>
+      <li><p><strong>Email 1:</strong> &quot;We miss you.&quot; Soft, non-salesy. Remind them of what they bought before and suggest complementary products.</p>
+      </li>
+      <li><p><strong>Email 2 (7 days later):</strong> Offer. Discount, free shipping, or bundle deal. Make it time-limited (seven days).</p>
+      </li>
+      <li><p><strong>Email 3 (5 days later):</strong> Last call. End the offer window.</p>
+      </li>
+      </ul>
+      <p>Add a goal: <strong>Makes a purchase</strong>. Exit them immediately if they buy.</p>
+      <p>Tag contacts who reach the end without purchasing as <code>Lapsed - Did Not Re-Engage</code>. Suppress them from promotional campaigns for 60 days. After that, either try one more sequence or move them to a low-frequency content list.</p>
+      <p>For stores with short purchase cycles (consumables, supplements, subscription boxes), adjust the time window. Sixty days might be your at-risk threshold instead of ninety.</p>
+      <h2>5. First Purchase to Second Purchase Bridge</h2>
+      <p>Most Shopify stores focus all their automation energy on acquiring the first purchase. Almost none have a structured path from first purchase to second.</p>
+      <p>Single-purchase customers are expensive to acquire and cheap to lose. The gap between purchase one and purchase two is where most revenue leaks happen.</p>
+      <p><strong>How to build it:</strong></p>
+      <p>Create an automation triggered by <strong>Makes a purchase</strong> with an additional condition: <code>Total orders</code> equals <code>1</code>. This isolates first-time buyers.</p>
+      <p>Wait 7 days (enough time for them to receive and use the product). Send an email that does two things:</p>
+      <ol>
+      <li>Ask how the product is working (builds engagement, opens a reply loop)</li>
+      <li>Introduce one complementary product—not a full catalog dump, one SKU that pairs naturally with what they bought</li>
+      </ol>
+      <p>Wait another 7 days. Send a second email with a curated selection of three products, chosen based on the product tag from their first purchase. Use conditional content blocks to personalize the recommendations by purchase history.</p>
+      <p>Add a goal: <strong>Makes a purchase</strong> and set <code>Total orders</code> to <code>greater than 1</code>. Exit them as soon as they make a second purchase.</p>
+      <p>Tag contacts who convert as <code>Repeat Buyer</code>. This segment gets different treatment—more frequent emails, VIP offers, early access. Tag contacts who don&#39;t convert after 30 days as <code>Single Purchase - Needs Nurture</code> and route them into a longer educational or content-driven sequence.</p>
+      <p>The jump from one purchase to two is the hardest. After two, purchase three happens faster. This automation focuses pressure exactly where it matters.</p>
+      <hr>
+      <p>The ActiveCampaign-Shopify integration gives you the data. These five automations turn the data into repeatable revenue. Most stores never get past the default cart abandonment flow. Everything else sits idle.</p>
+      <p>If you want a second set of eyes on your ActiveCampaign setup, I offer a free automation audit at <a href="https://getner.ai/audit/">https://getner.ai/audit/</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

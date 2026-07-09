@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>Connecting ActiveCampaign to Shopify: What Most Setups Miss</title>
+      <link>https://getner.ai/blog/ac-shopify-integration-gaps.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/ac-shopify-integration-gaps.html</guid>
+      <pubDate>Thu, 09 Jul 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[The ActiveCampaign-Shopify integration syncs orders and customers, but most setups stop at the handshake and leave the real automation work undone.]]></description>
+    </item>
 
     <item>
       <title>The 5 Klaviyo Segments Every Store Should Build First</title>

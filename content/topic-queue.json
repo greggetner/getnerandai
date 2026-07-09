@@ -291,9 +291,9 @@
       "shopify automation"
     ],
     "affiliate_opportunity": null,
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-07-07T15:40:48.448Z",
-    "published_at": null
+    "published_at": "2026-07-09T15:53:36.393Z"
   },
   {
     "id": "ac-crm-sync-strategy",
@@ -532,8 +532,8 @@
     ],
     "affiliate_opportunity": null,
     "platform": "klaviyo",
-    "status": "queued",
-    "drafted_at": null,
+    "status": "drafted",
+    "drafted_at": "2026-07-09T15:53:36.233Z",
     "published_at": null
   },
   {
