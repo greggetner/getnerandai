@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>Klaviyo Predictive Analytics: CLV, Churn Risk, and Next Order Date, Explained</title>
+      <link>https://getner.ai/blog/klaviyo-predictive-analytics.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/klaviyo-predictive-analytics.html</guid>
+      <pubDate>Tue, 14 Jul 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Klaviyo puts predicted customer lifetime value, churn risk, and expected next order date on every customer profile, and in most accounts I audit, nobody's doing anything with them.]]></description>
+    </item>
 
     <item>
       <title>Connecting ActiveCampaign to Shopify: What Most Setups Miss</title>

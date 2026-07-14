@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Klaviyo Predictive Analytics: CLV, Churn Risk, and Next Order Date, Explained — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Klaviyo puts predicted customer lifetime value, churn risk, and expected next order date on every customer profile, and in most accounts I audit, nobody's doing anything with them." />
+<link rel="canonical" href="https://getner.ai/blog/klaviyo-predictive-analytics.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Klaviyo Predictive Analytics: CLV, Churn Risk, and Next Order Date, Explained" />
+<meta property="og:description" content="Klaviyo puts predicted customer lifetime value, churn risk, and expected next order date on every customer profile, and in most accounts I audit, nobody's doing anything with them." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/klaviyo-predictive-analytics.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Analytics" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Klaviyo Predictive Analytics: CLV, Churn Risk, and Next Order Date, Explained",
+  "description": "Klaviyo puts predicted customer lifetime value, churn risk, and expected next order date on every customer profile, and in most accounts I audit, nobody's doing anything with them.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-07-14",
+  "mainEntityOfPage": "https://getner.ai/blog/klaviyo-predictive-analytics.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">July 14, 2026 · Analytics · 12 min read</div>
+      <h1 class="post-title">Klaviyo Predictive Analytics: CLV, Churn Risk, and Next Order Date, Explained</h1>
+      <p class="post-lede">Klaviyo puts predicted customer lifetime value, churn risk, and expected next order date on every customer profile, and in most accounts I audit, nobody's doing anything with them.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>You&#39;re staring at three numbers that could tell you who&#39;s about to leave, who&#39;s worth keeping, and exactly when to nudge someone back. Instead, they sit there like dashboard decoration while you blast the same win-back flow to everyone who hasn&#39;t ordered in 60 days—the serial returner and the one-time buyer get identical treatment.</p>
+      <p>The predictions exist. The data&#39;s already being calculated. You&#39;re just not using it to change who gets what message, and when.</p>
+      <h2>What Klaviyo&#39;s Predictive Analytics Actually Tell You</h2>
+      <p>Klaviyo&#39;s predictive analytics give you three numbers per profile: <strong>predicted customer lifetime value</strong> (CLV), <strong>churn risk</strong>, and <strong>predicted date of next order</strong>. All three live in the customer profile under the Predictions tab, and all three update continuously as behavior changes.</p>
+      <p><strong>Predicted CLV</strong> estimates total revenue a customer will generate over their lifetime with your brand. It&#39;s forward-looking, not historical. Someone who spent $500 last year might have a predicted CLV of $2,000 if their ordering pattern suggests they&#39;ll keep coming back.</p>
+      <p><strong>Churn risk</strong> scores the likelihood a customer will stop buying, expressed as <code>low</code>, <code>medium</code>, or <code>high</code>. Klaviyo looks at purchase frequency, recency, and engagement patterns to flag customers drifting away before they&#39;re fully gone.</p>
+      <p><strong>Predicted date of next order</strong> estimates when an active customer is likely to purchase again based on their historical cadence. If someone orders every 45 days, Klaviyo projects forward and marks the calendar.</p>
+      <p>These aren&#39;t guesses. Klaviyo&#39;s machine learning models run on your actual transaction and engagement data. But the predictions are only as good as the data you&#39;re feeding them.</p>
+      <h2>The Data Klaviyo Needs Before the Numbers Are Trustworthy</h2>
+      <p>Klaviyo&#39;s predictive models need volume and consistency before they&#39;re actionable. The platform won&#39;t surface predictions until you&#39;ve hit minimum thresholds, and even when the numbers appear, they&#39;re not all equally reliable.</p>
+      <p>You need at least <strong>500 profiles with purchase history</strong> and <strong>180 days of transaction data</strong> before Klaviyo starts generating predictions. Below that, the models don&#39;t have enough signal. In most accounts I work in, predictions start appearing around month six if you&#39;re pushing decent volume.</p>
+      <p>But &quot;appearing&quot; and &quot;trustworthy&quot; aren&#39;t the same thing. A predicted CLV calculated on six months of data is directionally useful. One calculated on 18 months of repeat behavior across multiple cohorts is something you can segment on and build flows around.</p>
+      <p>The predicted date of next order is the first to stabilize because it only requires individual purchase cadence. If someone orders every 30 days like clockwork, Klaviyo spots that pattern fast. Churn risk and CLV need more time because they&#39;re comparative—they model each customer against your broader population.</p>
+      <p>If your predictions feel off, check two things: (1) are your <code>Placed Order</code> events structured consistently, and (2) do you have meaningful repeat purchase rates? If most customers only buy once, Klaviyo has nothing to model. The predictions work best for businesses with natural repurchase cycles—subscriptions, consumables, DTC brands with product depth.</p>
+      <h2>Flow One: Win-Back Timed to Predicted Next Order Date</h2>
+      <p>Most win-back flows trigger on a fixed delay: 30 days since last purchase, 60 days, 90 days. Everyone gets the same clock. That works if your customer base is homogeneous. It doesn&#39;t work when one segment reorders weekly and another buys twice a year.</p>
+      <p>Klaviyo&#39;s <code>predicted date of next order</code> lets you time the nudge to the individual, not the average.</p>
+      <p><strong>Here&#39;s how to build it.</strong> Create a segment of customers where <code>predicted date of next order</code> is in the past—meaning they&#39;re overdue based on their own behavior—and <code>churn risk</code> is <code>medium</code> or <code>high</code>. These are people who usually reorder by now and haven&#39;t.</p>
+      <p>Trigger a flow when someone enters that segment. The first email isn&#39;t a discount. It&#39;s a product reminder tied to what they bought last time. &quot;Running low on X?&quot; or &quot;Time to restock Y&quot; if you&#39;re a consumable brand. &quot;Here&#39;s what&#39;s new since your last order&quot; if you&#39;re apparel or gear.</p>
+      <p>If they don&#39;t open or click within 48 hours, the second email offers help: a product recommendation quiz, a link to best-sellers, or a direct reply option. The third email, three days later, is where you introduce an incentive if you&#39;re going to use one.</p>
+      <p>The entire flow is 5–7 days start to finish, because you&#39;re catching them right when they&#39;re supposed to be thinking about you anyway. A traditional 60-day win-back gives them two months to forget you exist. This one interrupts at the moment their internal timer goes off.</p>
+      <p>I see this flow generate meaningfully more reactivation than calendar-based win-backs, because the timing is individualized. You&#39;re not guessing. You&#39;re following the pattern Klaviyo already identified.</p>
+      <h2>Flow Two: VIP Track for High Predicted CLV</h2>
+      <p>You&#39;re treating a customer who&#39;s going to spend $5,000 with you the same way you treat someone who&#39;ll spend $200. Same emails. Same offers. Same level of attention. That&#39;s a retention leak.</p>
+      <p>High predicted CLV customers should enter a different communication track the moment Klaviyo identifies them. Not just a &quot;VIP&quot; label—a structurally different experience.</p>
+      <p><strong>Build a segment:</strong> <code>predicted CLV</code> is greater than a threshold you set based on your own data. Look at your top decile of customers by actual lifetime spend, take the entry point for that group, and use it as your floor. If your top 10% have spent $1,500 or more, set predicted CLV at <code>$1,500</code> or higher.</p>
+      <p><strong>Trigger a flow when someone enters that segment.</strong> Email one is a direct acknowledgment: &quot;You&#39;re one of our best customers. Here&#39;s what that means.&quot; Then tell them what they&#39;re getting—early access to new releases, a dedicated reply address, free shipping on everything, first look at restocks, whatever you can operationally deliver.</p>
+      <p>Email two, three days later, delivers on the first promise. If you said early access, give them a product drop 48 hours before everyone else. If you said dedicated support, introduce them to a real person.</p>
+      <p><strong>Ongoing:</strong> these profiles should be in a segment that excludes them from discount-heavy campaigns. You&#39;re not training high-value customers to wait for 20% off. They get access and experience instead. They also get different win-back treatment—higher touch, faster response, actual phone calls if you have the team for it.</p>
+      <p>The frame I use across the programs I run: predicted CLV is forward-looking, so you&#39;re not rewarding past spend. You&#39;re investing in future spend. Treat a $2,000 predicted CLV customer like they&#39;ve already given you $2,000, and they&#39;re more likely to.</p>
+      <h2>Flow Three: Save Flow for Rising Churn Risk</h2>
+      <p>Churn risk updates dynamically. Someone can go from <code>low</code> to <code>medium</code> to <code>high</code> as their engagement drops and their purchase cadence stretches. Most accounts I audit do nothing with that signal until churn risk hits <code>high</code> and the customer&#39;s already half out the door.</p>
+      <p>You want to intervene earlier, when they move from <code>low</code> to <code>medium</code>. That&#39;s the moment where behavior is shifting but the relationship isn&#39;t broken yet.</p>
+      <p><strong>Build a segment:</strong> <code>churn risk</code> equals <code>medium</code>, and <code>predicted CLV</code> is above your median. You&#39;re targeting customers who are worth keeping and starting to drift. Don&#39;t waste this flow on low-value one-time buyers; they&#39;re not worth the manual effort.</p>
+      <p><strong>Trigger a flow when someone enters the segment.</strong> Email one is diagnostic, not promotional. &quot;We noticed it&#39;s been a while—what&#39;s going on?&quot; Give them three reply options: (1) &quot;I&#39;m good, just taking a break,&quot; (2) &quot;I&#39;m not finding what I need,&quot; (3) &quot;I&#39;m spending elsewhere.&quot; Use a tool like Typeform or a simple &quot;reply with 1, 2, or 3&quot; structure.</p>
+      <p>The responses feed conditional splits. If they say they&#39;re taking a break, tag them <code>churn risk / taking a break</code> and suppress promotional emails but keep sending content. If they&#39;re not finding what they need, route them to a product specialist or a quiz. If they&#39;re spending elsewhere, that&#39;s a pricing, product, or positioning problem—tag it and analyze later.</p>
+      <p>Email two, if they don&#39;t respond, goes to content. Send your best editorial piece, a founder note, a behind-the-scenes story, or a customer spotlight—something with no ask. You&#39;re reminding them why they liked you in the first place.</p>
+      <p>Email three offers a low-friction return path: &quot;Here&#39;s what we&#39;ve added since you were last here.&quot; Showcase new products, new content, or new features. If you&#39;re going to use an incentive, this is the email, but frame it as a welcome-back gift, not a desperate discount.</p>
+      <p>The entire flow runs over 10–14 days. If they reengage—open, click, or purchase—they exit and churn risk usually drops back to <code>low</code>. If they don&#39;t, they stay in the segment and eventually graduate to your high-churn save sequence.</p>
+      <h2>Why Most Accounts Leave This on the Table</h2>
+      <p>Klaviyo hands you behavioral predictions most platforms charge extra for or don&#39;t offer at all. The data&#39;s already there. The models are already running. You&#39;re already paying for it.</p>
+      <p>But using predictions requires segmentation discipline and a willingness to treat customers differently based on what they&#39;re likely to do, not just what they&#39;ve already done. That&#39;s a harder mental model than &quot;everyone who hasn&#39;t purchased in 60 days gets the same email.&quot;</p>
+      <p>The accounts I work in that actually use predictive analytics—win-backs timed to next order date, VIP tracks for high CLV, early interventions for rising churn risk—retain more customers and generate more repeat revenue than the ones that don&#39;t. Not because the predictions are magic. Because they let you stop guessing and start responding to the signal Klaviyo&#39;s already giving you.</p>
+      <p>If you&#39;re running Klaviyo and you&#39;ve never opened the Predictions tab on a customer profile, you&#39;re leaving retention revenue on the table. If you want a second set of eyes on how predictive analytics could fit into your flows, I&#39;ll audit your Klaviyo account for free: <a href="https://getner.ai/audit/">getner.ai/audit</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

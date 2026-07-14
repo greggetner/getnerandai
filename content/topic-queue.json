@@ -306,8 +306,8 @@
       "pipedrive activecampaign"
     ],
     "affiliate_opportunity": null,
-    "status": "queued",
-    "drafted_at": null,
+    "status": "drafted",
+    "drafted_at": "2026-07-14T14:43:09.414Z",
     "published_at": null
   },
   {
@@ -532,9 +532,9 @@
     ],
     "affiliate_opportunity": null,
     "platform": "klaviyo",
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-07-09T15:53:36.233Z",
-    "published_at": null
+    "published_at": "2026-07-14T14:43:09.567Z"
   },
   {
     "id": "klaviyo-deliverability-hub",
