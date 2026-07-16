@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>Syncing ActiveCampaign With a CRM: When It Helps and When It's Chaos</title>
+      <link>https://getner.ai/blog/ac-crm-sync-strategy.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/ac-crm-sync-strategy.html</guid>
+      <pubDate>Thu, 16 Jul 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[I've opened accounts where the same contact exists three times—once in ActiveCampaign, twice in HubSpot, all with different phone numbers, deal stages, and last-contact dates—and nobody knows which one is real.]]></description>
+    </item>
 
     <item>
       <title>Klaviyo Predictive Analytics: CLV, Churn Risk, and Next Order Date, Explained</title>
