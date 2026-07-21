@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reading the Klaviyo Deliverability Hub Before It Reads You — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Klaviyo's deliverability dashboard surfaces the signals that predict an inbox problem two weeks before it tanks a send — most operators glance past it until Gmail has already throttled the account." />
+<link rel="canonical" href="https://getner.ai/blog/klaviyo-deliverability-hub.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Reading the Klaviyo Deliverability Hub Before It Reads You" />
+<meta property="og:description" content="Klaviyo's deliverability dashboard surfaces the signals that predict an inbox problem two weeks before it tanks a send — most operators glance past it until Gmail has already throttled the account." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/klaviyo-deliverability-hub.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Deliverability" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Reading the Klaviyo Deliverability Hub Before It Reads You",
+  "description": "Klaviyo's deliverability dashboard surfaces the signals that predict an inbox problem two weeks before it tanks a send — most operators glance past it until Gmail has already throttled the account.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-07-21",
+  "mainEntityOfPage": "https://getner.ai/blog/klaviyo-deliverability-hub.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">July 21, 2026 · Deliverability · 14 min read</div>
+      <h1 class="post-title">Reading the Klaviyo Deliverability Hub Before It Reads You</h1>
+      <p class="post-lede">Klaviyo's deliverability dashboard surfaces the signals that predict an inbox problem two weeks before it tanks a send — most operators glance past it until Gmail has already throttled the account.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I&#39;ve seen the pattern a dozen times. An operator running a seven-figure program notices open rates sliding from 42% to 31% over three months. They test subject lines. They swap send times. They rebuild templates. Nothing moves the number. When I open the account, the deliverability hub has been flashing warnings for six weeks — spam complaint rate climbing, engagement trend dropping, unengaged contacts still getting every campaign — and nobody looked.</p>
+      <p>The hub doesn&#39;t just report problems. It predicts them. But only if you know what you&#39;re watching.</p>
+      <h2>The Four Metrics That Matter</h2>
+      <p>Klaviyo&#39;s deliverability hub tracks more than a dozen signals. Four of them predict inbox problems before they compound.</p>
+      <p><strong>Spam complaint rate</strong> is the number that matters most. Klaviyo surfaces this as a percentage: complaints divided by delivered emails. Gmail Postmaster Tools uses <code>0.30%</code> as the threshold — anything above that and you&#39;re getting throttled. Yahoo and Outlook follow similar rules. If your Klaviyo dashboard shows <code>0.25%</code> or higher, you&#39;re one bad send away from a deliverability collapse.</p>
+      <p>The fix is immediate: stop sending to anyone who hasn&#39;t engaged in 90 days. Not &quot;move them to a re-engagement sequence.&quot; Stop sending. Build a <code>Engaged in Last 90 Days</code> segment using the condition <code>What someone has done &gt; Opened Email &gt; at least once in the last 90 days OR Clicked Email &gt; at least once in the last 90 days</code>. Exclude everyone else from your next five campaigns. Watch the complaint rate drop.</p>
+      <p><strong>Bounce rate</strong> should sit below <code>2%</code>. If it&#39;s climbing, you&#39;re either buying lists (stop) or your signup forms aren&#39;t using double opt-in (turn it on). Klaviyo automatically suppresses hard bounces, but a rising bounce rate means your list hygiene is broken upstream. Check your signup forms. If you&#39;re using embedded forms or pop-ups without the double opt-in setting enabled, you&#39;re collecting fake emails and feeding them into every campaign.</p>
+      <p>The third metric is <strong>engagement trend</strong>, and it&#39;s the one that predicts trouble two months out. Klaviyo graphs this as a rolling 30-day average: the percentage of your delivered emails that get opened or clicked. If the line is trending down over 60 days, your list is aging faster than you&#39;re replacing engaged subscribers. The usual cause: you&#39;ve been sending to everyone, including the contacts who haven&#39;t opened anything since Q2 of last year.</p>
+      <p>The fourth is the <strong>unengaged contact warning</strong>. Klaviyo flags this when your campaigns are regularly hitting profiles who haven&#39;t engaged in 180+ days. Most operators ignore it because the warning doesn&#39;t stop the send. It should. Every unengaged contact in a campaign dilutes your engagement rate and increases the likelihood that one of them marks you as spam. They don&#39;t remember signing up. They don&#39;t want the email. And when they hit the spam button, Gmail doesn&#39;t care that they opted in 14 months ago.</p>
+      <h2>The Sunset Flow You&#39;re Not Running</h2>
+      <p>The single most effective fix for deliverability problems is a sunset flow. Klaviyo calls it a &quot;win-back&quot; flow in some of their templates. I call it a sunset because the point isn&#39;t to win anyone back — it&#39;s to stop sending to people who don&#39;t want your emails before they report you as spam.</p>
+      <p>Here&#39;s how it works. Create a segment: <code>Has Not Opened or Clicked Email &gt; in the last 90 days</code> and <code>Subscribed to Email &gt; at least 91 days ago</code>. The second condition prevents the flow from triggering on brand-new subscribers who haven&#39;t had time to engage. This segment is your unengaged list.</p>
+      <p>Build a flow triggered by entry into that segment. Three emails over 14 days. The first email has a subject line that says exactly what&#39;s happening: &quot;Still want to hear from us?&quot; or &quot;We&#39;re about to remove you from this list.&quot; No clever copy. No metaphors. State the stakes.</p>
+      <p>Inside the email: one paragraph explaining that they haven&#39;t engaged in 90 days, one paragraph saying you&#39;ll remove them if they don&#39;t click the button, and one clear call-to-action button. That button links anywhere — your homepage, a blog post, a product page. It doesn&#39;t matter. The goal is a click, which Klaviyo records as engagement.</p>
+      <p>Email two comes seven days later. Same stakes, slightly more urgent. Email three comes seven days after that. &quot;This is the last email. Click here to stay subscribed or we&#39;ll remove you tomorrow.&quot;</p>
+      <p>At the end of the flow, add a conditional split: <code>Has Not Opened or Clicked Email in the Sunset Flow &gt; zero times</code>. Everyone in the &quot;yes&quot; branch gets suppressed. Add them to a suppression list or update their profile property to <code>Email Consent = Unsubscribed</code>. They&#39;re done.</p>
+      <p>The contacts who click any of the three emails stay subscribed and exit the flow. You&#39;ve re-engaged the people who actually want your emails and removed the dead weight that was dragging your complaint rate up.</p>
+      <p>Run this flow continuously. The segment updates every day. New unengaged contacts enter. Old unengaged contacts who don&#39;t click get suppressed. Your list stays clean without manual intervention.</p>
+      <h2>The Spam Complaint Rate You Can&#39;t See</h2>
+      <p>Klaviyo&#39;s deliverability hub shows your complaint rate across all mailbox providers. It doesn&#39;t break down complaints by domain. That breakdown lives in Gmail Postmaster Tools, Yahoo&#39;s postmaster portal, and Microsoft SNDS. Most operators never set these up.</p>
+      <p>If you&#39;re sending more than 10,000 emails a week, set up Gmail Postmaster Tools today. Google Search &quot;Gmail Postmaster Tools,&quot; authenticate your sending domain, and wait 48 hours for data to populate. The user-reported spam rate is the first chart. If it shows <code>0.30%</code> or higher, Gmail is already throttling your sends. Emails are landing in spam. Some aren&#39;t being delivered at all.</p>
+      <p>The fix is the same as the Klaviyo-level fix: stop sending to unengaged contacts immediately. But Postmaster Tools gives you domain-specific visibility. If your Gmail complaint rate is high but Yahoo is fine, you know the problem is concentrated in one provider. Segment your campaigns to exclude unengaged Gmail addresses first, then expand to the full unengaged list once the rate drops.</p>
+      <p>Klaviyo&#39;s hub aggregates this data, but it lags by a few days. Postmaster Tools updates daily. Use both.</p>
+      <h2>The Campaign Habit That Breaks Deliverability</h2>
+      <p>The pattern I see in most accounts: campaigns go to the entire subscribed list. No segmentation. No engagement filters. Just &quot;all subscribers&quot; and send.</p>
+      <p>This works when your list is new. Everyone opted in recently. Engagement is high. But six months in, you&#39;ve accumulated contacts who signed up for a lead magnet, never opened a single email, and forgot you exist. They&#39;re still in &quot;all subscribers.&quot; They&#39;re still getting every campaign. And every campaign they ignore pushes your engagement rate down.</p>
+      <p>Klaviyo makes it easy to exclude unengaged contacts from campaigns. Before you hit send, add a segment condition: <code>Opened Email &gt; at least once in the last 90 days OR Clicked Email &gt; at least once in the last 90 days</code>. Your campaign now goes only to contacts who&#39;ve engaged in the last 90 days. The unengaged contacts don&#39;t get the email. They can&#39;t ignore it. They can&#39;t report it as spam.</p>
+      <p>This shrinks your send volume. That&#39;s the point. You&#39;re not paying to send emails that don&#39;t get opened. You&#39;re not risking deliverability on contacts who don&#39;t want to hear from you. And your engagement rate — the metric that Gmail and Outlook actually watch — stays high.</p>
+      <p>If you&#39;re worried about missing revenue from unengaged contacts, test it. Send your next campaign to engaged contacts only. Compare revenue to your last full-list send. In the programs I run, revenue holds flat or increases because the contacts who actually buy are the ones who engage. The unengaged contacts weren&#39;t converting anyway. You&#39;re just removing the risk they create.</p>
+      <h2>The &quot;Engaged&quot; Definition That&#39;s Too Loose</h2>
+      <p>Klaviyo&#39;s default engagement window is 180 days. If someone opened or clicked an email in the last six months, Klaviyo considers them engaged. That window is too long.</p>
+      <p>Gmail doesn&#39;t wait six months to decide you&#39;re spam. If a contact hasn&#39;t engaged in 90 days, their likelihood of marking you as spam increases every week. At 120 days, they barely remember opting in. At 180 days, they don&#39;t remember at all.</p>
+      <p>Set your engaged segment to 90 days: <code>Opened Email &gt; at least once in the last 90 days OR Clicked Email &gt; at least once in the last 90 days</code>. Use that segment as your baseline. Every campaign, every promotional send, every product launch goes to that segment first. If you want to expand to 120-day engaged contacts, test it as a separate send and watch the complaint rate in the deliverability hub. If it ticks up, stop.</p>
+      <p>The tighter your engagement window, the safer your sending reputation. You can always loosen it if the data supports it. You can&#39;t undo a deliverability collapse after Gmail has decided you&#39;re a spammer.</p>
+      <h2>The Deliverability Problem That Starts in Flows</h2>
+      <p>Flows run continuously. Once they&#39;re live, most operators never look at them again. That&#39;s the problem.</p>
+      <p>A flow built 18 months ago is still sending to every contact who triggers it — including contacts who haven&#39;t engaged with a campaign in 200 days. Klaviyo doesn&#39;t automatically filter unengaged contacts out of flows. If your browse abandonment flow triggers for someone who hasn&#39;t opened an email since last year, Klaviyo sends it anyway.</p>
+      <p>Add flow filters. Every revenue-generating flow should have an engagement filter: <code>Opened or Clicked Email &gt; at least once in the last 90 days</code>. This appears under the flow trigger settings as a &quot;flow filter.&quot; Add it once, and every contact who enters the flow must meet that condition. Unengaged contacts don&#39;t enter. They can&#39;t ignore the emails. They can&#39;t drag your stats down.</p>
+      <p>The exception: your sunset flow. That flow deliberately targets unengaged contacts. Everything else gets filtered.</p>
+      <h2>What Happens After You Clean the List</h2>
+      <p>Most operators worry that excluding unengaged contacts will crater their revenue. The opposite happens.</p>
+      <p>Your open rate climbs. Your click rate climbs. Your complaint rate drops. Gmail and Outlook see higher engagement and start delivering more of your emails to the inbox instead of spam. The engaged contacts who were already buying keep buying — and now they&#39;re seeing every email you send because your sender reputation improved.</p>
+      <p>The revenue you thought you were getting from unengaged contacts was never there. You were sending to people who weren&#39;t opening. They weren&#39;t clicking. They weren&#39;t buying. The only thing they were doing was increasing the risk that your next campaign lands in spam for everyone, including the contacts who actually want to hear from you.</p>
+      <p>The deliverability hub shows you the warning signs. Spam complaint rate. Engagement trend. Bounce rate. Unengaged contact warnings. They&#39;re not decorative. They&#39;re the difference between an inbox and a spam folder.</p>
+      <p>If your Klaviyo deliverability hub is showing anything above <code>0.25%</code> spam complaints or a declining engagement trend over 60 days, the fix is the same: stop sending to unengaged contacts, build the sunset flow, and add engagement filters to every campaign and flow you run.</p>
+      <p>If you want a second set of eyes on your Klaviyo setup, I&#39;ll audit your account for free: <a href="https://getner.ai/audit/">getner.ai/audit</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

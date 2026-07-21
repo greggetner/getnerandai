@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>Reading the Klaviyo Deliverability Hub Before It Reads You</title>
+      <link>https://getner.ai/blog/klaviyo-deliverability-hub.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/klaviyo-deliverability-hub.html</guid>
+      <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Klaviyo's deliverability dashboard surfaces the signals that predict an inbox problem two weeks before it tanks a send — most operators glance past it until Gmail has already throttled the account.]]></description>
+    </item>
 
     <item>
       <title>Syncing ActiveCampaign With a CRM: When It Helps and When It's Chaos</title>
