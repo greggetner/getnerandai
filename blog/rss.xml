@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>Using Webhooks to Trigger ActiveCampaign Automations from External Events</title>
+      <link>https://getner.ai/blog/webhooks-external-triggers.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/webhooks-external-triggers.html</guid>
+      <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Most operators I work with never touch webhooks because they sound like a developer task—but they're just URLs that wake up an automation when something happens outside ActiveCampaign.]]></description>
+    </item>
 
     <item>
       <title>Reading the Klaviyo Deliverability Hub Before It Reads You</title>

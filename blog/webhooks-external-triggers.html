@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Using Webhooks to Trigger ActiveCampaign Automations from External Events — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Most operators I work with never touch webhooks because they sound like a developer task—but they're just URLs that wake up an automation when something happens outside ActiveCampaign." />
+<link rel="canonical" href="https://getner.ai/blog/webhooks-external-triggers.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Using Webhooks to Trigger ActiveCampaign Automations from External Events" />
+<meta property="og:description" content="Most operators I work with never touch webhooks because they sound like a developer task—but they're just URLs that wake up an automation when something happens outside ActiveCampaign." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/webhooks-external-triggers.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Platform" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Using Webhooks to Trigger ActiveCampaign Automations from External Events",
+  "description": "Most operators I work with never touch webhooks because they sound like a developer task—but they're just URLs that wake up an automation when something happens outside ActiveCampaign.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-07-23",
+  "mainEntityOfPage": "https://getner.ai/blog/webhooks-external-triggers.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">July 23, 2026 · Platform · 13 min read</div>
+      <h1 class="post-title">Using Webhooks to Trigger ActiveCampaign Automations from External Events</h1>
+      <p class="post-lede">Most operators I work with never touch webhooks because they sound like a developer task—but they're just URLs that wake up an automation when something happens outside ActiveCampaign.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>You&#39;re paying for Zapier. Or you&#39;re tagging people manually after Calendly bookings. Or your Stripe charges fire and nothing happens in ActiveCampaign for twenty minutes because you&#39;re waiting for a polling interval.</p>
+      <p>Webhooks solve this. They&#39;re not code. They&#39;re a URL ActiveCampaign gives you that you paste into another tool. When the event fires—booking, charge, course enrollment—the other tool pings that URL and your automation starts instantly.</p>
+      <p>I&#39;ve been setting these up in accounts for years. The technical reputation scares people away from what&#39;s actually the simplest integration method ActiveCampaign offers. Here&#39;s how to use them, three scenarios I configure most often, and the single mistake that breaks every one.</p>
+      <h2>How ActiveCampaign Webhooks Actually Work</h2>
+      <p>Open any automation. Add a start trigger. Choose <code>Webhook</code>.</p>
+      <p>ActiveCampaign generates a unique URL. It looks like <code>https://trackcmp.net/webhook?key=abc123xyz</code>. That&#39;s it. That&#39;s your webhook.</p>
+      <p>You paste that URL into the external tool—Calendly, Stripe, a custom app, whatever. When the event happens over there, the tool makes an HTTP request to that URL. ActiveCampaign receives it. The automation starts. The contact either enters for the first time or re-enters if you&#39;ve configured it that way.</p>
+      <p>The external tool can send data with the webhook—email address, booking time, charge amount, custom fields. ActiveCampaign receives that data and you can use it inside the automation with conditional logic, field updates, or personalization tokens.</p>
+      <p>That&#39;s the entire mechanism. Now here&#39;s how to configure it for three scenarios I build repeatedly.</p>
+      <h2>Use Case 1: Calendly Booking Confirmation Sequence</h2>
+      <p>You run a high-ticket coaching business. Someone books a discovery call through Calendly. You want them in an automation immediately—confirmation email, pre-call questionnaire link, reminder sequence, post-call follow-up if they don&#39;t show.</p>
+      <p><strong>The ActiveCampaign setup:</strong></p>
+      <p>Create a new automation. Set the start trigger to <code>Webhook</code>. Copy the webhook URL ActiveCampaign generates.</p>
+      <p>Open Calendly. Go to your event type settings. Scroll to <code>Workflows &amp; Notifications</code>. Add a new webhook notification. Paste the ActiveCampaign webhook URL.</p>
+      <p>Calendly will send the invitee email, name, event time, and cancellation URL when someone books. Map those fields in ActiveCampaign by clicking into the webhook trigger settings and defining which incoming data points should populate which custom fields.</p>
+      <p>Add your automation steps: immediate confirmation email using <code>%CALENDLY_EVENT_TIME%</code> or your mapped custom field, a 24-hour wait, a reminder, a show/no-show branch using a tag or custom field you update manually or via another webhook when the call completes.</p>
+      <p><strong>The gotcha:</strong></p>
+      <p>Calendly sends the event time in ISO 8601 format: <code>2025-02-15T14:30:00Z</code>. ActiveCampaign can&#39;t natively parse that into a readable date for email personalization without a formatting step.</p>
+      <p>The fix: use conditional content blocks in your email template. If the field is populated, display it raw and tell the contact to check their calendar. Or set up a second webhook in Calendly that fires to Zapier or Make, reformats the date, and writes it back to a different custom field in ActiveCampaign as plain text. I prefer the first option—cleaner, no dependency.</p>
+      <p>Or just skip the date token entirely. &quot;Your call is confirmed. Check your calendar for the exact time. Here&#39;s what to prepare.&quot; No one complains.</p>
+      <h2>Use Case 2: Stripe Charge Follow-Up Automation</h2>
+      <p>You sell a course, a membership, or a one-time coaching package through Stripe. The moment the charge succeeds, you want the buyer in a post-purchase onboarding sequence—login credentials, first lesson, expectation-setting email, check-in after three days.</p>
+      <p><strong>The ActiveCampaign setup:</strong></p>
+      <p>Create an automation with a <code>Webhook</code> start trigger. Copy the URL.</p>
+      <p>Log into Stripe. Go to <code>Developers</code> → <code>Webhooks</code> → <code>Add endpoint</code>. Paste the ActiveCampaign webhook URL.</p>
+      <p>In the event selection screen, choose <code>charge.succeeded</code>. Stripe will ping ActiveCampaign every time a charge completes.</p>
+      <p>Stripe sends customer email, charge amount, product description, and charge ID. Map the email field to the contact email in ActiveCampaign&#39;s webhook settings. Map charge amount to a custom field called <code>last_purchase_amount</code> or similar. Use that field later for conditional branches—did they buy the $500 course or the $2,000 package?</p>
+      <p>Now build your automation: immediate purchase confirmation, tag the contact <code>purchased_[product_name]</code>, add them to the relevant onboarding sequence, set a <code>goal</code> step at the top of the automation so if they purchase again while still in this automation, they skip to the goal and re-enter from the start.</p>
+      <p><strong>The gotcha:</strong></p>
+      <p>Stripe sends charge amounts in cents, not dollars. A $500 charge shows up as <code>50000</code>. If you&#39;re using that field in an email or a conditional branch, you&#39;ll display &quot;You just purchased 50000&quot; unless you account for it.</p>
+      <p>The fix: create a calculated custom field in ActiveCampaign (if you&#39;re on a plan that supports it) that divides the raw amount by 100. Or just don&#39;t display the amount in emails. &quot;Thanks for your purchase&quot; works better than &quot;Thanks for your $500.00 purchase&quot; anyway—it doesn&#39;t remind them they just spent money.</p>
+      <p>Alternatively, handle the formatting in the conditional branch logic itself. Set up branches like <code>if last_purchase_amount is 50000 then tag product_A</code>, <code>if last_purchase_amount is 200000 then tag product_B</code>. The contact never sees the raw number.</p>
+      <h2>Use Case 3: Custom App Event (Course Progress, Community Activity, Login Behavior)</h2>
+      <p>You built or bought a membership platform, a course app, or a community tool that isn&#39;t ActiveCampaign. Someone completes lesson three. Or they log in after being dormant for 60 days. Or they post in the community for the first time. You want an automation to fire instantly.</p>
+      <p><strong>The ActiveCampaign setup:</strong></p>
+      <p>Create an automation. Start trigger: <code>Webhook</code>. Copy the URL.</p>
+      <p>Give that URL to your developer or paste it into your app&#39;s webhook settings (if it has them—most modern tools do: Circle, Kajabi, Thinkific, Teachable, custom Rails or Node apps, whatever).</p>
+      <p>Configure the app to send the contact&#39;s email address and any relevant event data—lesson ID, login timestamp, post content, whatever. Map those fields in ActiveCampaign.</p>
+      <p>Build the automation based on the event. Lesson three completed? Send an encouragement email and tag them <code>engaged_student</code>. First community post? Send a welcome-to-the-conversation email and tag them <code>community_active</code>. Logged in after 60 days dormant? Start a re-engagement sequence and remove the <code>dormant</code> tag.</p>
+      <p><strong>The gotcha:</strong></p>
+      <p>The contact might not exist in ActiveCampaign yet. If your app fires a webhook for a user who isn&#39;t in your ActiveCampaign account, the automation won&#39;t start.</p>
+      <p>The fix: in the webhook trigger settings, enable <code>Create contact if they don&#39;t exist</code>. ActiveCampaign will add them to the default list you specify, then start the automation.</p>
+      <p>Or handle it upstream—make sure every user is added to ActiveCampaign when they first register in your app, before any event webhooks fire. I prefer this. It gives you control over which list they land on, what tags they get, and ensures they&#39;re already in a welcome sequence before behavior-based automations start layering on top.</p>
+      <p>Also: rate limits. If your app fires ten thousand webhooks in five minutes because you just imported historical data, ActiveCampaign will queue them and process them as fast as it can, but contacts won&#39;t enter instantly. Test with small batches first. I&#39;ve seen apps fire a backfill webhook job and flood ActiveCampaign with 50,000 entries. It worked, but it took two hours and caused temporary delays in other automations.</p>
+      <h2>When Webhooks Beat Zapier or Native Integrations</h2>
+      <p>Zapier polls most triggers every 5–15 minutes depending on your plan. A webhook fires instantly. If you&#39;re running a webinar registration sequence and someone signs up at 6:58 PM for a 7:00 PM start, that two-minute head start matters.</p>
+      <p>Native integrations—ActiveCampaign&#39;s deep data connections—are great when they exist. But most tools don&#39;t have them. And even when they do, they&#39;re often one-way (data flows into ActiveCampaign but not out) or limited to specific triggers (new contact, new purchase, but not custom events like lesson completion or community activity).</p>
+      <p>Webhooks are universal. Every modern SaaS tool supports outbound webhooks. If it doesn&#39;t, it&#39;s old or bad.</p>
+      <p>The other advantage: no middleware cost. Zapier charges per task. A webhook is free. If you&#39;re firing five thousand events a month—Stripe charges, Calendly bookings, course progress updates—you&#39;re paying Zapier $50–$150/month for something ActiveCampaign does natively.</p>
+      <p>I still use Zapier when I need transformation logic (reformat a date, look up a value in a spreadsheet, split a name into first and last). But for simple event → automation triggers, webhooks are faster, cheaper, and more reliable.</p>
+      <h2>The One Mistake That Breaks Every Webhook Setup</h2>
+      <p>You paste the webhook URL into the external tool. You fire a test event. Nothing happens in ActiveCampaign.</p>
+      <p>The reason: the email address the external tool sends doesn&#39;t match any contact in your ActiveCampaign account, and you haven&#39;t enabled <code>Create contact if they don&#39;t exist</code> in the webhook trigger settings.</p>
+      <p>Or the external tool is sending the email field with a different key than ActiveCampaign expects—<code>email</code> versus <code>contact_email</code> versus <code>user_email</code>—and you haven&#39;t mapped it in the webhook configuration screen.</p>
+      <p>The fix: always send a test webhook and check the automation&#39;s run log. ActiveCampaign logs every webhook request it receives, whether it started an automation or not. Open the automation. Click the graph icon in the top right. Look at <code>Webhook requests</code>. You&#39;ll see the raw data the external tool sent. If the email field is named something unexpected, map it manually in the trigger settings.</p>
+      <p>And always enable <code>Create contact if they don&#39;t exist</code> unless you have a specific reason not to. The worst case: you add a few test contacts you delete later. The best case: you never miss a legitimate entry.</p>
+      <hr>
+      <p>The accounts I work in waste hours on Zapier tasks that should be direct webhooks, or they tag people manually after events that should fire automations instantly. Webhooks sound technical. They&#39;re not. They&#39;re a URL. You paste it. The automation starts.</p>
+      <p>Set up one webhook this week—Calendly, Stripe, or your course platform—and you&#39;ll never go back to polling integrations.</p>
+      <p>If you&#39;re running ActiveCampaign and want a second set of eyes on your automation architecture, webhook strategy, or anything else that&#39;s leaking revenue, grab a free audit at <a href="https://getner.ai/audit/">https://getner.ai/audit/</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
