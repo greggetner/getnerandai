@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 28 Jul 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>The Klaviyo Post-Purchase Flow That Turns One Order Into Three</title>
+      <link>https://getner.ai/blog/klaviyo-post-purchase-flow.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/klaviyo-post-purchase-flow.html</guid>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Most Klaviyo programs I audit have a welcome series and an abandoned cart flow, then nothing. The actual repeat revenue lives in the thirty days after someone buys—and most stores send one transactional email and go silent.]]></description>
+    </item>
 
     <item>
       <title>Using Webhooks to Trigger ActiveCampaign Automations from External Events</title>
