@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Closing the Loop Between ActiveCampaign and Your Reviews Platform — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Most review request automations send one email and disappear into the void—the real money starts when you route the response back into ActiveCampaign and let it decide what happens next." />
+<link rel="canonical" href="https://getner.ai/blog/ac-reviews-platform-loop.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Closing the Loop Between ActiveCampaign and Your Reviews Platform" />
+<meta property="og:description" content="Most review request automations send one email and disappear into the void—the real money starts when you route the response back into ActiveCampaign and let it decide what happens next." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/ac-reviews-platform-loop.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Integrations" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Closing the Loop Between ActiveCampaign and Your Reviews Platform",
+  "description": "Most review request automations send one email and disappear into the void—the real money starts when you route the response back into ActiveCampaign and let it decide what happens next.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-07-30",
+  "mainEntityOfPage": "https://getner.ai/blog/ac-reviews-platform-loop.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">July 30, 2026 · Integrations · 12 min read</div>
+      <h1 class="post-title">Closing the Loop Between ActiveCampaign and Your Reviews Platform</h1>
+      <p class="post-lede">Most review request automations send one email and disappear into the void—the real money starts when you route the response back into ActiveCampaign and let it decide what happens next.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>You send a review request seven days after purchase. Maybe fourteen. The automation fires, the email goes out, and then… nothing. The contact sits in your list with no indication whether they left a five-star love letter or a one-star rant about your shipping time.</p>
+      <p>That&#39;s not a review workflow. That&#39;s a dead end with a form at the bottom.</p>
+      <p>The pattern I see in most accounts: review requests are treated as broadcast messages instead of conversation starters. ActiveCampaign sends the ask. The reviews platform captures the response. And the two systems never speak again. You&#39;re flying blind on your happiest customers and your most frustrated ones, and both groups are getting the same generic monthly newsletter.</p>
+      <h2>The Loop That Actually Works</h2>
+      <p>Here&#39;s the structure that turns review requests into actionable contact data:</p>
+      <ol>
+      <li>ActiveCampaign triggers the review request automation based on purchase behavior</li>
+      <li>The reviews platform captures the response and rating</li>
+      <li>The platform sends the rating data back to ActiveCampaign via webhook or native integration</li>
+      <li>ActiveCampaign tags the contact based on rating tier</li>
+      <li>Tags trigger conditional automations: positive reviewers flow into VIP/UGC-request sequences, negative reviewers flow into customer-save workflows</li>
+      </ol>
+      <p>Every step feeds the next one. The review isn&#39;t the end—it&#39;s the entry point into a smarter retention system.</p>
+      <p>Most ActiveCampaign users stop at step two. They send the request, collect reviews on the platform, and maybe glance at the dashboard once a quarter. The contact record in ActiveCampaign shows a purchase tag and nothing else. You&#39;re sitting on segmentation gold and leaving it in someone else&#39;s database.</p>
+      <h2>Field Mapping: Getting Review Data Into ActiveCampaign</h2>
+      <p>The mechanics depend on which reviews platform you&#39;re using. Judge.me, Stamped, Yotpo, Loox, <a href="https://partners.okendo.io/dashboard">Okendo</a>—most of them can push data back into ActiveCampaign via webhook or Zapier. Some have native integrations. Either way, you need three data points to make this work:</p>
+      <ul>
+      <li><strong>Review rating</strong> (1–5 stars)</li>
+      <li><strong>Review submitted date</strong></li>
+      <li><strong>Review text</strong> (optional but useful for UGC workflows)</li>
+      </ul>
+      <p>If your platform supports webhooks, configure it to fire when a review is submitted. Point the webhook at ActiveCampaign&#39;s event tracking endpoint. Map the rating value to a custom field—I use a field called <code>Last Review Rating</code>—and map the timestamp to <code>Last Review Date</code>.</p>
+      <p>If you&#39;re using Zapier or Make, the flow is the same: trigger on new review, send the rating and timestamp to ActiveCampaign as a custom field update. Include the contact&#39;s email address in the payload so the integration can match the right record.</p>
+      <p>The review text itself is harder to pass cleanly because it&#39;s long-form. If you want it in ActiveCampaign for future reference, create a custom field called <code>Last Review Text</code> with a text area type. Most programs don&#39;t need this field to run the automations, but it&#39;s useful if you&#39;re manually sorting for UGC requests later.</p>
+      <h2>Tag-Based Routing: What Happens After the Review Comes In</h2>
+      <p>Once the rating hits ActiveCampaign, you need an automation to evaluate it and apply the right tag. This is where most setups break down—people store the rating in a custom field and then do nothing with it.</p>
+      <p>Build a simple automation triggered by <code>Last Review Rating</code> field update. Use conditional splits to route based on rating value:</p>
+      <ul>
+      <li><strong>If <code>Last Review Rating</code> is 5</strong>, add tag <code>Review: Promoter</code></li>
+      <li><strong>If <code>Last Review Rating</code> is 4</strong>, add tag <code>Review: Passive</code></li>
+      <li><strong>If <code>Last Review Rating</code> is 1, 2, or 3</strong>, add tag <code>Review: Detractor</code></li>
+      </ul>
+      <p>You can get more granular if you want, but three tiers is enough for most programs. The tag is what actually triggers the downstream automations. The custom field stores the data; the tag drives the action.</p>
+      <p>I configure this as a standalone automation rather than bolting it onto the review request sequence. That way it runs regardless of how the review was submitted—whether it came from your post-purchase email, a review reminder, or a direct link someone clicked two months later.</p>
+      <h2>The Promoter Path: VIP Treatment and UGC Requests</h2>
+      <p>Contacts tagged <code>Review: Promoter</code> are your highest-signal segment. They bought, they loved it, and they told you so in public. Don&#39;t waste that momentum.</p>
+      <p>Build an automation that starts when the <code>Review: Promoter</code> tag is added. Wait one day—let them enjoy the afterglow of leaving a nice review—then send a thank-you email with a specific ask. The two paths that work:</p>
+      <p><strong>Path one: referral or affiliate invitation.</strong> If you run a referral program, this is the warmest possible entry point. &quot;Thanks for the review—want to share with friends and earn X?&quot; The conversion rate on this email is higher than any cold referral pitch because the contact just publicly endorsed you.</p>
+      <p><strong>Path two: UGC request.</strong> Ask for a photo, video, or case study. Frame it as an extension of the review they already left. &quot;We loved your review—would you be open to sharing a quick photo of [product] in action?&quot; If you&#39;re running paid social, this is how you build a UGC library without paying influencers.</p>
+      <p>Tag contacts who say yes with <code>UGC: Submitted</code> or <code>Referral: Active</code> so you can segment them later. Add them to a VIP list if you have one. These people are your amplifiers—treat them differently than the rest of your list.</p>
+      <h2>The Detractor Path: Customer-Save Before They Churn</h2>
+      <p>Contacts tagged <code>Review: Detractor</code> are flight risks. They&#39;re frustrated enough to leave a low rating, which means they&#39;re already halfway out the door. If you do nothing, they churn quietly. If you respond fast, you can save a meaningful percentage of them.</p>
+      <p>Build an automation that starts when the <code>Review: Detractor</code> tag is added. Send an email within 24 hours—not from a no-reply address, from a real human on your team. The subject line: &quot;We saw your review and want to make it right.&quot;</p>
+      <p>The email itself should be short. Acknowledge the issue, apologize without deflecting, and offer a specific remedy: a refund, a replacement, a discount on the next order, or a direct line to support. Include a reply-to address that actually works, and make sure someone is monitoring it.</p>
+      <p>Use a deal pipeline in ActiveCampaign to track these contacts as they move through the save process. Create a pipeline called <code>Customer Recovery</code> with stages: <code>Contacted</code>, <code>Responded</code>, <code>Issue Resolved</code>, <code>Churned</code>. Move the deal forward as the contact replies and engages. This gives you visibility into how many detractors you&#39;re successfully recovering versus how many are walking anyway.</p>
+      <p>The contacts who respond and resolve the issue should get a second tag: <code>Recovery: Saved</code>. Build a win-back sequence specifically for this group. They&#39;ve seen you at your worst and decided to give you another shot—that&#39;s a relationship worth nurturing.</p>
+      <h2>The Passive Path: The Middle Tier Most People Ignore</h2>
+      <p>Four-star reviewers—tagged <code>Review: Passive</code>—are the forgotten middle. They&#39;re not raving fans, but they&#39;re not angry either. They&#39;re satisfied, which means they&#39;re persuadable.</p>
+      <p>Most programs dump these contacts into the general nurture flow and call it a day. That&#39;s a wasted opportunity. Build a light-touch automation that asks a single follow-up question: &quot;What would have made this a five-star experience?&quot;</p>
+      <p>You&#39;re fishing for objections and feature requests. Maybe the product is great but shipping took too long. Maybe the onboarding was confusing. Maybe they wanted a feature you don&#39;t offer yet. The responses tell you what&#39;s blocking these contacts from becoming promoters.</p>
+      <p>Store the answers in a custom field or as notes on the contact record. If the same issue comes up repeatedly, you&#39;ve identified a systemic friction point. Fix it and you move a chunk of passives into the promoter column.</p>
+      <h2>Review Reminders: Don&#39;t Ask Once and Disappear</h2>
+      <p>The initial review request automation should not be a single email. If someone doesn&#39;t leave a review after the first ask, send a second one seven days later. If they still don&#39;t respond, send a third one fourteen days after that.</p>
+      <p>Use conditional logic to stop the sequence if the <code>Last Review Rating</code> field gets updated—meaning they left a review through a different channel or from the first email and you just haven&#39;t seen the webhook fire yet. The goal here is persistence without annoyance.</p>
+      <p>Each reminder should reframe the ask slightly. Email one: &quot;How did we do?&quot; Email two: &quot;Still curious what you thought—mind sharing?&quot; Email three: &quot;Last nudge—your feedback helps us improve.&quot; Don&#39;t copy-paste the same message three times.</p>
+      <p>I configure this as a separate automation triggered by the same purchase event that starts the initial review request. Wait 14 days, check if <code>Last Review Rating</code> is empty, send reminder one. Wait another 7 days, check again, send reminder two. One more 14-day wait, final check, send reminder three. If the field is populated at any point, the contact hits a goal step and exits.</p>
+      <h2>Closing the Loop</h2>
+      <p>The difference between a review request and a review workflow is what happens after the response comes back. Most programs send the ask and hope for the best. The ones that work treat the review as the beginning of a conditional path—promoters get invited into referral programs, detractors get recovery outreach, and passives get nudged toward five stars.</p>
+      <p>ActiveCampaign can&#39;t execute any of that if the review data stays locked in your reviews platform. Close the loop. Map the fields. Tag the contacts. Let the automation decide what happens next.</p>
+      <p>If you&#39;re running ActiveCampaign and you&#39;re not sure whether your review workflow is leaking revenue, I&#39;ll audit it for free: <a href="https://getner.ai/audit/">getner.ai/audit</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>Closing the Loop Between ActiveCampaign and Your Reviews Platform</title>
+      <link>https://getner.ai/blog/ac-reviews-platform-loop.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/ac-reviews-platform-loop.html</guid>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Most review request automations send one email and disappear into the void—the real money starts when you route the response back into ActiveCampaign and let it decide what happens next.]]></description>
+    </item>
 
     <item>
       <title>The Klaviyo Post-Purchase Flow That Turns One Order Into Three</title>
