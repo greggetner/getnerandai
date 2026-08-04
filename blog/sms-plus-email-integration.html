@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>When to Add SMS to Your Email Program (and How to Integrate It Cleanly) — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="SMS is cheap to add and easy to abuse—here's when it actually helps, when it's noise, and how to architect it cleanly in ActiveCampaign." />
+<link rel="canonical" href="https://getner.ai/blog/sms-plus-email-integration.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="When to Add SMS to Your Email Program (and How to Integrate It Cleanly)" />
+<meta property="og:description" content="SMS is cheap to add and easy to abuse—here's when it actually helps, when it's noise, and how to architect it cleanly in ActiveCampaign." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/sms-plus-email-integration.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Integrations" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "When to Add SMS to Your Email Program (and How to Integrate It Cleanly)",
+  "description": "SMS is cheap to add and easy to abuse—here's when it actually helps, when it's noise, and how to architect it cleanly in ActiveCampaign.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-08-04",
+  "mainEntityOfPage": "https://getner.ai/blog/sms-plus-email-integration.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">August 4, 2026 · Integrations · 10 min read</div>
+      <h1 class="post-title">When to Add SMS to Your Email Program (and How to Integrate It Cleanly)</h1>
+      <p class="post-lede">SMS is cheap to add and easy to abuse—here's when it actually helps, when it's noise, and how to architect it cleanly in ActiveCampaign.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I see the same pattern in half the accounts I audit: someone enabled SMS because it was easy, sent a few broadcasts that got decent opens, then started layering it into every automation. Now they&#39;re double-tapping contacts with the same message on email and SMS within twenty minutes, burning opt-ins faster than they&#39;re building them, and the unsubscribe rate on both channels is climbing.</p>
+      <p>SMS isn&#39;t a second email channel. It&#39;s interruptive, expensive per-message, and operates under different rules. When you use it right—transactional confirmations, re-engagement of already-lapsed contacts, high-intent VIP alerts—it moves the needle. When you treat it like a newsletter or generic promo blaster, you burn trust and pay for the privilege.</p>
+      <p>Here&#39;s when to add SMS, when to leave it alone, and the ActiveCampaign architecture that keeps the two channels clean.</p>
+      <h2>When SMS Actually Helps</h2>
+      <p>SMS works when the message is urgent, expected, or both. Three use cases stand out across the programs I run.</p>
+      <p><strong>Time-sensitive transactional messages.</strong> Order confirmations. Shipping updates. Appointment reminders for coaching sessions. Webinar &quot;starting in 10 minutes&quot; alerts. These are messages people <em>want</em> to receive immediately, and email doesn&#39;t guarantee immediate visibility. In ActiveCampaign, trigger these via the same automation that sends the transactional email—<code>Order Complete</code> tag fires, send the confirmation email in step one, send the SMS in step two. No broadcast needed.</p>
+      <p><strong>Re-engagement of already-lapsed contacts.</strong> If someone hasn&#39;t opened an email in 90 days, another email won&#39;t fix it. A single SMS with a direct question or offer can surface whether they&#39;re still interested. &quot;Still want weekly strategy emails, or should I pause you?&quot; gets replies. Don&#39;t send this to your active list. Configure a segment in ActiveCampaign: <code>Last opened email</code> &gt; <code>90 days ago</code> and <code>SMS opt-in</code> = <code>true</code>, then send once. Not weekly.</p>
+      <p><strong>High-intent VIP alerts.</strong> Cart abandonment for a $3,000 offer. Early access to a new program for your top spenders. A one-time flash offer to contacts tagged <code>High LTV</code>. These are narrow, behavior-triggered messages to small segments where the signal-to-noise ratio is high. The key word is <em>narrow</em>. If you&#39;re sending SMS to your entire list, you&#39;re doing it wrong.</p>
+      <h2>When SMS Is Just Noise</h2>
+      <p>Most of the SMS I see in ActiveCampaign accounts shouldn&#39;t exist.</p>
+      <p><strong>Weekly newsletters.</strong> If your content isn&#39;t urgent, it doesn&#39;t belong on SMS. &quot;New blog post is live&quot; works as an email. As an SMS, it trains people to ignore you or opt out. The open rate might look good in the first two sends, then it craters.</p>
+      <p><strong>Generic promotional broadcasts.</strong> &quot;20% off everything this weekend&quot; sent to your entire SMS list is lazy. You&#39;re paying per message to interrupt people with something they could have seen in email. Save SMS for behavior-triggered offers—someone viewed the sales page three times in two days, <em>then</em> you send the SMS with the discount code.</p>
+      <p><strong>Anything you&#39;re already sending via email in the same hour.</strong> This is the mistake I see most often. The automation sends the email at step three, then immediately sends the SMS at step four with the same subject line and link. You&#39;ve just annoyed the person who saw the email and confused the person who only checks one channel. Pick one channel per message, or space them by at least 24 hours.</p>
+      <h2>The One Rule Most Brands Break</h2>
+      <p><strong>Never send the same message on email and SMS within the same hour.</strong> </p>
+      <p>I opened an account last month where the cart abandonment automation sent the email, waited five minutes, then sent the SMS. Same headline. Same link. Same CTA. The contact either got double-tapped within five minutes or missed both because they were offline. Neither scenario helps.</p>
+      <p>The fix: stagger by channel priority and contact behavior. In ActiveCampaign, add a <code>wait</code> step of at least 24 hours between the email and SMS, or better—add a conditional branch. <code>If contact has opened an email in the last 7 days</code> → send email only. <code>Else</code> → send SMS. Let behavior decide the channel, don&#39;t blast both.</p>
+      <p>If the message is urgent enough to SMS, send the SMS and skip the email. If it&#39;s not urgent, send the email and skip the SMS.</p>
+      <h2>The ActiveCampaign + SMS Architecture</h2>
+      <p>Here&#39;s how to integrate SMS cleanly without turning every automation into a multi-channel spam machine.</p>
+      <p><strong>Enable SMS as an add-on.</strong> ActiveCampaign&#39;s native SMS functionality works for most use cases. If you need more sophisticated SMS workflows—subscriber keyword triggers, two-way conversation routing—platforms like <a href="https://www.slicktext.com/?linkId=lp_684791&sourceId=greg-getner&tenantId=slicktext">SlickText</a> integrate cleanly and give you more control. Either way, start with the infrastructure before you start sending.</p>
+      <p><strong>Build a separate opt-in path for SMS.</strong> Do not auto-enroll your email list into SMS. Add a checkbox to your forms: &quot;Yes, send me SMS alerts for urgent updates.&quot; Create a custom field <code>SMS Opt-In</code> with values <code>true</code> or <code>false</code>. Every SMS automation should include a condition checking that field at the top. No exceptions.</p>
+      <p><strong>Assign SMS to specific automation triggers, not every automation.</strong> I map it like this:</p>
+      <ul>
+      <li><strong>Order placed</strong> → email confirmation + SMS confirmation  </li>
+      <li><strong>Webinar starting in 10 min</strong> → SMS only  </li>
+      <li><strong>Cart abandoned</strong> (high-ticket) → email at 1 hour, SMS at 25 hours if email unopened  </li>
+      <li><strong>90-day lapsed</strong> → SMS re-engagement, one-time  </li>
+      <li><strong>Weekly newsletter</strong> → email only, never SMS  </li>
+      <li><strong>New blog post</strong> → email only, never SMS</li>
+      </ul>
+      <p>The logic: transactional gets both. Time-sensitive gets SMS. Everything else stays email unless the contact is unresponsive on email and you&#39;re trying to wake them up.</p>
+      <p><strong>Use conditional branches to prevent double-sends.</strong> In any automation that includes both email and SMS steps, add conditions:</p>
+      <pre><code>If SMS Opt-In = true AND Last opened email &gt; 14 days ago
+        → Send SMS
+      Else
+        → Send email only
+      </code></pre>
+      <p>Or time-gate them: email first, wait 24 hours, check if email was opened, send SMS only if not opened. The <code>goal</code> step in ActiveCampaign is useful here—set a goal for &quot;opened email&quot; after the email step, so contacts who engage skip the SMS entirely.</p>
+      <p><strong>Track unsubscribes separately.</strong> SMS opt-outs are different from email unsubscribes. When someone replies STOP to an SMS, ActiveCampaign (or your SMS provider) should update the <code>SMS Opt-In</code> field to <code>false</code>. Don&#39;t remove them from your email list. Don&#39;t assume they want off everything. Segment and respect both signals independently.</p>
+      <h2>What to Do First</h2>
+      <p>If you haven&#39;t added SMS yet, don&#39;t start by broadcasting to your list. Start with one transactional use case—order confirmations, booking reminders, webinar alerts—and build the automation with a clean opt-in condition at the top. Let that run for two weeks. Watch the opt-out rate. If it stays low, add a second use case.</p>
+      <p>If you already have SMS running and the opt-out rate is climbing, audit every automation that includes an SMS step. Look for:</p>
+      <ul>
+      <li>Messages sent to the entire list instead of a narrow segment  </li>
+      <li>Email and SMS sent within the same hour  </li>
+      <li>Generic promotional content that isn&#39;t behavior-triggered  </li>
+      <li>No conditional branch checking <code>SMS Opt-In</code> status</li>
+      </ul>
+      <p>Turn off the automations that fail those tests. Rebuild them with conditions and delays. SMS is not a volume play.</p>
+      <h2>The Bottom Line</h2>
+      <p>SMS works when it&#39;s expected or urgent. It fails when you treat it like a cheaper, faster email channel. The brands that do this well send fewer SMS messages than you&#39;d expect, not more. They use behavior to choose the channel, they stagger sends, and they never double-tap a contact with the same message on both channels in the same hour.</p>
+      <p>The architecture is simple: separate opt-ins, conditional branches, and a bias toward email unless the message is time-sensitive or the contact is unresponsive. Build that in ActiveCampaign and SMS becomes a clean layer on top of your email program, not a mess tangled through every automation.</p>
+      <p>If your SMS program is already running and you&#39;re not sure whether it&#39;s clean or chaotic, I&#39;ll look at it. I offer a free ActiveCampaign audit at <a href="https://getner.ai/audit/">getner.ai/audit</a>—I&#39;ll tell you what&#39;s leaking and what to fix first.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
