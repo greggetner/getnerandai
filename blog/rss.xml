@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 06 Aug 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>The 5 Segments Every ActiveCampaign Program Should Have</title>
+      <link>https://getner.ai/blog/5-segments-every-program.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/5-segments-every-program.html</guid>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Most accounts I audit have forty-plus segments built from one-off campaign ideas, and the operators still can't answer "who should I send to this week?"]]></description>
+    </item>
 
     <item>
       <title>When to Add SMS to Your Email Program (and How to Integrate It Cleanly)</title>

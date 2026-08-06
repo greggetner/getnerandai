@@ -374,9 +374,9 @@
       "list segmentation"
     ],
     "affiliate_opportunity": null,
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-08-04T15:16:13.269Z",
-    "published_at": null
+    "published_at": "2026-08-06T15:07:45.864Z"
   },
   {
     "id": "open-rate-misleading",
@@ -389,8 +389,8 @@
       "email engagement metrics"
     ],
     "affiliate_opportunity": null,
-    "status": "queued",
-    "drafted_at": null,
+    "status": "drafted",
+    "drafted_at": "2026-08-06T15:07:45.708Z",
     "published_at": null
   },
   {

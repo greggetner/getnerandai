@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The 5 Segments Every ActiveCampaign Program Should Have — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Most accounts I audit have forty-plus segments built from one-off campaign ideas, and the operators still can't answer &quot;who should I send to this week?&quot;" />
+<link rel="canonical" href="https://getner.ai/blog/5-segments-every-program.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="The 5 Segments Every ActiveCampaign Program Should Have" />
+<meta property="og:description" content="Most accounts I audit have forty-plus segments built from one-off campaign ideas, and the operators still can't answer &quot;who should I send to this week?&quot;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/5-segments-every-program.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Retention" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The 5 Segments Every ActiveCampaign Program Should Have",
+  "description": "Most accounts I audit have forty-plus segments built from one-off campaign ideas, and the operators still can't answer &quot;who should I send to this week?&quot;",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-08-06",
+  "mainEntityOfPage": "https://getner.ai/blog/5-segments-every-program.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">August 6, 2026 · Retention · 10 min read</div>
+      <h1 class="post-title">The 5 Segments Every ActiveCampaign Program Should Have</h1>
+      <p class="post-lede">Most accounts I audit have forty-plus segments built from one-off campaign ideas, and the operators still can't answer &quot;who should I send to this week?&quot;</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I open an ActiveCampaign account. The segment list scrolls for three screens. <code>Black Friday 2022 clickers</code>. <code>Webinar registrants April</code>. <code>Downloaded lead magnet - old version</code>. <code>Engaged last 14 days TEST</code>. <code>VIP maybe?</code>. Dozens of segments, each built for a single send, never deleted, never standardized.</p>
+      <p>Then I ask: &quot;Who are your cold contacts?&quot; Blank stare. &quot;Who&#39;s actively engaged right now?&quot; They&#39;re not sure. &quot;Who should get your weekly broadcast?&quot; They guess.</p>
+      <p>You don&#39;t need forty segments. You need five that actually matter. Build these once, maintain them automatically, and you&#39;ll always know exactly who gets what.</p>
+      <h2>Segment One: Active (Engaged in the Last 30 Days)</h2>
+      <p>This is everyone who opened or clicked an email in the last thirty days. They&#39;re paying attention. They get everything: weekly broadcasts, product launches, flash sales, content updates. If you&#39;re choosing one list to send to, it&#39;s this one.</p>
+      <p><strong>How to build it in ActiveCampaign:</strong></p>
+      <p>Go to Contacts → Segments → Create a segment. Set the condition to <code>Has opened</code> or <code>Has clicked</code> with a date range of <code>in the last 30 days</code>. Save it as <code>Active - 30d</code>.</p>
+      <p>This segment auto-updates. Someone who opened yesterday is in. Someone whose last action was thirty-one days ago falls out automatically. No manual list pruning.</p>
+      <p><strong>What gets sent here:</strong></p>
+      <p>Everything. Your weekly newsletter. Product announcements. Time-sensitive offers. Content drops. These people are engaged. They want to hear from you. Send.</p>
+      <p>The mistake I see: operators send to their entire list because &quot;we might re-engage someone.&quot; You won&#39;t. You&#39;ll train Gmail that most recipients ignore you, and your Active segment—the people who actually want your emails—will start landing in spam. Send to the people who open.</p>
+      <h2>Segment Two: Dormant (Engaged 31–90 Days Ago)</h2>
+      <p>These contacts were active, then stopped. They&#39;re not dead yet, but they&#39;re fading. They don&#39;t get your regular broadcasts. They get a targeted re-engagement sequence, and if that doesn&#39;t work, they move to Cold.</p>
+      <p><strong>How to build it:</strong></p>
+      <p>Create a segment with two condition groups. First group: <code>Has opened</code> or <code>Has clicked</code> with a date range of <code>in the last 31 to 90 days</code>. Second group: <code>Has not opened</code> and <code>Has not clicked</code> in the last <code>30 days</code>. </p>
+      <p>The logic: they did something between thirty-one and ninety days ago, but nothing in the last thirty. Save it as <code>Dormant - 31-90d</code>.</p>
+      <p><strong>What gets sent here:</strong></p>
+      <p>A three-to-five email re-engagement automation. Trigger it when a contact enters the Dormant segment. First email: &quot;We noticed you&#39;ve been quiet—here&#39;s what you missed.&quot; Include your best recent content or offer. Second email: &quot;Is this still relevant to you?&quot; Be direct. Third email: preference center or an ask: &quot;Want to stay subscribed?&quot;</p>
+      <p>Use a <strong>goal step</strong> in the automation. If they open or click any email in the sequence, jump them back to Active and exit the re-engagement flow. Don&#39;t keep nudging someone who&#39;s already re-engaged.</p>
+      <p>I don&#39;t send regular broadcasts to Dormant. It trains them to ignore you. A dedicated sequence with a clear purpose performs better than adding them to your weekly send and hoping.</p>
+      <h2>Segment Three: Cold (No Engagement in 90+ Days)</h2>
+      <p>No opens, no clicks, no site visits for ninety days or more. These contacts are dead weight. They hurt deliverability. Every inbox provider watches engagement rates. If you send to ten thousand people and only eight hundred open, you&#39;re telling Gmail and Outlook that most people don&#39;t want your email.</p>
+      <p><strong>How to build it:</strong></p>
+      <p>Segment condition: <code>Has not opened</code> and <code>Has not clicked</code> in the last <code>90 days</code>. Save it as <code>Cold - 90d+</code>.</p>
+      <p><strong>What gets sent here:</strong></p>
+      <p>Nothing regular. One final re-engagement attempt, maybe. A single email: &quot;Should we part ways?&quot; with an obvious call-to-action to click if they want to stay. Wait seven days. If they don&#39;t click, suppress them.</p>
+      <p>Create a tag—<code>Suppressed - Cold</code>—and add it via automation to anyone in the Cold segment who doesn&#39;t engage with the final email. Then exclude that tag from all future sends.</p>
+      <p>Most operators are terrified to suppress cold contacts. &quot;But we paid for those leads.&quot; You&#39;re paying more to keep them. Cold contacts drag down your sender reputation, increase spam complaints, and waste send volume on higher-tier ActiveCampaign plans. Cut them.</p>
+      <p>I&#39;ve seen list suppressions improve inbox placement for the Active segment within two weeks. You don&#39;t need more contacts. You need contacts who actually open.</p>
+      <h2>Segment Four: Customers (Made a Purchase)</h2>
+      <p>Everyone who&#39;s bought. This seems obvious, but half the accounts I audit don&#39;t have a clean Customer segment. They have tags like <code>Purchased Course A</code> and <code>Bought June 2023</code> and <code>Customer?? Check</code>, but no single segment that answers &quot;who has given us money?&quot;</p>
+      <p><strong>How to build it:</strong></p>
+      <p>If you&#39;re using ActiveCampaign&#39;s <strong>deep data integration</strong> with Shopify, WooCommerce, or your course platform, build the segment as: <code>Has completed</code> an order where <code>Total is greater than 0</code>. </p>
+      <p>If you&#39;re tagging purchases manually, use: <code>Contact has tag</code> and list every purchase confirmation tag you use. Save it as <code>Customers - All</code>.</p>
+      <p><strong>What gets sent here:</strong></p>
+      <p>Post-purchase onboarding. Replenishment sequences for consumables. Cross-sell and upsell automations. Customer-only content or early access. Renewal reminders for memberships.</p>
+      <p>What does <em>not</em> get sent here: cold acquisition pitches for the thing they already bought. Use <strong>conditional content blocks</strong> in your broadcasts. If someone is in the Customer segment, swap the &quot;buy now&quot; CTA for a &quot;here&#39;s how to get more from your purchase&quot; message.</p>
+      <p>I still see accounts sending cart abandonment emails to existing customers. Or running a lead-nurture sequence that pitches a $2,000 program to someone who bought it four months ago. Exclude <code>Customers - All</code> from acquisition automations. Always.</p>
+      <h2>Segment Five: VIP (Top Decile by Revenue or Engagement)</h2>
+      <p>Your highest-value contacts. Top ten percent by revenue, or your most engaged superfans if you don&#39;t have clean revenue data. These people get white-glove treatment: early product access, personal check-ins, VIP-only offers, higher-touch sequences.</p>
+      <p><strong>How to build it (revenue-based):</strong></p>
+      <p>If you have deep data or deal values tracked in ActiveCampaign, create a custom field—<code>Lifetime Revenue</code>—and update it via automation or integration whenever a purchase completes. Then segment by <code>Lifetime Revenue is greater than X</code>, where X is your top-decile threshold.</p>
+      <p>Calculate it manually first: export your contact list with revenue, sort descending, find the value at the 90th percentile. Use that number. Save the segment as <code>VIP - Revenue</code>.</p>
+      <p><strong>How to build it (engagement-based):</strong></p>
+      <p>If revenue tracking isn&#39;t clean yet, use engagement. Segment condition: <code>Contact score is greater than Y</code>. Set up lead scoring in ActiveCampaign: award points for email opens, link clicks, site visits, webinar attendance. The top ten percent by score are your VIPs. Save it as <code>VIP - Engagement</code>.</p>
+      <p><strong>What gets sent here:</strong></p>
+      <p>Separate onboarding with a personal welcome. Early access to launches. Exclusive content. Higher-frequency check-ins if you&#39;re running a coaching business. VIP-only Q&amp;A sessions or live events.</p>
+      <p>Also: <em>suppress VIP contacts from heavy discounting</em>. I see operators blast a 40%-off fire sale to their entire list, including customers who&#39;ve bought three times at full price. You&#39;re training your best customers to wait for discounts. Exclude <code>VIP - Revenue</code> from deep-discount campaigns. They&#39;ll buy at full price. Let them.</p>
+      <p>The engagement-based version works if you&#39;re early and don&#39;t have purchase data yet. But switch to revenue-based scoring as soon as you can. The person who opens every email but never buys is not a VIP.</p>
+      <hr>
+      <p>Five segments. You know who&#39;s paying attention, who&#39;s fading, who&#39;s dead, who&#39;s bought, and who&#39;s worth treating like gold. Build them once, let ActiveCampaign maintain them automatically, and you&#39;ll never again stare at your contact list on Sunday night wondering who the hell to send to.</p>
+      <p>If you want a second set of eyes on your segmentation setup—or the forty orphaned segments you&#39;re about to delete—grab a free ActiveCampaign audit at <a href="https://getner.ai/audit/">https://getner.ai/audit/</a>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
