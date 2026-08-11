@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>Your Open Rate Is Lying to You (and What to Watch Instead)</title>
+      <link>https://getner.ai/blog/open-rate-misleading.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/open-rate-misleading.html</guid>
+      <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Apple Mail Privacy Protection broke the oldest metric in email marketing, and most ActiveCampaign users are still flying blind because they haven't adjusted their dashboards.]]></description>
+    </item>
 
     <item>
       <title>The 5 Segments Every ActiveCampaign Program Should Have</title>
