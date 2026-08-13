@@ -404,9 +404,9 @@
       "inactive subscribers"
     ],
     "affiliate_opportunity": null,
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-08-11T14:13:14.926Z",
-    "published_at": null
+    "published_at": "2026-08-13T14:16:09.399Z"
   },
   {
     "id": "predictive-sending-when-skip",
@@ -419,8 +419,8 @@
       "email send optimization"
     ],
     "affiliate_opportunity": null,
-    "status": "queued",
-    "drafted_at": null,
+    "status": "drafted",
+    "drafted_at": "2026-08-13T14:16:09.284Z",
     "published_at": null
   },
   {

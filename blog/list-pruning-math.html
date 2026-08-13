@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Case for Pruning 30% of Your List (Running the Math) — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Most operators resist list pruning because the raw count feels valuable, but sending to cold contacts drags inbox placement for your active segment—so deleting dead weight often increases total inbox deliveries of meaningful messages." />
+<link rel="canonical" href="https://getner.ai/blog/list-pruning-math.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="The Case for Pruning 30% of Your List (Running the Math)" />
+<meta property="og:description" content="Most operators resist list pruning because the raw count feels valuable, but sending to cold contacts drags inbox placement for your active segment—so deleting dead weight often increases total inbox deliveries of meaningful messages." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/list-pruning-math.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Retention" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Case for Pruning 30% of Your List (Running the Math)",
+  "description": "Most operators resist list pruning because the raw count feels valuable, but sending to cold contacts drags inbox placement for your active segment—so deleting dead weight often increases total inbox deliveries of meaningful messages.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-08-13",
+  "mainEntityOfPage": "https://getner.ai/blog/list-pruning-math.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">August 13, 2026 · Retention · 10 min read</div>
+      <h1 class="post-title">The Case for Pruning 30% of Your List (Running the Math)</h1>
+      <p class="post-lede">Most operators resist list pruning because the raw count feels valuable, but sending to cold contacts drags inbox placement for your active segment—so deleting dead weight often increases total inbox deliveries of meaningful messages.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I opened an ActiveCampaign account last month. 47,000 contacts. Owner runs a seven-figure coaching business. She was proud of the size. I filtered to <code>Has Opened Any Campaign</code> in the last 180 days and the number dropped to 19,000.</p>
+      <p>She was sending every broadcast, every automation, every nurture sequence to 28,000 people who hadn&#39;t opened an email in six months. Her active segment was paying the deliverability price for those dead addresses, and she was paying real dollars to host them.</p>
+      <p>The math says prune them. The emotional attachment to list size says don&#39;t. Let&#39;s run the numbers.</p>
+      <h2>The Deliverability Tax You&#39;re Already Paying</h2>
+      <p>ActiveCampaign doesn&#39;t charge you for sends—it charges you for contacts. But Gmail, Outlook, and Yahoo charge you in reputation. Every domain you send from earns a sender score based on engagement. Low engagement signals spam. Spam signals get you filtered, throttled, or blocked.</p>
+      <p>When you send a broadcast campaign to 50,000 contacts and 22,000 of them never open, the inbox providers see a campaign with poor engagement. They don&#39;t separate &quot;the engaged half did great&quot; from &quot;the cold half tanked it.&quot; They see the blended number and adjust placement accordingly.</p>
+      <p>The accounts I work in that resist list pruning typically show open rates in the 18–25% range on broadcast campaigns. The moment we segment to exclude cold contacts—<code>Has Not Opened Any Campaign</code> in the last 90 or 120 days—the same messaging to the remaining active segment jumps into the 35–50% range. Same subject lines. Same content. Smaller denominator, better placement, higher absolute opens.</p>
+      <h2>Running the Math: A Worked Example</h2>
+      <p>Say you have 50,000 contacts in ActiveCampaign. You send a broadcast campaign promoting a new offer.</p>
+      <ul>
+      <li>28,000 contacts have opened at least one campaign in the last 180 days. They&#39;re warm.</li>
+      <li>22,000 contacts have not opened anything in the last 180 days. They&#39;re cold.</li>
+      </ul>
+      <p>You send to all 50,000. Here&#39;s what typically happens in the accounts I audit:</p>
+      <ul>
+      <li>The 28,000 warm contacts: ~40% open rate = 11,200 opens</li>
+      <li>The 22,000 cold contacts: ~3% open rate = 660 opens</li>
+      <li><strong>Total opens: 11,860</strong></li>
+      <li><strong>Blended open rate: 23.7%</strong></li>
+      </ul>
+      <p>That 23.7% signals mediocre engagement to inbox providers. Gmail starts placing your emails in the Promotions tab instead of Primary. Outlook throttles delivery. Your next campaign lands worse.</p>
+      <p>Now run the same campaign after pruning the 22,000 cold contacts:</p>
+      <ul>
+      <li>28,000 warm contacts: ~48% open rate = 13,440 opens</li>
+      <li><strong>Total opens: 13,440</strong></li>
+      <li><strong>Blended open rate: 48%</strong></li>
+      </ul>
+      <p>You got <strong>1,580 more opens</strong> by sending to 22,000 fewer people. The improved engagement signals better sender reputation. Your domain warms up. Future campaigns land better. The compounding effect over twelve months is substantial.</p>
+      <p>The 660 opens you &quot;lost&quot; from the cold segment weren&#39;t worth the deliverability drag they caused on the warm segment.</p>
+      <h2>The ActiveCampaign Hosting Cost</h2>
+      <p>ActiveCampaign pricing tiers by contact count. At 50,000 contacts you&#39;re paying for the Professional plan at the 50K tier. Prune to 28,000 and you drop into a lower pricing band.</p>
+      <p>I&#39;m not saying the cost savings alone justifies pruning—it&#39;s the smallest benefit—but it&#39;s real. You&#39;re paying monthly hosting fees for addresses that haven&#39;t engaged in six months. They&#39;re not prospects. They&#39;re not dormant customers who might wake up. They&#39;re dead weight.</p>
+      <p>In every account I&#39;ve worked in that tracks cost-per-acquisition back to email, the cold segment shows negative or near-zero contribution after factoring in the deliverability tax they impose on the active segment. You&#39;re subsidizing dead addresses at the expense of live ones.</p>
+      <h2>How to Identify Contacts to Prune</h2>
+      <p>Build a segment in ActiveCampaign using these conditions:</p>
+      <pre><code>Has Not Opened Any Campaign
+      Date range: in the last 180 days
+      AND
+      Has Not Clicked Any Link in Campaign
+      Date range: in the last 180 days
+      AND
+      Is Not in Automation: [any active revenue-generating automation]
+      </code></pre>
+      <p>That last condition is critical. Don&#39;t prune someone mid-sequence. Let automations finish or move them to a goal step first.</p>
+      <p>You can tighten the window to 90 or 120 days if you send frequently. If you only send once a week or less, stick with 180 days.</p>
+      <p>Export that segment. Review it manually before you delete. Look for:</p>
+      <ul>
+      <li>Customers who haven&#39;t opened recently but have purchased in the last twelve months—move them to a re-engagement sequence instead of pruning immediately</li>
+      <li>High-value contacts tagged as VIP, partner, affiliate, or referral source—exclude them from pruning</li>
+      <li>Contacts added in the last 30 days who haven&#39;t had time to engage—exclude them</li>
+      </ul>
+      <p>After you&#39;ve filtered those exceptions, you&#39;re left with genuinely cold contacts. No opens, no clicks, no purchases, no special status. Delete them.</p>
+      <h2>The Re-Engagement Sequence (Run It First, Then Prune)</h2>
+      <p>Before you delete, give them one last chance. Build a simple re-engagement automation in ActiveCampaign:</p>
+      <p><strong>Entry condition:</strong> segment of cold contacts (same criteria above)</p>
+      <p><strong>Email 1</strong> (day 0): subject line acknowledging the silence. &quot;Still want to hear from me?&quot; or &quot;Should I keep sending?&quot; Keep it short. Single CTA: click here to stay subscribed.</p>
+      <p><strong>Email 2</strong> (day 4): similar framing, different angle. &quot;Last chance to stay on the list.&quot;</p>
+      <p><strong>Email 3</strong> (day 7): final notice. &quot;I&#39;m removing inactive subscribers this week. Click to stay.&quot;</p>
+      <p><strong>Goal step:</strong> <code>Has Opened Any Campaign</code> or <code>Has Clicked Any Link in Campaign</code> in this automation. Anyone who hits the goal jumps out and stays on the main list.</p>
+      <p><strong>End of automation:</strong> tag <code>Cold - No Response</code>. After the automation finishes, delete everyone with that tag.</p>
+      <p>In the programs I run, the re-engagement sequence recovers 4–8% of cold contacts. The rest confirm they&#39;re dead. Delete them.</p>
+      <h2>What Happens After You Prune</h2>
+      <p>The first broadcast campaign after pruning will feel strange. The send count drops by 30–40%. The open rate jumps. The inbox providers notice. Your sender reputation improves over the next two to four weeks.</p>
+      <p>Expect a short adjustment period where Gmail and Outlook recalibrate. Keep sending consistently. Don&#39;t panic and add addresses back. The warm segment will stabilize at a higher engagement rate, and that higher rate will持续 improve placement over time.</p>
+      <p>You&#39;ll also see automation performance improve. Welcome sequences, nurture flows, and cart abandonment automations all benefit from better domain reputation. The cold contacts weren&#39;t opening those either—they were just dragging down your sender score across every automation you run.</p>
+      <p>In the accounts I&#39;ve worked in that prune annually, the active segment stays healthier, costs less to maintain, and generates more absolute opens and clicks than the bloated list ever did.</p>
+      <h2>You&#39;re Not Losing Reach, You&#39;re Gaining Deliverability</h2>
+      <p>The objection I hear most often: &quot;But what if they come back? What if they buy later?&quot;</p>
+      <p>They won&#39;t. A contact who hasn&#39;t opened an email in six months is not a dormant prospect waiting to wake up. They&#39;ve changed addresses, marked you as spam, or trained their inbox provider to filter you automatically. Keeping them on the list doesn&#39;t preserve optionality—it actively harms the contacts who <em>do</em> want to hear from you.</p>
+      <p>Every cold contact you send to is a vote telling Gmail that your emails aren&#39;t relevant. Enough of those votes and Gmail stops delivering your emails to anyone, warm or cold. You lose reach by trying to preserve it.</p>
+      <p>Prune the dead weight. Your active segment will thank you with better opens, better clicks, and better revenue. The raw contact count never mattered. The engaged count always did.</p>
+      <hr>
+      <p>If you&#39;re running a seven-figure business on ActiveCampaign and want a second set of eyes on your list hygiene, deliverability setup, and automation architecture, I offer a free audit: <strong><a href="https://getner.ai/audit/">https://getner.ai/audit/</a></strong></p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
