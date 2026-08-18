@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>ActiveCampaign Predictive Sending: When It's Worth It and When to Skip</title>
+      <link>https://getner.ai/blog/predictive-sending-when-skip.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/predictive-sending-when-skip.html</guid>
+      <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[ActiveCampaign's machine learning send-time optimization can lift open rates meaningfully on the right programs, but most people turn it on in the wrong places and wonder why it doesn't work.]]></description>
+    </item>
 
     <item>
       <title>The Case for Pruning 30% of Your List (Running the Math)</title>

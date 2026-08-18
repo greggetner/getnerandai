@@ -419,9 +419,9 @@
       "email send optimization"
     ],
     "affiliate_opportunity": null,
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-08-13T14:16:09.284Z",
-    "published_at": null
+    "published_at": "2026-08-18T13:35:45.045Z"
   },
   {
     "id": "first-30-min-audit-checklist",
@@ -434,8 +434,8 @@
       "account review"
     ],
     "affiliate_opportunity": null,
-    "status": "queued",
-    "drafted_at": null,
+    "status": "drafted",
+    "drafted_at": "2026-08-18T13:35:44.892Z",
     "published_at": null
   },
   {
