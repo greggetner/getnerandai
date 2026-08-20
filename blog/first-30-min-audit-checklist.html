@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The First-30-Minutes Audit I Run on Every New ActiveCampaign Account — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Before I quote any work, I spend thirty minutes in your account looking at five things—and what I find in that half-hour tells me exactly what the next ninety days need to look like." />
+<link rel="canonical" href="https://getner.ai/blog/first-30-min-audit-checklist.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="The First-30-Minutes Audit I Run on Every New ActiveCampaign Account" />
+<meta property="og:description" content="Before I quote any work, I spend thirty minutes in your account looking at five things—and what I find in that half-hour tells me exactly what the next ninety days need to look like." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/first-30-min-audit-checklist.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Platform" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The First-30-Minutes Audit I Run on Every New ActiveCampaign Account",
+  "description": "Before I quote any work, I spend thirty minutes in your account looking at five things—and what I find in that half-hour tells me exactly what the next ninety days need to look like.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-08-20",
+  "mainEntityOfPage": "https://getner.ai/blog/first-30-min-audit-checklist.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">August 20, 2026 · Platform · 10 min read</div>
+      <h1 class="post-title">The First-30-Minutes Audit I Run on Every New ActiveCampaign Account</h1>
+      <p class="post-lede">Before I quote any work, I spend thirty minutes in your account looking at five things—and what I find in that half-hour tells me exactly what the next ninety days need to look like.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>A prospect fills out the intake form. They send the account invite. I log in, and the canvas looks fine. Dozens of automations. Segmentation. Tagging. Someone clearly put in effort.</p>
+      <p>Then I run the checklist. Five data points. Thirty minutes. And I can tell you whether this is a tuning job or a rebuild—and what&#39;s leaking money right now.</p>
+      <h2>1. Engagement Cohort Chart: Who&#39;s Actually Opening</h2>
+      <p>First thing I do: pull the engagement report. ActiveCampaign has it under <strong>Reports &gt; Engagement</strong>. I&#39;m looking at the breakdown of contacts by engagement level over the last ninety days: <code>Highly Engaged</code>, <code>Active</code>, <code>Moderately Engaged</code>, <code>Barely Engaged</code>, <code>Never Engaged</code>.</p>
+      <p><strong>Pass threshold:</strong> At least 40% of your list should be in the top two buckets combined (<code>Highly Engaged</code> + <code>Active</code>). Another 20–30% in <code>Moderately Engaged</code> is fine. The rest is dead weight.</p>
+      <p><strong>Fail threshold:</strong> If more than half your list sits in <code>Barely Engaged</code> or <code>Never Engaged</code>, you&#39;re mailing a graveyard. Your deliverability is already compromised, and every campaign you send trains the inbox providers that your mail doesn&#39;t matter.</p>
+      <p>What this tells me about the next ninety days: if you fail, we&#39;re doing a sunset sequence immediately. We&#39;re segmenting the engaged contacts into their own subset and stopping broadcast sends to anyone who hasn&#39;t opened in six months. The alternative is watching your sender reputation crater and taking the engaged half of your list down with the dead half.</p>
+      <p>The accounts that pass this check rarely need more than tactical work. The ones that fail need list hygiene before we touch a single automation.</p>
+      <h2>2. Google Postmaster Tools: What Gmail Actually Thinks of You</h2>
+      <p>I ask for Postmaster Tools access during onboarding. If they haven&#39;t set it up, that&#39;s already a flag. Setting it up takes four minutes and a DNS TXT record.</p>
+      <p>Once I&#39;m in, I&#39;m looking at two things: <strong>Domain Reputation</strong> and <strong>Spam Rate</strong> over the last thirty days.</p>
+      <p><strong>Pass threshold:</strong> Domain reputation is <code>High</code> or <code>Medium</code>. User-reported spam rate is below <code>0.10%</code>. IP reputation (if you&#39;re on a dedicated IP) is <code>High</code>.</p>
+      <p><strong>Fail threshold:</strong> Domain reputation is <code>Low</code> or <code>Bad</code>. Spam rate is above <code>0.30%</code>. If I see spam rate spiking consistently above that line, Gmail is already throttling you—your mail is going to the promotions tab at best, spam folder at worst.</p>
+      <p>What this tells me: if your reputation is in the gutter, we&#39;re not launching anything new. We&#39;re pulling back send volume, tightening the engagement segment, fixing authentication (SPF, DKIM, DMARC), and rebuilding trust with the inbox providers. That&#39;s a sixty-day project minimum before we can run offense again.</p>
+      <p>If Postmaster looks clean, we can move fast. I know the infrastructure is sound and the problem is strategic, not technical.</p>
+      <h2>3. Top Three Automations: Goal Completion Rate</h2>
+      <p>Next I pull the three automations that should be doing the most work. Usually that&#39;s the welcome series, the post-purchase onboarding, and the lead nurture or application funnel.</p>
+      <p>I click into each one, go to <strong>Reporting</strong> at the top of the automation builder, and look at the number of contacts who entered versus the number who reached the <code>goal</code> step.</p>
+      <p><strong>Pass threshold:</strong> The automation has a goal configured (not just an end tag), and at least 15–25% of contacts who enter actually reach it. The goal represents the outcome you want—purchased, booked a call, completed onboarding, tagged as <code>qualified</code>.</p>
+      <p><strong>Fail threshold:</strong> No goal configured. Or the goal is there but completion rate is under 5%. Or—this is the most common pattern—the goal is at the very end of the automation instead of placed early so contacts can jump to it from anywhere in the sequence.</p>
+      <p>What this tells me: if there&#39;s no goal, the automation is a broadcast dressed up as a sequence. Contacts plow through every email whether or not they&#39;ve already converted, and you&#39;re burning goodwill. If the goal exists but nobody reaches it, the sequence isn&#39;t doing its job. Either the offer is wrong, the messaging is wrong, or the sequence is too long and people tune out before the ask.</p>
+      <p>When I see well-structured goals with healthy completion rates, I know the operator understands automation logic. When I see none, we&#39;re starting from scratch on how to structure sequences that actually end when they should.</p>
+      <h2>4. Tag Count and Taxonomy Health</h2>
+      <p>I open the tag manager. <strong>Contacts &gt; Tags &gt; Manage Tags</strong>. Then I sort by tag name and start scrolling.</p>
+      <p><strong>Pass threshold:</strong> Fewer than 200 tags total. Clear naming convention—either <code>Source: Webinar 2024-03</code> or <code>Behavior - Clicked Link 3</code> or something consistent. No random capitalization. No duplicates like <code>Purchased</code>, <code>purchased</code>, <code>Purchase Complete</code>, <code>Customer</code>.</p>
+      <p><strong>Fail threshold:</strong> 400+ tags. No naming system. Tags that are just dates (<code>2023-09-15</code>). Tags that describe one-time events but never get removed (<code>Attended Live Event</code>). Tags with counts of one or two contacts. The classic: <code>test</code>, <code>test2</code>, <code>TEST</code>, <code>delete this</code>.</p>
+      <p>What this tells me: tag bloat means one of two things. Either the account has been running for years with no governance, or the operator is using tags like a CRM when they should be using custom fields and deal pipelines. Both are fixable, but the audit reveals how much archaeology we&#39;re doing.</p>
+      <p>If you pass, I know you&#39;ve been intentional. Tagging is clean, segmentation is probably clean, and we&#39;re iterating on strategy, not cleaning up after six years of duct tape.</p>
+      <p>If you fail, we&#39;re doing a tag consolidation project in month one. I&#39;ll export the full tag list, flag everything that&#39;s redundant or obsolete, merge where we can, and build a taxonomy guide so this doesn&#39;t happen again.</p>
+      <h2>5. Sender Address and Authentication Records</h2>
+      <p>Last check: I go to <strong>Settings &gt; Advanced &gt; SMTP &amp; Tracking</strong> and look at the sending domain. Then I verify the authentication records in DNS.</p>
+      <p><strong>Pass threshold:</strong> You&#39;re sending from your own domain (<code>hello@yourbrand.com</code>), not a generic <code>@gmail.com</code> or <code>@myactivecampaign.com</code> address. SPF, DKIM, and DMARC are all configured and passing. DMARC policy is set to at least <code>p=quarantine</code>.</p>
+      <p><strong>Fail threshold:</strong> You&#39;re still sending from ActiveCampaign&#39;s default domain. Or you&#39;ve set up your domain but DKIM isn&#39;t aligned. Or DMARC isn&#39;t set up at all. Or—this still happens—SPF is broken because someone added too many includes and hit the lookup limit.</p>
+      <p>What this tells me: if authentication is missing or broken, you&#39;re flying blind. The inbox providers don&#39;t trust you, and your deliverability is a coin flip. This is table stakes, and if it&#39;s not done, everything else we&#39;re measuring is skewed.</p>
+      <p>When authentication is clean, I know someone either did the work or hired someone who knew what they were doing. We&#39;re building on a foundation. When it&#39;s missing, we&#39;re scheduling a call with whoever manages DNS, and nothing else moves until this is fixed.</p>
+      <h2>What This Half-Hour Tells Me</h2>
+      <p>These five checks take thirty minutes. Sometimes less. And by the time I close the last tab, I know whether we&#39;re optimizing or rebuilding. I know whether the operator has been strategic or reactive. I know what&#39;s on fire and what can wait.</p>
+      <p>The accounts that pass all five are rare. When they show up, the work is fun—we&#39;re testing new sequences, tightening attribution, building out conditional content, layering in predictive sending. The upside is fast.</p>
+      <p>The accounts that fail three or more? We&#39;re playing defense for sixty days. Sunsetting the dead weight. Fixing authentication. Rebuilding trust with Gmail and Outlook. Cleaning up the tag mess. It&#39;s not glamorous, but it&#39;s the only way to get the program healthy enough to scale.</p>
+      <p>If you&#39;re reading this and you&#39;ve never run these five checks on your own account, do it this week. You&#39;ll know exactly where you stand—and what needs to happen next.</p>
+      <p><strong>If you want me to run the audit for you, I still do them for free—just book it at <a href="https://getner.ai/audit/">getner.ai/audit</a>.</strong></p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

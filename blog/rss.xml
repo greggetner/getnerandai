@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>The First-30-Minutes Audit I Run on Every New ActiveCampaign Account</title>
+      <link>https://getner.ai/blog/first-30-min-audit-checklist.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/first-30-min-audit-checklist.html</guid>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Before I quote any work, I spend thirty minutes in your account looking at five things—and what I find in that half-hour tells me exactly what the next ninety days need to look like.]]></description>
+    </item>
 
     <item>
       <title>ActiveCampaign Predictive Sending: When It's Worth It and When to Skip</title>
