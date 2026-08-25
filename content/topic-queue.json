@@ -449,9 +449,9 @@
       "email platform updates"
     ],
     "affiliate_opportunity": null,
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-08-20T13:38:59.938Z",
-    "published_at": null
+    "published_at": "2026-08-25T13:41:34.321Z"
   },
   {
     "id": "goals-vs-conditional-branches",
@@ -464,8 +464,8 @@
       "automation logic"
     ],
     "affiliate_opportunity": null,
-    "status": "queued",
-    "drafted_at": null,
+    "status": "drafted",
+    "drafted_at": "2026-08-25T13:41:34.170Z",
     "published_at": null
   },
   {
