@@ -464,9 +464,9 @@
       "automation logic"
     ],
     "affiliate_opportunity": null,
-    "status": "drafted",
+    "status": "published",
     "drafted_at": "2026-08-25T13:41:34.170Z",
-    "published_at": null
+    "published_at": "2026-08-27T22:41:26.176Z"
   },
   {
     "id": "klaviyo-abandoned-cart-flow",

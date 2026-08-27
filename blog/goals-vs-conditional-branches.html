@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Goal Steps vs. Conditional Branches in ActiveCampaign: When to Use Each — Greg Getner</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+<meta name="description" content="Most ActiveCampaign users treat goals and conditional branches like interchangeable routing tools — then wonder why contacts keep getting emails they shouldn't, or why conversions happen but automations never respond." />
+<link rel="canonical" href="https://getner.ai/blog/goals-vs-conditional-branches.html" />
+<link rel="alternate" type="application/rss+xml" title="Greg Getner — Blog" href="/blog/rss.xml" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Goal Steps vs. Conditional Branches in ActiveCampaign: When to Use Each" />
+<meta property="og:description" content="Most ActiveCampaign users treat goals and conditional branches like interchangeable routing tools — then wonder why contacts keep getting emails they shouldn't, or why conversions happen but automations never respond." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getner.ai/blog/goals-vs-conditional-branches.html" />
+<meta property="article:author" content="Greg Getner" />
+<meta property="article:section" content="Platform" />
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Goal Steps vs. Conditional Branches in ActiveCampaign: When to Use Each",
+  "description": "Most ActiveCampaign users treat goals and conditional branches like interchangeable routing tools — then wonder why contacts keep getting emails they shouldn't, or why conversions happen but automations never respond.",
+  "author": {
+    "@type": "Person",
+    "name": "Greg Getner",
+    "url": "https://getner.ai",
+    "jobTitle": "ActiveCampaign consultant, retention marketing specialist",
+    "sameAs": [
+      "https://www.linkedin.com/in/gregorygetner/",
+      "https://github.com/greggetner"
+    ]
+  },
+  "publisher": { "@type": "Organization", "name": "Getner & AI" },
+  "datePublished": "2026-08-27",
+  "mainEntityOfPage": "https://getner.ai/blog/goals-vs-conditional-branches.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Inter+Tight:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="blog.css" />
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-QtH7bfGPwtIycthVldovl.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init();
+
+  // Outbound link tracking
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname === location.hostname || url.protocol === 'mailto:' || url.protocol === 'tel:') return;
+      plausible('Outbound Link Clicked', { props: { url: url.href, hostname: url.hostname } });
+    } catch (err) {}
+  });
+</script>
+</head>
+<body>
+
+<header class="blog-masthead">
+  <a href="/" class="blog-masthead-brand">
+    <span class="blog-masthead-title">Getner &amp; AI</span>
+    <span class="blog-masthead-subtitle">Boutique ActiveCampaign &amp; Klaviyo Management</span>
+  </a>
+  <nav class="blog-masthead-nav">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#apply">Apply</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+
+  <article>
+    <header class="post-header">
+      <div class="post-meta">August 27, 2026 · Platform · 13 min read</div>
+      <h1 class="post-title">Goal Steps vs. Conditional Branches in ActiveCampaign: When to Use Each</h1>
+      <p class="post-lede">Most ActiveCampaign users treat goals and conditional branches like interchangeable routing tools — then wonder why contacts keep getting emails they shouldn't, or why conversions happen but automations never respond.</p>
+    </header>
+
+    <div class="post-body">
+
+      <p>I&#39;ve seen this in almost every account I audit. Someone builds a launch sequence with a conditional branch checking for a purchase tag. The contact enters the automation, sits in a wait step for two days, hits the branch, hasn&#39;t purchased yet, goes down the &quot;no&quot; path. Then they buy three hours later. The automation has no idea. It keeps running the nurture track like nothing happened.</p>
+      <p>That&#39;s the wrong tool. Goals and conditional branches do completely different things. One evaluates constantly and pulls contacts out of the flow the moment something happens. The other evaluates once, at a single point, and sends the contact down a path based on what&#39;s true right then.</p>
+      <p>Here&#39;s when to use each.</p>
+      <h2>Goals Evaluate on Every Contact Action — Use Them for Conversions</h2>
+      <p>A <code>goal</code> step in ActiveCampaign isn&#39;t a finish line at the end of an automation. It&#39;s a listening post. The moment you configure a goal — usually as the second or third step in the flow — ActiveCampaign starts watching every contact in that automation. If any contact meets the goal conditions at any point, they jump directly to the goal step and skip everything in between.</p>
+      <p>The most common goal condition: <code>has tag</code> with your purchase-complete tag. Or <code>subscribes to list</code> if you move buyers to a customer list. Or <code>Deal stage changes to Closed-Won</code> if you&#39;re running pipeline automations.</p>
+      <p><strong>When to use a goal:</strong></p>
+      <ul>
+      <li>Any automation that promotes a paid offer and should stop pitching the moment someone buys</li>
+      <li>Post-purchase sequences where you want to detect if someone refunds or chargebacks mid-flow</li>
+      <li>Trial-to-paid nurture where conversion can happen on any day, not just after a specific wait step</li>
+      <li>Multi-path launch automations where someone might buy from email three or email six — you don&#39;t know which</li>
+      </ul>
+      <p><strong>What to do:</strong> place the goal step early in the automation, right after the entry trigger and any universal tag assignments. Configure it to check for the conversion event — tag, list membership, deal stage, custom field value, whatever marks the outcome you care about. Set the goal action to <code>End this automation</code> or route the contact into a post-purchase sequence.</p>
+      <p>The goal stays active for every contact moving through the automation. It doesn&#39;t matter if they&#39;re on day two or day fourteen. The second the condition becomes true, they exit.</p>
+      <p>I see operators skip goals because they assume the conditional branch halfway through the sequence is enough. It&#39;s not. The branch only evaluates when the contact reaches it. If someone buys two days before they hit that branch, the branch will catch it. If they buy two days after, the automation has already routed them down the &quot;hasn&#39;t purchased&quot; path and will keep going.</p>
+      <h2>Conditional Branches Evaluate Once — Use Them for Segmentation and Routing</h2>
+      <p>A <code>conditional branch</code> (listed as <code>If/Else</code> in the automation builder) evaluates at one moment: when the contact arrives at that step. ActiveCampaign checks the condition — does this contact have a tag, are they on a list, is a custom field equal to a specific value — and immediately sends them down the Yes path or the No path.</p>
+      <p>After that decision, the branch is done. It doesn&#39;t keep checking. The contact is committed to whichever path they took.</p>
+      <p><strong>When to use a conditional branch:</strong></p>
+      <ul>
+      <li>Segmenting based on static or slow-changing attributes: industry, business model, product interest, timezone</li>
+      <li>Routing based on behavior that&#39;s already happened before the contact reached this point in the flow</li>
+      <li>Splitting paths based on engagement earlier in the same automation — &quot;if opened email 2, send version A; if didn&#39;t open, send version B&quot;</li>
+      </ul>
+      <p><strong>What to do:</strong> use branches when you need to create parallel tracks based on what&#39;s already true about the contact at that exact moment. The decision is one-time and permanent for that pass through the automation.</p>
+      <p>Example: you run a product launch automation. Email one goes to everyone. At step two, you add a conditional branch: <code>if custom field &quot;Product Interest&quot; is equal to &quot;Advanced&quot;</code>, send email series A. Otherwise, send series B. The contact hits the branch, ActiveCampaign checks the field, routes them. Done.</p>
+      <p>Branches work when the thing you&#39;re checking is stable and already set. They fail when you&#39;re trying to detect something that might happen later — that&#39;s what goals are for.</p>
+      <h2>The Big Mistake: Using Branches to Detect Future Conversions</h2>
+      <p>This is the pattern that costs the most money. An operator builds a seven-email launch sequence. Somewhere around email four, they drop in a conditional branch: <code>if has tag &quot;Purchase Complete&quot;</code>, end the automation. Otherwise, keep sending.</p>
+      <p>The intent is correct. The execution is broken.</p>
+      <p>Here&#39;s what happens: contact enters the automation. Day one, email one. Day two, wait step. Day three, email two. Day four, wait step. Day five, they hit the conditional branch. They haven&#39;t purchased yet. Branch evaluates, sends them down the No path. Day six, email three goes out. That afternoon, the contact buys.</p>
+      <p>The purchase tag fires. The contact is now a customer. But they&#39;re already past the branch. The branch evaluated on day five and made its decision. ActiveCampaign doesn&#39;t go back and re-check. The contact is locked into the No path. Emails four, five, six, and seven all still send — each one pitching the offer they already bought.</p>
+      <p><strong>The fix:</strong> replace that conditional branch with a goal step. Configure the goal at step two or three in the automation. Set the condition to <code>has tag &quot;Purchase Complete&quot;</code>. Set the action to <code>End this automation</code> or jump to a post-purchase sequence.</p>
+      <p>Now it doesn&#39;t matter when they buy. Email one, email four, two hours after email six — the moment that tag hits, the goal pulls them out.</p>
+      <p>I&#39;ve seen this mistake in accounts doing seven figures, eight figures. The automation canvas looks clean. The logic seems sound. The branch is there, checking for the purchase. But it only checks once, at the wrong time, and the contact keeps moving.</p>
+      <p>If the thing you&#39;re checking for could happen at any point during the automation, it&#39;s a goal. If it&#39;s a one-time decision based on attributes that are already set when the contact arrives, it&#39;s a branch.</p>
+      <h2>Combine Them: Branch for Segmentation, Goal for Conversion</h2>
+      <p>You don&#39;t have to choose one. Most of the high-performing automations I work in use both.</p>
+      <p>Pattern: contact enters a product launch automation. Step one, universal tag assignment. Step two, goal checking for purchase-complete tag or customer list membership. Step three, conditional branch splitting the audience by custom field or prior engagement. Then each branch has its own email sequence, wait steps, and messaging.</p>
+      <p>The branch creates the tracks. The goal watches all of them.</p>
+      <p>If someone on the Advanced track buys on day two, the goal pulls them out. If someone on the Beginner track buys on day nine, same thing. One goal, multiple paths, every contact monitored.</p>
+      <p><strong>What to do:</strong> in any automation longer than three emails that promotes a paid offer, configure the goal early and branch later. The goal is insurance. The branch is routing.</p>
+      <p>This also works in evergreen onboarding automations where you&#39;re segmenting by behavior — opened a specific email, clicked a specific link, visited a specific page tracked by ActiveCampaign site tracking. Use conditional branches to check engagement and route to the right nurture track. Use a goal to detect when someone converts from any of those tracks.</p>
+      <h2>When Goals Should End vs. Continue the Automation</h2>
+      <p>Most operators set goals to <code>End this automation</code> because the common use case is stopping a sales sequence after purchase. But goals have other actions.</p>
+      <p>You can set a goal to <code>Continue to next action</code> or <code>Jump to another action</code>. The jump option is how you route converters into a post-purchase automation without manually starting a second automation via a separate trigger.</p>
+      <p><strong>When to end:</strong> the contact has completed the desired outcome and there&#39;s no additional value in this automation. Stop pitching a course after they bought the course.</p>
+      <p><strong>When to continue or jump:</strong> you want the contact to experience something different based on the goal being met, but you&#39;re not done with them yet. Example: a trial nurture automation where the goal is <code>subscribes to list &quot;Paid Subscribers&quot;</code>. When the goal is met, jump to a welcome-to-paid sequence that lives inside the same automation or trigger a separate one.</p>
+      <p>I see operators duplicate entire automations because they don&#39;t realize goals can route, not just end. You don&#39;t need two automations if one goal with a jump action handles it.</p>
+      <h2>Most Accounts Mix Them Up Because the Canvas Looks the Same</h2>
+      <p>On the ActiveCampaign automation canvas, both goals and conditional branches create splits in the flow. Both show paths. Both look like decision points. That visual similarity is why operators treat them as interchangeable.</p>
+      <p>They&#39;re not. A conditional branch is a fork in the road — one decision, one moment, two paths. A goal is a trapdoor that stays open for the entire automation, pulling contacts out the second the condition becomes true.</p>
+      <p>If you&#39;ve built automations that keep sending after conversions, or that fail to respond when a contact takes an action mid-sequence, you&#39;re using branches where you need goals.</p>
+      <p><strong>What to do:</strong> audit your revenue-generating automations. Any automation that promotes a paid product, a booked call, a trial signup, or another conversion event needs a goal step configured within the first three actions. If you&#39;re using a conditional branch to check for that event later in the flow, replace it with a goal or add a goal earlier and leave the branch for segmentation.</p>
+      <p>The goal listens. The branch decides once. Use both, in the right places, and contacts route correctly.</p>
+      <hr>
+      <p>I&#39;ve seen seven-figure programs burn thousands of dollars a month because the wrong routing tool was in place. The automations looked professional. The logic made sense at first glance. But contacts kept moving when they should have stopped, or never responded to actions that should have triggered an immediate change.</p>
+      <p>If you&#39;re not sure whether your automations are using goals and branches correctly — or if you&#39;ve seen purchase-confirmation emails going to people who already bought — I&#39;ll review your ActiveCampaign account and show you exactly where the leaks are: <strong><a href="https://getner.ai/audit/">getner.ai/audit</a></strong>.</p>
+
+    </div>
+
+    <aside class="post-cta">
+      <h3>Want me to audit yours?</h3>
+      <p>I work with a few boutique clients at a time. If the themes above sound familiar, let's talk.</p>
+      <a href="#apply">Apply to work with me →</a>
+    </aside>
+
+  </article>
+
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#apply">Apply</a>
+    <a href="/#contact">Contact</a>
+    <a href="/blog/rss.xml">RSS</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <div>Built with ❤️ by Greg &amp; Claude. <span style="white-space: nowrap;">Deployed to Netlify.</span></div>
+  <div>&copy; 2026 Getner &amp; AI</div>
+</footer>
+
+<!-- APPLY TO WORK WITH ME MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+  <div class="modal-content apply-modal-content" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+    <button class="modal-close" type="button" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+
+    <div class="apply-wrapper" id="apply-wrapper">
+      <div class="apply-intro">
+        <h2 id="apply-modal-title">Apply to Work With Me</h2>
+        <p>I work with 2-3 select clients at a time to ensure focused attention. Share your situation below and I'll determine if we're aligned — or recommend the right resource for your specific needs.</p>
+      </div>
+
+      <form
+        class="site-form"
+        id="application-form"
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="application" />
+        <p class="bot-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-name">Name<span class="required">*</span></label>
+            <input class="form-control" type="text" id="app-name" name="name" required autocomplete="name" />
+            <span class="form-error" data-error-for="app-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-email">Email<span class="required">*</span></label>
+            <input class="form-control" type="email" id="app-email" name="email" required autocomplete="email" />
+            <span class="form-error" data-error-for="app-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-company">Company / Brand<span class="required">*</span></label>
+          <input class="form-control" type="text" id="app-company" name="company" required autocomplete="organization" />
+          <span class="form-error" data-error-for="app-company"></span>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label class="form-label" for="app-experience">Experience Level<span class="required">*</span></label>
+            <select class="form-control" id="app-experience" name="experience" required>
+              <option value="">Select one…</option>
+              <option>New to ActiveCampaign (just getting started)</option>
+              <option>Somewhat experienced (been using it 6+ months)</option>
+              <option>Very experienced (power user, advanced features)</option>
+              <option>Expert level (know the platform inside &amp; out)</option>
+            </select>
+            <span class="form-error" data-error-for="app-experience"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="app-list-size">ActiveCampaign List Size<span class="required">*</span></label>
+            <select class="form-control" id="app-list-size" name="list_size" required>
+              <option value="">Select one…</option>
+              <option>Under 5,000 contacts</option>
+              <option>5,000 - 25,000 contacts</option>
+              <option>25,000 - 100,000 contacts</option>
+              <option>100,000 - 500,000 contacts</option>
+              <option>500,000 - 1M contacts</option>
+              <option>1M-5M contacts</option>
+              <option>5M-10M contacts</option>
+              <option>10M+</option>
+            </select>
+            <span class="form-error" data-error-for="app-list-size"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-timeline">Implementation Timeline</label>
+          <select class="form-control" id="app-timeline" name="timeline">
+            <option value="">Select one…</option>
+            <option>ASAP (this month)</option>
+            <option>Next 2-3 months</option>
+            <option>Next quarter</option>
+            <option>Just exploring options / other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="app-challenge">Biggest Challenge</label>
+          <textarea class="form-control" id="app-challenge" name="challenge" placeholder="What's the ActiveCampaign problem that's most on your mind right now?"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Application</button>
+      </form>
+
+      <div class="form-success" id="application-success" aria-live="polite">
+        <h3>Application received!</h3>
+        <p>Schedule your 30-minute strategy session below:</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/getner/activecampaign-strategy-session?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=B8431F"
+               style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mirrors the homepage apply-modal + form handler so /#apply links
+  // on blog pages open the modal in place instead of navigating away.
+  (function () {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let calendlyScriptLoaded = false;
+
+    function loadCalendlyScript() {
+      if (calendlyScriptLoaded) return;
+      calendlyScriptLoaded = true;
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+
+    function showModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const firstField = modal.querySelector('.form-control');
+      if (firstField && firstField.offsetParent) {
+        setTimeout(() => firstField.focus(), 50);
+      }
+    }
+
+    function hideModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    window.openApplyModal  = () => showModal('apply-modal');
+    window.closeApplyModal = () => hideModal('apply-modal');
+
+    function setFieldError(field, message) {
+      const slot = document.querySelector(`[data-error-for="${field.id}"]`);
+      if (slot) slot.textContent = message || '';
+      if (message) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm(form) {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach(field => {
+        const value = (field.value || '').trim();
+        if (!value) {
+          setFieldError(field, 'Required');
+          if (!firstInvalid) firstInvalid = field;
+        } else if (field.type === 'email' && !EMAIL_RE.test(value)) {
+          setFieldError(field, 'Enter a valid email');
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          setFieldError(field, '');
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    }
+
+    function encodeFormData(form) {
+      const params = new URLSearchParams();
+      for (const [k, v] of new FormData(form).entries()) params.append(k, v);
+      return params.toString();
+    }
+
+    function handleFormSubmit(form, onSuccess) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validateForm(form)) return;
+        const btn = form.querySelector('.form-submit');
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData(form)
+          });
+          if (!res.ok) throw new Error('Server error: ' + res.status);
+          onSuccess();
+        } catch (err) {
+          console.error('Form submit failed:', err);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          alert('Something went wrong submitting the form. Please try again or email greg@getner.ai directly.');
+        }
+      });
+      form.querySelectorAll('.form-control').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, ''));
+        field.addEventListener('change', () => setFieldError(field, ''));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href="#apply"]');
+      if (link) {
+        e.preventDefault();
+        window.openApplyModal();
+        return;
+      }
+      const modal = document.getElementById('apply-modal');
+      if (modal && e.target === modal) hideModal('apply-modal');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('apply-modal');
+      if (modal && modal.style.display === 'flex') hideModal('apply-modal');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('application-form');
+      if (!form) return;
+      handleFormSubmit(form, () => {
+        form.style.display = 'none';
+        const wrapper = document.getElementById('apply-wrapper');
+        if (wrapper) wrapper.classList.add('is-success');
+        const success = document.getElementById('application-success');
+        if (success) {
+          success.classList.add('visible');
+          loadCalendlyScript();
+          success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

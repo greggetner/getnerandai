@@ -6,7 +6,16 @@
     <atom:link href="https://getner.ai/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Field notes from 23 years of retention marketing: automations, deliverability, retention, and the expensive mistakes most operators keep making.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>Goal Steps vs. Conditional Branches in ActiveCampaign: When to Use Each</title>
+      <link>https://getner.ai/blog/goals-vs-conditional-branches.html</link>
+      <guid isPermaLink="true">https://getner.ai/blog/goals-vs-conditional-branches.html</guid>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
+      <author>greg@getner.ai (Greg Getner)</author>
+      <description><![CDATA[Most ActiveCampaign users treat goals and conditional branches like interchangeable routing tools — then wonder why contacts keep getting emails they shouldn't, or why conversions happen but automations never respond.]]></description>
+    </item>
 
     <item>
       <title>ActiveCampaign Features That Got Quietly Better in 2025 (and What It Means for Your Setup)</title>
