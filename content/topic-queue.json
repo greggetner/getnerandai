@@ -569,5 +569,229 @@
     "status": "published",
     "drafted_at": "2026-07-23T15:03:12.080Z",
     "published_at": "2026-07-28T15:12:42.189Z"
+  },
+  {
+    "id": "tag-hygiene-naming-convention",
+    "title": "The Tag Naming Convention That Keeps an ActiveCampaign Account Sane at 500 Tags",
+    "category": "Platform",
+    "angle": "Most accounts I audit have hundreds of tags with no system: typos, duplicates, one-off campaign tags nobody remembers. Lay out a prefix convention (src-, int-, stat-, evt-), how to audit and merge existing tags without breaking automations that start on them, and the rule for when something should be a custom field instead of a tag.",
+    "keywords": [
+      "activecampaign tags",
+      "tag naming convention",
+      "activecampaign organization",
+      "tag cleanup"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "custom-fields-vs-tags",
+    "title": "Custom Fields vs. Tags in ActiveCampaign: The Decision Most Accounts Get Backwards",
+    "category": "Platform",
+    "angle": "Tags are for events and states that flip; custom fields are for values that change over time. Walk through the decision rule, the segmentation and personalization costs of getting it wrong, and how to migrate a tag-sprawl account toward fields without losing history.",
+    "keywords": [
+      "activecampaign custom fields",
+      "tags vs custom fields",
+      "activecampaign segmentation",
+      "contact data model"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "conditional-content-one-email",
+    "title": "One Email, Five Versions: Conditional Content Blocks in ActiveCampaign",
+    "category": "Platform",
+    "angle": "Most operators clone a campaign five times to speak to five segments. Conditional content blocks let one email adapt per contact. Show how to structure the conditions, what to personalize (offer, proof, CTA) versus what to leave alone, how to QA every version before send, and the point where conditional content gets too clever to maintain.",
+    "keywords": [
+      "activecampaign conditional content",
+      "email personalization",
+      "dynamic content",
+      "activecampaign campaigns"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "automation-map-audit",
+    "title": "Your Automations Are Talking Over Each Other: How to Audit Overlap in ActiveCampaign",
+    "category": "Automations",
+    "angle": "Once an account has 30+ automations, contacts end up in four at once and get three emails on a Tuesday. Explain how to find overlap using the automation map and contact automation history, how to set suppression with tags and conditions, and a simple priority system so the most important sequence always wins.",
+    "keywords": [
+      "activecampaign automation map",
+      "automation overlap",
+      "email frequency",
+      "activecampaign automations"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "webinar-sequence-ac",
+    "title": "The Webinar Sequence That Gets People to Actually Show Up",
+    "category": "Automations",
+    "angle": "Registration is the easy part; attendance is where webinar funnels leak. Walk through the pre-event reminder cadence, the 'starting now' email, separate attended vs. no-show branches, and the replay window, built with tags, wait-until steps, and conditional branches in ActiveCampaign.",
+    "keywords": [
+      "webinar email sequence",
+      "webinar reminders",
+      "activecampaign webinar automation",
+      "no-show follow up"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "launch-sequence-cart-open",
+    "title": "Running a Course Launch in ActiveCampaign Without Emailing Buyers Their Own Cart Close",
+    "category": "Automations",
+    "angle": "The classic launch mistake: buyers keep getting 'doors close tonight' emails. Show how to structure a cart-open/cart-close launch with a purchase tag that pulls buyers out instantly, segments for engaged vs. cold, and the post-launch handoff into onboarding.",
+    "keywords": [
+      "course launch email",
+      "activecampaign launch sequence",
+      "cart close emails",
+      "launch automation"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "site-tracking-that-matters",
+    "title": "ActiveCampaign Site Tracking: Turning Page Visits Into Automations That Sell",
+    "category": "Platform",
+    "angle": "Site tracking is on in most accounts and used by almost none. Explain how to confirm it's firing, which page visits are worth triggering on (pricing, sales page, checkout), how to build a 'visited pricing but didn't buy' follow-up, and the privacy and consent basics to respect.",
+    "keywords": [
+      "activecampaign site tracking",
+      "behavioral email",
+      "pricing page follow up",
+      "activecampaign triggers"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "event-tracking-product-usage",
+    "title": "Using ActiveCampaign Event Tracking to Email Based on What People Do in Your Product",
+    "category": "Integrations",
+    "angle": "For membership sites and SaaS, the best trigger is product behavior, not email opens. Walk through what event tracking is, how to send events via the API or an integration tool, and three automations to build first: activation nudge, stalled-user rescue, and power-user upgrade.",
+    "keywords": [
+      "activecampaign event tracking",
+      "product usage emails",
+      "behavioral triggers",
+      "activecampaign api"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "sunset-policy",
+    "title": "The Sunset Policy: How to Stop Paying ActiveCampaign to Email People Who Left",
+    "category": "Retention",
+    "angle": "Contact-based pricing means dead contacts cost real money and drag deliverability. Define a sunset rule (no opens or clicks in a defined window, adjusted for Apple privacy opens), the automation that tags, gives a last-chance email, and removes, and how to report the savings.",
+    "keywords": [
+      "email sunset policy",
+      "inactive subscribers",
+      "activecampaign pricing",
+      "list hygiene"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "apple-mpp-open-tracking",
+    "title": "Apple Mail Privacy Protection Broke Your Open-Based Automations. Here's the Fix.",
+    "category": "Deliverability",
+    "angle": "Any automation that branches on 'opened email' is now partly guessing because Apple pre-fetches opens. Show how to find the automations that depend on opens, swap in clicks, site visits, and replies as engagement signals, and rebuild re-engagement segments that don't lie.",
+    "keywords": [
+      "apple mail privacy protection",
+      "email open tracking",
+      "activecampaign engagement",
+      "MPP"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "forms-that-segment-at-signup",
+    "title": "Build Forms That Segment at Signup So You Never Have to Guess Later",
+    "category": "Platform",
+    "angle": "Most signup forms collect an email and nothing else, then operators spend years trying to figure out who's who. Show how to add one qualifying question, map it to a custom field, use hidden fields for source, and route each answer into a different welcome path.",
+    "keywords": [
+      "activecampaign forms",
+      "segment at signup",
+      "lead capture",
+      "hidden fields"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "deal-pipeline-high-ticket",
+    "title": "Using ActiveCampaign Deals to Run a High-Ticket Sales Process Without a Separate CRM",
+    "category": "Platform",
+    "angle": "For coaching and high-ticket offers, ActiveCampaign's deal pipelines can replace a separate CRM. Lay out the stages, the automations that move deals and create tasks, how to stop sales and marketing emails from colliding, and when you genuinely outgrow it.",
+    "keywords": [
+      "activecampaign deals",
+      "high ticket sales process",
+      "activecampaign crm",
+      "sales pipeline"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "broadcast-cadence",
+    "title": "How Often Should You Email Your List? A Framework Instead of a Number",
+    "category": "Retention",
+    "angle": "'How often should I email' has no universal answer, but it has a method. Walk through testing cadence by engagement tier, letting your most engaged segment hear from you more, watching complaint and unsubscribe signals as guardrails, and scheduling in ActiveCampaign so tiers get different volume.",
+    "keywords": [
+      "email frequency",
+      "how often to email",
+      "email cadence",
+      "activecampaign campaigns"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "migrating-to-activecampaign",
+    "title": "Migrating to ActiveCampaign: The Things That Break That Nobody Warns You About",
+    "category": "Integrations",
+    "angle": "Moving from Mailchimp, Kajabi, or ConvertKit to ActiveCampaign is mostly easy until it isn't. Cover the real gotchas: consent and unsubscribe status carryover, tag-to-field mapping, rebuilding automations rather than copying them, warming the new sending domain, and a cutover checklist. Tie to Greg's free migration offer.",
+    "keywords": [
+      "migrate to activecampaign",
+      "email platform migration",
+      "mailchimp to activecampaign",
+      "kajabi to activecampaign"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "split-testing-automations",
+    "title": "Split Testing Inside ActiveCampaign Automations: What's Worth Testing and What Isn't",
+    "category": "Analytics",
+    "angle": "The split action in automations is underused, and when it is used, people test button colors. Explain how to use split paths to test structure (email count, timing, offer order), how long to run a test before calling it, and how to read results without fooling yourself on small lists.",
+    "keywords": [
+      "activecampaign split testing",
+      "automation ab test",
+      "email testing",
+      "split action"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
+  },
+  {
+    "id": "ai-in-activecampaign",
+    "title": "Using ActiveCampaign's AI Features Without Sounding Like Everyone Else",
+    "category": "Platform",
+    "angle": "ActiveCampaign now ships AI help for writing and building. Give an honest operator's take: where it saves real time (drafting variants, subject line options, building automation scaffolds), where it produces generic copy, and a workflow that keeps your voice while using it. Only reference AI features generically if unsure of exact names.",
+    "keywords": [
+      "activecampaign ai",
+      "ai email writing",
+      "activecampaign features",
+      "email copywriting"
+    ],
+    "affiliate_opportunity": null,
+    "status": "queued"
   }
 ]

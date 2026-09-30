@@ -105,6 +105,7 @@ Match this voice: direct, confident, plural-first-person ("I see this pattern", 
 - **No made-up ActiveCampaign features.** Only reference features that actually exist: goal steps, conditional branches, conditional content blocks, predictive sending, deal pipelines, tags, custom fields, custom objects (higher plans), site tracking, automations, segments, lists, forms, landing pages, campaigns, deep data integration, SMS add-on, machine learning optimized send time, attribution reports, event tracking, webhook actions. If you're unsure about a specific feature name or behavior, use generic language.
 - **Use code formatting** (backticks in markdown) for specific AC feature names, tag conventions, field names, and numeric thresholds. Example: \`Wait until specific day/time\`, \`src-webinar\` tag convention, \`> 0.30%\` Gmail spam rate.
 - **Every section must tell the reader what to DO**, not just describe a thing. Actionable over descriptive.
+- **No em dashes (—) anywhere.** They read as AI-written. Use periods, commas, colons, semicolons, or parentheses instead.
 - **Avoid marketing buzzwords:** leverage, synergy, optimize (unless referring to a specific AC feature), unleash, supercharge, game-changing, revolutionize.
 
 ## BAD EXAMPLES (do not write)

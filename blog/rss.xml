@@ -90,30 +90,12 @@
     </item>
 
     <item>
-      <title>The Klaviyo Post-Purchase Flow That Turns One Order Into Three</title>
-      <link>https://getner.ai/blog/klaviyo-post-purchase-flow.html</link>
-      <guid isPermaLink="true">https://getner.ai/blog/klaviyo-post-purchase-flow.html</guid>
-      <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
-      <author>greg@getner.ai (Greg Getner)</author>
-      <description><![CDATA[Most Klaviyo programs I audit have a welcome series and an abandoned cart flow, then nothing. The actual repeat revenue lives in the thirty days after someone buys—and most stores send one transactional email and go silent.]]></description>
-    </item>
-
-    <item>
       <title>Using Webhooks to Trigger ActiveCampaign Automations from External Events</title>
       <link>https://getner.ai/blog/webhooks-external-triggers.html</link>
       <guid isPermaLink="true">https://getner.ai/blog/webhooks-external-triggers.html</guid>
       <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
       <author>greg@getner.ai (Greg Getner)</author>
       <description><![CDATA[Most operators I work with never touch webhooks because they sound like a developer task—but they're just URLs that wake up an automation when something happens outside ActiveCampaign.]]></description>
-    </item>
-
-    <item>
-      <title>Reading the Klaviyo Deliverability Hub Before It Reads You</title>
-      <link>https://getner.ai/blog/klaviyo-deliverability-hub.html</link>
-      <guid isPermaLink="true">https://getner.ai/blog/klaviyo-deliverability-hub.html</guid>
-      <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
-      <author>greg@getner.ai (Greg Getner)</author>
-      <description><![CDATA[Klaviyo's deliverability dashboard surfaces the signals that predict an inbox problem two weeks before it tanks a send — most operators glance past it until Gmail has already throttled the account.]]></description>
     </item>
 
     <item>
@@ -126,30 +108,12 @@
     </item>
 
     <item>
-      <title>Klaviyo Predictive Analytics: CLV, Churn Risk, and Next Order Date, Explained</title>
-      <link>https://getner.ai/blog/klaviyo-predictive-analytics.html</link>
-      <guid isPermaLink="true">https://getner.ai/blog/klaviyo-predictive-analytics.html</guid>
-      <pubDate>Tue, 14 Jul 2026 00:00:00 GMT</pubDate>
-      <author>greg@getner.ai (Greg Getner)</author>
-      <description><![CDATA[Klaviyo puts predicted customer lifetime value, churn risk, and expected next order date on every customer profile, and in most accounts I audit, nobody's doing anything with them.]]></description>
-    </item>
-
-    <item>
       <title>Connecting ActiveCampaign to Shopify: What Most Setups Miss</title>
       <link>https://getner.ai/blog/ac-shopify-integration-gaps.html</link>
       <guid isPermaLink="true">https://getner.ai/blog/ac-shopify-integration-gaps.html</guid>
       <pubDate>Thu, 09 Jul 2026 00:00:00 GMT</pubDate>
       <author>greg@getner.ai (Greg Getner)</author>
       <description><![CDATA[The ActiveCampaign-Shopify integration syncs orders and customers, but most setups stop at the handshake and leave the real automation work undone.]]></description>
-    </item>
-
-    <item>
-      <title>The 5 Klaviyo Segments Every Store Should Build First</title>
-      <link>https://getner.ai/blog/klaviyo-five-segments.html</link>
-      <guid isPermaLink="true">https://getner.ai/blog/klaviyo-five-segments.html</guid>
-      <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
-      <author>greg@getner.ai (Greg Getner)</author>
-      <description><![CDATA[You have sixty-three segments in Klaviyo, and when it's time to send a campaign you still can't answer "who should get this email?"]]></description>
     </item>
 
     <item>
@@ -162,30 +126,12 @@
     </item>
 
     <item>
-      <title>The Klaviyo Welcome Flow That Earns Its First Sale</title>
-      <link>https://getner.ai/blog/klaviyo-welcome-flow-first-sale.html</link>
-      <guid isPermaLink="true">https://getner.ai/blog/klaviyo-welcome-flow-first-sale.html</guid>
-      <pubDate>Tue, 30 Jun 2026 00:00:00 GMT</pubDate>
-      <author>greg@getner.ai (Greg Getner)</author>
-      <description><![CDATA[A welcome flow is the highest-intent moment a subscriber will ever give you, and most brands waste it on a single "thanks for signing up" email.]]></description>
-    </item>
-
-    <item>
       <title>The 5 Engagement Metrics That Tell You Your List Is Healthy</title>
       <link>https://getner.ai/blog/5-engagement-metrics-health.html</link>
       <guid isPermaLink="true">https://getner.ai/blog/5-engagement-metrics-health.html</guid>
       <pubDate>Thu, 25 Jun 2026 00:00:00 GMT</pubDate>
       <author>greg@getner.ai (Greg Getner)</author>
       <description><![CDATA[Open rate hasn't told you the truth since Apple Mail Privacy Protection rolled out in 2021, and click rate only tells you what happened two weeks after the problem started.]]></description>
-    </item>
-
-    <item>
-      <title>The Klaviyo Abandoned Cart Flow Most Stores Set Up Wrong</title>
-      <link>https://getner.ai/blog/klaviyo-abandoned-cart-flow.html</link>
-      <guid isPermaLink="true">https://getner.ai/blog/klaviyo-abandoned-cart-flow.html</guid>
-      <pubDate>Tue, 23 Jun 2026 00:00:00 GMT</pubDate>
-      <author>greg@getner.ai (Greg Getner)</author>
-      <description><![CDATA[Most Klaviyo abandoned cart flows fire one discount-led email and stop. The ones that recover revenue lead with utility before any incentive.]]></description>
     </item>
 
     <item>

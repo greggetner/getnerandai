@@ -19,3 +19,34 @@
   for = "/.netlify/functions/*"
   [headers.values]
     X-Content-Type-Options = "nosniff"
+
+# Klaviyo posts retired 2026-09-30 (site back to ActiveCampaign-only). 301 to the closest AC post.
+[[redirects]]
+  from = "/blog/klaviyo-abandoned-cart-flow.html"
+  to = "/blog/abandon-cart-without-guilt.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog/klaviyo-post-purchase-flow.html"
+  to = "/blog/post-purchase-sequence.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog/klaviyo-welcome-flow-first-sale.html"
+  to = "/blog/welcome-series-structure.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog/klaviyo-five-segments.html"
+  to = "/blog/5-segments-every-program.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog/klaviyo-deliverability-hub.html"
+  to = "/blog/sender-reputation-diagnostic.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog/klaviyo-predictive-analytics.html"
+  to = "/blog/"
+  status = 301
