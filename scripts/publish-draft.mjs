@@ -140,17 +140,14 @@ function renderFullHtml(template, vars) {
 // ────────────────────────────────────────────────────────────────
 // Insert a new blog-post card at the top of /blog/index.html
 // ────────────────────────────────────────────────────────────────
-async function updateBlogIndex({ slug, title, displayDate, category, readTime, lede, platform }) {
+async function updateBlogIndex({ slug, title, displayDate, category, readTime, lede }) {
   const indexPath = path.join(BLOG_DIR, 'index.html');
   const raw = await readFile(indexPath, 'utf8');
 
   // Truncate lede to a reasonable excerpt length for the card
   const excerpt = lede.length > 260 ? lede.slice(0, 257).trimEnd() + '…' : lede;
 
-  // Deliverability posts apply to both platforms; otherwise tag by the post's platform
-  const platCard = /deliverabil/i.test(category) ? 'both' : (platform === 'klaviyo' ? 'klaviyo' : 'ac');
-
-  const cardHtml = `    <li class="blog-post-card" data-plat-card="${platCard}">
+  const cardHtml = `    <li class="blog-post-card">
       <div class="post-meta">${displayDate} · ${category} · ${readTime} min read</div>
       <h2><a href="/blog/${slug}.html">${escapeHtml(title)}</a></h2>
       <p class="excerpt">${escapeHtml(excerpt)}</p>
@@ -260,7 +257,6 @@ async function main() {
   const isoDate = today;
   const displayDate = formatDisplayDate(today);
   const category = front.category || 'ActiveCampaign';
-  const platform = front.platform === 'klaviyo' ? 'klaviyo' : 'ac';
   const bodyHtml = renderBody(body);
 
   // Render full HTML
@@ -283,7 +279,7 @@ async function main() {
   console.log(`✓ Wrote ${path.relative(ROOT, postPath)} (${wordCount} words, ${readTime} min)`);
 
   // Update blog index
-  await updateBlogIndex({ slug, title, displayDate, category, readTime, lede, platform });
+  await updateBlogIndex({ slug, title, displayDate, category, readTime, lede });
   console.log('✓ Inserted card in blog/index.html');
 
   // Update RSS
